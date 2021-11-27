@@ -1,33 +1,52 @@
-proxies:
-  - {name: '剩余流量：@EXTM3U', server: t.me/vpnhat, port: 10086, type: vmess, uuid: b20e2ae9-b822-35be-9657-a81bbef5aeb6, alterId: 0, cipher: auto, tls: false, network: tcp, ws-path: t.me/vpnpool, ws-headers: {Host: t.me/vpnhat}}
-  - {name: '过期时间：@EXTM3U', server: t.me/vpnpool, port: 10086, type: vmess, uuid: b20e2ae9-b822-35be-9657-a81bbef5aeb6, alterId: 0, cipher: auto, tls: false, network: tcp, ws-path: t.me/vpnpool, ws-headers: {Host: t.me/vpnhat}}
-  - {name: 'vip1︱V2ray︱①香港 1000M｜×1倍率｜限速100M_3', server: 116.wgong.xyz, port: 52216, type: vmess, uuid: b20e2ae9-b822-35be-9657-a81bbef5aeb6, alterId: 2, cipher: auto, tls: false, network: tcp, ws-path: t.me/vpnpool, ws-headers: {Host: t.me/vpnhat}}
-  - {name: 'vip1︱V2ray︱②日本原生 1000M｜×1倍率｜限速100M_4', server: 117.wgong.xyz, port: 52217, type: vmess, uuid: b20e2ae9-b822-35be-9657-a81bbef5aeb6, alterId: 2, cipher: auto, tls: false, network: tcp, ws-path: t.me/vpnpool, ws-headers: {Host: t.me/vpnhat}}
-  - {name: 'vip1︱V2ray︱③日本 1000M｜×1倍率｜限速100M_5', server: 118.wgong.xyz, port: 52218, type: vmess, uuid: b20e2ae9-b822-35be-9657-a81bbef5aeb6, alterId: 2, cipher: auto, tls: false, network: tcp, ws-path: t.me/vpnpool, ws-headers: {Host: t.me/vpnhat}}
-  - {name: 'vip1︱V2ray︱④日本 1000M｜×1倍率｜限速100M_6', server: 119.wgong.xyz, port: 52219, type: vmess, uuid: b20e2ae9-b822-35be-9657-a81bbef5aeb6, alterId: 2, cipher: auto, tls: false, network: tcp, ws-path: t.me/vpnpool, ws-headers: {Host: t.me/vpnhat}}
-  - {name: 'vip1︱V2ray︱⑤日本 1000M｜×1倍率｜限速100M_7', server: 120.wgong.xyz, port: 52220, type: vmess, uuid: b20e2ae9-b822-35be-9657-a81bbef5aeb6, alterId: 2, cipher: auto, tls: false, network: tcp, ws-path: t.me/vpnpool, ws-headers: {Host: t.me/vpnhat}}
-  - {name: 'vip1︱V2ray︱⑥日本 1000M｜×1倍率｜限速100M_8', server: 121.wgong.xyz, port: 52221, type: vmess, uuid: b20e2ae9-b822-35be-9657-a81bbef5aeb6, alterId: 2, cipher: auto, tls: false, network: tcp, ws-path: t.me/vpnpool, ws-headers: {Host: t.me/vpnhat}}
-  - {name: 'vip1︱V2ray︱⑦香港 1000M｜×1倍率｜限速100M_9', server: 122.wgong.xyz, port: 52222, type: vmess, uuid: b20e2ae9-b822-35be-9657-a81bbef5aeb6, alterId: 2, cipher: auto, tls: false, network: tcp, ws-path: t.me/vpnpool, ws-headers: {Host: t.me/vpnhat}}
-  - {name: 'vip1︱V2ray︱⑧美国｜原生节点 1000M｜×1倍率｜限速100M_10', server: 123.wgong.xyz, port: 52223, type: vmess, uuid: b20e2ae9-b822-35be-9657-a81bbef5aeb6, alterId: 2, cipher: auto, tls: false, network: tcp, ws-path: t.me/vpnpool, ws-headers: {Host: t.me/vpnhat}}
-  - {name: 'vip1︱V2ray︱⑨美国｜原生节点 1000M｜×1倍率｜限速100M_11', server: 124.wgong.xyz, port: 52224, type: vmess, uuid: b20e2ae9-b822-35be-9657-a81bbef5aeb6, alterId: 2, cipher: auto, tls: false, network: tcp, ws-path: t.me/vpnpool, ws-headers: {Host: t.me/vpnhat}}
-  - {name: 'vip1︱V2ray︱⑩香港 1000M｜×1倍率｜限速100M_12', server: 133.wgong.xyz, port: 52333, type: vmess, uuid: b20e2ae9-b822-35be-9657-a81bbef5aeb6, alterId: 2, cipher: auto, tls: false, network: tcp, ws-path: t.me/vpnpool, ws-headers: {Host: t.me/vpnhat}}
-  - {name: 'vip1︱V2ray︱⑪香港 1000M｜×1倍率｜限速100M_13', server: 134.wgong.xyz, port: 52334, type: vmess, uuid: b20e2ae9-b822-35be-9657-a81bbef5aeb6, alterId: 2, cipher: auto, tls: false, network: tcp, ws-path: t.me/vpnpool, ws-headers: {Host: t.me/vpnhat}}
-  - {name: 'vip1︱V2ray︱⑫香港 1000M｜×1倍率｜限速100M_14', server: 135.wgong.xyz, port: 52335, type: vmess, uuid: b20e2ae9-b822-35be-9657-a81bbef5aeb6, alterId: 2, cipher: auto, tls: false, network: tcp, ws-path: t.me/vpnpool, ws-headers: {Host: t.me/vpnhat}}
-  - {name: '︱V2ray︱①vip2中转｜上海CN2｜新加坡｜×3倍率---200M_15', server: 98.wgong.xyz, port: 52298, type: vmess, uuid: b20e2ae9-b822-35be-9657-a81bbef5aeb6, alterId: 2, cipher: auto, tls: false, network: tcp, ws-path: t.me/vpnpool, ws-headers: {Host: t.me/vpnhat}}
-  - {name: '︱V2ray︱②vip2中转｜上海CN2｜新加坡｜×3倍率---200M_16', server: 99.wgong.xyz, port: 52299, type: vmess, uuid: b20e2ae9-b822-35be-9657-a81bbef5aeb6, alterId: 2, cipher: auto, tls: false, network: tcp, ws-path: t.me/vpnpool, ws-headers: {Host: t.me/vpnhat}}
-  - {name: '︱V2ray︱③vip2中转｜上海CN2｜新加坡｜×3倍率---200M_17', server: 100.wgong.xyz, port: 11220, type: vmess, uuid: b20e2ae9-b822-35be-9657-a81bbef5aeb6, alterId: 2, cipher: auto, tls: false, network: tcp, ws-path: t.me/vpnpool, ws-headers: {Host: t.me/vpnhat}}
-  - {name: '︱V2ray︱④vip2中转｜广移｜日本｜×3倍率---200M_18', server: 101.wgong.xyz, port: 52201, type: vmess, uuid: b20e2ae9-b822-35be-9657-a81bbef5aeb6, alterId: 2, cipher: auto, tls: false, network: tcp, ws-path: t.me/vpnpool, ws-headers: {Host: t.me/vpnhat}}
-  - {name: '︱V2ray︱⑤vip2中转｜广移｜新加坡｜×3倍率---200M_19', server: 102.wgong.xyz, port: 11221, type: vmess, uuid: b20e2ae9-b822-35be-9657-a81bbef5aeb6, alterId: 2, cipher: auto, tls: false, network: tcp, ws-path: t.me/vpnpool, ws-headers: {Host: t.me/vpnhat}}
-  - {name: '︱V2ray︱⑥vip2广移｜中转｜香港｜×3倍率---200M_20', server: 103.wgong.xyz, port: 52203, type: vmess, uuid: b20e2ae9-b822-35be-9657-a81bbef5aeb6, alterId: 2, cipher: auto, tls: false, network: tcp, ws-path: t.me/vpnpool, ws-headers: {Host: t.me/vpnhat}}
-  - {name: '︱V2ray︱⑦vip2中转｜上海CN2｜新加坡｜×3倍率---200M_21', server: 104.wgong.xyz, port: 11222, type: vmess, uuid: b20e2ae9-b822-35be-9657-a81bbef5aeb6, alterId: 2, cipher: auto, tls: false, network: tcp, ws-path: t.me/vpnpool, ws-headers: {Host: t.me/vpnhat}}
-  - {name: '︱V2ray︱⑧vip2中转｜广移｜新加坡｜×3倍率---200M_22', server: 105.wgong.xyz, port: 52205, type: vmess, uuid: b20e2ae9-b822-35be-9657-a81bbef5aeb6, alterId: 2, cipher: auto, tls: false, network: tcp, ws-path: t.me/vpnpool, ws-headers: {Host: t.me/vpnhat}}
-  - {name: '︱V2ray︱⑨vip2中转｜广移｜新加坡｜×3倍率---200M_23', server: 106.wgong.xyz, port: 11223, type: vmess, uuid: b20e2ae9-b822-35be-9657-a81bbef5aeb6, alterId: 2, cipher: auto, tls: false, network: tcp, ws-path: t.me/vpnpool, ws-headers: {Host: t.me/vpnhat}}
-  - {name: '︱V2ray︱⑩vip2中转｜广移｜日本｜×3倍率---200M_24', server: 107.wgong.xyz, port: 52207, type: vmess, uuid: b20e2ae9-b822-35be-9657-a81bbef5aeb6, alterId: 2, cipher: auto, tls: false, network: tcp, ws-path: t.me/vpnpool, ws-headers: {Host: t.me/vpnhat}}
-  - {name: '︱V2ray︱⑪vip2中转｜广移｜香港｜×3倍率---200M_25', server: 108.wgong.xyz, port: 11224, type: vmess, uuid: b20e2ae9-b822-35be-9657-a81bbef5aeb6, alterId: 2, cipher: auto, tls: false, network: tcp, ws-path: t.me/vpnpool, ws-headers: {Host: t.me/vpnhat}}
-  - {name: '︱V2ray︱⑫vip2中转｜电信｜新加坡｜×3倍率---200M_26', server: 109.wgong.xyz, port: 52209, type: vmess, uuid: b20e2ae9-b822-35be-9657-a81bbef5aeb6, alterId: 2, cipher: auto, tls: false, network: tcp, ws-path: t.me/vpnpool, ws-headers: {Host: t.me/vpnhat}}
-  - {name: '︱V2ray︱⑬vip2中转｜BGB｜新加坡｜×3倍率---200M_27', server: 81.wgong.xyz, port: 52281, type: vmess, uuid: b20e2ae9-b822-35be-9657-a81bbef5aeb6, alterId: 2, cipher: auto, tls: false, network: tcp, ws-path: t.me/vpnpool, ws-headers: {Host: t.me/vpnhat}}
-  - {name: '︱V2ray︱⑭vip2中转｜电信｜香港｜×3倍率---200M_28', server: 82.wgong.xyz, port: 52282, type: vmess, uuid: b20e2ae9-b822-35be-9657-a81bbef5aeb6, alterId: 2, cipher: auto, tls: false, network: tcp, ws-path: t.me/vpnpool, ws-headers: {Host: t.me/vpnhat}}
-  - {name: '︱V2ray︱⑮vip2中转｜BGB｜香港｜×3倍率---200M_29', server: 83.wgong.xyz, port: 52283, type: vmess, uuid: b20e2ae9-b822-35be-9657-a81bbef5aeb6, alterId: 2, cipher: auto, tls: false, network: tcp, ws-path: t.me/vpnpool, ws-headers: {Host: t.me/vpnhat}}
-  - {name: '︱V2ray︱⑯vip2中转｜BGB｜日本｜×3倍率---200M_30', server: 84.wgong.xyz, port: 52284, type: vmess, uuid: b20e2ae9-b822-35be-9657-a81bbef5aeb6, alterId: 2, cipher: auto, tls: false, network: tcp, ws-path: t.me/vpnpool, ws-headers: {Host: t.me/vpnhat}}
-  - {name: '︱V2ray︱⑰vip2中转｜电信｜香港｜×3倍率---200M_31', server: 85.wgong.xyz, port: 52285, type: vmess, uuid: b20e2ae9-b822-35be-9657-a81bbef5aeb6, alterId: 2, cipher: auto, tls: false, network: tcp, ws-path: t.me/vpnpool, ws-headers: {Host: t.me/vpnhat}}
-  - {name: '︱V2ray︱⑱vip2中转｜BGB｜新加坡｜×3倍率---200M_32', server: 86.wgong.xyz, port: 52286, type: vmess, uuid: b20e2ae9-b822-35be-9657-a81bbef5aeb6, alterId: 2, cipher: auto, tls: false, network: tcp, ws-path: t.me/vpnpool, ws-headers: {Host: t.me/vpnhat}}
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpxMWVJVXp6eQ==@hk.relay.1qaz.dogenode.xyz:8101#%F0%9F%87%AD%F0%9F%87%B0%20HK%E9%A6%99%E6%B8%AF%2001
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpxMWVJVXp6eQ==@hk.relay.2wsx.dogenode.xyz:8102#%F0%9F%87%AD%F0%9F%87%B0%20HK%E9%A6%99%E6%B8%AF%2002
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpxMWVJVXp6eQ==@hk.relay.111q.dogenode.xyz:8111#%F0%9F%87%AD%F0%9F%87%B0%20HK%E9%A6%99%E6%B8%AF%20BGP%2001*
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpxMWVJVXp6eQ==@hk.relay.112w.dogenode.xyz:8112#%F0%9F%87%AD%F0%9F%87%B0%20HK%E9%A6%99%E6%B8%AF%20BGP%2002*
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpxMWVJVXp6eQ==@hk.relay.113e.dogenode.xyz:8113#%F0%9F%87%AD%F0%9F%87%B0%20HK%E9%A6%99%E6%B8%AF%20BGP%2003*
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpxMWVJVXp6eQ==@hk.relay.131q.dogenode.xyz:3131#%F0%9F%87%AD%F0%9F%87%B0%20HK%E9%A6%99%E6%B8%AF%20HGC%2001*
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpxMWVJVXp6eQ==@hk.relay.132w.dogenode.xyz:3132#%F0%9F%87%AD%F0%9F%87%B0%20HK%E9%A6%99%E6%B8%AF%20HGC%2002*
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpxMWVJVXp6eQ==@hk.relay.121q.dogenode.xyz:8121#%F0%9F%87%AD%F0%9F%87%B0%20HK%E9%A6%99%E6%B8%AF%20HKT%2001**
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpxMWVJVXp6eQ==@hk.relay.151q.dogenode.xyz:8151#%F0%9F%87%AD%F0%9F%87%B0%20HK%E9%A6%99%E6%B8%AF%20NTT%2001
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpxMWVJVXp6eQ==@in.relay.1wqe.dogenode.xyz:3881#%F0%9F%87%AE%F0%9F%87%B3%20IN%E5%8D%B0%E5%BA%A6%2001
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpxMWVJVXp6eQ==@jp.relay.zaq1.dogenode.xyz:8201#%F0%9F%87%AF%F0%9F%87%B5%20JP%E6%97%A5%E6%9C%AC%2001
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpxMWVJVXp6eQ==@jp.relay.xsw2.dogenode.xyz:8202#%F0%9F%87%AF%F0%9F%87%B5%20JP%E6%97%A5%E6%9C%AC%2002
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpxMWVJVXp6eQ==@jp.relay.221q.dogenode.xyz:8221#%F0%9F%87%AF%F0%9F%87%B5%20JP%E6%97%A5%E6%9C%AC%2021*
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpxMWVJVXp6eQ==@jp.relay.231q.dogenode.xyz:8231#%F0%9F%87%AF%F0%9F%87%B5%20JP%E6%97%A5%E6%9C%AC%2031**
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpxMWVJVXp6eQ==@kr.relay.1wqe.dogenode.xyz:8811#%F0%9F%87%B0%F0%9F%87%B7%20KR%E9%9F%A9%E5%9B%BD%2001
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpxMWVJVXp6eQ==@my.relay.1wqe.dogenode.xyz:8891#%F0%9F%87%B2%F0%9F%87%BE%20MY%E9%A9%AC%E6%9D%A5%E8%A5%BF%E4%BA%9A%2001*
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpxMWVJVXp6eQ==@my.relay.2ewr.dogenode.xyz:8892#%F0%9F%87%B2%F0%9F%87%BE%20MY%E9%A9%AC%E6%9D%A5%E8%A5%BF%E4%BA%9A%2002*
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpxMWVJVXp6eQ==@ca.relay.1wqe.dogenode.xyz:8851#%F0%9F%87%A8%F0%9F%87%A6%20Others%E5%8A%A0%E6%8B%BF%E5%A4%A7%2001
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpxMWVJVXp6eQ==@br.relay.1wqe.dogenode.xyz:8861#%F0%9F%87%A7%F0%9F%87%B7%20Others%E5%B7%B4%E8%A5%BF%2001
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpxMWVJVXp6eQ==@au.relay.1wqe.dogenode.xyz:3831#%F0%9F%87%A6%F0%9F%87%BA%20Others%E6%BE%B3%E5%A4%A7%E5%88%A9%E4%BA%9A%2001
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpxMWVJVXp6eQ==@ru.relay.1wqe.dogenode.xyz:8801#%F0%9F%87%B7%F0%9F%87%BA%20RU%E4%BF%84%E7%BD%97%E6%96%AF%2001
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpxMWVJVXp6eQ==@sg.relay.1qwe.dogenode.xyz:8501#%F0%9F%87%B8%F0%9F%87%AC%20SG%E6%96%B0%E5%8A%A0%E5%9D%A1%2001
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpxMWVJVXp6eQ==@sg.relay.2asd.dogenode.xyz:3502#%F0%9F%87%B8%F0%9F%87%AC%20SG%E6%96%B0%E5%8A%A0%E5%9D%A1%2002
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpxMWVJVXp6eQ==@sg.relay.551q.dogenode.xyz:8551#%F0%9F%87%B8%F0%9F%87%AC%20SG%E6%96%B0%E5%8A%A0%E5%9D%A1%2051*
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpxMWVJVXp6eQ==@th.relay.1wqe.dogenode.xyz:8841#%F0%9F%87%B9%F0%9F%87%AD%20TH%E6%B3%B0%E5%9B%BD%2001
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpxMWVJVXp6eQ==@tr.relay.1wqe.dogenode.xyz:3821#%F0%9F%87%B9%F0%9F%87%B7%20TR%E5%9C%9F%E8%80%B3%E5%85%B6%2001*
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpxMWVJVXp6eQ==@tw.relay.1aqz.dogenode.xyz:8401#%F0%9F%87%B9%F0%9F%87%BC%20TW%E5%8F%B0%E6%B9%BE%2001*
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpxMWVJVXp6eQ==@tw.relay.2swx.dogenode.xyz:3402#%F0%9F%87%B9%F0%9F%87%BC%20TW%E5%8F%B0%E6%B9%BE%2002*
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpxMWVJVXp6eQ==@tw.relay.3dec.dogenode.xyz:8403#%F0%9F%87%B9%F0%9F%87%BC%20TW%E5%8F%B0%E6%B9%BE%2003*
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpxMWVJVXp6eQ==@tw.relay.4frv.dogenode.xyz:3404#%F0%9F%87%B9%F0%9F%87%BC%20TW%E5%8F%B0%E6%B9%BE%2004*
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpxMWVJVXp6eQ==@tw.relay.5gtb.dogenode.xyz:3405#%F0%9F%87%B9%F0%9F%87%BC%20TW%E5%8F%B0%E6%B9%BE%2005*
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpxMWVJVXp6eQ==@eu.relay.1sad.dogenode.xyz:8601#%F0%9F%87%AC%F0%9F%87%A7%20UK%E8%8B%B1%E5%9B%BD%2001
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpxMWVJVXp6eQ==@us.relay.1qsc.dogenode.xyz:8301#%F0%9F%87%BA%F0%9F%87%B8%20US%E7%BE%8E%E5%9B%BD%2001
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpxMWVJVXp6eQ==@us.relay.311q.dogenode.xyz:3311#%F0%9F%87%BA%F0%9F%87%B8%20US%E7%BE%8E%E5%9B%BD%2002
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpxMWVJVXp6eQ==@us.relay.321q.dogenode.xyz:3321#%F0%9F%87%BA%F0%9F%87%B8%20US%E7%BE%8E%E5%9B%BD%2003
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpxMWVJVXp6eQ==@us.relay.322w.dogenode.xyz:3322#%F0%9F%87%BA%F0%9F%87%B8%20US%E7%BE%8E%E5%9B%BD%2004
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpxMWVJVXp6eQ==@us.relay.331q.dogenode.xyz:8331#%F0%9F%87%BA%F0%9F%87%B8%20US%E7%BE%8E%E5%9B%BD%2031
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpxMWVJVXp6eQ==@za.relay.1wqe.dogenode.xyz:3871#%F0%9F%87%BF%F0%9F%87%A6%20ZA%E5%8D%97%E9%9D%9E%2001*
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpxMWVJVXp6eQ==@ru.anycast.1wqe.dogenode.xyz:3801#%F0%9F%87%B7%F0%9F%87%BA%20%E4%BF%84%E7%BD%97%E6%96%AF%2001
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpxMWVJVXp6eQ==@ca.anycast.1wqe.dogenode.xyz:3851#%F0%9F%87%A8%F0%9F%87%A6%20%E5%8A%A0%E6%8B%BF%E5%A4%A7%2001
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpxMWVJVXp6eQ==@tw.anycast.1aqz.dogenode.xyz:3401#%F0%9F%87%B9%F0%9F%87%BC%20%E5%8F%B0%E6%B9%BE%2001*
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpxMWVJVXp6eQ==@sg.anycast.1qwe.dogenode.xyz:3501#%F0%9F%87%B8%F0%9F%87%AC%20%E6%96%B0%E5%8A%A0%E5%9D%A1%2001
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpxMWVJVXp6eQ==@sg.anycast.551q.dogenode.xyz:3551#%F0%9F%87%B8%F0%9F%87%AC%20%E6%96%B0%E5%8A%A0%E5%9D%A1%2051*
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpxMWVJVXp6eQ==@jp.anycast.zaq1.dogenode.xyz:3201#%F0%9F%87%AF%F0%9F%87%B5%20%E6%97%A5%E6%9C%AC%2001
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpxMWVJVXp6eQ==@jp.anycast.231q.dogenode.xyz:3231#%F0%9F%87%AF%F0%9F%87%B5%20%E6%97%A5%E6%9C%AC%2031**
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpxMWVJVXp6eQ==@th.anycast.1wqe.dogenode.xyz:3841#%F0%9F%87%B9%F0%9F%87%AD%20%E6%B3%B0%E5%9B%BD%2001*
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpxMWVJVXp6eQ==@us.anycast.1qsc.dogenode.xyz:3301#%F0%9F%87%BA%F0%9F%87%B8%20%E7%BE%8E%E5%9B%BD%2001
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpxMWVJVXp6eQ==@us.anycast.1qsc.dogenode.xyz:3331#%F0%9F%87%BA%F0%9F%87%B8%20%E7%BE%8E%E5%9B%BD%2031
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpxMWVJVXp6eQ==@hk.anycast.111q.dogenode.xyz:3111#%F0%9F%87%AD%F0%9F%87%B0%20%E9%A6%99%E6%B8%AF%20BGP%2001*
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpxMWVJVXp6eQ==@hk.anycast.112w.dogenode.xyz:3112#%F0%9F%87%AD%F0%9F%87%B0%20%E9%A6%99%E6%B8%AF%20BGP%2002*
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpxMWVJVXp6eQ==@hk.anycast.121q.dogenode.xyz:3121#%F0%9F%87%AD%F0%9F%87%B0%20%E9%A6%99%E6%B8%AF%20HKT%2001**
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpxMWVJVXp6eQ==@hk.anycast.151q.dogenode.xyz:3151#%F0%9F%87%AD%F0%9F%87%B0%20%E9%A6%99%E6%B8%AF%20NTT%2001

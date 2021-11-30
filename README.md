@@ -1,3 +1,4 @@
+proxies:
   - {name: '剩余流量：t.me/vpnhat', server: t.me/vpnpool, port: 10086, type: vmess, uuid: 8b94b74b-ce5d-3777-88f6-25aa7c7d05dd, alterId: 0, cipher: auto, tls: false, network: tcp, ws-path: t.me/vpnpool, ws-headers: {Host: t.me/vpnhat}}
   - {name: '过期时间：t.me/EXTM3U', server: t.me/vpnhat, port: 10086, type: vmess, uuid: 8b94b74b-ce5d-3777-88f6-25aa7c7d05dd, alterId: 0, cipher: auto, tls: false, network: tcp, ws-path: t.me/vpnpool, ws-headers: {Host: t.me/vpnhat}}
   - {name: '印度01_3', server: zhuzhu12.com, port: 13959, type: vmess, uuid: 8b94b74b-ce5d-3777-88f6-25aa7c7d05dd, alterId: 2, cipher: auto, tls: false, network: ws, ws-path: /zz, ws-headers: {Host: t.me/vpnhat}}

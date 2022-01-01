@@ -1,0 +1,349 @@
+####在 Python3 中 int、str、bytes 类型的变量实际上都是一个 “类” 的对象，而 bytes 相比 str 而言更接近底层数据，也更接近存储的形式，它其实是一个字节的数组，类似于 C 语言中的 char []，每个字节是一个范围在 0-255 的数字
+
+# >>> '中c'.encode()
+# b'\xe4\xb8\xadc'
+# 我们看到最后的字符c并没有发生转义成十六进制，仍然是c。
+# 这就是说明，tytes类型显示格式是十六进制格式，ASCII码原样不改变，但最终存储的值还是对应十六进制值格式对等的二进制格式值。
+
+# 始终记住：显示的是十六进制格式，存储的是对应的码值。如:
+# >>> b'a'[0]
+# 97
+# 显示的是字符a，实际上保存的是对应的ASCII码值97.
+
+# print('国c'.encode('utf8'))
+# print(list('国c'.encode('utf-8')))
+# print(b'\xe5\x9b\xbdc'.decode('utf8'))
+# print(list('国'.encode('utf-8')))
+
+# import binascii    #有x无x
+# print(b'\xe5\x9b\xbd'.hex())
+# print(bytes.fromhex('e59bbd'))
+# print(binascii.hexlify(b'\xe5\x9b\xbd'))
+# print(binascii.b2a_hex(b'\xe5\x9b\xbd'))
+# print(binascii.unhexlify(b'e59bbd'))
+# print(binascii.a2b_hex(b'e59bbd'))
+
+
+# print((bytes('美好', 'utf-8').decode()))
+# print((bytes([57, 18, 0, 0])))
+
+# print([x for x in bytes([57, 18, 0, 0])])
+
+# print(hex(4556000000))
+# print([0x10f8f0b00])
+
+# print(int(4556).to_bytes(length=4, byteorder='little', signed=False))
+# print(int.from_bytes(b'\xcc\x11\x00\x00', byteorder='little', signed=False))
+# print([x for x in b'9\x12\x00\x00'])
+# print([hex(x) for x in b'9\x12\x00\x00'])
+
+# btxt = '110101100100010 1000111111001110 101000101110011 110110011101000 100111000101010 100111010111010 101000101101100 100111100010111 101001111110111 111010 11000000010000 111101000001011 101111010001111 101010001011000 111011010000100 100111000000000 101100100101001 11000000010001'
+# print(''.join([chr(i) for i in [int(b, 2) for b in btxt.split(' ')]]))
+
+
+# for i in b'\xe5\x9b\xbd':
+# 	print(i)
+
+# for i in b'\xe5\x9b\xbd':
+# 	print(i)
+
+# print(b'\xe5')
+# print(b'\xe5'[0])
+# print(list(b'c'))
+# print(b'\xe5\x9b\xbd'[:])
+
+
+
+
+
+# print(hex(229))
+# print(eval('0xe5'))
+# print(80.7.hex())
+
+
+# print(ord('国'))
+# print(chr(22269))
+
+# print(bin(18))
+# print(oct(18))
+# print(hex(18))
+
+
+# print(eval('0b10010'))
+# print(eval('0o22'))
+# print(eval('0x12'))
+
+# print(int(22.8))
+# print(int(-22.8))
+# print(int('10010'))
+# print(int('10010',2))
+# print(int('22',8))
+# print(int('12',16))
+
+# print(int('0b10010',0))
+# print(int('0o22',0))
+# print(int('0x12',0))
+
+# print(int(0b10010))
+# print(int(0o22))
+# print(int(0x12))
+
+# print(ord('b'))
+# print(bin(ord('b')))
+# print(eval('0b1100010'))
+# print(chr(eval('0b1100010')))
+
+
+
+
+
+
+
+# 字符串转字节串:
+# 字符串编码为字节码: '12abc'.encode('ascii')  ==>  b'12abc'
+# 数字或字符数组: bytes([1,2, ord('1'),ord('2')])  ==>  b'\x01\x0212'
+# 16进制字符串: bytes().fromhex('010210')  ==>  b'\x01\x02\x10'
+# 16进制字符串: bytes(map(ord, '\x01\x02\x31\x32'))  ==>  b'\x01\x0212'
+# 16进制数组: bytes([0x01,0x02,0x31,0x32])  ==>  b'\x01\x0212'
+
+
+# 字节串转字符串:
+# 字节码解码为字符串: bytes(b'\x31\x32\x61\x62').decode('ascii')  ==>  12ab
+# 字节串转16进制表示,夹带ascii: str(bytes(b'\x01\x0212'))[2:-1]  ==>  \x01\x0212
+# 字节串转16进制表示,固定两个字符表示: str(binascii.b2a_hex(b'\x01\x0212'))[2:-1]  ==>  01023132
+# 字节串转16进制数组: [hex(x) for x in bytes(b'\x01\x0212')]  ==>  ['0x1', '0x2', '0x31', '0x32']
+
+
+# import base64
+
+# node = 'vmess://YXV0bzo5OWQwMTE2MC02NWE4LTQ3YWYtYjg1NS01YTNlNGQwNjdlNTlAY20tam0ub2t2cG4ueHl6OjIwMDAx?remarks=%E4%B8%AD%E8%BD%AC%7C%E9%A6%99%E6%B8%AFHGC01%7C%E5%8D%8E%E5%8D%97%E9%9A%A7%E9%81%93%5B%E6%B5%81%E5%AA%92%E4%BD%93%E8%A7%A3%E9%94%81%5D&obfs=websocket&tfo=1&alterId=1'
+# print(base64.urlsafe_b64decode(node[8:]))
+# node_dic = json.loads(base64.b64decode(node[8:]))  #.decode("utf-8")
+
+
+# print('国'.encode('utf-8'))
+
+# print(list(b'b'))
+
+
+
+# print(ord('b'))
+# print(bin(ord('b')))
+# print(eval('0b1100010'))
+# print(chr(eval('0b1100010')))
+
+
+
+
+#################################################################
+
+# import struct
+
+# 使用bin_buf = struct.pack(fmt, buf)将buf为二进制数组bin_buf
+# 使用buf = struct.unpack(fmt, bin_buf)将bin_buf二进制数组反转换回buf
+
+# 整型数 -> 二进制流
+# buf1 = 256
+# bin_buf1 = struct.pack('i', buf1) # 'i'代表'integer'
+# ret1 = struct.unpack('i', bin_buf1)
+# print (bin_buf1, '  <====>  ', ret1)
+
+# 浮点数 -> 二进制流
+# buf2 = 3.1415
+# bin_buf2 = struct.pack('d', buf2) # 'd'代表'double'
+# ret2 = struct.unpack('d', bin_buf2)
+# print (bin_buf2, '  <====>  ', ret2)
+
+# 字符串 -> 二进制流
+# buf3 = 'Hello World'
+# bin_buf3 = struct.pack('c', buf3) # '11s'代表长度为11的'string'字符数组
+# ret3 = struct.unpack('c', bin_buf3)
+# print (bin_buf3, '  <====>  ', ret3)
+
+########################################################################################
+
+# >>> for i in b'afAFA!@#':
+# ...     print(i)
+# ...
+# 97
+# 102
+# 65
+# 70
+# 65
+# 33
+# 64
+# 35
+
+# 当中英文混合时我们看的更清楚：
+
+# >>> '中c'.encode()
+# b'\xe4\xb8\xadc'
+
+# 我们看到最后的字符c并没有发生转义成十六进制，仍然是c。
+
+# 这就是说明，tytes类型显示格式是十六进制格式，ASCII码原样不改变，但最终存储的值还是对应十六进制值格式对等的二进制格式值。
+
+# 二、binascii模块：
+# binascii模块定义了很多二进制转化的函数。
+
+# binascii.hexlify() 将单个字符转化成对应码值的十六进制格式（\xxx)格式
+
+# >>> binascii.hexlify(b'\xefmm')
+# b'ef6d6d'
+
+# binascii.unhexlify() 两个字符为单位，看作十六进制值，转化成对应码值的字符格式
+
+# >>> binascii.unhexlify(b'ef6d6d')
+# b'\xefmm'
+
+
+# li = []
+# for i in range(100):
+
+# 	if i % 10 == 0:
+# 		li.append(len(li))
+# 		li[-1] = []
+# 	li[-1].append(i)
+
+# print(li)
+
+
+################################################################################
+# 在python中 None,  False, 空字符串"", 0, 空列表[], 空字典{}, 空元组()都相当于False ，即：not None == not False == not '' == not 0 == not [] == not {} == not ()
+# 但none并不is其他！！
+# print( None == 0,False == 0,'' == 0,[] == 0,{} == 0,() == 0,'' == [] )
+# print(not None,not 0,not '',not [])
+# 而对于`if x is not None`和`if not x is None`写法，很明显前者更清晰，而后者有可能使读者误解为`if (not x) is None`，因此推荐前者，同时这也是谷歌推荐的风格
+# 结论：`if x is not None`是最好的写法，清晰，不会出现错误，以后坚持使用这种写法；
+# 使用if not x这种写法的前提是：必须清楚x等于None,  False, 空字符串"", 0, 空列表[], 空字典{}, 空元组()时对你的判断没有影响才行
+# foo is None 和 foo == None的区别
+# print(None == False,None is False)
+# >>> list1 = [1, 2, 3]
+# >>> list2 = [1, 2, 3]
+# >>> list1==list2
+# True
+# >>> list1 is list2
+# False
+# 另外:# (ob1 is ob2) 等价于 (id(ob1) == id(ob2))
+
+
+####对于, 1 or 5 and 4: 先算5 and 4, 5为真, 值为4. 再算1 or 4, 1 为真,值为1
+####对于, (1 or 5) and 4: 先算1 or 5, 1为真, 值为1. 再算1 and 4, 1为真,值为4
+# print(1 or 5 and 4)
+# print((1 or 5) and 4)
+
+
+#################################################################################
+# 1.除了字符串类型外，使用str还是repr转换没有什么区别，字符串类型的话，外层会多一对引号，这一特性有时候在eval操作时特别有用；
+# 2.repr和str这两个方法都是用于显示的，str是面向用户的，而repr面向程序员。
+# 3.命令行下直接输出对象调用的是对象的repr方法，print输出调用的是str方法
+
+# a=[1,2,3,4]
+# print(repr(a))
+# print(type(repr(a)))
+# for i in repr(a):
+#     print(i)
+
+# class test(object):
+#     def __repr__(self):
+#         return "return test repr() string."
+#     def __str__(self):
+#         return "return test str() string."
+
+# print(str(test()))
+# print(repr(test()))
+# print(str(test))
+# print(repr(test))
+
+
+########### lambda,filter,map,zip函数用法 ###########
+
+# print((lambda x, *args, para, **kwargs : [args, para, kwargs])(1, 2, 3, para="number", name="Jack", sex="male"))
+
+# print((lambda y=iter('abcdef'): next(y))())
+# print((lambda y=iter('abcdef'): next(y))())
+
+# n = lambda y=iter('abcdef'): next(y)
+# # 可调用 6 次，每次返回其中一个值
+# print(n()) # 'a'
+# print(n()) # 'b'
+
+# y=iter('abcdef')
+# print(next(y))
+# print(next(y))
+
+# print((lambda x: x > 10)(2))
+# print((lambda x: x + 1)(2))
+####(lambda x: x + 1)(2) = lambda 2: 2 + 1
+####                     = 2 + 1
+####                     = 3
+
+# print((lambda : [x for x in range(10)])())
+# print((lambda x:(x % 2 and 'odd' or 'even'))(2))
+# print((lambda x:x+1 if not 2==1 else 0)(10))
+# print((lambda x: True if (x > 11 and x < 22) else False)(5))
+# print([f for f in (lambda x: x, lambda x: x ** 2) if f(1) == 0])  ####if语句中f(1)==1不成立时，不返回
+# print([f for f in (lambda x: x, lambda x: x ** 2) if f(1) == 1][1](2))  ####if语句中f(1)==1时，前面的两个lambda表达式结果为1时，就返回，然后存于list中
+# def action(x):
+#      return lambda y:x+y
+# f = action(2)
+# f(22) #24
+# #也可以直接：
+# action(2)(22)
+# def div_items(some_list):
+# 	div_by_two = lambda n: n // 2
+# 	return map(div_by_two, some_list)
+# print(list(div_items([1,2,3,4,5,6,7,8,9,10])))
+# print((lambda x: 1 if x=="C" else (0 if x=="S" else 2))("s"))
+# print(sum(x[0] for x in [(1, 'a'), (2, 'b'), (3, 'c')]))
+# print([x for x in range(100) if x%10 == 0])
+
+# print(list(filter((lambda x: x%10 == 0), range(100))))
+# print(list(filter(None,[1,2,'',3,4,'6',' '])))
+# print(list(filter(lambda x:x!=2,[1,2,3,4,5,6,2,2,2,])))
+# print(list(filter(lambda x:x%2==0,[1,2,3,4,5,6,2,2,2,])))
+####print([x for x in range(100) if not [y for y in range(2,x) if x % y == 0]] )
+##############################  print([9%i for i in range(2, 9) if 9%i != 0])
+##############################  print(not [9%i for i in range(2, 9) if 9%i == 0])
+####print(list(filter(lambda x: not [x%i for i in range(2, x) if x%i ==0], range(100))))
+##############################  print(list(filter(lambda y : 18%y==0, range(2,18))))
+####print(list(filter(lambda x: not list(filter(lambda y : x%y==0, range(2,x))),range(100))))
+##############################  print(list(18%j!=0 for j in range(2, 18)))
+####print(list(filter(lambda i: all(i%j!=0 for j in range(2, i)), range(100))))
+##############################  print(list(map(lambda p: 9 % p == 0, range(2,9))))
+##############################  print(list(filter(lambda p: 7 % p == 0, range(2,7))))
+####print(list(filter(lambda x: all(map(lambda p: x % p != 0, range(2, x))), range(100))))
+####print(list(filter(lambda x: not any(map(lambda p: x % p == 0, range(2, x))), range(100))))
+####print(list(filter(lambda x: not any(filter(lambda p: x % p == 0, range(2,x))), range(100))))
+##############################  print(list(filter(lambda n: 7 % n != 0, range(2, 7))))
+####print(list(filter(lambda x: len(list(filter(lambda n: x % n != 0, range(2, x)))) == x - 2, range(15))))
+
+# print(list(map(lambda x : len(x), ('apple', 'banana', 'cherry'))))
+# print(list(map(lambda x : x * x, (1, 2, 3, 4))))
+# print(list(map(list, ['site', 'bat','matafa'])))
+# print((lambda x: list(map(lambda x: x % 5, x)))(list(range(100))))
+# print((lambda _: list(map(lambda _: _ // 2, _)))([1,2,3,4,5,6,7,8,9,10]))
+# print((lambda some_list: list(map(lambda n: n // 2,some_list)))([1,2,3,4,5,6,7,8,9,10]))
+# print(list(map(lambda x, y: x + y, [1, 2, 3], [10, 20, 30])))
+# print(map(lambda x: True if x > 11 and x < 22 else False,[5]))
+# print(list(map(lambda x: x if str(x)[-1] == '2' else '', [1,3,4,7])))
+# print(list(filter(lambda x:x>20 and x<50,map(lambda x:x**2,range(10)))))
+
+# stp = [(x,y) for(x,y) in zip(range(100),range(0,100,10))]
+# print(stp)
+# bb = list(zip(range(100),range(0,100,10)))
+# # bb.append((10,100))
+# print(bb)
+
+# cc = list(zip(*([1, 2, 3, 4], [5, 6], ['A','B','C'])))
+# print(cc)
+# li01 = []
+# for i in range(len(stp)):
+# 	li01.append(stp[i][1])
+# print(li01)
+
+# print(sorted([ ('James',32),('Alies',20),('Wendy',25)],key=lambda x:x[1]))
+# print(sorted([36, 5, -12, 9, -21], key=abs))
+# print(sorted(['bob', 'about', 'Zoo', 'Credit'], key=str.lower, reverse=True))
+# print(sorted(['锅', '郭', '过', '国'], key=ord, reverse=True))
+

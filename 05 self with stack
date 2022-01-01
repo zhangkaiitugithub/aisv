@@ -1,0 +1,168 @@
+#################self 实例化指向###################
+
+# class person:
+
+#     def __init__(self):
+#         print(person,id(person))
+
+#     def action(self):
+#         # print(person,id(person))
+#         # print(self)
+#         print('self关键字:',id(self))
+#         pass
+#     pass
+# person().action()
+# boy = person()
+# boy.action()
+# girl = person()
+# girl.action()
+# print('boy实例化对象:',id(boy))
+# print('girl实例化对象:',id(girl))
+
+#################################################################
+# When an instance method object is called, the underlying function (__func__) is called, inserting the class instance (__self__) in front of the argument list. For instance, when C is a class which contains a definition for a function f(), and x is an instance of C, calling x.f(1) is equivalent to calling C.f(x, 1).
+# When an instance method object is derived from a class method object, the “class instance” stored in __self__ will actually be the class itself, so that calling either x.f(1) or C.f(1) is equivalent to calling f(C,1) where f is the underlying function.
+
+# class MyClass:
+
+#     """A simple example class"""
+
+#     i = 12345
+
+#     def f():
+#         return 'hello fffff'
+#     def g(self):
+#         return 'hello ggggg'
+
+# x = MyClass()
+# print(x.f)
+# print(x.f())
+# print(MyClass.f())
+# print(MyClass().f())
+# print(x.g)
+# print(x.g())
+# print(MyClass.g())
+# print(MyClass().g())
+# print(type(x.f))
+# print(type(MyClass.f))
+# print(type(MyClass().f))
+# print(type(x.g))
+# print(type(MyClass.g))
+# print(type(MyClass().g))
+
+# print(MyClass().g.__func__)
+# print(MyClass().g.__func__.__get__(MyClass))
+
+
+################## with类 实现方法 ##################################
+
+# class Test(object):
+
+#     def __init__(self,name,flag):
+#         self.filename = name
+#         self.flag = flag
+    
+#     def __enter__(self):
+#         print ("__enter__:Open %s"%self.filename)
+#         self.f = open(self.filename,self.flag)
+#         return self.f
+        
+#     def __exit__(self,Type, value, traceback):
+
+#         print ("__exit__:Close %s"%self.filename)
+#         self.f.close()
+        
+#     def __del__(self):
+#         print ("__del__")
+        
+# if __name__ == "__main__":
+#     with Test('test.txt','r+') as ff:
+#         content = ff.read()
+#         print (content)
+#     print ("end")
+
+####################################################
+
+# class person:
+
+#     def __init__(self,name):
+#         print('__init__方法执行')
+#         self.name = name
+#     def __str__(self):
+#         return ('__str__方法执行')
+#     def __new__(cls,*args):
+#         print('__new__方法执行')
+#         return object.__new__(cls)
+#     def __del__(self):                    #类包不报错都会执行
+#         # input('程序等待中.......请输入： ')
+#         print('__del__方法执行')
+
+
+# xm = person('xiaoming')
+# print(xm)
+# input('程序等待中.......请输入： ')
+
+###############################################################
+
+###############################################################
+# Python显示函数调用堆栈
+# 网上找到如下几个思路：
+# 1、用inspect模块
+# 2、用sys._getframe模块
+# 3、用sys.exc_traceback，先抛一个异常，然后抓出traceback
+
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+# import sys
+
+# def test(depth = 0):
+#     frame = sys._getframe(depth)
+#     code = frame.f_code
+
+#     print ("frame depth = ", depth)
+#     print ("func name = ", code.co_name)
+#     print ("func filename = ", code.co_filename)
+#     print ("func lineno = ", code.co_firstlineno)
+#     print ("func locals = ", frame.f_locals)
+
+# def main():
+#     test(0)
+#     print ("--------------------------------------------")
+#     test(1)
+
+# if __name__ == "__main__":
+#     main()
+
+##################################################################################
+
+# import inspect
+
+# class A:
+#   def a(self):
+#     print("A.a()")
+#     B().b()
+
+# class B:
+#   def b(self):
+#     print("B.b()")
+#     stack = inspect.stack()
+#     the_class = stack[1][0].f_locals["self"].__class__
+#     the_method = stack[1][0].f_code.co_name
+#     print("  I was called by {}.{}()".format(str(the_class), the_method))
+
+# A().a()
+
+
+
+##################################################################################
+
+# def currentframe():
+#    """Return the frame object for the caller's stack frame."""
+#    try:
+#        raise Exception
+#    except:
+#        return sys.exc_traceback.tb_frame.f_back
+
+# currentframe()
+

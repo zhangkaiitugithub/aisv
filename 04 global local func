@@ -1,0 +1,501 @@
+##########global and local###########
+
+# # def func():
+#     ####print('func0',x,id(x))
+#     global x                #位置很重要
+#     print('func1',x,id(x))
+#     x = 'hello func'
+#     print('func2',x,id(x))
+
+# x = 'hello main'
+# print('main1',x,id(x))
+# func()
+# print('main2',x,id(x))
+
+# def func():
+#     # print('func0',x,id(x))
+#     x = 'hello func'
+#     print('func1',x,id(x))
+#     def ifunc():
+#         global x                  #global 修改全局变量，地址不同
+#         ####nonlocal x                #nonlocal 修改了上级函数变量
+#         x = 'hello ifunc'         #先不修改值
+#         print('ifunc',x,id(x))
+#     ifunc()
+#     print('func2',x,id(x))
+
+# x = 'hello main'
+# print('main1',x,id(x))
+# func()
+# print('main2',x,id(x))
+
+#################函数回调嵌套变量域返回值######################
+
+# a = []
+
+# def upnum(fcs):
+#     # fcs()
+#     return fcs()
+
+# def addlist():
+#     # a = []        
+#     a.append(len(a)+1)
+#     print(a)
+#     return a
+
+# upnum(addlist)
+# b = upnum(addlist)
+# print(b)
+
+# c = addlist()
+# c = addlist()
+# print(c)
+
+########################################
+
+# def upnum():
+#     # a = []
+#     b = 10
+#     def addlist():        
+#         # a.append(len(a)+1)
+#         nonlocal b
+#         b += 2
+#         # print(a)
+#         print(b)
+#     return addlist
+
+# bb = upnum()
+
+# print(bb(),id(bb()))
+# print(bb(),id(bb()))
+# print(bb(),id(bb()))
+
+
+
+
+############## 变量引用的错误示范   #################
+# def outer_func():
+#     loc_var = "local variable"
+#     def inner_func():
+#         loc_var += " in inner func"
+#         return loc_var
+#     return inner_func
+
+# clo_func = outer_func()
+# clo_func()
+
+############
+
+# sel_res = 'have not select flag'
+
+# def get_select_desc(name, flag, is_format = True):
+#     if flag:
+#         sel_res = 'Do select name = %s' % name
+#     return sel_res if is_format else name
+
+# get_select_desc('Error', False, True)
+
+
+############
+# def outer_func(out_flag):
+#     if out_flag:
+#         loc_var1 = 'local variable with flag'
+#     else:
+#         loc_var2 = 'local variable without flag'
+#     def inner_func(in_flag):
+#         return loc_var1 if in_flag else loc_var2
+#     return inner_func
+
+# clo_func = outer_func(False)
+# print (clo_func(True))
+
+
+
+
+
+
+################################################
+
+# 闭包：本质，内层函数对外层函数的变量，参数的使用，此时内层函数被称为闭包函数，闭包函数可以让一个变量常驻内存
+
+# def outerfunc():
+#     a = 10
+#     def innerfunc():
+#         nonlocal a
+#         a += 1
+#         return a
+#     return innerfunc
+
+# aa = outerfunc()
+
+# print('aa:',aa())
+# print('aa:',aa())
+
+# c = aa()
+# print('c:',c)
+
+# d = aa()
+# print('d:',d)
+# print('d:',d)
+# print('d:',d)
+
+
+# print('aa:',aa())
+# print('aa:',aa())
+
+######################################################################
+# https://www.cnblogs.com/yssjun/p/9887239.html
+# 1.概念介绍
+
+# 首先看一下维基上对闭包的解释：
+
+####在计算机科学中，闭包（英语：Closure），又称词法闭包（Lexical Closure）或函数闭包（function closures），是引用了自由变量的函数。这个被引用的自由变量将和这个函数一同存在，即使已经离开了创造它的环境也不例外。所以，有另一种说法认为闭包是由函数和与其相关的引用环境组合而成的实体。闭包在运行时可以有多个实例，不同的引用环境和相同的函数组合可以产生不同的实例。
+####简单来说就是一个函数定义中引用了函数外定义的变量，并且该函数可以在其定义环境外被执行。这样的一个函数我们称之为闭包。实际上闭包可以看做一种更加广义的函数概念。因为其已经不再是传统意义上定义的函数。
+####根据我们对编程语言中函数的理解，大概印象中的函数是这样的：
+####程序被加载到内存执行时，函数定义的代码被存放在代码段中。函数被调用时，会在栈上创建其执行环境，也就是初始化其中定义的变量和外部传入的形参以便函数进行下一步的执行操作。当函数执行完成并返回函数结果后，函数栈帧便会被销毁掉。函数中的临时变量以及存储的中间计算结果都不会保留。下次调用时唯一发生变化的就是函数传入的形参可能会不一样。函数栈帧会重新初始化函数的执行环境。
+####C++中有static关键字，函数中的static关键字定义的变量独立于函数之外，而且会保留函数中值的变化。函数中使用的全局变量也有类似的性质。
+####但是闭包中引用的函数定义之外的变量是否可以这么理解呢？但是如果函数中引用的变量既不是全局的，也不是静态的(python中没有这个概念)。应该怎么正确的理解呢？
+####建议先参考一下我的另一篇博文（Python  UnboundLocalError和NameError错误根源解析 ），了解一下变量可见性和绑定相关的概念非常有必要。
+
+
+# def outer_func():
+#     a = []
+#     b = 10
+#     def inner_func():
+#         # nonlocal a,b
+#         # a.append(len(a)+1)
+#         # b += 10
+#         print (a,b)
+#         return a,b
+#     return inner_func
+
+# ccc = outer_func()
+# ccc()
+# ccc()
+# ccc()
+# ddd = ccc()
+# print(ddd)
+# print(ddd)
+# eee = ccc()
+# print(eee)
+# print(eee)
+
+# 从上面这个简单的例子应该对闭包有一个直观的理解了。运行的结果也说明了闭包函数中引用的父函数中local variable既不具有C++中的全局变量的性质也没有static变量的行为。
+# 在python中我们称上面的这个loc_list为闭包函数inner_func的一个自由变量(free variable)。
+
+# 闭包中的引用的自由变量只和具体的闭包有关联，闭包的每个实例引用的自由变量互不干扰。
+# 一个闭包实例对其自由变量的修改会被传递到下一次该闭包实例的调用。
+#####################################################
+# 3.闭包陷阱
+# def my_func(*args):
+#     fs = []
+#     for i in range(3):
+#         def func():
+#             return i * i
+#         fs.append(func)
+#     return fs
+
+# fs1, fs2, fs3 = my_func()
+# print(fs1.__closure__)
+# print(fs1(),fs2(),fs3())
+
+# 这个例子中，my_func返回的并不是一个闭包函数，而是一个包含三个闭包函数的一个list。这个例子中比较特殊的地方就是返回的所有闭包函数均引用父函数中定义的同一个自由变量。
+# 但这里的问题是为什么for循环中的变量变化会影响到所有的闭包函数？尤其是我们上面刚刚介绍的例子中明明说明了同一闭包的不同实例中引用的自由变量互相没有影响的。而且这个观点也绝对的正确。
+# 那么问题到底出在哪里？应该怎样正确的分析这个错误的根源。
+# 其实问题的关键就在于在返回闭包列表fs之前for循环的变量的值已经发生改变了，而且这个改变会影响到所有引用它的内部定义的函数。因为在函数my_func返回前其内部定义的函数并不是闭包函数，只是一个内部定义的函数。
+# 当然这个内部函数引用的父函数中定义的变量也不是自由变量，而只是当前block中的一个local variable
+
+# def my_func(*args):
+#     fs = []
+#     j = 0
+#     for i in range(3):
+#         def func():
+#             return j * j
+#         fs.append(func)
+#     j = 2
+#     return fs
+# fs1,fs2,fs3 = my_func()
+# print(fs1(),fs2(),fs3())
+
+# 上面的这段代码逻辑上与之前的例子是等价的。这里或许更好理解一点，因为在内部定义的函数func实际执行前，对局部变量j的任何改变均会影响到函数func的运行结果。
+# 函数my_func一旦返回，那么内部定义的函数func便是一个闭包，其中引用的变量j成为一个只和具体闭包相关的自由变量。后面会分析，这个自由变量存放在Cell对象中
+
+# def my_func(*args):
+#     fs = []
+#     for i in range(3):
+#         func = lambda : i * i
+#         fs.append(func)
+#     return fs
+
+# fs1,fs2,fs3 = my_func()
+# print(fs1(),fs2(),fs3())
+
+# 返回闭包中不要引用任何循环变量，或者后续会发生变化的变量。
+# 这条规则本质上是在返回闭包前，闭包中引用的父函数中定义变量的值可能会发生不是我们期望的变化。
+
+######################################################
+
+
+# fs = []
+# for i in range(3):
+#     a = []
+#     fs.append(a)
+# print(id(fs[0]),id(fs[1]),id(fs[2]))
+
+# fs = []
+# for i in range(3):
+#     func = lambda :i
+#     fs.append(func)
+# print(id(fs[0]),id(fs[1]),id(fs[2]))
+
+
+# def my_func(*args):
+#     fs = []
+#     for i in range(3):
+#         func = lambda: i * i
+#         fs.append(func)
+#     return fs
+# fs1,fs2,fs3 = my_func()
+# print(fs1(),fs2(),fs3())
+
+######################################################
+
+#############正确的写法：
+
+# def my_func(*args):
+#     fs = []
+#     for i in range(3):
+#         def func(_i = i):
+#             return _i * _i
+#         fs.append(func)
+#     return fs
+# fs1,fs2,fs3 = my_func()
+# print(fs1(),fs2(),fs3())
+
+# def my_func(*args):
+#     fs = []
+#     j = 0
+#     for i in range(3):
+#         def func(s=j):
+#             return s * s
+#         fs.append(func)
+#     j = 2
+#     return fs
+
+# fs1,fs2,fs3 = my_func()
+# print(fs1(),fs2(),fs3())
+
+########或者：
+
+# def my_func(*args):
+#     fs = []
+#     for i in range(3):
+#         func = lambda _i = i : _i * _i
+#         fs.append(func)
+#     return fs
+# fs1,fs2,fs3 = my_func()
+# print(fs1(),fs2(),fs3())
+
+
+# 正确的做法便是将父函数的local variable赋值给函数的形参。函数定义时，对形参的不同赋值会保留在当前函数定义中，不会对其他函数有影响。
+# 另外注意一点，如果返回的函数中没有引用父函数中定义的local variable，那么返回的函数不是闭包函数
+#####################################################
+# fs = []
+# for i in range(3):
+#     i = i * i
+#     fs.append(i)
+# print(fs)
+
+
+# def my_func(*args):
+#     fs = []
+#     for i in range(3):
+#         def func():
+#             return i * i
+#         fs.append(func())
+#     return fs
+
+# fs1 = my_func()
+# print (fs1)
+
+#python循环中不包含域的概念
+
+# flist = []
+
+# for i in range(3):
+#     def func(x):
+#         return x*i
+#     flist.append(func)
+
+# for f in flist:
+#     print (f(10))
+
+    ## 按照大家正常的理解，应该输出的是0, 2, 4对吧？但实际输出的结果是:4, 4, 4. 原因是什么呢？flist在像列表中添加func的时候，并没有保存i的值，而是当执行f(2)的时候才去取，这时候循环已经结束，i的值是2，所以结果都是4。
+
+# flist = []
+
+# for i in range(3):
+#     def makefunc(i):
+#         def func(x):
+#             return x*i
+#         return func
+#     flist.append(makefunc(i))
+
+# for f in flist:
+#     print (f(10))
+# 在func外面再定义一个makefunc函数，func形成闭包，结果就正确了。
+
+    ## 上上个例子可能有些人认为这段代码的执行结果应该是2,3,4.但是实际的结果是4,4,4。这是因为当把函数加入flist列表里时，python还没有给i赋值，只有当执行时，再去找i的值是什么
+
+# flist = []
+
+# for i in range(3):
+#     def func(x,y=i):
+#         return x*y
+#     flist.append(func)
+
+# for f in flist:
+#     print (f(10))
+
+# def outerfunc():
+#     x = 0
+#     def innerfunc():
+#         x = 1
+#         print('inner x:',x)
+
+#     print('outer before inner x:',x)
+#     innerfunc()
+#     print('outer after inner x:',x)
+
+# outerfunc()
+
+
+#闭包函数的实例
+# outer是外部函数 a和b都是外函数的临时变量
+# def outer( a ):
+#     b = 10
+#     # inner是内函数
+#     def inner():
+#         #在内函数中 用到了外函数的临时变量
+#         print(a+b)
+#     # 外函数的返回值是内函数的引用
+#     return inner
+
+#     # 在这里我们调用外函数传入参数5
+#     #此时外函数两个临时变量 a是5 b是10 ，并创建了内函数，然后把内函数的引用返回存给了demo
+#     # 外函数结束的时候发现内部函数将会用到自己的临时变量，这两个临时变量就不会释放，会绑定给这个内部函数
+# demo = outer(5)
+#     # 我们调用内部函数，看一看内部函数是不是能使用外部函数的临时变量
+#     # demo存了外函数的返回值，也就是inner函数的引用，这里相当于执行inner函数
+# demo() # 15
+
+# demo2 = outer(7)
+# demo2()#17
+
+
+# 闭包中内函数修改外函数局部变量：
+
+# 　　在闭包内函数中，我们可以随意使用外函数绑定来的临时变量，但是如果我们想修改外函数临时变量数值的时候发现出问题了！咋回事捏？？！！（哇哇大哭）
+# 　　在基本的python语法当中，一个函数可以随意读取全局数据，但是要修改全局数据的时候有两种方法:1 global 声明全局变量 2 全局变量是可变类型数据的时候可以修改
+# 　　在闭包内函数也是类似的情况。在内函数中想修改闭包变量（外函数绑定给内函数的局部变量）的时候：
+
+# 　　　　1 在python3中，可以用nonlocal 关键字声明 一个变量， 表示这个变量不是局部变量空间的变量，需要向上一层变量空间找这个变量。
+# 　　　　2 在python2中，没有nonlocal这个关键字，我们可以把闭包变量改成可变类型数据进行修改，比如列表。
+
+#修改闭包变量的实例
+# outer是外部函数 a和b都是外函数的临时变量
+# def outer( a ):
+#     b = 10  # a和b都是闭包变量
+#     c = [a] #这里对应修改闭包变量的方法2
+#     # inner是内函数
+#     def inner():
+#         #内函数中想修改闭包变量
+#         # 方法1 nonlocal关键字声明
+#         nonlocal  b
+#         b+=1
+#         # 方法二，把闭包变量修改成可变数据类型 比如列表
+#         c[0] += 1
+#         print(c[0])
+#         print(b)
+#     # 外函数的返回值是内函数的引用
+#     return inner
+
+# demo = outer(5)
+# demo() # 6  11
+
+# 从上面代码中我们能看出来，在内函数中，分别对闭包变量进行了修改，打印出来的结果也确实是修改之后的结果。以上两种方法就是内函数修改闭包变量的方法。
+# 还有一点需要注意：使用闭包的过程中，一旦外函数被调用一次返回了内函数的引用，虽然每次调用内函数，是开启一个函数执行过后消亡，但是闭包变量实际上只有一份，每次开启内函数都在使用同一份闭包变量
+
+# def outer(x):
+#     def inner(y):
+#         nonlocal x
+#         x+=y
+#         return x
+#     return inner
+
+
+# a = outer(10)
+# print(a(1)) //11
+# print(a(3)) //14
+
+
+
+######### 闭包函数产生1个引用 #########
+
+# def outerfunc():
+#   a = 10
+#   def innerfunc():
+#       nonlocal a
+#       a += 1
+#       return a
+#   return innerfunc
+
+# aa = outerfunc()
+
+# print(aa())
+# print(aa())
+
+# c = aa()
+# print(c)
+
+# d = aa()
+# print(d)
+
+# print(aa())
+# print(aa())
+
+######### 闭包函数产生两个引用 #########
+
+# def dec():
+#     b = 100
+#     print('b= ',b) 
+
+# def outter(bb):
+#     a = 10
+#     print('a = ',a)
+#     def inner():
+#         nonlocal a
+#         a = 10 + 40
+#         bb()
+#         print(a)
+#     return inner
+
+# dec = outter(dec)
+# dec()
+# print(dec.__closure__)
+
+##################################################
+
+########### 递归函数################
+# def digui(num):
+#     print('qian:',num)
+#     if num > 0:
+#         digui(num-1)
+#         print('zhong',num)
+#     print('hou',num)
+
+# digui(10)
+
+
+
+

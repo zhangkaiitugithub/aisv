@@ -101,3 +101,5 @@ fa.aaa()
 # print(apple.ss)
 # print(apple())
 
+apple.extra ='another attrabute'
+print(apple.extra)

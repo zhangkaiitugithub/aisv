@@ -93,14 +93,18 @@
 #     def __new__(cls,*args):
 #         print('__new__方法执行')
 #         return object.__new__(cls)
+#     def __call__(self):
+#         print('__call__方法执行')          #调用一个对象时，实际上调用的是它的 __call__ 方法
 #     def __del__(self):                    #类包不报错都会执行
-#         # input('程序等待中.......请输入： ')
+#         input('程序等待中.......请输入： ')
 #         print('__del__方法执行')
 
 
 # xm = person('xiaoming')
 # print(xm)
+# print(xm())                               #调用一个对象时，实际上调用的是它的 __call__ 方法
 # input('程序等待中.......请输入： ')
+
 
 ###############################################################
 

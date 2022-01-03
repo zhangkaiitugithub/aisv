@@ -1,0 +1,31 @@
+# def fuc1():
+#     #通过一个 ".",使用了fuc2的变量
+#     print (fuc2.a)
+
+# def fuc2():
+#     #这里需要注意的是，在fuc2函数内部使用a，同样要进行域确定，即
+#     #fuc2.a，才能访问
+#     fuc2.a = 0
+
+# fuc2()          #不先执行fuc2函数，直接外部调用，会显示。。。。没有a属性
+# print (fuc2.a)  #访问fuc2的变量
+# fuc2.a = 2      #当在外面进行值变化时，fuc2的变量改变了，从而实现了全局变量的效果
+# fuc1()          #全局变量的实现，现在输出的结果是 2
+
+# fuc2(),fuc1()   #可以用逗号写入一行一并执行
+
+#################################### 扩展 ######################################
+
+def fa():
+	fa.aa ='aa'
+	def aaa():
+		print('fa.aaa')
+	fa.aaa = aaa
+
+print(fa(),fa.aa)
+fa(),print(fa.aa)
+fa(),fa.aaa()
+FFA = fa
+FFA(),FFA.aaa()
+FFA = fa()
+fa.aaa()

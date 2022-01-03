@@ -1,3 +1,14 @@
+def my_func():
+    lis = []
+    dic = dict()
+    res = lis + ['get', 'func', 'vars']
+    words = "Life is short, You need Python!"
+    print(words)
+
+print(my_func.__code__.co_varnames)
+
+################################################################################
+
 outerVar="this is a global variable"
 def test():
     innerVar="this is a local variable"

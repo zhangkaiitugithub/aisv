@@ -1,3 +1,14 @@
+outerVar="this is a global variable"
+def test():
+    innerVar="this is a local variable"
+    print ("local variables:")
+    print (locals())
+test()
+print ("global variables:")
+print (globals())
+
+################################################################################
+
 # def fuc1():
 #     #通过一个 ".",使用了fuc2的变量
 #     print (fuc2.a)

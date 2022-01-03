@@ -24,8 +24,11 @@ def fa():
 
 print(fa(),fa.aa)
 fa(),print(fa.aa)
+
 fa(),fa.aaa()
+
 FFA = fa
 FFA(),FFA.aaa()
+
 FFA = fa()
 fa.aaa()

@@ -1,0 +1,325 @@
+# 情况1：对没有参数没有返回值的函数装饰
+
+# # ============= 闭包环境 ============ #
+# def set_function(fun):
+#     def call_function():
+#         print('---权限验证---')
+#         fun()
+#     return call_function
+# # =================================== #
+
+# @set_function
+# def test1():
+#     print('---test1---')
+
+# test1()
+
+#情况2：对有参数无返回值的函数装饰
+
+# def set_function(fun):
+#     def call_function(a):
+#         print('---权限验证---')
+#         fun(a)
+#     return call_function
+
+# @set_function
+# def test1(num):
+#     print('---test1---:%d' %num)
+
+# test1(100)
+
+# 情况3：对带有不定长参数或缺省参数装饰
+
+# def set_function(fun):
+#     print('---开始进行装饰---')
+#     def call_function(*args, **kwargs):
+#         print('---权限验证---')
+#         fun(*args, **kwargs)
+#     return call_function
+
+# @set_function
+# def test1(num, *args, **kwargs):
+#     print('---test1---')
+#     print(num, args, kwargs)
+
+# # test1(100)
+# # test1(100, 200)
+# # test1(100, 200, m=300)
+
+# 情况4：对带有返回值的函数装饰（1）
+
+# def set_function(fun):
+#     print('---开始进行装饰---')
+#     def call_function(*args, **kwargs):
+#         print('---权限验证---')
+#         fun(*args, **kwargs)
+#     return call_function
+
+# @set_function
+# def test1(num, *args, **kwargs):
+#     print('---test1---')
+#     print(num, args, kwargs)
+#     return '200','ok'
+
+# ret = test1(100)
+# print(ret)
+
+# 情况5：对带有返回值的函数装饰（2）
+
+# def set_function(fun):
+#     print('---开始进行装饰---')
+#     def call_function(*args, **kwargs):
+#         print('---权限验证---')
+#         return fun(*args, **kwargs)
+#     return call_function
+
+# @set_function
+# def test1(num, *args, **kwargs):
+#     print('---test1---')
+#     print(num, args, kwargs)
+#     return '200','ok'
+
+# ret = test1(100)
+# print(ret)
+
+# 情况6：多个装饰器对同一个函数装饰
+
+# def set_function1(fun):
+#     print('---开始进行装饰1---')
+#     def call_function1(*args, **kwargs):
+#         print('---权限1验证---')
+#         return fun(*args, **kwargs)
+#     return call_function1
+
+# def set_function2(fun):
+#     print('---开始进行装饰2---')
+#     def call_function2(*args, **kwargs):
+#         print('---权限2验证---')
+#         return fun(*args, **kwargs)
+#     return call_function2
+
+# @set_function1
+# @set_function2
+# def test1(num, *args, **kwargs):
+#     print('---test1---')
+# #     print(num, args, kwargs)
+#     return print('test1 返回值：'),200      ##注意返回print('')会出现的情况
+
+# ret = test1(100)
+# print(ret)
+
+##------------------------------------------------------------------------##
+## | @f1(arg)          |                     |                          | ##
+## | @f2               |  is equivalent to:  |                          | ##
+## | def func(): pass  |                     | func = f1(arg)(f2(func)) | ##
+
+# def makebold(fn):
+#     def wrapped():
+#         return "<b>" + fn() + "</b>"
+#     return wrapped
+
+# def makeitalic(fn):
+#     def wrapped():
+#         return "<i>" + fn() + "</i>"
+#     return wrapped
+
+# @makebold
+# @makeitalic
+# def hello():
+#     return "hello world"
+
+# print (hello())
+# hhoo = hello()
+# print(hhoo)
+
+# 情况7：应用装饰器类对函数进行装饰
+
+# class Test(object):
+#     def __init__(self, func):
+#         self.function = func
+
+#     def __call__(self):
+#         print('--此处添加额外功能--')
+#         return self.function
+
+# @Test  # get_str = Test(get_str)
+# def get_str():
+#     return 'ok'
+
+# ret=get_str()  # 调用__call__方法。ret 此时绑定self.function所绑定的func。
+
+# print(ret())
+
+# 情况8：带有参数的装饰器对函数进行装饰
+
+# def set_level(level_num):
+#     def set_func(func):
+#         def call_func(*args, **kwargs):
+#             if level_num == 1:
+#                 print('----验证权限1----')
+#             elif level_num == 2:
+#                 print('----验证权限2----')
+#             return func()
+#         return call_func
+#     return set_func
+
+
+# @set_level(1)
+# def test1():
+#     print('----test1----')
+#     return 'ok'
+
+# @set_level(2)
+# def test2():
+#     print('----test2----')
+#     return 'bye'
+
+# test1()
+# test2()
+
+
+
+##############################################
+
+# def deco(func):
+#     print("before myfunc() called.")
+#     func()
+#     print("  after myfunc() called.")
+#     return func
+ 
+# @deco
+# def myfunc():
+#     print(" myfunc() called.")
+####myfunc()
+####print(myfunc.__name__)
+
+##############################################
+
+# def decorator(func):
+#     print('000')
+#     def wrapper(*args, **kwargs):
+#         print('123')
+#         return func(*args, **kwargs)
+#     return wrapper
+
+# def say_hello():
+#     print('同学你好')
+# say_hello = decorator(say_hello)
+# say_hello()
+# print(say_hello.__name__)
+
+# @decorator
+# def say_hello():
+#     print('同学你好')
+# # say_hello()
+# print(say_hello.__name__)
+
+####decorator 这个函数就是一个装饰器，功能是在执行被装饰的函数之前打印 123
+####一个函数不止有他的执行语句，还有着 __name__（函数名），__doc__ （说明文档）等属性，
+
+# from functools import wraps
+
+# def info(value):
+#     print('first:info')
+#     def decorator(func):
+#         'doc of decrorator @之前'
+#         print('second:decorator @之前')       
+#         # @wraps(func)                    ####如果开启@wraps(func)，那么只能返回func: say_hello 函数的函数名，帮助文档
+#         ## 'doc of decrorator @wraps(func)之后不行，语法错误'
+#         ##print('second:decorator @wraps(func)之后不行，语法错误')
+#         def wrapperto(*args, **kwargs):
+#             'doc of wrapper'
+#             print(value)
+#             return func(*args, **kwargs)
+#         return wrapperto
+#     return decorator
+
+# @info('456')
+# def say_hello():
+#     'doc of say hello'
+#     print('同学你好')
+# say_hello()
+# print(say_hello.__name__)
+# print(say_hello.__doc__)
+
+####装饰器外部再套上一层函数，用该函数的参数接收我们想要打印的数据，并将先前的 decorator 函数作为返回值。这就是之前学到的闭包的一种功能，就是用闭包来生成一个命名空间，在命名空间中保存我们要打印的值 value。
+####一个函数不止有他的执行语句，还有着 __name__（函数名），__doc__ （说明文档）等属性,由于装饰器返回了 wrapper 函数替换掉了之前的 say_hello 函数，导致函数名，帮助文档变成了 wrapper 函数的了。解决这一问题的办法是通过 functools 模块下的 wraps 装饰器。
+
+########################################################################################################
+
+####有三种我们经常会用到的内置装饰器， property、 staticmethod、 classmethod，他们有个共同点，都是作用于类方法之上。
+
+####property 装饰器用于类中的函数，使得我们可以像访问属性一样来获取一个函数的返回值。又可以在获取值的时候做一些操作：
+
+# class XiaoMing:
+#     first_name = '明'
+#     last_name = '小'
+#     @property
+#     def full_name(self):
+#         return self.last_name + self.first_name
+
+# xiaoming = XiaoMing()
+# print(xiaoming.full_name)
+
+####staticmethod 装饰器同样是用于类中的方法，这表示这个方法将会是一个静态方法，意味着该方法可以直接被调用无需实例化，但同样意味着它没有 self 参数，也无法访问实例化后的对象。
+
+# class XiaoMing:
+#     @staticmethod
+#     def say_hello():
+#         print('同学你好')
+
+# XiaoMing.say_hello()
+# xiaoming = XiaoMing()   ## 实例化调用也是同样的效果，有点多此一举
+# xiaoming.say_hello()
+
+####classmethod 依旧是用于类中的方法，这表示这个方法将会是一个类方法，意味着该方法可以直接被调用无需实例化，但同样意味着它没有 self 参数，也无法访问实例化后的对象。相对于 staticmethod 的区别在于它会接收一个指向类本身的 cls 参数。
+
+# class XiaoMing:
+#     name = '小明'
+
+#     @classmethod
+#     def say_hello(cls):
+#         print('同学你好， 我是' + cls.name)
+#         print(cls)
+
+# XiaoMing.say_hello()
+# xiaoming = XiaoMing()
+# xiaoming.say_hello()
+
+####类也能实现装饰器的功能， 因为当我们调用一个对象时，实际上调用的是它的 __call__ 方法。
+
+# class Demo:
+#     def __call__(self):
+#         print('我是 Demo')
+
+# demo = Demo()
+# demo()
+
+####通过这个特性，我们便可以用类的方式来完成装饰器，功能与刚开始用函数实现的一致。
+
+# class Decorator:
+#     def __init__(self, func):
+#         self.func = func
+
+#     def __call__(self, *args, **kwargs):
+#         print('123')
+#         return self.func(*args, **kwargs)
+
+# @Decorator
+# def say_hello():
+#     print('同学你好')
+
+# say_hello()
+
+
+##############################################################################
+
+
+
+
+
+
+
+
+
+

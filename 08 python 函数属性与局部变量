@@ -54,3 +54,50 @@ FFA(),FFA.aaa()
 
 FFA = fa()
 fa.aaa()
+
+
+##############################################################################################
+# def nil(): 
+# 	ss='nil' 
+# 	print(ss)
+# 	def mm(jj):
+# 		print(jj)
+# 	nil.mm = mm
+
+# nil() 
+# nil.ss='kk' 
+# nil()               ####这是因为nil.ss没有指向在nil函数定义的varible ss。
+# print(nil.ss)       ####nil.ss表示ss现在是nil对象的属性。nil.ss和nil()里面的ss是完全不同的。
+# nil() 
+
+# ####第一个ss是函数的内部变量;第二个是函数的一个属性。他们不参考同一个对象。
+# ####这里有一个办法做到这一点，虽然：
+
+# nil()
+# nil.mm('jjjj')  调用属性条用内部函数
+
+
+# def nil():
+# 	ss='foo'
+# 	return ss
+
+# nil.ss='bar'
+# foo=nil()
+# bar=nil()
+
+# print(nil.ss)
+# print(foo)
+# print(bar)
+
+
+# def apple(): 
+# 	if not hasattr(apple, 'ss'):      ##This way it'll only be set inside the function once 
+#  		apple.ss = 'nil' 
+# 	return apple.ss
+
+# print(apple())
+# print(apple.ss)
+# apple.ss = 'kk'
+# print(apple.ss)
+# print(apple())
+

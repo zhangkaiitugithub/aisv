@@ -1,0 +1,250 @@
+
+# 在python中实现静态变量，最简单的方式就是用一个全局变量。静态变量这个概念来自C语言，这种静态变量的特征是，（1）只能被特定的那个函数访问；（2）变量值保存在.data区，因此静态变量的值不会因为函数执行结束而消失，并且在下次函数被调用时，体现出上一次的“记忆”。
+
+# 在python的类和函数(包括λ方法)中使用静态变量似乎是件不可能[Nothing is impossible]的事,但总有解决的办法,下面通过实现一个类或函数的累加器来介绍一些较为非主流的方法
+
+####方法一(1)、使用函数属性
+
+# def f():
+#     if not hasattr(f, 'x'):
+#         f.x = 0
+#     print(f.x)
+#     f.x+=1
+  
+# f()
+# f()
+
+####方法一(2)、使用堆上的匿名参数
+
+# def foo3 (i, L=[]):
+#     if len(L)==0:
+#         L.append(0)
+#     L[0]+=i
+#     return L[0]
+ 
+# print (foo3(1))
+# print (foo3(2))
+# print (foo3(3))
+# print (foo3(4))
+
+
+# def f(a, L=[]):
+#   L.append(a)
+#   return L
+  
+# print (f(1))
+# print (f(2))
+# print (f(2))
+# print (f(3))
+# print (f(4,['x']))
+# print (f(4,['x']))
+# print (f(4,L=['y']))
+# print (f(5,L=['y']))
+# print (f(5))
+
+####为什么最后 “print f(5)”的输出是 “[1, 2, 3, 5]”呢？
+####这是因为 “print f(4,['x'])”时，默认变量并没有被改变，因为默认变量的初始化只是被执行了一次(第一次使用默认值调用)，初始化执行开辟的内存区（我们可以称之为默认变量）没有被改变，所以最后的输出结果是“[1, 2, 3, 5]”。
+
+####方法一(3)、使用闭包函数
+
+# def outer_func():
+#     loc_list = []
+#     def inner_func(name):
+#         loc_list.append(len(loc_list) + 1)
+#         print ('%s = %s' %(name, loc_list))
+#     return inner_func
+
+# f_0 = outer_func()
+# f_0('f_0')
+# f_0('f_0')
+# f_0('f_0')
+# f_1 = outer_func()
+# f_1('f_1')
+# f_0('f_0')
+# f_1('f_1')
+
+
+####方法二(1)、通过类的__init__和__call__方法
+
+# class foo:
+#   def __init__(self, n=0):
+#     self.n = n
+#   def __call__(self, i):
+#     self.n += i
+#     return self.n
+# a=foo()
+# print (a(1))
+# print (a(2))
+# print (a(3))
+# print (a(4))
+
+####方法二(2)、通过类的__init__和__call__方法
+
+# class CTest(object):
+#     '''python静态变量实现方法'''
+#     __init=None
+#     def __new__(cls,value):
+#         if cls.__init is None:
+#             cls.__init=object.__new__(cls)
+#             cls.__init.value=value
+#         return cls.__init
+
+# flag1 = CTest(True)
+# flag2 = CTest(False)
+# print (flag1.value)
+# print (flag2.value)
+
+
+####方法三、在函数中定义一个类
+
+# def foo2 (n=0):
+#   class acc:
+#     def __init__ (self, s):
+#       self.s = s
+#     def inc (self, i):
+#       self.s += i
+#       return self.s
+#   return acc (n).inc
+# a=foo2()
+# print (a(1))
+# print (a(2))
+# print (a(3))
+# print (a(4))
+
+# def f():
+#     class haha:
+#         cnt=1
+#         def __init__(self):
+#             print("haha"*haha.cnt)
+#             haha.cnt+=1
+#     if not hasattr(f, 'x'):
+#         f.x = 0
+#     if not hasattr(f,'ha'):
+#         f.ha=haha
+#     print(f.x)
+#     f.ha()
+#     f.x+=1
+
+# f()
+# f()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+################################class变量相关#################################
+
+# class A:
+#    arr = []
+#    brr = 2
+#    # @classmethod
+#    # @staticmethod
+#    def fillArr():
+#        #do more stuff but for simplicity...
+#        A.arr = [2,2,2]
+#        A.brr = 6
+
+# T = A()
+# print (T.arr)
+# print (T.brr)
+# A.fillArr()
+# print (A.arr)
+# print (A.brr)
+# T = A()
+# print (T.arr)
+# print (T.brr)
+
+
+# class Test:
+#     varInt = 10
+#     varList = []
+ 
+# t1 = Test()
+# t2 = Test()
+# print("类访问类变量：varInt: {}, varList: {}".format(Test.varInt, Test.varList))
+# print("实例访问类变量：varInt: {}, varList: {}".format( t1.varInt, t1.varList))
+# t1.varInt = 100
+# t1.varList.append('t1 add')
+# print("类访问类变量：varInt: {}, varList: {}".format(Test.varInt, Test.varList))
+# print("实例访问类变量：varInt: {}, varList: {}".format( t1.varInt, t1.varList))
+
+# print("类访问类变量：varInt: {}, varList: {}".format(Test.varInt, Test.varList))
+# print("实例访问类变量：varInt: {}, varList: {}".format( t2.varInt, t2.varList))
+
+# # 对象访问实例和通过类名访问实例是互相不干扰的。 例子中类变量是整型是不可变类型。如果类变量是可变类型，例如list，无论通过实例对象还是类对象都可以修改。
+
+# class Foo(object):
+#     count = 0
+
+# f1 = Foo()
+# f2 = Foo()
+# f1.count = 2
+# print(f1.count, f2.count)
+
+# f1 = Foo()
+# f2 = Foo()
+# Foo.count = 4
+# print(f1.count, f2.count)
+
+# class Foo(object):
+#     count = 0
+
+#     def get_count(self):
+#         return Foo.count
+
+#     def set_count(self, num):
+#         Foo.count = num
+
+# f1 = Foo()
+# f2 = Foo()
+# Foo().set_count(1)
+# print(f1.get_count(), f2.get_count())
+
+# class Foo(object):
+#     _count = 0 # 不要直接操作这个变量，也尽量避免访问它
+#     @property
+#     def count(self):
+#         return Foo._count
+#     @count.setter
+#     def count(self, num):
+#         Foo._count = num
+
+# f1 = Foo()
+# f2 = Foo()
+# print (f1.count, f1._count, f2.count, f2._count)
+
+# f1.count = 1
+# print (f1.count, f1._count, f2.count, f2._count)
+
+
+# class Foo(object):
+#     __count = 0 # 私有变量，无法在外部访问，Foo.__count会出错
+
+#     @classmethod
+#     def get_count(cls):
+#         return cls.__count
+
+#     @classmethod
+#     def set_count(cls, num):
+#         cls.__count = num
+
+# f1 = Foo()
+# f2 = Foo()
+# Foo.set_count(1)
+# print(f1.get_count(), f2.get_count())
+
+
+
+
+
+

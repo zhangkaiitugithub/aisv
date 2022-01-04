@@ -1,0 +1,121 @@
+
+##################################lambda,filter,map,zip##################################
+
+# print((lambda x, *args, para, **kwargs : [args, para, kwargs])(1, 2, 3, para="number", name="Jack", sex="male"))
+
+# print((lambda y=iter('abcdef'): next(y))())
+# print((lambda y=iter('abcdef'): next(y))())
+
+# n = lambda y=iter('abcdef'): next(y)
+# # 可调用 6 次，每次返回其中一个值
+# print(n()) # 'a'
+# print(n()) # 'b'
+
+# y=iter('abcdef')
+# print(next(y))
+# print(next(y))
+
+# print((lambda x: x > 10)(2))
+# print((lambda x: x + 1)(2))
+####(lambda x: x + 1)(2) = lambda 2: 2 + 1
+####                     = 2 + 1
+####                     = 3
+
+# ab = lambda x: lambda y: f'x:{x} to y:{y}'
+# cd = ab('aaa')
+# print(cd('100'))
+
+# fs = [lambda i:(lambda j:f'outter:{i},inner:{j}')(x) for x in range(6)]   ## 大坑
+# print([f(2) for f in fs])
+
+# fs = [(lambda i:lambda j:f'outter:{i},inner:{j}')(x) for x in range(6)]
+# print([f(2) for f in fs])
+
+# fs = []
+# for i in range(6):
+#     fs.append(lambda j:i*j)
+#     if i==3:
+#         break
+# print([f(2) for f in fs])
+
+# fs = [lambda j:i*j for i in range(6)]
+# print([f(2) for f in fs])
+
+# fs = map(lambda i:(lambda j: i*j),range(6))
+# print([f(2) for f in fs])
+
+# fs = [(lambda i:lambda j:i*j)(i) for i in range(6)]
+# print([f(2) for f in fs])
+
+
+# print((lambda : [x for x in range(10)])())
+# print((lambda x:(x % 2 and 'odd' or 'even'))(2))
+# print((lambda x:x+1 if not 2==1 else 0)(10))
+# print((lambda x: True if (x > 11 and x < 22) else False)(5))
+# print([f for f in (lambda x: x, lambda x: x ** 2) if f(1) == 0])  ####if语句中f(1)==1不成立时，不返回
+# print([f for f in (lambda x: x, lambda x: x ** 2) if f(1) == 1][1](2))  ####if语句中f(1)==1时，前面的两个lambda表达式结果为1时，就返回，然后存于list中
+# def action(x):
+#      return lambda y:x+y
+# f = action(2)
+# f(22) #24
+# #也可以直接：
+# action(2)(22)
+# def div_items(some_list):
+# 	div_by_two = lambda n: n // 2
+# 	return map(div_by_two, some_list)
+# print(list(div_items([1,2,3,4,5,6,7,8,9,10])))
+# print((lambda x: 1 if x=="C" else (0 if x=="S" else 2))("s"))
+# print(sum(x[0] for x in [(1, 'a'), (2, 'b'), (3, 'c')]))
+# print([x for x in range(100) if x%10 == 0])
+
+# print(list(filter((lambda x: x%10 == 0), range(100))))
+# print(list(filter(None,[1,2,'',3,4,'6',' '])))
+# print(list(filter(lambda x:x!=2,[1,2,3,4,5,6,2,2,2,])))
+# print(list(filter(lambda x:x%2==0,[1,2,3,4,5,6,2,2,2,])))
+####print([x for x in range(100) if not [y for y in range(2,x) if x % y == 0]] )
+##############################  print([9%i for i in range(2, 9) if 9%i != 0])
+##############################  print(not [9%i for i in range(2, 9) if 9%i == 0])
+####print(list(filter(lambda x: not [x%i for i in range(2, x) if x%i ==0], range(100))))
+##############################  print(list(filter(lambda y : 18%y==0, range(2,18))))
+####print(list(filter(lambda x: not list(filter(lambda y : x%y==0, range(2,x))),range(100))))
+##############################  print(list(18%j!=0 for j in range(2, 18)))
+####print(list(filter(lambda i: all(i%j!=0 for j in range(2, i)), range(100))))
+##############################  print(list(map(lambda p: 9 % p == 0, range(2,9))))
+##############################  print(list(filter(lambda p: 7 % p == 0, range(2,7))))
+####print(list(filter(lambda x: all(map(lambda p: x % p != 0, range(2, x))), range(100))))
+####print(list(filter(lambda x: not any(map(lambda p: x % p == 0, range(2, x))), range(100))))
+####print(list(filter(lambda x: not any(filter(lambda p: x % p == 0, range(2,x))), range(100))))
+##############################  print(list(filter(lambda n: 7 % n != 0, range(2, 7))))
+####print(list(filter(lambda x: len(list(filter(lambda n: x % n != 0, range(2, x)))) == x - 2, range(15))))
+
+
+# print(list(map(lambda x : len(x), ('apple', 'banana', 'cherry'))))
+# print(list(map(lambda x : x * x, (1, 2, 3, 4))))
+# print(list(map(list, ['site', 'bat','matafa'])))
+# print((lambda x: list(map(lambda x: x % 5, x)))(list(range(100))))
+# print((lambda _: list(map(lambda _: _ // 2, _)))([1,2,3,4,5,6,7,8,9,10]))
+# print((lambda some_list: list(map(lambda n: n // 2,some_list)))([1,2,3,4,5,6,7,8,9,10]))
+# print(list(map(lambda x, y: x + y, [1, 2, 3], [10, 20, 30])))
+# print(map(lambda x: True if x > 11 and x < 22 else False,[5]))
+# print(list(map(lambda x: x if str(x)[-1] == '2' else '', [1,3,4,7])))
+# print(list(filter(lambda x:x>20 and x<50,map(lambda x:x**2,range(10)))))
+
+# stp = [(x,y) for(x,y) in zip(range(100),range(0,100,10))]
+# print(stp)
+# bb = list(zip(range(100),range(0,100,10)))
+# # bb.append((10,100))
+# print(bb)
+
+# cc = list(zip(*([1, 2, 3, 4], [5, 6], ['A','B','C'])))
+# print(cc)
+# li01 = []
+# for i in range(len(stp)):
+# 	li01.append(stp[i][1])
+# print(li01)
+
+# print(sorted([ ('James',32),('Alies',20),('Wendy',25)],key=lambda x:x[1]))
+# print(sorted([36, 5, -12, 9, -21], key=abs))
+# print(sorted(['bob', 'about', 'Zoo', 'Credit'], key=str.lower, reverse=True))
+# print(sorted(['锅', '郭', '过', '国'], key=ord, reverse=True))
+
+

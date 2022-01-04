@@ -44,10 +44,13 @@
 #fs = [lambda a,b=i : a*b for i in range(6)]
 #print([f(2) for f in fs])
 
-# fs = map(lambda i:(lambda j: i*j),range(6))
-# print([f(2) for f in fs])
+#fs = [(lambda a=i : lambda b : a*b)() for i in range(6)]
+#print([f(2) for f in fs])
 
 # fs = [(lambda i:lambda j:i*j)(i) for i in range(6)]
+# print([f(2) for f in fs])
+
+# fs = map(lambda i:(lambda j: i*j),range(6))
 # print([f(2) for f in fs])
 
 

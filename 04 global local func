@@ -230,7 +230,11 @@ print("####:",avg.__closure__[0].cell_contents, avg.__closure__[1].cell_contents
 # fs1, fs2, fs3 = my_func()
 # print(fs1.__closure__)
 # print(fs1.__closure__[0].cell_contents)
-# print(fs1(),fs2(),fs3())
+# print(dir(fs1.__code__)
+# print(compile('fs1','','exec'))
+# print(fs1.__code__.co_freevars)
+# print(fs1.__code__.co_varnames)
+
 
 # 这个例子中，my_func返回的并不是一个闭包函数，而是一个包含三个闭包函数的一个list。这个例子中比较特殊的地方就是返回的所有闭包函数均引用父函数中定义的同一个自由变量。
 # 但这里的问题是为什么for循环中的变量变化会影响到所有的闭包函数？尤其是我们上面刚刚介绍的例子中明明说明了同一闭包的不同实例中引用的自由变量互相没有影响的。而且这个观点也绝对的正确。

@@ -50,9 +50,11 @@
 # fs = [(lambda i:lambda j:i*j)(i) for i in range(6)]
 # print([f(2) for f in fs])
 
+fs = map(lambda i:lambda j: f'{i}*{j}',range(6))
+print([f(2) for f in fs])
+
 # fs = map(lambda i:(lambda j: i*j),range(6))
 # print([f(2) for f in fs])
-
 
 # print((lambda : [x for x in range(10)])())
 # print((lambda x:(x % 2 and 'odd' or 'even'))(2))

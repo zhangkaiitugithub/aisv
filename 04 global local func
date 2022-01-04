@@ -314,6 +314,21 @@
 
 # 正确的做法便是将父函数的local variable赋值给函数的形参。函数定义时，对形参的不同赋值会保留在当前函数定义中，不会对其他函数有影响。
 # 另外注意一点，如果返回的函数中没有引用父函数中定义的local variable，那么返回的函数不是闭包函数
+
+####lambda 在for循环里的应用
+
+ab = lambda x: lambda y: f'x:{x} to y:{y}'
+cd = ab('aaa')
+print(cd('100'))
+
+fs = [lambda i:(lambda j:f'outter:{i},inner:{j}')(x) for x in range(6)]   ## 大坑
+print([f(2) for f in fs])
+
+fs = [(lambda i:lambda j:f'outter:{i},inner:{j}')(x) for x in range(6)]
+print([f(2) for f in fs])
+
+
+
 #####################################################
 # fs = []
 # for i in range(3):

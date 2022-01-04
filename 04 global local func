@@ -212,6 +212,7 @@
 
 # fs1, fs2, fs3 = my_func()
 # print(fs1.__closure__)
+# print(fs1.__closure__[0].cell_contents)
 # print(fs1(),fs2(),fs3())
 
 # 这个例子中，my_func返回的并不是一个闭包函数，而是一个包含三个闭包函数的一个list。这个例子中比较特殊的地方就是返回的所有闭包函数均引用父函数中定义的同一个自由变量。

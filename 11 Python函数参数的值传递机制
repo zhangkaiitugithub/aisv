@@ -26,13 +26,16 @@
 # print("交换结束后，a元素的值是",dw['a'], "；b元素的值是", dw['b'])
 
 
-# l=[1,2,3]
-# def a(x):
-#   x.append(4)
-#   x = x+[5,6]
-#   x.pop()
-# a(l)
-# print(l)
+l=[1,2,3]
+def a(x):
+    # x.append(4)
+    # x = x+[5,6]
+    # x.pop()
+    x = x+x
+    x += x
+    print(x)
+a(l)
+print(l)
 
 # 创建可变对象永远是分配新地址,append,pop并不是创建新的可变对象，是对已有的可变对象进行修改。
 

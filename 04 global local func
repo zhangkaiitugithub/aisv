@@ -345,7 +345,8 @@ print([f(2) for f in fs])
 fs = [(lambda i:lambda j:f'outter:{i},inner:{j}')(x) for x in range(6)]
 print([f(2) for f in fs])
 
-
+#fs = [lambda a,b=i : a*b for i in range(6)]
+#print([f(2) for f in fs])
 
 #####################################################
 # fs = []

@@ -249,6 +249,8 @@ print("####:",avg.__closure__[0].cell_contents, avg.__closure__[1].cell_contents
 #     return fs
 # fs1,fs2,fs3 = my_func()
 # print(fs1(),fs2(),fs3())
+# print(func.__code__.co_freevars)
+# print(func.__code__.co_varnames)
 
 # 上面的这段代码逻辑上与之前的例子是等价的。这里或许更好理解一点，因为在内部定义的函数func实际执行前，对局部变量j的任何改变均会影响到函数func的运行结果。
 # 函数my_func一旦返回，那么内部定义的函数func便是一个闭包，其中引用的变量j成为一个只和具体闭包相关的自由变量。后面会分析，这个自由变量存放在Cell对象中

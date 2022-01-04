@@ -41,6 +41,9 @@
 # fs = [lambda j:i*j for i in range(6)]
 # print([f(2) for f in fs])
 
+#fs = [lambda a,b=i : a*b for i in range(6)]
+#print([f(2) for f in fs])
+
 # fs = map(lambda i:(lambda j: i*j),range(6))
 # print([f(2) for f in fs])
 

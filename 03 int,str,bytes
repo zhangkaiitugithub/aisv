@@ -219,32 +219,6 @@ print(v[1:4].tobytes())
 # print(li)
 
 
-################################################################################
-# 在python中 None,  False, 空字符串"", 0, 空列表[], 空字典{}, 空元组()都相当于False ，即：not None == not False == not '' == not 0 == not [] == not {} == not ()
-# 但none并不is其他！！
-# print( None == 0,False == 0,'' == 0,[] == 0,{} == 0,() == 0,'' == [] )
-# print(not None,not 0,not '',not [])
-# 而对于`if x is not None`和`if not x is None`写法，很明显前者更清晰，而后者有可能使读者误解为`if (not x) is None`，因此推荐前者，同时这也是谷歌推荐的风格
-# 结论：`if x is not None`是最好的写法，清晰，不会出现错误，以后坚持使用这种写法；
-# 使用if not x这种写法的前提是：必须清楚x等于None,  False, 空字符串"", 0, 空列表[], 空字典{}, 空元组()时对你的判断没有影响才行
-# foo is None 和 foo == None的区别
-# print(None == False,None is False)
-# >>> list1 = [1, 2, 3]
-# >>> list2 = [1, 2, 3]
-# >>> list1==list2
-# True
-# >>> list1 is list2
-# False
-# 另外:# (ob1 is ob2) 等价于 (id(ob1) == id(ob2))
-
-print(all(()),all([]))
-print(any([]),any([]))
-
-####对于, 1 or 5 and 4: 先算5 and 4, 5为真, 值为4. 再算1 or 4, 1 为真,值为1
-####对于, (1 or 5) and 4: 先算1 or 5, 1为真, 值为1. 再算1 and 4, 1为真,值为4
-# print(1 or 5 and 4)
-# print((1 or 5) and 4)
-
 
 #################################################################################
 # 1.除了字符串类型外，使用str还是repr转换没有什么区别，字符串类型的话，外层会多一对引号，这一特性有时候在eval操作时特别有用；

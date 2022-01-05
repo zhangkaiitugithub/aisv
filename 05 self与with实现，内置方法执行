@@ -108,3 +108,18 @@
 
 ###############################################################
 
+new 先于 init 先于 str 先于 repr 可逐个关闭测试
+class A:
+
+    def __repr__(self):
+        return "this is repr"
+    def __str__(self):
+        return "this is str"
+    def __init__(self):
+        print("this  is init")        
+    def __new__(self):
+        return "this is new"   
+
+a=A()
+print(a)
+

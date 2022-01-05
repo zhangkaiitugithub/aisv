@@ -46,4 +46,9 @@ print(l)
 
 # 创建可变对象永远是分配新地址,append,pop并不是创建新的可变对象，是对已有的可变对象进行修改。
 
+a = [3,6,8,'a','MM']
+b = [3,6,8,'a','MM']
 
+print(id(a))
+print(id(b))
+print(id(a[:2]))

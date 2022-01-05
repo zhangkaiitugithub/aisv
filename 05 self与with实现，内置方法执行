@@ -87,39 +87,29 @@
 
 #     def __init__(self,name):
 #         print('__init__方法执行')
-#         self.name = name
+#         self.name = name                  #init不能有返回值
 #     def __str__(self):
-#         return ('__str__方法执行')
+#         print('__str__方法执行')
+#         return ('__str__方法返回')         #打印时执行,不写会打印内存对象,重写后必须有返回值,否则使用print无法打印,TypeError: __str__ returned non-string
 #     def __new__(cls,*args):
 #         print('__new__方法执行')
-#         return object.__new__(cls)
+#         return ('__new__方法返回')         #new必须有返回值,否则为none.修改new返回值后,后面的内置方法无法执行
+#         # return object.__new__(cls)        #返回父级的new方法,可以顺利执行类默认的其他内置方法
 #     def __call__(self):
 #         print('__call__方法执行')          #调用一个对象时，实际上调用的是它的 __call__ 方法
+#         return ('__call__方法返回')
 #     def __del__(self):                    #类包不报错都会执行
-#         input('程序等待中.......请输入： ')
+#         # input('程序等待中.......请输入： ')
 #         print('__del__方法执行')
 
 
 # xm = person('xiaoming')
 # print(xm)
 # print(xm())                               #调用一个对象时，实际上调用的是它的 __call__ 方法
-# input('程序等待中.......请输入： ')
+
 
 
 ###############################################################
 
-new 先于 init 先于 str 先于 repr 可逐个关闭测试
-class A:
 
-    def __repr__(self):
-        return "this is repr"
-    def __str__(self):
-        return "this is str"
-    def __init__(self):
-        print("this  is init")        
-    def __new__(self):
-        return "this is new"   
-
-a=A()
-print(a)
 

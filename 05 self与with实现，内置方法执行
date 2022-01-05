@@ -88,6 +88,7 @@
 #     def __init__(self,name):
 #         print('__init__方法执行')
 #         self.name = name                  #init不能有返回值
+          super(person, self).__init__(*args, **kwargs)
 #     def __str__(self):
 #         print('__str__方法执行')
 #         return ('__str__方法返回')         #打印时执行,不写会打印内存对象,重写后必须有返回值,否则使用print无法打印,TypeError: __str__ returned non-string

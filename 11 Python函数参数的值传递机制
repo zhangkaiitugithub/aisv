@@ -36,19 +36,27 @@ def a(x):
     x += x                     #### 影响外面
 
     # x = x+x                  #### 也就是产生新的id 不影响外面
-    # x = x[:2]
+    # x = x[:2]                #### 切片产生新对象
     # x = x+[5,6]
 
-    print(x)
-a(l)
-print(l)
+#     print(x)
+# a(l)
+# print(l)
 
 
 # 创建可变对象永远是分配新地址,append,pop并不是创建新的可变对象，是对已有的可变对象进行修改。
 
 a = [3,6,8,'a','MM']
 b = [3,6,8,'a','MM']
-
+c = a
+d = a[:]
 print(id(a))
 print(id(b))
+print(id(c))
+print(id(d))
 print(id(a[:2]))
+
+
+
+
+

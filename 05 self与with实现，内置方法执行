@@ -93,7 +93,7 @@
 #         return ('__str__方法返回')         #打印时执行,不写会打印内存对象,重写后必须有返回值,否则使用print无法打印,TypeError: __str__ returned non-string
 #     def __new__(cls,*args):
 #         print('__new__方法执行')
-#         return ('__new__方法返回')         #new必须有返回值,否则为none.修改new返回值后,后面的内置方法无法执行
+#         return ('__new__方法返回')         #重写new自定义返回值,否则返回none.修改new返回值后,后面的内置方法无法执行
 #         # return object.__new__(cls)        #返回父级的new方法,可以顺利执行类默认的其他内置方法
 #     def __call__(self):
 #         print('__call__方法执行')          #调用一个对象时，实际上调用的是它的 __call__ 方法

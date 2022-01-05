@@ -93,7 +93,7 @@
 #         return ('__str__方法返回')         #打印时执行,不写会打印内存对象,重写后必须有返回值,否则使用print无法打印,TypeError: __str__ returned non-string
 #     def __new__(cls,*args):
 #         print('__new__方法执行')
-#         return ('__new__方法返回')         #重写new自定义返回值,否则返回none.修改new返回值后,后面的内置方法无法执行
+#         return ('__new__方法返回')         #类准备将自身实例化时调用，默认是调用该类的直接父类的__new__()方法来构造该类的实例，
 #         # return object.__new__(cls)        ##为对象分配空间：super().__new__(cls)， #返回对象的引用
 #     def __call__(self):
 #         print('__call__方法执行')          #调用一个对象时，实际上调用的是它的 __call__ 方法
@@ -111,5 +111,33 @@
 
 ###############################################################
 
+class F1(object):
+　　#重写__new__方法，返回这个重写的__new__方法
+    def __new__(cls, *args, **kwargs):
+        return 123
 
+obj=F1() #实例化对象是谁取决于__new__方法,__new__返回什么就是什么
+print(obj,type(obj))  #打印结果：123 <class 'int'>
+
+
+class F2(object):
+    pass
+
+class F3(object):
+    def __new__(cls, *args, **kwargs):
+        return F2()
+
+obj=F3()    #实例化对象是谁取决于__new__方法,__new__返回什么就是什么
+print(obj)  #<__main__.F2 object at 0x00000210119BA4A8>
+
+如果要得到当前类的实例，应当在当前类中的 __new__() 方法语句中调用当前类的父类的 __new__() 方法。
+例如，如果当前类是直接继承自 object，那当前类的 __new__() 方法返回的对象应该为：
+def __new__(cls, *args, **kwargs):
+    ...
+    return object.__new__(cls)
+__new__至少要有一个参数cls，代表要实例化的类，此参数在实例化时由Python解释器自动提供
+
+__new__必须要有返回值，返回实例化出来的实例，这点在自己实现__new__时要特别注意，可以return父类__new__出来的实例，或者直接是object的__new__出来的实例
+
+__init__有一个参数self，就是这个__new__返回的实例，__init__在__new__的基础上可以完成一些其它初始化的动作，__init__不需要返回值
 

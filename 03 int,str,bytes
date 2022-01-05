@@ -93,6 +93,7 @@
 # print(eval('0b1100010'))
 # print(chr(eval('0b1100010')))
 
+print(memoryview(b'9\x12\x00\x00')[1])
 
 v = memoryview(bytearray("abcefg", 'utf-8'))
 n= memoryview(bytes("abcefg",'utf8'))

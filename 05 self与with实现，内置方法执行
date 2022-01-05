@@ -94,7 +94,7 @@
 #     def __new__(cls,*args):
 #         print('__new__方法执行')
 #         return ('__new__方法返回')         #重写new自定义返回值,否则返回none.修改new返回值后,后面的内置方法无法执行
-#         # return object.__new__(cls)        #返回父级的new方法,可以顺利执行类默认的其他内置方法
+#         # return object.__new__(cls)        ##为对象分配空间：super().__new__(cls)， #返回对象的引用
 #     def __call__(self):
 #         print('__call__方法执行')          #调用一个对象时，实际上调用的是它的 __call__ 方法
 #         return ('__call__方法返回')

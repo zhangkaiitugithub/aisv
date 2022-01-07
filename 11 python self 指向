@@ -37,14 +37,20 @@ t.sslf()
 
 #     """A simple example class"""
 
-#     i = 12345
+    i = 12345
+    @staticmethod
+    def e():
+        return 'hello eeeee'
 
-#     def f():
-#         return 'hello fffff'
-#     def g(self):
-#         return 'hello ggggg'
+    def f():
+        return 'hello fffff'
 
-# x = MyClass()
+    def g(self):
+        return 'hello ggggg'
+
+x = MyClass()
+print(x.e())
+
 # print(x.f)
 # print(x.f())
 # print(MyClass.f())

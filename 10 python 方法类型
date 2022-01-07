@@ -1,0 +1,123 @@
+
+
+
+##------------------------------------------ 类 函数----------------------------------------------
+
+## 类中的函数只可以通过类名调用，而不能通过实例调用，
+
+# class test:
+#   def show():
+#     print ("show")
+
+# test.show() ###不能用test().show
+
+
+
+
+##-------------------------------------------静态变量---------------------------------------------
+
+# class StcMth:
+#     count = 0 #静态变量，不需要显式声明
+#     def __init__(self):
+#         StcMth.count += 1
+#     def __del__(self):
+#         StcMth.count -= 1
+
+# stm = StcMth() #创建对象实例
+# stm.count += 1 #通过对象实例操作静态变量
+# print('stm: %d'%(stm.count)) #通过对象实例调用静态变量
+# print('StaticMethod: %d'%(StcMth.count)) #通过类名调用静态变量
+# print('StaticMethod: %d'%(StcMth().count)) #通过类对象调用静态变量
+
+
+
+##-------------------------------------------实例方法---------------------------------------------
+
+# class Student(object):
+#     def __init__(self,sex):
+#         self.sex = sex
+#     def get_sex(self):
+#         return self.sex
+
+# # print(Student.get_sex(Student('OK')))
+# # print(Student('OK').get_sex())
+
+# # print(Student('OK'))
+# student = Student('OK').get_sex
+# print (student.__self__)
+# # print (student == student.__self__.get_sex)
+
+##--------------------------------------------静态方法--------------------------------------------
+
+# class Student(object):
+#     @staticmethod
+#     def aver_age(x, y):
+#         return x + y
+
+#     def year(self):
+#         return self.aver_age(self.month, self.day)
+
+# print(Student().year is Student().year)
+# print(Student().aver_age is Student().aver_age)
+# print(Student().aver_age is Student.aver_age)
+
+##-------------------------------------类方法----------------------------------------------------
+
+# class Student(object):
+#     score = 100
+
+#     @classmethod
+#     def get_score(cls):
+#         return cls.score
+
+# print (Student.get_score)
+# print (Student().get_score)
+# print (Student().get_score is Student.get_score)
+# print (Student.get_score(),Student().get_score())
+
+
+# class A(object):
+#     bar = 1
+#     def func1(self):  
+#         print ('foo') 
+#     @classmethod
+#     def func2(cls):
+#         print ('func2')
+#         print (cls.bar)
+#         cls().func1()   # 调用 func1 方法
+
+# A().func1()             # 需要实例化
+# A.func2()               # 不需要实例化
+
+##----------------------------------------------------------------------------------------------
+
+##子类的实例继承了父类的static_method静态方法，调用该方法，还是调用的父类的方法和类属性。 << 静态方法：fth
+##子类的实例继承了父类的class_method类方法，调用该方法，调用的是子类的方法和子类的类属性。 <<< 类方法：cls
+
+# class fth(object):
+#     X = 100
+#     Y = 200
+#     @staticmethod
+#     def averag(*mixes):
+#         return sum(mixes) / len(mixes)
+#     @staticmethod
+#     def stc_method():
+#         return fth.averag(fth.X, fth.Y)
+#     @classmethod
+#     def cls_method(cls):
+#         return cls.averag(cls.X, cls.Y)
+# class Son(fth):
+#     X = 30
+#     Y = 50
+#     @staticmethod
+#     def averag(*mixes):
+#         return sum(mixes) / 3
+# fs = Son()
+# print(fs.stc_method())
+# print(fs.cls_method())
+
+
+
+##----------------------------------------------------------------------------------------------
+
+

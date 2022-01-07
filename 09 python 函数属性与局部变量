@@ -1,32 +1,52 @@
-
 ####获取局部变量名
 
-def my_func():
-    lis = []
-    dic = dict()
-    res = lis + ['get', 'func', 'vars']
-    words = "Life is short, You need Python!"
-    print(words)
+# def my_func():
+#     lis = []
+#     dic = dict()
+#     res = lis + ['get', 'func', 'vars']
+#     words = "Life is short, You need Python!"
+#     print(words)
 
-print(my_func.__code__.co_varnames)
+# print(my_func.__code__.co_varnames)
+
+# print([i for i in dir((lambda: 0).__code__) if not i.startswith('__')])
+
+'''     co_argcount             number of arguments (not including keyword only arguments, * or ** args)
+        co_code                 string of raw compiled bytecode
+        co_cellvars             tuple of names of cell variables (referenced by containing scopes)
+        co_consts               tuple of constants used in the bytecode
+        co_filename             name of file in which this code object was created
+        co_firstlineno          number of first line in Python source code
+        co_flags                bitmap of CO_* flags, read more here
+        co_lnotab               encoded mapping of line numbers to bytecode indices
+        co_freevars             tuple of names of free variables (referenced via a function’s closure)
+        co_kwonlyargcount       number of keyword only arguments (not including ** arg)
+        co_name                 name with which this code object was defined
+        co_names                tuple of names of local variables
+        co_nlocals              number of local variables
+        co_stacksize            virtual machine stack space required
+        co_varnames             tuple of names of arguments and local variables
+''' 
+
+
 
 ################################################################################
 
 ####获取局部变量
 
-outerVar="this is a global variable"
-def test():
-    innerVar="this is a local variable"
-    print ("local variables:")
-    print (locals())
-test()
-print ("global variables:")
-print (globals())
+# outerVar="this is a global variable"
+# def test():
+#     innerVar="this is a local variable"
+#     print ("local variables:")
+#     print (locals())
+# test()
+# print ("global variables:")
+# print (globals())
 
 ################################################################################
 
 # def fuc1():
-#     
+    
 #     print (fuc2.a)
 
 # def fuc2():
@@ -35,40 +55,22 @@ print (globals())
 
 # fuc2()          #不先执行fuc2函数，直接外部调用，会显示。。。。没有a属性
 # print (fuc2.a)  #访问fuc2的属性a
+
 # fuc2.a = 2      #当在外面进行值变化时，fuc2的属性改变了，从而实现了全局的效果
 # fuc1()          #全局属性改变，现在输出的结果是 2
 
 # fuc2(),fuc1()   #可以用逗号写入一行一并执行
 
-#################################### 扩展 ######################################
-
-####函数属性无关返回值，可以把内部函数属性化
-
-def fa():
-	fa.aa ='aa'
-	def aaa():
-		print('fa.aaa')
-	fa.aaa = aaa
-
-print(fa(),fa.aa)
-fa(),print(fa.aa)
-
-fa(),fa.aaa()
-
-FFA = fa
-FFA(),FFA.aaa()
-
-FFA = fa()
-fa.aaa()
 
 
 ######################################属性与变量的区别############################################
+
 # def nil(): 
-# 	ss='nil' 
-# 	print(ss)
-# 	def mm(jj):
-# 		print(jj)
-# 	nil.mm = mm
+#   ss='nil' 
+#   print(ss)
+#   def mm(jj):
+#       print(jj)
+#   nil.mm = mm
 
 # nil() 
 # nil.ss='kk' 
@@ -76,16 +78,17 @@ fa.aaa()
 # print(nil.ss)       ####nil.ss表示ss现在是nil对象的属性。nil.ss和nil()里面的ss是完全不同的。
 # nil() 
 
-# ####第一个ss是函数的内部变量;第二个是函数的一个属性。他们不参考同一个对象。
-# ####这里有一个办法做到这一点，虽然：
+####第一个ss是函数的内部变量;第二个是函数的一个属性。他们不参考同一个对象。
+####这里有一个办法做到这一点，虽然：
 
 # nil()
-# nil.mm('jjjj')  调用属性条用内部函数
+# nil.mm('jjjj')  ####调用属性条用内部函数
 
+##-----------------------------------------------------------------------------------------
 
 # def nil():
-# 	ss='foo'
-# 	return ss
+#   ss='foo'
+#   return ss
 
 # nil.ss='bar'
 # foo=nil()
@@ -95,11 +98,12 @@ fa.aaa()
 # print(foo)
 # print(bar)
 
+##-----------------------------------------------------------------------------------------
 
 # def apple(): 
-# 	if not hasattr(apple, 'ss'):      ##This way it'll only be set inside the function once 
-#  		apple.ss = 'nil' 
-# 	return apple.ss
+#   if not hasattr(apple, 'ss'):      ##This way it'll only be set inside the function once 
+#       apple.ss = 'nil' 
+#   return apple.ss
 
 # print(apple())
 # print(apple.ss)
@@ -107,9 +111,12 @@ fa.aaa()
 # print(apple.ss)
 # print(apple())
 
-apple.extra ='another attrabute'
-print(apple.extra)
+# apple.extra ='another attrabute'
+# print(apple.extra)
 
-a = 'var'
-a.aa = 'another attribute'
-print(a.aa)                     ####'str' object has no attribute 'aa'，普通变量不能随意添加属性
+# # a = 'var'
+# # a.aa = 'another attribute'
+# # print(a.aa)                     ####'str' object has no attribute 'aa'，普通变量不能随意添加属性
+
+
+

@@ -1,0 +1,355 @@
+
+
+
+
+
+
+
+
+####---------------------------------------------------------------------------------------------
+
+## 类中的函数只可以通过类名调用，而不能通过实例调用，
+
+# class test:
+#   def show():
+#     print ("show")
+
+# test.show() ###不能用test().show
+
+
+
+
+##-----------------------------------静态变量-----------------------------------------------------
+
+# class StcMth:
+#     count = 0 #静态变量，不需要显式声明
+#     def __init__(self):
+#         StcMth.count += 1
+#     def __del__(self):
+#         StcMth.count -= 1
+
+# stm = StcMth() #创建对象实例
+# stm.count += 1 #通过对象实例操作静态变量
+# print('stm: %d'%(stm.count)) #通过对象实例调用静态变量
+# print('StaticMethod: %d'%(StcMth.count)) #通过类名调用静态变量
+# print('StaticMethod: %d'%(StcMth().count)) #通过类对象调用静态变量
+
+
+
+##-----------------------------------实例方法-----------------------------------------------------
+
+# class Student(object):
+#     def __init__(self,sex):
+#         self.sex = sex
+#     def get_sex(self):
+#         return self.sex
+
+# # print(Student.get_sex(Student('OK')))
+# # print(Student('OK').get_sex())
+
+# # print(Student('OK'))
+# student = Student('OK').get_sex
+# print (student.__self__)
+# # print (student == student.__self__.get_sex)
+
+##------------------------------------静态方法----------------------------------------------------
+
+# class Student(object):
+#     @staticmethod
+#     def aver_age(x, y):
+#         return x + y
+
+#     def year(self):
+#         return self.aver_age(self.month, self.day)
+
+# print(Student().year is Student().year)
+# print(Student().aver_age is Student().aver_age)
+# print(Student().aver_age is Student.aver_age)
+
+##-------------------------------------类方法----------------------------------------------------
+
+# class Student(object):
+#     score = 100
+
+#     @classmethod
+#     def get_score(cls):
+#         return cls.score
+
+# print (Student.get_score)
+# print (Student().get_score)
+# print (Student().get_score is Student.get_score)
+# print (Student.get_score(),Student().get_score())
+
+##----------------------------------------------------------------------------------------------
+
+
+
+
+
+
+##子类的实例继承了父类的static_method静态方法，调用该方法，还是调用的父类的方法和类属性。 << 静态方法：fth
+##子类的实例继承了父类的class_method类方法，调用该方法，调用的是子类的方法和子类的类属性。 <<< 类方法：cls
+
+# class fth(object):
+#     X = 100
+#     Y = 200
+#     @staticmethod
+#     def averag(*mixes):
+#         return sum(mixes) / len(mixes)
+#     @staticmethod
+#     def stc_method():
+#         return fth.averag(fth.X, fth.Y)
+#     @classmethod
+#     def cls_method(cls):
+#         return cls.averag(cls.X, cls.Y)
+# class Son(fth):
+#     X = 30
+#     Y = 50
+#     @staticmethod
+#     def averag(*mixes):
+#         return sum(mixes) / 3
+# fs = Son()
+# print(fs.stc_method())
+# print(fs.cls_method())
+
+
+
+
+################################################################
+
+
+
+################# __init__()中的参数需要依照父类的参数添加。##############
+'''
+ __new__(cls)必须要有一个参数cls,代表着要实例化的类，而且必须要有返回值，返回实例化出来的实例对象.
+ __init__(self)有一个参数self,就是这个__new__(cls)返回来的实例，__init__(self)可以再__new__(cls)的基础上进行其他一些初始化的操作，而且不需要返回值。
+'''
+
+
+# class PositiveInteger(int):
+#     def __init__(self, value):
+#         super().__init__(value)
+
+# i = PositiveInteger(-3)# 
+# print(i)
+
+# class PositiveInteger(int):
+#   def __init__(self, value):
+#     super(PositiveInteger, self).__init__(self, abs(value))
+ 
+# i = PositiveInteger(-4)
+# print (i)
+
+####修改:
+
+# class PositiveInteger(int):
+#     def __init__(self, value):      
+#         super().__init__()
+
+# i = PositiveInteger(-3)# -3
+# print(i)
+
+####这里__init__()不能加任何参数，否则会报错。因为父类 int 中没有任何参数，所以不能传入参数。
+####注意：如果直接父类不是object，通过super调用服了的__new__方法，需要看直接父类的参数才知怎么传递参数,因此建议使用object的__new__方法调用。
+####调用 object. __ new__方法时，只能传cls参数，否则会报错；调用自定义类的自定义父类__ new__方法，可以传所有参数，要看父类的__ new__方法定义的参数是怎么定义的。
+####下面__new__()是 父类 int 产生一个实例,
+
+# class PositiveInteger(int):
+#   def __new__(cls, value,bb):
+#     return super(PositiveInteger, cls).__new__(cls, abs(value)+bb)
+ 
+# i = PositiveInteger(-3,10)
+# print (i)
+
+####---------------------------------------------------
+
+# class MyClass2():
+#         ccc = 4
+# obj2 = MyClass2()
+
+
+# class Person:                                                                 ##(object)
+#     name = '类属性'
+
+#     def __new__(cls, na, ag):                                                 ## 给__init__指定两个参数，参数名随意
+#         print('__new__ called.',"Python传递给__new__的参数:cls, na, ag")
+#         ## cls.name = 'new方法'
+#         cls.age = 'new参数'
+#         '''
+#         obj = object.__new__(MyClass)     
+#         obj = MyClass()                                                       
+#         obj是实例,上面两个方式等同,其中，MyClass是类，obj是实例（instance）
+#         '''                                         
+#         # inst  = obj2                                                          ## 如果返回的不是一个本类对象__init__就不会触发
+#         inst  = super().__new__(cls)                                          ## __new__参数必须符合父类object<super(Person, cls)>的规范：(__new__(cls))
+#         print("__new__返回值:",inst)                                           ## print不经__init__直接调用__str__方法，而__init__返回name,age。所以__new__(cls, name, age)的参数没有赋值的话,打印会报错
+#         return inst
+
+#     def __init__(self, name, age):                                             ## 参数的个数必须和__new__一致
+#         print('__init__ called.')
+#         self.name = name                                                       ## 此处赋值后__new__方法的赋值对实例属性无效
+#         self.age = age
+
+#     def __str__(self):
+#         print('__str__called')
+#         return '<  %s == %s  >' % (self.name, self.age)
+
+
+# print(Person.name)
+# psn= Person('xiaoming', 24)
+# print(psn)
+
+
+
+
+
+
+
+####每一次实例化后产生的过程都是通过__new__来控制的，所以通过重载__new__方法，我们 可以很简单的实现单例模式。
+
+# class Singleton(object):
+#     def __new__(cls):
+#     # 关键在于这，每一次实例化的时候，我们都只会返回这同一个instance对象
+#         if not hasattr(cls, 'instance'):
+#             cls.instance = super(Singleton, cls).__new__(cls)
+#         return cls.instance
+ 
+# obj1 = Singleton()
+# obj2 = Singleton()
+ 
+# obj1.attr1 = 'value1'
+# print (obj1.attr1, obj2.attr1)
+# print (obj1 is obj2)
+
+
+####---------------------------------------------------
+
+# class C2F(float):
+#     "摄氏度转换为华氏度"
+#     def __new__(cls, arg,ment):
+#         return float.__new__(cls, arg * ment + 32)
+
+# print(C2F(32,2))
+# aa = C2F(10,5)
+# print(aa)
+
+
+# class C2F:
+#     def __new__(self,x,y):
+#         return x*y+100
+
+# print(C2F(20,30))
+# aa = C2F(10,5)
+# print(aa)
+
+####---------------------------------------------------
+
+
+# class ClassTest(object):
+#     __num = 0
+#     @classmethod
+#     def addNum(self,nu):
+#         self.__num += nu
+#         print(self.__num)
+#     @staticmethod
+#     def getNum():
+#         print(ClassTest.__num)
+#         return ClassTest.__num
+#     def __new__(self,nu):
+#         ClassTest.addNum(nu)
+#         return super(ClassTest,self).__new__(self)
+     
+# class Student(ClassTest):
+#     def __init__(self,num):
+#         self.__num = num
+           
+# ClassTest.addNum(10)
+# a = Student(100)
+# a.getNum()
+
+
+# class Earth(object):
+#     """
+#     假如你是神，你可以创造地球
+#     """
+#     # 定义一个类属性做判断
+#     instance = None
+#     initial = False
+
+#     def __new__(cls, *args, **kwargs):
+#         # 如果instance为空则说明是第一次创建实例
+#         if cls.instance == None:
+#             # 调用父类的__new__(cls)方法创建实例，并将该实例赋值给类变量instance，此时该变量的值从None变为该实例
+
+#             cls.instance = object.__new__(cls)
+#             # print cls.instance
+#             cls.instance.name = '地球'
+#             cls.instance.time = '2021'
+#             # 返回实例化对象
+#             return cls.instance
+#         else:
+#             # 返回上一个对象的引用
+#             return cls.instance
+
+#             # print '欢迎来到地球'
+
+#     def __init__(self):
+#         # 创建实例，只进行初始化一次
+#         if self.initial == False:
+#             print('----init------')
+#             self.initial = True
+
+
+# class Person(object):
+#     def __init__(self):
+#         self.name="张三"
+#         print("Person.__init__")
+#     def __new__(cls):
+#         ob = object.__new__(Earth)
+#         return ob
+
+# p1 = Person()
+# print(type(p1))
+# print('person.name: ',p1.instance)
+
+# print('-----------------------------------------')
+
+# print ('原始的instance值为：%s' % Earth.instance)
+
+# # 生成一个地球
+# a = Earth()
+# # 创建实例后的instance值
+# print ('创建实例后的instance值为：%s' % Earth.instance)
+# print (id(a))
+# # 再生成一个地球
+# b = Earth()
+# print (id(b))
+
+# print (a.name)
+# print (a.time)
+# print (b.name)
+# print (b.time)
+# b.name = '月亮'
+# print (a.name)
+# print (b.name)
+
+##-----------------------------------------
+# class Foo(object):
+#     __instance = None
+
+#     @classmethod
+#     def instance(self):
+#         if self.__instance:
+#             return self.__instance
+
+#         else:
+#             obj = self()
+#             self.__instance = obj
+#             return self.__instance
+# obj1=Foo.instance()
+# obj2=Foo.instance()
+# print(obj1,obj2)
+
+##-----------------------------------------
+
+

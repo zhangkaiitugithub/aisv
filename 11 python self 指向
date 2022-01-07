@@ -2,6 +2,15 @@
 
 ################################## self 实例化指向 ################################
 
+class Test:
+    def sslf(self):
+        print(self)
+        print(self.__class__)
+
+t = Test()
+t.sslf()
+
+
 # class person:
 
 #     def __init__(self):

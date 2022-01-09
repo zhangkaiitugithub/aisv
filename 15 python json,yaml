@@ -101,3 +101,37 @@ yml.dump(data, sys.stdout)
 # print('---------------------------------------------------------------------------')
 
 
+import sys
+from ruamel.yaml import YAML
+
+inp = """\
+- &CENTER {a: 1, b: 2}
+- &LEFT {c: 0, d: 2}
+- &BIG {e: 10}
+- &SMALL {f: 1}
+# All the following maps are equal:
+# Explicit keys
+- A: 1
+  B: 2
+  C: 10
+  label: AAA
+# Merge one map
+- <<: *CENTER
+  D: 10
+  label: BBB
+# Merge multiple maps
+- <<: [*CENTER, *BIG]
+  label: CCC
+# Override
+- <<: [*BIG, *LEFT, *SMALL]
+  x: 1
+  label: center/big
+"""
+
+yaml = YAML()
+data = yaml.load(inp)
+print(data)
+print('-------------------------------------------------------------------')
+yaml.indent(mapping=2, sequence=(4), offset=(2))
+yamltostr = yaml.dump(data,sys.stdout)
+

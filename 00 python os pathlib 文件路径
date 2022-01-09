@@ -13,6 +13,7 @@ import os,pathlib,ruamel.yaml
 
 # os.listdir(os.getcwd())                                                                      ## 返回指定目录下的所有文件名和目录名 ，返回的是一个列表
 
+print(os.path.realpath(__file__))
 # print(os.path.abspath('hello.png'))                                                          ## 生成绝对路径的三种方式
 # print(os.path.abspath(ruamel.yaml.__file__))
 # print(os.path.join(os.path.abspath('.'),'hello.jpg'))                                        ## .表示当前路径，..上级目录

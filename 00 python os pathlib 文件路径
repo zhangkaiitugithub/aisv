@@ -1,6 +1,7 @@
 
 
-# import os
+# import os ruamel.yaml
+
 
 
 # print ("目录为: %s" %os.listdir(os.getcwd()))                                                 ## 列出目录
@@ -13,6 +14,7 @@
 # os.listdir(os.getcwd())                                                                      ## 返回指定目录下的所有文件名和目录名 ，返回的是一个列表
 
 # print(os.path.abspath('hello.png'))                                                          ## 生成绝对路径的三种方式
+# print(os.path.abspath(ruamel.yaml.__file__))
 # print(os.path.join(os.path.abspath('.'),'hello.jpg'))                                        ## .表示当前路径，..上级目录
 # print(os.path.join('/home/kiosk','hello.jpg'))                                               ## 
 
@@ -22,6 +24,10 @@
 # filename = '/1234/year/month/day/hello.jpg'                                                  ## 获取目录或文件名
 # print(os.path.basename(filename))
 # print(os.path.dirname(filename))
+
+# print(os.path.abspath(__file__))
+# print(os.path.basename(__file__))
+# print(os.path.dirname(__file__))
 
 # print(os.path.split('/tmp/hello/hello.jpg'))                                                 ## 将目录名和文件名分离
 # print(os.path.splitext('hello.jpg'))                                                         ## 分离后缀名和文件名

@@ -7,6 +7,7 @@ from ruamel.yaml import YAML
 
 '''
 params：请求参数，字典类型，常用于发送 GET 请求时使用。
+data:一般用于提交表单数据元素
 timeout：超时时间 ，整数类型。
 headers：设置请求头。
 auth：指定登陆时的账号和密码，元祖类型

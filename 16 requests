@@ -30,6 +30,8 @@ cert：传入客户端的SSL证书，为字符串时应是 SSL 客户端证书�
 # print(response.requests.headers)                        
 # #打印请求网址的cookies信息
 # print(response.cookies)
+# print(respone.cookies.get_dict())
+# print(respone.cookies.items())
 # #打印请求网址的地址
 # print(response.url)
 # #打印请求的历史记录（以列表的形式显示）
@@ -133,6 +135,8 @@ cert：传入客户端的SSL证书，为字符串时应是 SSL 客户端证书�
 # print cookiejar
 # print cookiedict
 
+# print(respone.cookies.get_dict())
+# print(respone.cookies.items())
 
 # 会话维持:
 # SESSION这个对象代表一次用户会话：从客户端浏览器连接服务器开始，到客户端浏览器与服务器断开。会话能让我们在跨请求时候保持某些参数，比如在同一个 Session 实例发出的所有请求之间保持 cookie 。

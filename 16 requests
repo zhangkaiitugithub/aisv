@@ -5,25 +5,18 @@ import json
 from ruamel.yaml import YAML 
 
 
-url = 'http://httpbin.org/post'
-
-response = requests.get(url)
-print(response.text)
-# print(response.json())
-# print(json.loads(response.text))
-# print(response.json()['url'])
-# yaml = YAML(typ = 'safe')
-# print(yaml.load(response.text))
-# print(yaml.load(response.text)['url'])
-
-# print('-----------------------------------------')
-
-# data = {
-#     'name':'jack',
-#     'age':'23'
-#     }
-# response = requests.post(url,data=data)
-# print(response.text)
+'''
+params：请求参数，字典类型，常用于发送 GET 请求时使用。
+timeout：超时时间 ，整数类型。
+headers：设置请求头。
+auth：指定登陆时的账号和密码，元祖类型
+verify:请求网站时是否需要验证，布尔类型
+proxies:设置代理
+cookies：cookies 值
+allow_redirects：布尔值，默认为Ture，重定向开关
+stream：布尔值，默认为True，为True时会先下载响应头，当Reponse调用content方法时才下载响应体
+cert：传入客户端的SSL证书，为字符串时应是 SSL 客户端证书文件的路径(.pem格式，文件路径包含密钥和证书)，如果是元组，就应该是一个(‘cert’, ‘key’) 二元值对。
+'''
 
 
 # #### 响应：

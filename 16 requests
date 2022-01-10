@@ -46,7 +46,7 @@ GET请求常用的操作：
 # #打印请求网址的headers所有信息,返回字典类型
 # print(response.headers)
 # 返回发送到服务器的头信息                             
-# print(response.requests.headers)                        
+# print(response.request.headers)                        
 # #打印请求网址的cookies信息
 # print(response.cookies)
 # print(respone.cookies.get_dict())

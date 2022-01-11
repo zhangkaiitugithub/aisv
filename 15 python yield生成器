@@ -156,6 +156,21 @@
 #         print(outer.send(i))
 
 
+def yie():
+    for i in range(10):
+        yield i
+gen01 =yie()
+
+def yif():
+    yield from range(10)
+gen02 = yif()
+
+while True:
+    print('gen01: ' , next(gen01))
+    print('gen02: ' , next(gen02))
+    print('----------')
+
+
 # class myiter(object):
 #         def __init__(self,count):
 #             self.count=count

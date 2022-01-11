@@ -57,6 +57,12 @@ print('d: ',id(d))
 print('a[:2]: ',id(a[:2]))
 
 
-
+mygenerator = (x*x for x in range(3))
+# print(mygenerator)
+# print(next(mygenerator))
+aList = [123, 'xyz', 'zara', 'abc', 123]
+# aList.extend(mygenerator) # python 内置函数list,sum等认识迭代器并运行
+aList += mygenerator
+print('新列表: ', aList)
 
 

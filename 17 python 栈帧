@@ -1,0 +1,93 @@
+####调用栈:
+####在解释生成器之前，需要讲解一下Python虚拟机的调用原理。
+####Python虚拟机有一个栈帧的调用栈，其中栈帧的是PyFrameObject，位于Include/frameobject.h。
+
+# typedef struct _frame {
+#     PyObject_VAR_HEAD
+#     struct _frame *f_back;  /* previous frame, or NULL */
+#     PyCodeObject *f_code;   /* code segment */
+#     PyObject *f_builtins;   /* builtin symbol table (PyDictObject) */
+#     PyObject *f_globals;    /* global symbol table (PyDictObject) */
+#     PyObject *f_locals;     /* local symbol table (any mapping) */
+#     PyObject **f_valuestack;    /* points after the last local */
+#     /* Next free slot in f_valuestack.  Frame creation sets to f_valuestack.
+#        Frame evaluation usually NULLs it, but a frame that yields sets it
+#        to the current stack top. */
+#     PyObject **f_stacktop;
+#     PyObject *f_trace;      /* Trace function */
+
+#     /* If an exception is raised in this frame, the next three are used to
+#      * record the exception info (if any) originally in the thread state.  See
+#      * comments before set_exc_info() -- it's not obvious.
+#      * Invariant:  if _type is NULL, then so are _value and _traceback.
+#      * Desired invariant:  all three are NULL, or all three are non-NULL.  That
+#      * one isn't currently true, but "should be".
+#      */
+#     PyObject *f_exc_type, *f_exc_value, *f_exc_traceback;
+
+#     PyThreadState *f_tstate;
+#     int f_lasti;        /* Last instruction if called */
+#     /* Call PyFrame_GetLineNumber() instead of reading this field
+#        directly.  As of 2.3 f_lineno is only valid when tracing is
+#        active (i.e. when f_trace is set).  At other times we use
+#        PyCode_Addr2Line to calculate the line from the current
+#        bytecode index. */
+#     int f_lineno;       /* Current line number */
+#     int f_iblock;       /* index in f_blockstack */
+#     PyTryBlock f_blockstack[CO_MAXBLOCKS]; /* for try and loop blocks */
+#     PyObject *f_localsplus[1];  /* locals+stack, dynamically sized */
+# } PyFrameObject;
+
+####栈帧保存了给出代码的的信息和上下文，其中包含最后执行的指令，全局和局部命名空间，异常状态等信息。f_valueblock保存了数据，b_blockstack保存了异常和循环控制方法。
+####举一个例子来说明:
+
+# def foo():
+#     x = 1
+#     def bar(y):
+#         z = y + 2  # <--- (3) ... and the interpreter is here.
+#         return z
+#     return bar(x)  # <--- (2) ... which is returning a call to bar ...
+# foo()              # <--- (1) We're in the middle of a call to foo ...
+
+# # 那么，相应的调用栈如下，一个py文件，一个类，一个函数都是一个代码块，对应者一个Frame，保存着上下文环境以及字节码指令。
+
+# c   ---------------------------
+# a  | bar Frame                 | -> block stack: []
+# l  |     (newest)              | -> data stack: [1, 2]
+# l   ---------------------------
+#    | foo Frame                 | -> block stack: []
+# s  |                           | -> data stack: [<Function foo.<locals>.bar at 0x10d389680>, 1]
+# t   ---------------------------
+# a  | main (module) Frame       | -> block stack: []
+# c  |       (oldest)            | -> data stack: [<Function foo at 0x10d3540e0>]
+# k   ---------------------------
+
+
+####每一个栈帧都拥有自己的数据栈和block栈，独立的数据栈和block栈使得解释器可以中断和恢复栈帧（生成器正式利用这点）。
+####Python代码首先被编译为字节码，再由Python虚拟机来执行。一般来说，一条Python语句对应着多条字节码（由于每条字节码对应着一条C语句，而不是一个机器指令，所以不能按照字节码的数量来判断代码性能）。
+####调用 dis模块 可以分析字节码，
+
+# from dis import dis
+# dis(foo)
+
+# ----------------------------------------------------------------------------
+# 5           0 LOAD_CONST               1 (1) # 加载常量1
+#             3 STORE_FAST               0 (x) # x赋值为1
+
+# 6           6 LOAD_CONST               2 (<code object bar at 0x7f3cdee3a030, file "t1.py", line 6>) # 加载常量2
+#             9 MAKE_FUNCTION            0 # 创建函数
+#             12 STORE_FAST              1 (bar) 
+
+# 9           15 LOAD_FAST               1 (bar) 
+#             18 LOAD_FAST               0 (x)
+#             21 CALL_FUNCTION           1  # 调用函数
+#             24 RETURN_VALUE        
+# ----------------------------------------------------------------------------
+# 其中:
+# 第一行为代码行号；
+# 第二行为偏移地址；
+# 第三行为字节码指令；
+# 第四行为指令参数；
+# 第五行为参数解释。
+
+

@@ -1,0 +1,201 @@
+
+#-----------------------------------------------------------------------------------------------------------------------
+# 生成器：
+
+
+# # mylist = [x*x for x in range(3)]
+# # print(mylist)
+# mygenerator = (x*x for x in range(3))
+# # print(mygenerator)
+# # print(next(mygenerator))
+# aList = [123, 'xyz', 'zara', 'abc', 123]
+# # aList.extend(mygenerator) # python 内置函数list,sum等认识迭代器并运行
+# aList += mygenerator
+# print('新列表: ', aList)
+
+
+# language_tuple = ('Spanish', 'Portuguese')
+# language_set = {'Chinese', 'Japanese'}
+# aList.extend(language_tuple)
+# aList.extend(language_set)
+# print('新列表: ', aList)
+
+
+# def h():
+#     print ('Wen Chuan')
+#     m = yield 5  # Drinking!
+#     print ('yd: ',m)
+#     print ('We are drinking!')
+#     d = yield 12
+#     print ('yd: ',d)
+#     print ('We are together!')
+# c = h()                                              # h()被调用后并没有执行，因为它有yield表达式，因此，我们通过next()语句让它执行。next()语句将恢复Generator执行，并直到下一个yield表达式处
+# print(c)
+
+# # print(next(c),'\n------------')                      # 相当于c.send(None)
+# # print(next(c),'\n------------')
+# # print(next(c),'\n------------')
+
+# print(c.send(None),'\n------------')
+# print(c.send('Drinking!'),'\n------------')          # (yield 5)表达式被赋予了'Drinking!'
+# print(c.send('Fighting!'),'\n------------')          # (yield 12)表达式被赋予了'Fighting!'
+
+# # c.send(None)
+# # c.send('Drinking!')                                  # (yield 5)表达式被赋予了'Fighting!'
+# # c.send('Fighting!')
+
+
+# def func():
+#     print ('forloop:')
+#     for i in range(10):
+#         print(f'--------i:   {i}')
+#         a = yield i
+#         print(f'========{a} {i}')
+# f = func()
+# print(f) # 此时生成器还没有运行
+# print(next(f))
+# print(next(f))
+# # print(next(f))
+
+
+# def fib(n):
+#     index = 0
+#     a = 0
+#     b = 1
+
+#     while index < n:
+#         yield (f'index : {index}',b)
+#         a,b = b, a+b
+#         index += 1
+#         print (f'--index : {index}')
+
+# fib = fib(4)
+# print(fib)
+# print(next(fib))
+# print(next(fib))
+# print(next(fib))
+# print(next(fib))
+# print(next(fib))
+
+
+# import sys
+# def Fibonacci(n):
+#     a, b, counter = 0, 1, 0
+#     while True:
+#         if(counter > n):
+#             return
+#         sm = yield counter,a
+#         a, b = b, a + b
+#         counter += 1
+#         print('yienum:',sm)
+# f = Fibonacci(15)
+# sdnum = -1
+# while True:
+#     try:
+#         # print(sdnum,next(f), end="\n")
+#         sendarms = [None,0,1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+#         sdnum += 1 
+#         print(sendarms[sdnum],' : ',f.send(sendarms[sdnum]), end="\n")
+#     except StopIteration:
+#         sys.exit()
+
+
+# import sys,time
+# def fib(n):
+#     a,b,index = 0,1,0
+#     while index < n:
+#         sleep = yield b
+#         print('等待%s秒' %sleep)
+#         time.sleep(sleep)
+#         a,b = b, a+b
+#         index += 1
+
+# fib = fib(20)
+# print(fib.send(None))   # 效果等同于print(next(fib))
+# while True:
+#     try:
+#         print(fib.send(2), end="\n")
+#     except StopIteration:
+#         sys.exit()
+
+
+# def fun_inner():
+#     i = 0
+#     while True:
+#         print('*************')
+#         i = yield 'inner: ',i
+#         print('-------------')
+# def fun_outer():
+#     a = 0
+#     b = 1
+#     print('=============')
+#     inner = fun_inner()
+#     inner.send(None)
+#     print('. . . . . . .')
+#     while True:
+#         a = inner.send(b)
+#         b = yield a
+
+# outer = fun_outer()
+# outer.send(None)
+# for i in range(5):
+#     print(outer.send(i))
+
+
+# def fun_inner():
+#     i = 0
+#     while True:
+#         i = yield i
+# def fun_outer():
+#     yield from fun_inner()
+
+# if __name__ == '__main__':
+#     outer = fun_outer()
+#     outer.send(None)
+#     for i in range(5):
+#         print(outer.send(i))
+
+
+# class myiter(object):
+#         def __init__(self,count):
+#             self.count=count
+#         def __iter__(self):
+#             return self
+#         def __next__(self):
+#             if(0>=self.count):
+#                 raise StopIteration()
+#             else:
+#                 self.count -= 1
+#                 return self.count
+                
+# for e in myiter(4):
+#     print(e)
+
+## #构建一个myiter(4)对象it
+## it = myiter(4)
+## #循环调用it的__next__函数
+## while 1:
+##         e=it.__next__()
+##         print(e)
+
+
+# class fy_generator(object):
+#         def __init__(self,count):
+#             self.count=count
+#         def __iter__(self):
+#             return self
+#         def __next__(self):
+#             c=self.count
+#             while c>0:
+#                 c=c-1
+#                 yield c
+
+
+# it = fy_generator(4)
+# e=it.__next__()
+# print(e)
+
+
+
+
+

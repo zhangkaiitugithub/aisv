@@ -135,3 +135,107 @@ print('-------------------------------------------------------------------')
 yaml.indent(mapping=2, sequence=(4), offset=(2))
 yamltostr = yaml.dump(data,sys.stdout)
 
+
+# import json,sys
+# # import ruamel.yaml as myyml
+# from ruamel.yaml import YAML,round_trip_load,round_trip_dump
+# yaml = YAML()                               ## typ='safe',pure=True 这两个影响dump的结果和排版
+# # yaml.default_flow_style = False           ## 这一个影响dump的结果和排版
+# # # yaml.default_style = "'"
+# # # yaml.preserve_quotes = True
+# # # yaml.encoding = None
+
+
+
+# my_dic = {
+#         'host1': '123',
+#         'host2': 456,
+#         'host3': {'asd': '123'},
+#         'host4': [12, '234', ['wer', 234]],
+#         'host5': {'asd': '123', 'eee': [12, '234', ['wer', 234]]}
+#         }
+ 
+
+# # loml = yaml.load(str(my_dic))
+# # print(loml)
+# yaml.indent(mapping = 2,sequence = 4,offset = 2)
+# yaml.dump(my_dic,sys.stdout)
+
+
+# js = json.loads(json.dumps(my_dic))
+# yaml.indent(mapping = 2,sequence = 8,offset = 6)
+# yaml.dump(js,sys.stdout)
+
+
+# # # rtl = round_trip_load(str(my_dic))
+# rtd = round_trip_dump(my_dic,default_flow_style=False, indent=2, block_seq_indent=2)   
+# print(rtd)
+
+
+# # # lod = myyml.load(str(my_dic), Loader=ruml.RoundTripLoader,preserve_quotes=None)
+# dmp = myyml.dump(my_dic, default_flow_style=False, allow_unicode=True, Dumper=myyml.RoundTripDumper, indent=2, block_seq_indent=2)    
+# print(dmp)
+
+
+'''------------------------------------------------------------------------------------------------------------------------------------'''
+
+# document = """
+# ---
+# block sequence:
+#   - BlockEntryToken
+# block mapping:
+#   ? KeyToken
+#   : ValueToken
+# flow sequence: [FlowEntryToken, FlowEntryToken]
+# flow mapping: {KeyToken: ValueToken}
+# anchors and tags:
+#    - &A !!int '5'
+#    - *A
+# ...
+# """
+# # scan()
+# import yaml
+# for token in yaml.scan(document):
+#     print(token)
+
+
+
+'''------------------------------------------------------------------------------------------------------------------------------------'''
+
+
+# import sys
+# import ruamel.yaml
+
+# yaml_str = """\
+# f: 3
+# e: 
+# - 11     # sequences can have nodes that are mappings
+# - 22
+# - x: A
+#   y: 30
+#   z: 
+#     m: 51  # this should be last
+#     l: 50
+#     k: 49  # this should be first 
+# d: 1
+# """
+
+# def recursive_sort_mappings(s):
+#     if isinstance(s, list):
+#         for elem in s:
+#             recursive_sort_mappings(elem)
+#         return 
+#     if not isinstance(s, dict):
+#         return
+#     for key in sorted(s, reverse=True):
+#         value = s.pop(key)
+#         recursive_sort_mappings(value)
+#         s.insert(0, key, value)
+
+
+# yaml = ruamel.yaml.YAML()
+# data = yaml.load(yaml_str)
+
+# recursive_sort_mappings(data)
+# yaml.dump(data, sys.stdout)
+

@@ -44,6 +44,15 @@ def a(x):
 # print(l)
 
 
+mygenerator = (x*x for x in range(3))
+# print(mygenerator)
+# print(next(mygenerator))
+aList = [123, 'xyz', 'zara', 'abc', 123]
+# aList.extend(mygenerator) # python 内置函数list,sum，+=等认识迭代器并运行
+aList += mygenerator        # +=相当于对列表使用 extend 方法
+print('新列表: ', aList)
+
+
 # 创建可变对象永远是分配新地址,append,pop并不是创建新的可变对象，是对已有的可变对象进行修改。
 
 a = [3,6,8,'a','MM']
@@ -57,12 +66,5 @@ print('d: ',id(d))
 print('a[:2]: ',id(a[:2]))
 
 
-mygenerator = (x*x for x in range(3))
-# print(mygenerator)
-# print(next(mygenerator))
-aList = [123, 'xyz', 'zara', 'abc', 123]
-# aList.extend(mygenerator) # python 内置函数list,sum等认识迭代器并运行
-aList += mygenerator
-print('新列表: ', aList)
 
 

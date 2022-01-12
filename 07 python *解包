@@ -1,0 +1,77 @@
+
+
+
+# a,b,c = 'abc'
+# print(a,b,c)
+
+# a,b,c = ('a', 'b', 'c')
+# print(a,b,c)
+
+# (a, b), (c, d) = (1, 2), (3, 4)
+# print(a,c)
+# print(a, b, c, d)
+
+# a,b,c = enumerate(['a', 'b', 'c'])
+# print(a)
+
+# a,b,c = {'a':1, 'b':2, 'c':3}.items()
+# print(a)
+
+# a,b,c = (x + 1 for x in range(3))
+# print(a,b,c)
+
+# # 自动解包支持一切可迭代对象，函数调用时，可以用 * 或者 ** 解包可迭代对象，作为参数传递
+# *a, = 1, 2
+# print(*a)
+
+# a = [1,2,3,4]
+# print(*a)
+
+# a, b, *c = 0, 1
+# print(*c)
+
+# a, *b, c = 0, 1
+# print(*b)
+
+# a,*b,c = (1,2,3,4)
+# print(a,b,c)
+
+# print(*['a','b'],*['c'])
+
+# print(*['a','b'],{**{'a':1,'b':2},**{'c':1,'d':2}})
+
+# print(*range(10))  
+
+# print(*zip(['a','b'],[1,2,3,4]))
+
+# print([x for x in zip(['a','b','c'],[1,2,3])])
+
+# print([args for name, *args in [('Bob', '1990-1-1', 60),('Mary', '1996-1-4', 50),('Nancy', '1993-3-1', 55)]])
+
+# name, *_, (*_, year) = ('Bob', 20, 50, (11, 20, 2000))  ## 当一些元素不用时，用_表示是更好的写法，可以让读代码的人知道这个元素是不要的
+# print(year)
+
+
+
+# s = 'ABCDEFGH'
+# while s:
+#    x, s = s[0], list(s[1:])
+#    print(x, s)
+
+s = 'ABCDEFGH'
+while s:
+   x, *s = s
+   print(x, s)
+
+# A ['B', 'C', 'D', 'E', 'F', 'G', 'H']
+# B ['C', 'D', 'E', 'F', 'G', 'H']
+# C ['D', 'E', 'F', 'G', 'H']
+# D ['E', 'F', 'G', 'H']
+# E ['F', 'G', 'H']
+# F ['G', 'H']
+# G ['H']
+# H []
+
+
+
+

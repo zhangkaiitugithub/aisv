@@ -1,18 +1,33 @@
 
+
+
+#-------------------------------------------------------------------------------------------------
 # 迭代器：
 
-iter_l = [1,2,3,4,5,6].__iter__()
+from collections.abc import Iterable,Iterator
 
-print('迭代器中元素的长度: ',iter_l.__length_hint__())
 
-print('根据索引值指定从哪里开始迭代: ',iter_l.__setstate__(2))
+# a = [1,2,3,4]
 
-print(list(iter_l))
-print('**',iter_l.__next__())
-print('***',iter_l.__next__())
+# print(issubclass(list,Iterable))
 
-#-----------------------------------------------------------------------------------------------------------------------
-# 生成器：
+# print(isinstance(a, Iterable))
+# print(isinstance(a, Iterator))
+
+# print(a.__iter__())
+
+# print(Iterable.__abstractmethods__)
+
+
+# print(iter(a))
+# print(isinstance(iter(a), Iterator))
+
+# b = iter(a)
+# print(dir(a))
+# print('-'*60)
+# print(dir(b))
+# print(iter(b) is b)
+
 
 
 # # mylist = [x*x for x in range(3)]
@@ -25,12 +40,232 @@ print('***',iter_l.__next__())
 # aList += mygenerator
 # print('新列表: ', aList)
 
-
 # language_tuple = ('Spanish', 'Portuguese')
 # language_set = {'Chinese', 'Japanese'}
 # aList.extend(language_tuple)
 # aList.extend(language_set)
 # print('新列表: ', aList)
+
+
+# print('-------------------------------------------------')
+
+# iter_l = [1,2,3,4,5,6].__iter__()
+
+# print('迭代器中元素的长度: ',iter_l.__length_hint__())
+
+# print('根据索引值指定从哪里开始迭代: ',iter_l.__setstate__(2))
+
+# print(list(iter_l))
+# print('**',iter_l.__next__())
+# print('***',iter_l.__next__())
+
+
+# print('-------------------------------------------------')
+# 遍历访问__getitem__方法，迭代访问 __next__方法, 
+
+
+# class abor():
+#     def __getitem__(self,idx):  # idx默认0到无穷的序号，for_i_in的i的序号 
+#         return idx
+# cd =abor()
+# print (isinstance(cd,Iterable))
+# print (isinstance(cd,Iterator))
+# for i in cd:
+#     print(i)
+
+# class aber():
+#     def __iter__():
+#         pass
+# ab =aber()
+# print (isinstance(ab,Iterable))
+# print (isinstance(ab,Iterator))
+
+# class aber():
+#     def __iter__():
+#         pass
+#     def __next__():
+#         pass
+# ab =aber()
+# print (isinstance(ab,Iterable))
+# print (isinstance(ab,Iterator))
+
+
+
+
+# print('-------------------------------------------------')
+
+# import itertools
+
+# print(*itertools.islice('adfasdfa',1,5,1))
+ 
+# er = itertools.count()
+# print(next(er))
+# print(next(er))
+
+# iterator = (itertools.count(start = 1, step = 2))                    # 使用时必须格外小心itertools.count(),因为很容易陷入无限循环
+# print(*list(next(iterator) for _ in range(5)))
+
+# print(*zip(itertools.count(start = 1,step = 4), ['a','b','c']))
+
+
+# print(*itertools.product('ABCD', 'xy'))
+
+
+# print([item for item in itertools.product("abc", repeat=2)])
+
+# print(*map(lambda x, y, z: (x, y, z), range(0, 3), range(3, 6), range(6, 9)))
+
+# print(list(map(pow, range(10), itertools.repeat(2)))) 
+
+# print(list(itertools.chain(['a', 'b', 'c'],{0, 0, 1})))
+
+
+# print([data for data in list(itertools.combinations([1,3,5,7,9,11,13,15], 3)) if sum(data) == 35])
+
+
+
+
+# print('-------------------------------------------------')
+
+# # 并行迭代
+# 情景假设：某个班级的数学成绩，英语成绩，语文成绩分别存在一个列表中，求每个学生的总分
+# 对于并行迭代可以使用zip函数
+# from random import randint
+# chinese = [randint(60, 100) for _ in range(40)]
+# math = [randint(60, 100) for _ in range(40)]
+# english = [randint(60, 100) for _ in range(40)]
+# total = []
+# for x, y, z in zip(chinese, math, english):
+#     total.append(x + y + z)
+# print(total)
+
+# # # 串行迭代:
+# # 情景假设：若干个班级的数学成绩存在多个列表中，求分数高于80分的人
+# # 对于串行迭代可以使用itertools.chain函数
+# from itertools import chain
+# class1 = [randint(60, 100) for _ in range(40)]
+# class2 = [randint(60, 100) for _ in range(40)]
+# class3 = [randint(60, 100) for _ in range(40)]
+# num = list(filter(lambda x: x >= 80, chain(class1, class2, class3)))
+# print(num)
+
+
+
+# print('-------------------------------------------------')
+
+# class myiter(object):
+#         def __init__(self,count):
+#             self.count=count
+#         def __iter__(self):
+#             return self
+#         def __next__(self):
+#             if(0>=self.count):
+#                 raise StopIteration()
+#             else:
+#                 self.count -= 1
+#                 return self.count
+                
+# for e in myiter(4):
+#     print(e)
+
+## #构建一个myiter(4)对象it
+## it = myiter(4)
+## #循环调用it的__next__函数
+## while 1:
+##         e=it.__next__()
+##         print(e)
+
+
+# class fy_generator(object):
+#         def __init__(self,count):
+#             self.count=count
+#         def __iter__(self):
+#             return self
+#         def __next__(self):
+#             c=self.count
+#             while c>0:
+#                 c=c-1
+#                 yield c
+
+
+# it = fy_generator(4)
+# e=it.__next__()
+# print(e)
+
+
+
+# 0. 只有__getitem__方法，不是迭代器，但能执行for in 语句
+# 1. 用iter（body）的时候首先找到 __iter__方法，由于我们返回的不是的个iterator所以报错
+# 2. __iter__方法找不到，它会继续找 是否有模拟返回迭代器呢
+# 3. 如果你把__iter__注销掉,它会找到__getitem__,自动创建__next__方法，所以依然生成迭代器
+
+# class Person:
+#     def __init__(self, persion_list):
+#         self.persion_list = persion_list
+#     # def __iter__(self):
+#     #     return  1   # self
+#     def __getitem__(self, item):
+#         return self.persion_list[item]
+
+# body = Person(["Xiuwu", "Adny", "Maggie"])
+# body=iter(body)
+# print(next(body))
+
+# # 只要定义__next__方法，就能执行next(), 但不是迭代器
+# class Person:
+#     def __init__(self, persion_list):
+#         self.persion_list = persion_list
+#         self.num = 0
+#     def __next__(self):
+#         self.num += 1
+#         return self.persion_list[self.num]
+
+# ps = Person(['abc','def','hj','ik','you'])
+
+# print(next(ps))
+# print(next(ps))
+
+
+
+# 如果继承了 Iterator类 ，iter 方法 可以删除.如下：
+
+# class Person:
+#     def __init__(self, persion_list):
+#         self.persion_list = persion_list
+#     def __iter__(self):
+#         return  Myiterator(self.persion_list)   #调用我们重写的迭代器方法
+#     #def __iter__(self):
+#      #   return  1
+#     #def __getitem__(self, item):   #把这个方法用我们自己写的迭代器方法替代.
+#      #   return self.persion_list[item]  
+# class Myiterator(Iterator):         #继承Iterator 就不需要写__iter__,直接调用父类的.
+#     def __init__(self,persion_list):
+#         self.persion_list=persion_list  
+#         self.index=0      #由于iterator 是没有index 的，这个要我们手动添加
+#     def __next__(self):   #这个就是迭代器的取值逻辑 
+#         while True:      #当为false 的时候结束循环
+#             try:
+#                 word = self.persion_list[self.index]      #取值动作 
+#             except IndexError:   #index 当变得超出persion_list 会报错的 ，先抓住这个异常
+#                 raise StopIteration     #迭代到没有值要用这异常，咱们把异常做个转化 
+#             self.index = self.index + 1   #递增我们的index
+#             return word   #返回取到的值
+
+
+# body = Person(["Xiuwu", "Adny", "Maggie"])
+
+# a=iter(body)    #调用我们自定义的迭代器方法 
+# print(a)        # <__main__.Myiterator object at 0x00000000022399B0>  
+#                 #从打印结果看说明我们自定义的迭代器方法生效了，已经返回一个迭代器
+
+# print(next(a))  #Xiuwu  
+                       #从打印结果我们判断出 __next__生效，如果想循环输出，自己试试for 循环.
+
+
+
+
+'''------------------------------------------------------------------------------------------------'''
+# 生成器:
 
 
 # def h():
@@ -168,62 +403,6 @@ print('***',iter_l.__next__())
 #         print(outer.send(i))
 
 
-def yie():
-    for i in range(10):
-        yield i
-gen01 =yie()
-
-def yif():
-    yield from range(10)
-gen02 = yif()
-
-while True:
-    print('gen01: ' , next(gen01))
-    print('gen02: ' , next(gen02))
-    print('----------')
-
-
-# class myiter(object):
-#         def __init__(self,count):
-#             self.count=count
-#         def __iter__(self):
-#             return self
-#         def __next__(self):
-#             if(0>=self.count):
-#                 raise StopIteration()
-#             else:
-#                 self.count -= 1
-#                 return self.count
-                
-# for e in myiter(4):
-#     print(e)
-
-## #构建一个myiter(4)对象it
-## it = myiter(4)
-## #循环调用it的__next__函数
-## while 1:
-##         e=it.__next__()
-##         print(e)
-
-
-# class fy_generator(object):
-#         def __init__(self,count):
-#             self.count=count
-#         def __iter__(self):
-#             return self
-#         def __next__(self):
-#             c=self.count
-#             while c>0:
-#                 c=c-1
-#                 yield c
-
-
-# it = fy_generator(4)
-# e=it.__next__()
-# print(e)
-
-
-
 # for i in range(1,10):
 #     for j in range(1,i+1):
 #         if j<i:
@@ -240,6 +419,36 @@ while True:
 # p = list(chain("1234", "AB", [1, 2, 3, 4, 5]))
 # print(p)
 
+
+# ---------------------------------------------------------------------------------------------------------------------------------
+
+
+#利用yield from语句向生成器（协程）传送数据
+#传统的生产者-消费者模型是一个线程写消息，一个线程取消息，通过锁机制控制队列和等待，但一不小心就可能死锁。
+#如果改用协程，生产者生产消息后，直接通过yield跳转到消费者开始执行，待消费者执行完毕后，换回生产者继续生产，效率极高：
+# import time
+# def  consumer_work(len):
+#     # 读取send传进的数据，并模拟进行处理数据
+#     print("writer:")
+#     w=''
+#     while True:
+#         w = yield w    # w接收send传进的数据,同时也是返回的数据
+#         print('[CONSUMER] Consuming %s...>> ', w)
+#         w*=len #将返回的数据乘以100
+#         time.sleep(1) 
+# def consumer(coro):
+#     yield from coro#将数据传递到协程(生成器)对象中
+  
+# def produce(c):
+#     c.send(None)# "prime" the coroutine
+#     for i in range(5):
+#         print('[Produce] Producing %s----', i)
+#         w=c.send(i)#发送完成后进入协程中执行
+#         print('[Produce] receive %s----', w)
+#     c.close()
+     
+# c1=consumer_work(100)
+# produce(consumer(c1))
 
 
 # ---------------------------------------------------------------------------------------------------------------------------------
@@ -287,181 +496,25 @@ while True:
 
 # 使用yield from来完成上面的同样的功能：
 
-def my_generator():
-    for i in range(5):
-        if i==2:
-            return '我被迫中断了'
-        else:
-            yield i
- 
-def wrap_my_generator(wtor):  # 定义一个包装“生成器”的生成器，它的本质还是生成器
-    result=yield from wtor    # 自动触发StopIteration异常，并且将return的返回值赋值给yield from表达式的结果，即result
-    print(result)
- 
-def main(mwtor):
-    for j in mwtor:
-        print(j)
-
-mg=my_generator()
-wra_my_g=wrap_my_generator(mg)
-main(wra_my_g)  #调用
-
-
-# for i in range(1,10):
-#     for j in range(1,i+1):
-#         if j<i:
-#             print(i,'*',j,'=',i*j,end='  ')
-#         else:
-#             print(i,'*',j,'=',i*j)
-
-
-# def chain(*args):
-#     for i in args:
-#         # for m in i:
-#         #     yield m
-#         yield from i
-# p = list(chain("1234", "AB", [1, 2, 3, 4, 5]))
-# print(p)
-
-
-#利用yield from语句向生成器（协程）传送数据
-#传统的生产者-消费者模型是一个线程写消息，一个线程取消息，通过锁机制控制队列和等待，但一不小心就可能死锁。
-#如果改用协程，生产者生产消息后，直接通过yield跳转到消费者开始执行，待消费者执行完毕后，换回生产者继续生产，效率极高：
-# import time
-# def  consumer_work(len):
-#     # 读取send传进的数据，并模拟进行处理数据
-#     print("writer:")
-#     w=''
-#     while True:
-#         w = yield w    # w接收send传进的数据,同时也是返回的数据
-#         print('[CONSUMER] Consuming %s...>> ', w)
-#         w*=len #将返回的数据乘以100
-#         time.sleep(1) 
-# def consumer(coro):
-#     yield from coro#将数据传递到协程(生成器)对象中
-  
-# def produce(c):
-#     c.send(None)# "prime" the coroutine
+# def my_generator():
 #     for i in range(5):
-#         print('[Produce] Producing %s----', i)
-#         w=c.send(i)#发送完成后进入协程中执行
-#         print('[Produce] receive %s----', w)
-#     c.close()
-     
-# c1=consumer_work(100)
-# produce(consumer(c1))
-
-
-
-# ---------------------------------------------------------------------------------------------------------------------------------
-
-from collections.abc import Iterable,Iterator
-
-a = [1,2,3,4]
-
-# print(issubclass(list,Iterable))
-
-# print(isinstance(a, Iterable))
-# print(isinstance(a, Iterator))
-
-# print(a.__iter__())
-
-# print(Iterable.__abstractmethods__)
-
-
-# print(iter(a))
-# print(isinstance(iter(a), Iterator))
-
-# b = iter(a)
-# print(dir(a))
-# print('-'*60)
-# print(dir(b))
-# print(iter(b) is b)
-
-
-# class aber():
-#     def __iter__():
-#         pass
-# ab =aber()
-# print (isinstance(ab,Iterable))
-# print (isinstance(ab,Iterator))
-# print('-------------------------------------------------')
-# 遍历访问__getitem__方法，迭代访问 __iter__方法
-
-# class aber():
-#     def __iter__():
-#         pass
-#     def __next__():
-#         pass
-# ab =aber()
-# print (isinstance(ab,Iterable))
-# print (isinstance(ab,Iterator))
-# print('-------------------------------------------------')
-# class abor():
-#     def __getitem__(self,idx):  # idx默认0到无穷的序号，for_i_in的i的序号 
-#         return idx
-# cd =abor()
-# print (isinstance(cd,Iterable))
-# print (isinstance(cd,Iterator))
-# for i in cd:
-#     print(i)
-
-
-
-# print(*map(lambda x, y, z: (x, y, z), range(0, 3), range(3, 6), range(6, 9)))
-
-
-# print('-------------------------------------------------')
-
-import itertools
-
-# print(*itertools.islice('adfasdfa',1,5,1))
+#         if i==2:
+#             return '我被迫中断了'
+#         else:
+#             yield i
  
-# er = itertools.count()
-# print(next(er))
-# print(next(er))
+# def wrap_my_generator(wtor):  # 定义一个包装“生成器”的生成器，它的本质还是生成器
+#     result=yield from wtor    # 自动触发StopIteration异常，并且将return的返回值赋值给yield from表达式的结果，即result
+#     print(result)
+ 
+# def main(mwtor):
+#     for j in mwtor:
+#         print(j)
 
-# iterator = (itertools.count(start = 1, step = 2))                    # 使用时必须格外小心itertools.count(),因为很容易陷入无限循环
-# print(*list(next(iterator) for _ in range(5)))
-
-# print(*zip(itertools.count(start = 1,step = 4), ['a','b','c']))
-
-
-# print(*itertools.product('ABCD', 'xy'))
-
-
-# print([item for item in itertools.product("abc", repeat=2)])
-
-# print(list(map(pow, range(10), itertools.repeat(2)))) 
-
-# print(list(itertools.chain(['a', 'b', 'c'],{0, 0, 1})))
-
-
-# print([data for data in list(itertools.combinations([1,3,5,7,9,11,13,15], 3)) if sum(data) == 35])
+# mg=my_generator()
+# wra_my_g=wrap_my_generator(mg)
+# main(wra_my_g)  #调用
 
 
 
 
-# print('-------------------------------------------------')
-
-# # 并行迭代
-# 情景假设：某个班级的数学成绩，英语成绩，语文成绩分别存在一个列表中，求每个学生的总分
-# 对于并行迭代可以使用zip函数
-# from random import randint
-# chinese = [randint(60, 100) for _ in range(40)]
-# math = [randint(60, 100) for _ in range(40)]
-# english = [randint(60, 100) for _ in range(40)]
-# total = []
-# for x, y, z in zip(chinese, math, english):
-#     total.append(x + y + z)
-# print(total)
-
-# # # 串行迭代:
-# # 情景假设：若干个班级的数学成绩存在多个列表中，求分数高于80分的人
-# # 对于串行迭代可以使用itertools.chain函数
-# from itertools import chain
-# class1 = [randint(60, 100) for _ in range(40)]
-# class2 = [randint(60, 100) for _ in range(40)]
-# class3 = [randint(60, 100) for _ in range(40)]
-# num = list(filter(lambda x: x >= 80, chain(class1, class2, class3)))
-# print(num)

@@ -60,39 +60,6 @@ from collections.abc import Iterable,Iterator
 # print('***',iter_l.__next__())
 
 
-# print('-------------------------------------------------')
-# 遍历访问__getitem__方法，迭代访问 __next__方法, 
-
-
-# class abor():
-#     def __getitem__(self,idx):  # idx默认0到无穷的序号，for_i_in的i的序号 
-#         return idx
-# cd =abor()
-# print (isinstance(cd,Iterable))
-# print (isinstance(cd,Iterator))
-# for i in cd:
-#     print(i)
-
-# class aber():
-#     def __iter__():
-#         pass
-# ab =aber()
-# print (isinstance(ab,Iterable))
-# print (isinstance(ab,Iterator))
-
-# class aber():
-#     def __iter__():
-#         pass
-#     def __next__():
-#         pass
-# ab =aber()
-# print (isinstance(ab,Iterable))
-# print (isinstance(ab,Iterator))
-
-
-
-
-# print('-------------------------------------------------')
 
 # import itertools
 
@@ -123,8 +90,6 @@ from collections.abc import Iterable,Iterator
 # print([data for data in list(itertools.combinations([1,3,5,7,9,11,13,15], 3)) if sum(data) == 35])
 
 
-
-
 # print('-------------------------------------------------')
 
 # # 并行迭代
@@ -150,66 +115,30 @@ from collections.abc import Iterable,Iterator
 # print(num)
 
 
-
 # print('-------------------------------------------------')
-
-# class myiter(object):
-#         def __init__(self,count):
-#             self.count=count
-#         def __iter__(self):
-#             return self
-#         def __next__(self):
-#             if(0>=self.count):
-#                 raise StopIteration()
-#             else:
-#                 self.count -= 1
-#                 return self.count
-                
-# for e in myiter(4):
-#     print(e)
-
-## #构建一个myiter(4)对象it
-## it = myiter(4)
-## #循环调用it的__next__函数
-## while 1:
-##         e=it.__next__()
-##         print(e)
-
-
-# class fy_generator(object):
-#         def __init__(self,count):
-#             self.count=count
-#         def __iter__(self):
-#             return self
-#         def __next__(self):
-#             c=self.count
-#             while c>0:
-#                 c=c-1
-#                 yield c
-
-
-# it = fy_generator(4)
-# e=it.__next__()
-# print(e)
-
 
 
 # 0. 只有__getitem__方法，不是迭代器，但能执行for in 语句
-# 1. 用iter（body）的时候首先找到 __iter__方法，由于我们返回的不是的个iterator所以报错
-# 2. __iter__方法找不到，它会继续找 是否有模拟返回迭代器呢
-# 3. 如果你把__iter__注销掉,它会找到__getitem__,自动创建__next__方法，所以依然生成迭代器
 
-# class Person:
-#     def __init__(self, persion_list):
-#         self.persion_list = persion_list
-#     # def __iter__(self):
-#     #     return  1   # self
-#     def __getitem__(self, item):
-#         return self.persion_list[item]
+# class abor():
+#     def __getitem__(self,idx):  # idx默认0到无穷的序号，for_i_in的i的序号 
+#         return idx
+# cd =abor()
+# print (isinstance(cd,Iterable))
+# print (isinstance(cd,Iterator))
+# for i in cd:
+#     print(i)
 
-# body = Person(["Xiuwu", "Adny", "Maggie"])
-# body=iter(body)
-# print(next(body))
+
+# 1. 只有__iter__方法，是可迭代对象，但不是迭代器
+
+# class aber():
+#     def __iter__():
+#         pass
+# ab =aber()
+# print (isinstance(ab,Iterable))
+# print (isinstance(ab,Iterator))
+
 
 # # 只要定义__next__方法，就能执行next(), 但不是迭代器
 # class Person:
@@ -225,6 +154,35 @@ from collections.abc import Iterable,Iterator
 # print(next(ps))
 # print(next(ps))
 
+
+# class aber():
+#     def __iter__(self):
+#         pass
+#     def __next__(self):
+#         pass
+# ab =aber()
+# print (isinstance(ab,Iterable))
+# print (isinstance(ab,Iterator))
+
+# for i in ab:
+#     print (i)
+
+
+# 1. 用iter（body）的时候首先找到 __iter__方法，由于我们返回的不是的个iterator所以报错
+# 2. __iter__方法找不到，它会继续找 是否有模拟返回迭代器呢
+# 3. 如果你把__iter__注销掉,它会找到__getitem__,自动创建__next__方法，所以依然生成迭代器
+
+# class Person:
+#     def __init__(self, persion_list):
+#         self.persion_list = persion_list
+#     # def __iter__(self):
+#     #     return  1   # self
+#     def __getitem__(self, item):
+#         return self.persion_list[item]
+
+# body = Person(["Xiuwu", "Adny", "Maggie"])
+# body=iter(body)
+# print(next(body))
 
 
 # 如果继承了 Iterator类 ，iter 方法 可以删除.如下：

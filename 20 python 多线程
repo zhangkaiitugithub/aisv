@@ -1,0 +1,932 @@
+
+
+'''-------------------------------------------- threading -----------------------------------------------'''
+
+
+## 多线程:
+
+# import threading
+# def func(n):
+#     while n > 0:
+#         print("当前线程数:", threading.activeCount())
+#         n -= 1
+# for x in range(5):
+#     t = threading.Thread(target=func, args=(5,))
+#     t.start()
+
+# print("主线程：", threading.current_thread().name)
+
+
+# import threading
+# def test():
+#     x = 0
+#     for i in range(5):
+#         x = i + x
+#         print(x)
+#     print(str(threading.enumerate())) # 打印出当前进程中的所有线程
+
+# if __name__ == '__main__':
+#     thread = threading.Thread(target=test)
+#     thread.start()
+#     print('nihao')
+
+
+# import threading
+# def test():
+#     x = 0
+#     for i in range(5):
+#         x = i + x
+#         print(x)
+#     print(str(threading.enumerate()))  # 打印出当前进程中的所有线程
+# if __name__ == '__main__':
+#     thread = threading.Thread(target=test)
+#     thread.setDaemon(True)
+#     thread.start()
+#     print('nihao')
+
+
+# import threading
+# def test1():
+#     while True:
+#         print('nihao')
+# def test2():
+#     while True:
+#         print(str(threading.enumerate()))
+# if __name__ == '__main__':
+#     thread1 = threading.Thread(target=test1)
+#     thread2 = threading.Thread(target=test2)
+#     thread1.setDaemon(True)
+#     thread1.start()
+#     thread2.start()
+
+
+import threading
+import time
+
+def run():
+    time.sleep(2)
+    print(f'当前线程的名字是： {threading.current_thread().name}\n')
+    time.sleep(2)
+
+if __name__ == '__main__':
+    start_time = time.time()
+    print(f'这是主线程：{threading.current_thread().name}\n')
+    thread_list = []
+    for i in range(5):
+        t = threading.Thread(target=run)
+        thread_list.append(t)
+
+    for t in thread_list:
+        t.setDaemon(True)
+        print(f'{t.getName()}:开始\n')  # 获取子线程名字
+        t.start()
+    print('-----------------------------')
+    for t in thread_list:
+        print(f'{t.getName()}:阻塞\n')  # 获取子线程名字
+        t.join()
+    print('=============================')        
+    for t in thread_list:
+        print(t.is_alive())  # 判断线程是否在运行
+
+    print(f'主线程结束！{threading.current_thread().name}\n')
+    print(f'一共用时：{time.time()-start_time}\n')
+
+    # print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~') 
+    # #### thread_list[2].run()  # 线程被cpu调度后自动执行线程对象的run方法
+    # thread_list[2].setName('第一个线程')  # 设置线程名字
+    # print(thread_list[2].getName())
+    # thread_list[2].start()
+    # print(thread_list[2].is_alive())  # 判断线程是否在运行
+    # print(thread_list[2].getName())
+
+# setDaemon(True)：将线程声明为守护线程，必须在start()方法调用之前设置。这个方法基本和join是相反的。
+# 当我们在程序运行中，执行一个主线程，如果主线程又创建一个子线程，主线程和子线程就分兵两路，分别运行，那么当主线程完成
+# 想退出时，会检验子线程是否完成。如果子线程未完成，则主线程会等待子线程完成后再退出。但是有时候我们需要的是只要主线程
+# 完成了，不管子线程是否完成，都要和主线程一起退出，这时就可以用setDaemon()方法
+
+
+'''-------------------------------------------- multiprocessing -----------------------------------------'''
+
+''' # 进程池:
+''' # 注  意： 在Windows上要想使用进程模块，就必须把有关进程的代码写在当前.py文件的if __name__ == ‘__main__’ :语句的下面，才能正常使用Windows下的进程模块。Unix/Linux下则不需要
+
+# import multiprocessing as mp
+# import  time ,os ,random
+
+# def worker(msg):
+#     t_start = time.time() #获取当前系统时间，长整型，常用来测试程序执行时间
+#     print("%s 开始执行,进程名为%d" % (f'进程：{mp.current_process().name}',os.getpid()))
+#     time.sleep(5)
+#     t_stop = time.time()
+#     print(f'参数：{msg}',"执行完毕，耗时%0.2f" % (t_stop-t_start))
+#     return f'msg:{msg}'
+# results = []
+# if __name__ == '__main__':
+
+#     p_start = time.time() #获取当前系统时间，长整型，常用来测试程序执行时间
+#     pool= mp.Pool(3)# 定义一个进程池，最大进程数3，大小可以自己设置，也可写成processes=3
+#     for i in range(0,10):
+#         # Pool().apply_async(要调用的目标,(传递给目标的参数元祖,))
+#         # 每次循环将会用空闲出来的子进程去调用目标
+#         print('pool apply_async start')
+#         result = pool.apply_async(worker,(i,))
+#         print(f'{pool} apply_async taken')
+#         print('foreach:',results.append(result))
+
+#     print("----start----")
+#     pool.close()  # 关闭进程池，关闭后po不再接收新的请求
+#     print(f'{pool} has closed')
+#     pool.join()  # 等待po中所有子进程执行完成，必须放在close语句之后
+#     print(f'{pool} has joined')
+#     print([res.get() for res in results])
+#     print("-----end-----")
+#     print(f'耗时:{p_start-time.time()}')
+
+#-------------------------------------------------------------------
+
+# import multiprocessing as mp
+# import os, time
+# def cube(x):
+#     print(mp.current_process().name,f'参数:{x}')
+#     print('等待开始......')
+#     time.sleep(3)
+#     print('等待结束。。。。。')
+#     return x**3
+
+# if __name__ == "__main__":
+#     t1 = time.time()
+#     pool    = mp.Pool(4)  # processes=4
+#     results = [pool.apply_async(cube, args=(x,)) for x in range(1,10)]
+#     print("----start----")
+#     pool.close()  # 关闭进程池，关闭后po不再接收新的请求
+#     print(f'{pool} has closed')
+#     pool.join()  # 等待po中所有子进程执行完成，必须放在close语句之后
+#     print(f'{pool} has joined')
+#     print(res.get() for res in results)
+#     print("-----end-----")
+#     t2 = time.time()
+#     print(f'用时：{t2-t1}')
+
+#-------------------------------------------------------------------
+
+# import os,time
+# from multiprocessing import Pool
+
+# def run(fn):
+#     # fn: 函数参数是数据列表的一个元素
+#     print(f'进程id: {os.getpid()}')
+#     print('等待开始......')    
+#     time.sleep(3)
+#     print('等待结束。。。。。')
+#     # print(fn * fn)
+#     return f'返回值：{fn * fn * fn}'
+
+# results = []
+# if __name__ == "__main__":
+#     testFL = [1, 2, 3, 4, 5, 6,7,8,9,10]
+#     print('shunxu:')  # 顺序执行(也就是串行执行，单进程)
+#     s = time.time()
+#     for fn in testFL:
+#         run(fn)
+#     t0 = time.time()
+#     print("顺序执行时间：", int(t0 - s))
+
+#     print('concurrent:')  # 创建多个进程，并行执行
+#     t1 = time.time()
+#     pool = Pool(3)  # 创建拥有3个进程数量的进程池
+#     # testFL:要处理的数据列表，run：处理testFL列表中数据的函数
+#     for fn in testFL:
+#         result = pool.apply_async(run, (fn,))
+#         results.append(result)
+
+#     print("----start----")
+#     pool.close()  # 关闭进程池，不再接受新的进程
+#     print(f'{pool} has closed')    
+#     pool.join()  # 主进程阻塞等待子进程的退出
+#     print(f'{pool} has joined')
+#     print([res.get() for res in results])
+#     print("-----end-----")
+#     t2 = time.time()
+#     print("并行执行时间：", int(t2 - t1))
+
+
+## 线程池：
+## 这里的多线程也是受到它受到全局解释器锁（GIL）的限制，并且一次只有一个线程可以执行附加到CPU的操作。
+
+# from multiprocessing.dummy import Pool as mpdpool
+# import os, time, random, threading
+
+# def fun(msg):
+#     print(f'参数: {msg}', threading.current_thread().name)
+#     time.sleep(1)
+#     print('********')
+#     return 'fun_return %s' % msg
+ 
+ 
+# # apply
+# print('\n------apply-------')
+# pool = mpdpool(processes=4)
+# results =[]
+# for i in range(5):
+#     msg = 'msg: %d' % i
+#     result = pool.apply(fun, (msg, ))
+#     results.append(result)
+ 
+# print('apply: 堵塞')
+# print(results)
+
+
+# # apply_async
+# print('\n------apply_async-------')
+# async_pool = mpdpool(processes=4)
+# results =[]
+# for i in range(10):
+#     msg = 'msg: %d' % i
+#     result = async_pool.apply_async(fun, (msg, ))
+#     print(f'apply_async result: {result}')
+#     results.append(result)
+
+# print('apply_async: 不堵塞')
+# async_pool.close()
+# async_pool.join()
+# for i in results:
+#     i.wait()  # 等待线程函数执行完毕
+# print('get the func return:') 
+# for i in results:
+#     if i.ready():  # 线程函数是否已经启动了
+#         if i.successful():  # 线程函数是否执行成功
+#             print(i.get())  # 线程函数返回值
+
+ 
+# # map
+# print('\n------map-------')
+# arg = [3, 5, 11, 19, 12,7,6,8,12,21,34,13]
+# t1 = time.time()
+# pool = mpdpool(processes=3)
+# return_list = pool.map(fun, arg)  ## 注意：虽然第二个参数是一个迭代器，但在实际使用中，必须在整个队列都就绪后，程序才会运行子进程
+# print('map: 堵塞')
+# pool.close()
+# print(f'{pool} has closed')
+# pool.join()
+# print(f'{pool} has joined')
+# print(return_list)
+# print("-----end-----")
+# t2 = time.time()
+# print(f'用时：{t2-t1}')
+
+
+# # map_async
+# print('\n------map_async-------')
+# arg = [3, 5, 11, 19, 12,7,6,8,12,21,34,13]
+# t1 = time.time()
+# async_pool = mpdpool(processes=4)
+# result = async_pool.map_async(fun, arg)
+# print(f'函数启动{result.ready()}')  # 线程函数是否已经启动了
+# print('map_async: 不堵塞')
+# result.wait()  # 等待所有线程函数执行完毕
+# print('after wait')
+# if result.ready():  # 线程函数是否已经启动了
+#     if result.successful():  # 线程函数是否执行成功
+#         print(result.get())  # 线程函数返回值
+# print("-----end-----")
+# t2 = time.time()
+# print(f'用时：{t2-t1}')
+
+
+
+'''-------------------------------------------- concurrent -----------------------------------------'''
+# Python 中有多线程threading 和多进程multiprocessing 实现并发，
+# 但是这两个东西开销很大，一是开启线程/进程的开销，二是主程序和子程序之间的通信需要 序列化和反序列化，
+# 所以有些时候需要使用更加高级的用法，然而这些高级用法十分复杂，而且 threading 和 multiprocessing 用法还不一样。
+
+# 于是诞生了 concurrent.future
+# 1. 它可以解决大部分的复杂问题　　　　　　【但并不是全部，如果尝试后效果不好，还需要使用他们的高级用法】
+# 2. 而且统一了线程和进程的用法
+# concurrent.future 提供了 ThreadPoolExecutor 和 ProcessPoolExecutor 两个类，其实是对 线程池和进程池 的进一步抽象，而且具有以下特点：
+# 3. 主程序可以获取子程序的状态和返回值
+# 4. 子程序完成时，主程序能立刻知道
+
+
+# 线程池：
+
+ 
+# from concurrent.futures import ThreadPoolExecutor
+# import time
+
+# def spider(page):
+#     time.sleep(page)
+#     print(f"crawl task {page} finished")
+#     return page
+
+# with ThreadPoolExecutor(max_workers=5) as t:  # 创建一个最大容纳量为5的线程池
+#     task1 = t.submit(spider, 1)
+#     task2 = t.submit(spider, 2)  # 通过submit提交执行的函数到线程池中
+#     task3 = t.submit(spider, 3)  # 注意submit()不是阻塞的，而是立即返回的
+
+#     # 通过done来判断线程是否完成
+#     print(f"task1: {task1.done()}")  # 通过使用done()方法判断该任务是否结束，提交任务后立即判断任务状态，显示都是未完成，在显示2.5秒后
+#     print(f"task2: {task2.done()}")
+#     print(f"task3: {task3.done()}")
+
+#     time.sleep(2.5)
+
+#     print(f"task1: {task1.done()}")
+#     print(f"task2: {task2.done()}")
+#     print(f"task3: {task3.done()}")
+#     # 通过result()来获取返回值
+#     print(task1.result())
+
+
+# ------------
+
+# # wait(fs, timeout=None, return_when=All_COMPLETED)
+# # fs 表示需要执行的序列
+# # timeout 等待的最大时间，如果超过这个时间
+# # return_when 表示wait返回结果的结果，默认为ALLP_COMPLETED全部执行完成后再返回结果
+
+# from concurrent.futures import ThreadPoolExecutor, wait, FIRST_COMPLETED, ALL_COMPLETED
+
+# def spider2(page):
+#     time.sleep(page)
+#     print(f"crawl task {page} finished")
+#     return page
+
+# with ThreadPoolExecutor(max_workers=5) as t:
+#     all_task = [t.submit(spider2, page) for page in range(1, 5)]
+#     # 返回条件 FIRST_COMPLETED 当第一个任务完成的时候就停止等待，继续主线程任务，所以紧接着打印了“结束”
+#     wait(all_task, return_when=FIRST_COMPLETED)
+#     print("结束")
+#     # 设置延时（等待）时间2.5秒
+#     print(wait(all_task, timeout=2.5))
+#     # 所以最后只有task4还在运行
+
+
+# ------------
+
+# as_completed
+# 虽然使用return_when=FIRST_COMPLETED判断任务是否结束，但是不能在主线程中一直判断
+# 最好的办法是当某个任务结束来，就给主线程返回结果，而不是一直判断每个任务是否结束
+# as_completed就是当子线程中的任务执行完成后，直接用result()获取返回结果
+
+# from concurrent.futures import ThreadPoolExecutor,as_completed
+# import time
+
+# def spider3(page):
+#     time.sleep(page)
+#     print(f"crawl task {page} finished")
+#     return page
+
+# def main():
+#     with ThreadPoolExecutor(max_workers=5) as t:
+#         obj_list = []
+#         for page in range(1, 5):
+#             obj = t.submit(spider3, page)
+#             obj_list.append(obj)
+#         for future in as_completed(obj_list):
+#             data = future.result()
+#             print(f"main:{data}")
+
+# main()  ## 使用过后发现，这个多线程比上面的测试耗时都多一些
+
+# as_completed()方法是一个生成器，在没有任务完成的时候就会一直阻塞，除非设置了timeout
+# 当某个任务完成的时候，会yield这个任务，就能执行for循环下面的语句，然后继续阻塞程序，直到所有任务结束
+# 同时，先完成的任务会先返回给主线程
+
+# ------------
+# wait()与as_completed():
+# wait方法可以让主线程阻塞，直到满足设定的要求。有三种条件ALL_COMPLETED, FIRST_COMPLETED，FIRST_EXCEPTION
+# as_completed同样也与主进程阻塞有关(即需要所有future对象都运行结束才结束阻塞）
+
+# from concurrent.futures import ThreadPoolExecutor,wait,as_completed,FIRST_COMPLETED,ALL_COMPLETED
+# import time
+
+# def test(g):
+#     time.sleep(2)
+#     print(f'{g}_crawling has done\n')
+#     return f'result: {g}'
+
+# if __name__ == '__main__':
+#     record = []                                      # 创建列表放置后续产生的future对象
+#     t = time.time()
+#     with ThreadPoolExecutor(max_workers=10) as executor:
+#     # 线程池的使用方式，由于是with方式，因此不需要自己关闭。同时线程池会自动join()
+#     # 当然也可以使用executor = ThreadPoolExecutor(max_workers=4),
+#     # 但需要在使用结束后使用shutdown方法，才能阻塞主线程。
+#         for l in list(range(10)):                    # 创建一个参数列表用于后续传入函数
+#             future = executor.submit(test,l)
+#             # 传入要执行的函数及参数，返回的是一个future对象，注意这里不要调用，此处调用会使线程阻塞。
+#             record.append(future)                    # 将对象添加到record列表中
+#         wait(record, return_when=FIRST_COMPLETED)    # 第一次完成后即不再阻塞
+#         # wait(record, return_when=ALL_COMPLETED)      # 全部完成后即不再阻塞
+#         print('第一次运行结束')                       # 测试第一次完成后是否不再阻塞
+#         for future in as_completed(record):          # 其实就相当于shutdown操作
+#             print(future.result())                   # 并不按顺序提取，谁先完成就先打印，此处看不出来
+#     print('程序结束')                                 # 测试主线程是否阻塞
+#     print(time.time()-t)
+
+# ------------
+
+# map
+# map(fn, *iterables, timeout=None)
+# fn 需要线程执行的函数
+# iterables 接收一个可迭代对象
+# 和wait()的timeout一样，用于延时，但是map是返回线程执行的结果，如果timeout小于线程执行时间会抛出TimeoutError
+
+# from concurrent.futures import ThreadPoolExecutor,as_completed
+# import time
+
+# def spider4(page):
+#     time.sleep(page)
+#     print(f"crawl task {page} finished")
+#     return page
+
+# def main2():
+#     executor = ThreadPoolExecutor(max_workers=4)
+#     i = 1
+#     # 列表中的每一个元素都执行来spider4()函数，并分配各线程池   task1:2
+#     for result in executor.map(spider4, [2, 3, 1, 4]):
+#         print(f"task{i}:{result}")
+#         i += 1
+
+# main2()
+
+# 使用map方法，无需提前使用submit方法，与Python高阶函数map含义相同，都是将序列中的每个元素都执行同一个行数
+# 与as_completed()方法的结果不同，输出顺序和列表的顺序相同，
+# 就算1秒的任务执行完成，也会先打印前面提交的任务返回的结果
+
+# map可以保证输出的顺序, submit输出的顺序是乱的
+# 如果你要提交的任务的函数是一样的，就可以简化成map。但是假如提交的任务函数是不一样的，
+# 或者执行的过程之可能出现异常（使用map执行过程中发现问题会直接抛出错误）就要用到submit（）
+# submit和map的参数是不同的，submit每次都需要提交一个目标函数和对应的参数，
+# map只需要提交一次目标函数，目标函数的参数放在一个迭代器（列表，字典）里就可以。
+
+
+
+
+# from concurrent.futures import ThreadPoolExecutor
+# import urllib.request
+# URLS = ['http://www.163.com', 'https://www.baidu.com/', 'https://github.com/']
+# def load_url(url):
+#     with urllib.request.urlopen(url, timeout=60) as conn:
+#         print('%r page is %d bytes' % (url, len(conn.read())))
+
+# executor = ThreadPoolExecutor(max_workers=3)
+
+# for url in URLS:
+#     future = executor.submit(load_url,url)
+#     print(future.done())
+
+# print('主线程')
+
+
+# from concurrent.futures import ThreadPoolExecutor,ProcessPoolExecutor #线程池，进程池
+# import threading,time
+ 
+# def test(arg):
+#     print(arg,threading.current_thread().name)
+#     time.sleep(1)
+ 
+# if __name__ == "__main__":
+#     thread_pool = ThreadPoolExecutor(5) #定义5个线程执行此任务
+#     process_pool = ProcessPoolExecutor(5) #定义5个进程
+#     for i in range(20):
+#         thread_pool.submit(test,i)
+
+
+# import time
+# from concurrent.futures import ThreadPoolExecutor
+# def func(name):
+#     print(f"{name}开始")
+#     time.sleep(2)
+#     print(f"{name}结束")
+# if __name__ == '__main__':
+#     p = ThreadPoolExecutor(max_workers=3)  # 创建一个线程池，里面最多有3个线程同时工作
+#     for i in range(1, 10):
+#         p.submit(func, f"线程{i}")
+#     p.shutdown()  # 主线程等待子线程结束  
+#     print("主线程结束")
+
+
+# import os, time, random, threading
+# from concurrent.futures import ThreadPoolExecutor, ProcessPoolExecutor
+
+# def f(n):
+#     time.sleep(random.randint(1, 3))
+#     # print(n)
+#     # print("进程(%s) %s的平方: %s" % (os.getpid(), n, n*n))
+#     print("线程(%s) %s的平方: %s\n" % (threading.current_thread().getName(), n, n * n))
+#     return n * n
+# if __name__ == '__main__':
+#     pool = ThreadPoolExecutor(max_workers=5)
+#     # pool = ProcessPoolExecutor(max_workers=5)
+#     ret_list = []
+#     for i in range(10):
+#         ret = pool.submit(f, i)  # 异步提交任务,f函数名称或者方法名称,i给f函数的参数
+#         # print(ret.result())  #join
+#         ret_list.append(ret)
+#     # pool.shutdown()  #锁定线程池,不让新任务再提交进来了.轻易不用
+#     for i in ret_list:
+#         print(i.result())
+
+
+
+
+# from  concurrent.futures import ProcessPoolExecutor,ThreadPoolExecutor
+# from threading import currentThread
+# import os,time,random
+# def task(n):
+#     print('%s:%s is running'%(currentThread().getName(),os.getpid()))  #看到的pid都是一样的，因为线程是共享了一个进程
+#     time.sleep(random.randint(1,3))  #I/O密集型的，，一般用线程，用了进程耗时长
+#     return n**2
+# if __name__ == '__main__':
+#     start = time.time()
+#     p = ThreadPoolExecutor() #线程池 #如果不给定值，默认cup*5
+#     l = []
+#     for i in range(10):  #10个任务 # 线程池效率高了
+#         obj  = p.submit(task,i)  #相当于apply_async异步方法
+#         l.append(obj)
+#     # p.shutdown()  #默认有个参数wait=True (相当于close和join)
+#     print('='*30)
+#     print([obj.result() for obj in l])
+#     print(time.time() - start)  #3.001171827316284
+
+
+
+# from concurrent.futures import ThreadPoolExecutor,ProcessPoolExecutor
+# import os, time, requests
+
+# def get_page(url):
+#     print('<%s> is getting [%s]'%(os.getpid(),url))
+#     response = requests.get(url)
+#     if response.status_code==200:  #200代表状态：下载成功了
+#         return {'url':url,'text':response.text}
+# def parse_page(res):
+#     res = res.result()
+#     print('<%s> is getting [%s]'%(os.getpid(),res['url']))
+#     with open('db.txt','a') as f:
+#         parse_res = 'url:%s size:%s\n'%(res['url'],len(res['text']))
+#         f.write(parse_res)
+# if __name__ == '__main__':
+#     # p = ThreadPoolExecutor()
+#     p = ProcessPoolExecutor()
+#     l = [
+#         'http://www.baidu.com',
+#         'http://www.baidu.com',
+#         'http://www.baidu.com',
+#         'http://www.baidu.com',
+#     ]
+#     for url in l:
+#         res = p.submit(get_page,url).add_done_callback(parse_page) #这里的回调函数拿到的是一个对象。得
+#         #  先把返回的res得到一个结果。即在前面加上一个res.result() #谁好了谁去掉回调函数
+#         # 回调函数也是一种编程思想。不仅开线程池用，开线程池也用
+#     # p.shutdown()  #相当于进程池里的close和join
+#     print('主',os.getpid())
+
+
+
+# import time
+# from concurrent import futures
+# from concurrent.futures import ThreadPoolExecutor
+
+
+# def display(args):
+#     print(time.strftime('[%H:%M:%S]', time.localtime()), end=' ')
+#     print(args)
+
+
+# def task(n):
+#     """只是休眠"""
+#     display('begin sleep {}s.'.format(n))
+#     time.sleep(n)
+#     display('ended sleep {}s.'.format(n))
+
+
+# def do_many_task_inorder():
+#     """多线程
+#     按任务发布顺序依次等待完成
+#     """
+#     tasks = [5, 4, 3, 2, 1]
+#     with ThreadPoolExecutor(max_workers=3) as executor:
+#         future_list = [executor.submit(task, arg) for arg in tasks]
+
+#         display('非阻塞运行')
+
+#         for future in future_list:
+#             display(future)
+
+#         display('统一结束(有序)')
+
+#         for future in future_list:
+#             display(future.result())
+
+
+# def do_many_task_disorder():
+#     """多线程执行
+#     先完成先显示
+#     """
+#     tasks = [5, 4, 3, 2, 1]
+#     with ThreadPoolExecutor(max_workers=3) as executor:
+#         future_list = [executor.submit(task, arg) for arg in tasks]
+
+#         display('非阻塞运行')
+
+#         for future in future_list:
+#             display(future)
+
+#         display('统一结束(无序)')
+
+#         done_iter = futures.as_completed(future_list)  # generator
+
+#         for done in done_iter:
+#             display(done)
+
+
+# if __name__ == '__main__':
+    # do_many_task_inorder()
+    # do_many_task_disorder()
+
+
+# concurrent.futures.ThreadPoolExecutor，在提交任务的时候，有两种方式，一种是submit（）函数，另外一种是map（）函数，二者的主要区别在于：
+# 2.一、map能够保证输出的顺序, submit输出的顺序是乱的
+# 2.二、若是你要提交的任务的函数是同样的，就能够简化成map。可是假如提交的任务函数是不同的，或者执行的过程之可能出现异常（使用map执行过程当中发现问题会直接抛出错误）就要用到submit（）
+# 2.三、submit和map的参数是不一样的，submit每次都须要提交一个目标函数和对应的参数，map只须要提交一次目标函数，目标函数的参数放在一个迭代器（列表，字典）里就能够。
+
+
+
+#-------------------------------------- future故障 --------------------------------------
+# ThreadPoolExecutor 线程池执行器是 Executor 执行器的子类，通过线程池来执行异步调用。它管理一组工作线程，当工作线程有富余的时候，给它们传递任务。
+# 当属于一个 Future 对象的可调用对象等待另一个 Future 的返回时，会发生死锁 deadlock。
+
+# from concurrent.futures import ThreadPoolExecutor
+# import time
+
+# def wait_on_b():
+#     time.sleep(5)
+#     print(b.result())  # b will never complete because it is waiting on a.
+#     return 5
+
+# def wait_on_a():
+#     time.sleep(5)
+#     print(a.result())  # a will never complete because it is waiting on b.
+#     return 6
+
+
+# executor = ThreadPoolExecutor(max_workers=2)
+# a = executor.submit(wait_on_b)
+# # b = executor.submit(wait_on_a)
+# print(a)
+
+# # 再举一例：
+# def wait_on_future():
+#     f = executor.submit(pow, 5, 2)
+#     # This will never complete because there is only one worker thread and
+#     # it is executing this function.
+#     print(f.result())
+
+# executor = ThreadPoolExecutor(max_workers=1)
+# executor.submit(wait_on_future)
+
+
+
+
+# from concurrent.futures import ThreadPoolExecutor as Pool
+# from concurrent.futures import as_completed
+# from concurrent.futures import wait
+# import requests
+ 
+# URLS = ['http://qq.com', 'http://sina.com', 'http://www.baidu.com', ]
+ 
+ 
+# def task(url, timeout=10):
+#     return requests.get(url, timeout=timeout)
+ 
+ 
+# with Pool(max_workers=3) as executor:
+#     future_tasks = [executor.submit(task, url) for url in URLS]
+ 
+#     for f in future_tasks:
+#         if f.running():
+#             print('%s is running' % str(f))
+ 
+#     for f in as_completed(future_tasks):
+#         try:
+#             ret = f.done()
+#             if ret:
+#                 f_ret = f.result()
+#                 print('%s, done, result: %s, %s' % (str(f), f_ret.url, len(f_ret.content)))
+#         except Exception as e:
+#             f.cancel()
+#             print(str(e))
+
+#     results = wait(future_tasks)
+#     done = results[0]
+#     for x in done:
+#         print(x)
+
+'''-------------------------------------------------------------------------------------------'''
+
+
+
+
+# 一、asyncio
+
+# import asyncio,time
+
+# # 定义异步函数
+# async def hello():
+#     await asyncio.sleep(1)
+#     print('Hello World:%s' % time.time())
+
+# if __name__ =='__main__':
+#     tasks = [hello() for i in range(5)]
+#     loop = asyncio.get_event_loop()
+#     loop.run_until_complete(asyncio.wait(tasks))
+
+# async def 用来定义异步函数，await 表示当前协程任务等待睡眠时间，允许其他任务运行。
+# 然后获得一个事件循环，主线程调用asyncio.get_event_loop()时会创建事件循环，你需要把异步的任务丢给这个循环的run_until_complete()方法，事件循环会安排协同程序的执行。
+
+
+# 二、aiohttp
+
+# import asyncio
+# from aiohttp import ClientSession
+
+# tasks = []
+# url = "https://www.baidu.com/{}"
+# async def hello(url):
+#     async with ClientSession() as session:
+#         async with session.get(url) as response:
+#             response = await response.read()
+#             print(response)
+
+# if __name__ == '__main__':
+#     loop = asyncio.get_event_loop()
+#     loop.run_until_complete(hello(url))
+
+# 多链接异步访问:
+# 如果我们需要请求多个URL该怎么办呢，同步的做法访问多个URL只需要加个for循环就可以了。
+# 但异步的实现方式并没那么容易，在之前的基础上需要将hello()包装在asyncio的Future对象中，然后将Future对象列表作为任务传递给事件循环。
+
+# import time
+# import asyncio
+# from aiohttp import ClientSession
+
+# tasks = []
+# url = "https://www.baidu.com/{}"
+# async def hello(url):
+#     async with ClientSession() as session:
+#         async with session.get(url) as response:
+#             response = await response.read()
+# #            print(response)
+#             print('Hello World:%s' % time.time())
+
+# def run():
+#     for i in range(5):
+#         task = asyncio.ensure_future(hello(url.format(i)))
+#         tasks.append(task)
+
+# if __name__ == '__main__':
+#     loop = asyncio.get_event_loop()
+#     run()
+#     loop.run_until_complete(asyncio.wait(tasks))
+
+
+# 收集http响应
+
+# import time
+# import asyncio
+# from aiohttp import ClientSession
+
+# tasks = []
+# url = "https://www.baidu.com/{}"
+# async def hello(url):
+#     async with ClientSession() as session:
+#         async with session.get(url) as response:
+# #            print(response)
+#             print('Hello World:%s' % time.time())
+#             return await response.read()
+
+# def run():
+#     for i in range(5):
+#         task = asyncio.ensure_future(hello(url.format(i)))
+#         tasks.append(task)
+#     result = loop.run_until_complete(asyncio.gather(*tasks))
+#     print(result)
+
+# if __name__ == '__main__':
+#     loop = asyncio.get_event_loop()
+#     run()
+
+
+# 异常解决:
+# 假如你的并发达到2000个，程序会报错：ValueError: too many file descriptors in select()。
+# 报错的原因字面上看是 Python 调取的 select 对打开的文件有最大数量的限制，这个其实是操作系统的限制，linux打开文件的最大数默认是1024，windows默认是509，超过了这个值，程序就开始报错。
+# 这里我们有三种方法解决这个问题：
+# 1.限制并发数量。（一次不要塞那么多任务，或者限制最大并发数量）
+# 2.使用回调的方式。
+# 3.修改操作系统打开文件数的最大限制，在系统里有个配置文件可以修改默认值，具体步骤不再说明了。
+# 不修改系统默认配置的话，个人推荐限制并发数的方法，设置并发数为500，处理速度更快。
+
+
+# import time,asyncio,aiohttp
+
+
+# url = 'https://www.baidu.com/'
+# async def hello(url,semaphore):
+#     async with semaphore:
+#         async with aiohttp.ClientSession() as session:
+#             async with session.get(url) as response:
+#                 return await response.read()
+
+
+# async def run():
+#     semaphore = asyncio.Semaphore(500) # 限制并发量为500
+#     to_get = [hello(url.format(),semaphore) for _ in range(1000)] #总共1000任务
+#     await asyncio.wait(to_get)
+
+
+# if __name__ == '__main__':
+# #    now=lambda :time.time()
+#     loop = asyncio.get_event_loop()
+#     loop.run_until_complete(run())
+#     loop.close()
+
+
+#-------------------------------------------------------------------
+
+
+# import asyncio
+# import requests
+# import os
+
+
+# async def asyncget(url,headers):
+#     return requests.get(url,headers=headers,verify=False)
+
+# async def download(url,headers,fileDir,filename=None):
+
+#     if filename == None:
+#         filename = url[url.rfind("/")+1:]
+#     if fileDir == None:
+#         fileDir = "./files"
+
+#     if not os.path.exists(fileDir):
+#         print("亲，输入的目录不存在哦，下面将自动创建 "+ fileDir)
+#         os.makedirs(fileDir)
+    
+#     filepath = os.path.join(fileDir,filename)
+
+#     if os.path.exists(filepath):
+#         print("亲，文件",filepath,"已经存在哦")
+#         return
+    
+#     response =  await asyncget(url,headers=headers)
+
+#     with open(filepath,"wb") as fp:
+#         fp.write(response.content)
+#     print("亲，文件",filepath,"写入完成哦")
+
+
+# if __name__ == "__main__":
+#     headers ={
+#         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36"
+#     }
+#     urls = [
+#         "http://wx1.sinaimg.cn/mw600/00893JKXly1gikm1th96cj30u015b1a9.jpg",
+#         "http://wx1.sinaimg.cn/mw600/00893JKXly1gikm1lkcxdj30sg18g0zh.jpg",
+#         "http://wx2.sinaimg.cn/mw600/005QrDFkly1gfl4phpqvaj31w91w9x20.jpg"
+#     ]
+
+#     asyncio.run(
+#         asyncio.wait(
+#             [download(url=url,headers=headers,fileDir="imgs") for url in urls]
+#         )
+#     )
+
+
+
+
+# import requests
+
+# session = requests.Session()
+# session.mount("https://", requests.adapters.HTTPAdapter(pool_maxsize=50))
+# session.mount("http://", requests.adapters.HTTPAdapter(pool_maxsize=50))
+
+# import asyncio
+
+# async def perform_async_calls(self, session, urls):
+#     loop = asyncio.get_event_loop()
+#     futures = []
+#     for url in urls:
+#         futures.append(loop.run_in_executor(None, session.get, url)
+
+#     results = []
+#     for future in futures:
+#         result = await future
+#         results.append(result.json())
+
+#     return results
+
+
+
+

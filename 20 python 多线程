@@ -485,6 +485,166 @@ if __name__ == '__main__':
 
 
 
+#-----------------------
+
+# from concurrent import futures
+# import time, threading
+
+
+# def func(n):                                 # 首先定义一个供线程调用的函数。  
+#     start = time.strftime('[%H:%M:%S]')
+#     time.sleep(n)
+#     end = time.strftime('[%H:%M:%S]')
+#     return '{}开始时间{}，传入值<{}>，结束时间{}'.format(threading.current_thread(),start, n, end)  ## threading.enumerate(), threading.current_thread(), threading.current_thread().name, threading.current_thread().getName()
+
+
+# executor = futures.ThreadPoolExecutor(max_workers=4)
+#     # max_workers 为线程池中，最大工作线程的个数。
+
+# results = executor.map(func,  [2,3,8,5,4])
+#     # 利用 executor.map() 调用函数，第一个参数为函数名，后面为函数参数。
+#     # executor.map 返回的是一个生成器，results内的值是按函数的“调用顺序“来排列的。
+#     # 完成一个线程，就把结果放入 results 中。
+#     # 如果要取里面的值，可以用for, list, enumerate等方法。
+#     # 因为<线程3>的执行时间是5秒，晚于线程<线程4><线程5>完成。
+#     # 所以下面的打印结果会打印到<线程3>时主线程就阻塞了，等待<线程3>的完成。
+#     # 它会等待<线程3>完成后，再继续打印后面的<线程4><线程5>结果。
+
+# for serial, value in enumerate(results, start=1):
+#     print('线程 {}：{}'.format( serial, value))
+
+# executor.shutdown()      # 关闭线程池。
+
+
+
+# from concurrent import futures
+# import time
+
+
+# def func(n):
+#     start = time.strftime('[%H:%M:%S]')
+#     time.sleep(n)
+#     end = time.strftime('[%H:%M:%S]')
+#     return '{}开始时间{}，传入值<{}>，结束时间{}'.format(threading.current_thread(),start, n, end)  ## threading.enumerate(), threading.current_thread(), threading.current_thread().name, threading.current_thread().getName()
+
+# # 如果利用 with 上下文管理器，它会自动关闭线程池。
+# with futures.ThreadPoolExecutor(max_workers=4) as executor:
+#     # map会阻塞主线程，等待所有子线程结束，返回 result，如果子线程有报错，也会返回报错信息。
+#     # 所以这是一个有了所有线程结果的results，下面的打印就不会有阻塞了。
+#     results = executor.map(func,  [2,3,8,5,4])
+        
+# for serial, value in enumerate(results, start=1):
+#     print('线程 {}：{}'.format( serial, value))
+
+
+# from concurrent.futures import ThreadPoolExecutor
+# import time
+
+# def f_submit(x):
+#     print(f'{time.strftime("%H:%M:%S")}submit：{x}\n')
+#     time.sleep(1)
+#     print(f'{time.strftime("%H:%M:%S")}{x}计算结果：{x**2}\n')
+#     return x*x
+
+
+# """ 用with开启线程池时，并自动关闭线程池。"""
+# with ThreadPoolExecutor(max_workers=5) as e:
+#     f1 = e.submit(f_submit, 1,)
+#     f2 = e.submit(f_submit, 2,)
+#     f3 = e.submit(f_submit, 3,)
+#     f4 = e.submit(f_submit, 4,)
+#     f5 = e.submit(f_submit, 5,)
+
+#     """ result()获取子线程结果时，会阻塞主线程。
+#         如果子线程有异常时，也会引发这个异常。
+#         即，如果不用result()获取结果，那么即使子线程有异常，
+#         该异常也不会被触发，只是那个有异常的子线程会停止运行。"""
+#     print([f1.result(), f2.result(), f3.result(), f4.result(), f5.result()])
+#     print('主线程\n')
+#     #time.sleep(2)
+
+# print('进程池外')    
+
+# result()获取子线程结果时，会阻塞主线程。
+# 如果子线程有异常时，也会引发这个异常（报错）。
+# 即，如果不用result()获取结果，那么即使子线程有异常（报错），
+# 该异常也不会被触发，只是那个有异常的子线程会停止运行。
+
+
+# from concurrent import futures
+# import time
+
+
+# def func(n):
+#     start = time.strftime('[%H:%M:%S]')
+#     time.sleep(n)
+#     end = time.strftime('[%H:%M:%S]')
+#     return '{}开始时间{}，传入值<{}>，结束时间{}'.format(threading.current_thread(),start, n, end)  ## threading.enumerate(), threading.current_thread(), threading.current_thread().name, threading.current_thread().getName()
+
+# print('#============单个线程============')
+# executor = futures.ThreadPoolExecutor(4)   # 最大线程数量为4个。
+# sub = executor.submit(func, 3)    # 利用submit()把调用函数提交到线程池，返回一个Future实例。
+# # print(sub)
+# # print(type(sub))
+# res = sub.result()    # 利用result()获取调用函数的运行结果。
+# print(res)
+# print()
+
+
+# print('#============多个线程============')
+# with  futures.ThreadPoolExecutor(4) as executor:
+#     to_do = [ ]
+#     for i in [2, 3, 8, 5, 4]:
+#         sub = executor.submit(func, i)
+#         to_do.append(sub)           # 存储各个Future到列表中，给后面的 as_completed()使用。
+
+#     for i in futures.as_completed(to_do):    # 如果只是让线程执行，而不需要获取返回值，可以不用这段代码。
+#             # 用 as_completed() 返回的顺序是按线程执行所用时间来排的，越早完成，越早取出来。
+#             # 如果直接用 for i in to_do: 来读取结果，那么结果是按Future放入to_do中的顺序来取的。
+#         res = i.result()
+#         print(res)
+
+
+# from concurrent import futures
+# import time, os
+
+
+# def func(n):
+#     start = time.strftime('[%H:%M:%S]')
+#     time.sleep(n)
+#     end = time.strftime('[%H:%M:%S]')
+#     return '开始时间{}，传入值<{}>，结束时间{}'.format(start, n, end)
+
+
+# if __name__ == '__main__':
+
+#     print('#============单个进程============')
+#     executor = futures.ProcessPoolExecutor(os.cpu_count())   # 默认值为CPU的核心数量os.cpu_count()。
+#     sub = executor.submit(func, 3)    # 利用submit()把调用函数提交到进程池，返回一个Future实例。
+#     # print(sub)
+#     # print(type(sub))
+#     res = sub.result()    # 利用result()获取调用函数的运行结果。
+#     print(res)
+#     print()
+
+
+#     print('#============多个进程============')
+#     with  futures.ProcessPoolExecutor(4) as executor:
+#         to_do = [ ]
+#         for i in [1, 2, 8, 4, 3]:
+#             sub = executor.submit(func, i)
+#             to_do.append(sub)    # 存储各个Future到列表中，给后面的 as_completed()使用。
+
+#         for i in futures.as_completed(to_do):
+#         # for i in to_do:
+#         # 用 as_completed() 返回的顺序是按进程执行所用时间来排的，越早完成，越早取出来。
+#         # 如果直接用 for i in to_do: 来读取结果，那么结果是按Future放入to_do中的顺序来取的。
+#             res = i.result()
+#             print(res)
+
+
+#------------------------
+
 # from concurrent.futures import ThreadPoolExecutor
 # import urllib.request
 # URLS = ['http://www.163.com', 'https://www.baidu.com/', 'https://github.com/']

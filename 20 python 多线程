@@ -5,7 +5,8 @@
 
 ## 多线程:
 
-''' name 是当前线程的属性， getName 是当前线程的方法。
+''' threading.current_thread(),threading.enumerate(),threading.current_thread().getName(),threading.current_thread().name
+    name 是当前线程的属性， getName 是当前线程的方法。
     尽管 threading.current_thread().name 和 threading.current_thread().getName() 的结果一样，但是完全不是同一种东西呀， 例如通过 threading.current_thread().name ＝ ‘thread_python’ 来改变它。    
 
     import time, threading

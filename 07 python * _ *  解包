@@ -1,6 +1,10 @@
 
 
 
+
+# list1 = [0]*10
+# print(list1)
+
 # a,b,c = 'abc'
 # print(a,b,c)
 

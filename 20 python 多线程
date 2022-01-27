@@ -386,7 +386,7 @@
 #     alpha_thread.start()
 
 
-#=========================================================================#
+#      ||                 ||             ||      #
 
 # import time
 # import multiprocessing.dummy as dummy

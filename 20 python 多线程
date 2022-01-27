@@ -1,5 +1,6 @@
 
-
+ 3.10.2 Documentation » Python Frequently Asked Questions » Library and Extension FAQ
+ 
 怎样修改全局变量是线程安全的？
 
 Python VM 内部会使用 global interpreter lock （GIL）来确保同一时间只有一个线程运行。通常 Python 只会在字节码指令之间切换线程；切换的频率可以通过设置 sys.setswitchinterval() 指定。从 Python 程序的角度来看，每一条字节码指令以及每一条指令对应的 C 代码实现都是原子的。

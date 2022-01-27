@@ -1,0 +1,253 @@
+
+
+
+
+'''------------------------------------------------ 生产消费者模型 ----------------------------------------------'''
+
+
+# 生产消费者模式是通过一个容器来解决生产者和消费者的强耦合问题
+# 生产者和消费者彼此之间不直接通讯,而通过阻塞队列来进行通讯,所以生产者生产完数据之后不用等待消费者处理,直接扔给阻塞队列,消费者不找生产者要数据,而是直接从阻塞队列里取
+# 阻塞队列就相当于一个缓冲区,平衡了生产者和消费者的处理能力
+
+
+# # 方式一:生产者消费者简单模型
+
+# import time, random
+# from multiprocessing import Process, Queue
+
+# def producer(name, food, q):
+#     for i in range(10):  # 定义生产者生产10个包子
+#         data = '%s 制造了 %s' % (name, food)
+#         time.sleep(random.randint(1, 3))  # 每次生产需要1至3秒随机时间
+#         print(data)
+#         q.put(food)  # 将生产的包子放进阻塞队列
+
+# def consumer(name, q):
+#     while True:
+#         food = q.get()  # 消费者取出生产者数据
+#         time.sleep(random.randint(1, 3))  # 消费延迟1-3秒
+#         print('%s 消费了 %s' % (name, food))
+
+# if __name__ == '__main__':
+#     q = Queue()
+#     t1 = Process(target=producer, args=('egon', '包子', q))
+#     t1.start()
+#     t2 = Process(target=consumer, args=('tank', q))
+#     t2.start()
+# # 问题:当阻塞队列没有数据之后,消费者就会一直卡住
+
+
+# # 方式二:解决消费者程序夯住问题
+
+# import time, random
+# from multiprocessing import Process, Queue
+
+# def prodeucer(name, food, q):
+#     for i in range(10):
+#         data = '%s生产了>>%s>>%s' % (name, food, i)
+#         time.sleep(random.randint(1, 3))
+#         print(data)
+#         res = f'第{i}个{food}'
+#         q.put(res)
+#     q.put(None)  # 当生产完成后,往队列里放一个None
+
+
+# def consumer(name, q):
+#     while True:
+#         food = q.get()
+#         if food != None:  # 当队列中取出的值不为None时,消费者吃包子
+#             time.sleep(random.randint(1, 3))
+#             print('%s消费了%s' % (name, food))
+#         else:break  # 当队列中取出的值为None时,说明生产者已全部生产完成,并且也吃完了,结束进程
+
+# if __name__ == '__main__':
+#     q = Queue()
+#     t1 = Process(target=prodeucer, args=('egon', '包子', q))
+#     t1.start()
+#     t2 = Process(target=consumer, args=('tank', q))
+#     t2.start()
+
+
+# # 方式三:多个生产者
+
+# import time, random
+# from multiprocessing import Process, Queue
+
+# def prode(name, food, q):
+#     for i in range(1, 11):
+#         data = f'{name}生产了第{i}个{food}'
+#         time.sleep(random.randint(1, 3))
+#         res = f'第[{i}]个[{food}]'
+#         q.put(res)
+#         print(data)
+#     q.put(None)
+
+# def consumer(name, q):
+#     while True:
+#         data = q.get()
+#         if data != None:
+#             time.sleep(random.randint(1, 3))
+#             print(f'[{name}]消费了{data}')
+#         else:break
+# if __name__ == '__main__':
+#     q = Queue()
+#     t1 = Process(target=prode, args=('egon', '包子', q))
+#     t1.start()  # 生产者1 生产包子
+
+#     t2 = Process(target=prode, args=('lxx', '泔水', q))
+#     t2.start()  # 生产者2 生产泔水
+
+#     t3 = Process(target=consumer, args=('tank', q))
+#     t3.start()
+
+
+# # 方式四:多个生产者和多个消费者
+
+# import random, time
+# from multiprocessing import Process, Queue
+
+# def prode(name, food, q):
+#     for i in range(1, 11):
+#         data = f'{name}生产了第{i}个{food}'
+#         time.sleep(random.randint(1, 2))
+#         res = f'[{i}]个[{food}]'
+#         print(data)
+#         q.put(res)
+
+# def consumer(name, q):
+#     while True:
+#         data = q.get()
+#         if data != None:
+#             time.sleep(random.randint(1, 4))
+#             print(f'[{name}]消费了第{data}')
+#         else:break
+
+# if __name__ == '__main__':
+#     q = Queue()
+#     t1 = Process(target=prode, args=('egon', '包子', q))
+#     t1.start()
+#     t2 = Process(target=prode, args=('tank', '泔水', q))
+#     t2.start()
+
+#     p1 = Process(target=consumer, args=('lxx', q))
+#     p1.start()
+#     p2 = Process(target=consumer, args=('wpq', q))
+#     p2.start()
+#     p3 = Process(target=consumer, args=('alex', q))
+#     p3.start()
+#     p4 = Process(target=consumer, args=('monek', q))
+#     p4.start()
+#     t1.join()  # 等待生产者生产完成之后放值None到队列中,
+#     t2.join()  # 有几个消费者就需要放置几个
+#     q.put(None)
+#     q.put(None)
+#     q.put(None)
+#     q.put(None)
+# # 问题:有多个消费者就需要写多少个None
+
+
+# # 方式五:最终版
+
+# import time, random
+# from multiprocessing import Process, Queue, JoinableQueue
+
+# def producer(name, food, q):
+#     for i in range(1, 11):
+#         time.sleep(random.randint(1, 3))
+#         data = f'{name}生产了第{i}个{food}'
+#         res = f'第[{i}]个[{food}]'
+#         print(data)
+#         q.put(res)
+
+
+# def consumer(name, q):
+#     while True:
+#         if q.empty():
+#             time.sleep(2)  # 当队列内无值的时候等待3秒
+#             if q.empty():  # 若3秒后还是无值,说明生产者已经全部生产完成
+#                 break         # 且已经被消费完,结束进程
+#         else:
+#             data = q.get()
+#             time.sleep(random.randint(1, 3))
+#             q.task_done()  # 把队列中维护的数字减一,消费一个减一个
+#             print(f'[{name}]消费了{data}')
+
+# if __name__ == '__main__':
+#     # q = Queue()
+#     q = JoinableQueue()  # 内部维护了一个数字,放一个数字会加1
+#                         # 消费一个数字,减一
+#     t1 = Process(target=producer, args=('egon', '包子', q))
+#     t2 = Process(target=producer, args=('tank', '馒头', q))
+#     t1.daemon = True
+#     t2.daemon = True
+#     t1.start()
+#     t2.start()
+
+#     p1 = Process(target=consumer, args=('lxx', q))
+#     p2 = Process(target=consumer, args=('wpq', q))
+#     p3 = Process(target=consumer, args=('wsj', q))
+#     p1.start()
+#     p2.start()
+#     p3.start()
+#     t1.join()
+#     t2.join()
+#     q.join()  # 主线程运行结束之后不会立刻结束 会等待所有其他非守护线程结束才会结束
+#     # 因为主线程的结束意味着所在的进程的结束
+#     # 简单来说就是当q里面没有值的时候才会继续运行下去
+#     print('主进程')
+
+
+# import time
+# from multiprocessing.dummy import Process, JoinableQueue, Queue
+# from random import random
+
+# tasks_queue = JoinableQueue()
+# results_queue = Queue()
+
+# def double(n):
+#     return n * 2
+
+# def producer(in_queue):
+#     while 1:
+#         wt = random()
+#         time.sleep(wt)
+#         in_queue.put((double, wt))
+#         if wt > 0.9:
+#             in_queue.put(None)
+#             print ('stop producer')
+#             break
+
+# def consumer(in_queue, out_queue):
+#     while 1:
+#         task = in_queue.get()
+#         if task is None:
+#             break
+#         func, arg = task
+#         result = func(arg)
+#         in_queue.task_done()
+#         out_queue.put(result)
+
+# if __name__ == '__main__':
+#     processes = []
+#     p = Process(target=producer, args=(tasks_queue,))
+#     p.start()
+#     processes.append(p)
+
+#     p = Process(target=consumer, args=(tasks_queue, results_queue))
+#     p.start()
+#     processes.append(p)
+
+#     tasks_queue.join()
+
+#     for p in processes:
+#         p.join()
+
+#     while 1:
+#         if results_queue.empty():
+#             break
+#         result = results_queue.get()
+#         print ('Result:', result)
+
+
+
+

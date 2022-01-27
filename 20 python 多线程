@@ -400,14 +400,16 @@
 #         num_lock.acquire()
 #         alpha_lock.release()
 # def print_alpla():
-#     for w in range(1,20):
-#         print(f'{dummy.threading.current_thread().name},{w}\n')
+#     for w in range(1,50):
+#         print(f'{dummy.threading.current_thread().name},{chr(w)}\n')
 #         num_lock.release()
 #         alpha_lock.acquire()
+#     alpha_lock.acquire()        # (1)
+
 # if __name__ == '__main__':
 #     num_thread = dummy.threading.Thread(target=print_num,)
 #     alpha_thread = dummy.threading.Thread(target=print_alpla)
-#     alpha_lock.acquire()
+#     # alpha_lock.acquire()      # (2)
 #     num_thread.start()
 #     alpha_thread.start()
 

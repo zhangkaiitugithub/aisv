@@ -1080,6 +1080,25 @@ if __name__ == '__main__':
 #     print("结束了")
 
 
+# from  multiprocessing import Pipe,Process
+# def consumer(lp,rp):
+#     lp.close()  #不写close将不会引发EOFError,消费者一直阻塞
+#     while True:
+#         try:
+#             print(rp.recv())
+#         except EOFError:break
+
+# if __name__ == '__main__':
+#     lp, rp =  Pipe()
+#     Process(target=consumer,args=(lp,rp)).start()
+#     Process(target=consumer,args=(lp,rp)).start()
+#     Process(target=consumer,args=(lp,rp)).start()
+#     Process(target=consumer,args=(lp,rp)).start()
+#     rp.close()
+#     for i in range(100):
+#         lp.send('food%s'%i)
+#     lp.close()
+
 
 import multiprocessing
 

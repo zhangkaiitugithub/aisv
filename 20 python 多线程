@@ -1105,15 +1105,15 @@ def main ():
 
 if __name__ == '__main__':    main()
 
-# if __name__ == '__main__':
-#     left, right = multiprocessing.Pipe()
-#     multiprocessing.Process(target=consumer, args=(left, right)).start()
-#     print(f"\t\t{multiprocessing.current_process().name}:左管道接收的信息：{left.recv()}")  # 2.接收右管道的信息
+# # if __name__ == '__main__':
+# #     left, right = multiprocessing.Pipe()
+# #     multiprocessing.Process(target=consumer, args=(left, right)).start()
+# #     print(f"\t\t{multiprocessing.current_process().name}:左管道接收的信息：{left.recv()}")  # 2.接收右管道的信息
 
-#     for i in range(10):
-#         print(f'\t>>> 左管道发送的信息：【{i}个包子】')
-#         left.send(f'【{i}个包子】')
-#     left.close()
+# #     for i in range(10):
+# #         print(f'\t>>> 左管道发送的信息：【{i}个包子】')
+# #         left.send(f'【{i}个包子】')
+# #     left.close()
 
 
 '''----------------------------------------------------- Queue ------------------------------------------------------'''

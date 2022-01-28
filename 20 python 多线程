@@ -1043,6 +1043,79 @@ if __name__ == '__main__':
     print('parent exit')
     
 
+
+# from multiprocessing import Process,Pipe
+# import os, time
+ 
+# def send(a):
+#     print(f"这是send子进程的id: {os.getpid()}")
+
+#     for i in range(100):
+#         print ("发送 %s"%i)
+#         a.send(i)
+#     # a.close()
+ 
+# def recv(b):
+#     print(f"这是recv子进程的id: {os.getpid()}")
+#     while True:
+#         try:
+#             print ('proc2 接收:',b.recv())
+#         except EOFError:
+#             break
+
+# if __name__ == "__main__":
+
+#     print(f"父进程的pid: {os.getpid()}")
+ 
+#     a, b = Pipe(True)
+ 
+#     p_send = Process(target=send, args=(a,))
+#     p_recv = Process(target=recv, args=(b,))
+
+#     p_send.start()    
+#     p_recv.start()
+#     a.close()         ## 内部的close了，外部的也要close,只有当所有进程中的A端都关闭了才能算真正的close
+#     p_send.join()
+#     p_recv.join()
+#     print("结束了")
+
+
+
+import multiprocessing
+
+def consumer (left, right):
+    left.close()  # 因为右管道要发送信息，还要接收信息，这里用不到左管道
+    print(f'>>> {multiprocessing.current_process().name}:右管道发送的信息：【你好】')
+    right.send("【你好】")  # 1.给左管道发送信息
+
+    while True:
+        try:
+            print(f"\t\t右管道接收的信息：{right.recv()}")
+        except EOFError:
+            break
+
+def main ():
+    left, right = multiprocessing.Pipe()
+    multiprocessing.Process(target=consumer, args=(left, right)).start()
+    print(f"\t\t{multiprocessing.current_process().name}:左管道接收的信息：{left.recv()}")  # 2.接收右管道的信息
+
+    for i in range(10):
+        print(f'\t>>> 左管道发送的信息：【{i}个包子】')
+        left.send(f'【{i}个包子】')
+
+if __name__ == '__main__':    main()
+
+# if __name__ == '__main__':
+#     left, right = multiprocessing.Pipe()
+#     multiprocessing.Process(target=consumer, args=(left, right)).start()
+#     print(f"\t\t{multiprocessing.current_process().name}:左管道接收的信息：{left.recv()}")  # 2.接收右管道的信息
+
+#     for i in range(10):
+#         print(f'\t>>> 左管道发送的信息：【{i}个包子】')
+#         left.send(f'【{i}个包子】')
+#     left.close()
+
+
 '''----------------------------------------------------- Queue ------------------------------------------------------'''
 
 # Queue与Pipe相类似，都是先进先出的结构。但Queue允许多个进程放入，多个进程从队列取出对象。Queue使用mutiprocessing.Queue(maxsize)创建，maxsize表示队列中可以存放对象的最大数量。

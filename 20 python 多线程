@@ -1044,32 +1044,35 @@ if __name__ == '__main__':
     
 
 
-# from multiprocessing import Process,Pipe
+
+
+# from multiprocessing import Process, current_process, Pipe
 # import os, time
  
-# def send(a):
+# def send(a,msgs):
 #     print(f"这是send子进程的id: {os.getpid()}")
 
-#     for i in range(100):
+#     for i in range(msgs):
 #         print ("发送 %s"%i)
 #         a.send(i)
-#     # a.close()
- 
+#     print(f'subs_a: {a.closed}')
+
 # def recv(b):
 #     print(f"这是recv子进程的id: {os.getpid()}")
+
 #     while True:
 #         try:
 #             print ('proc2 接收:',b.recv())
 #         except EOFError:
 #             break
+#     print(f'subs_b: {b.closed}')
 
 # if __name__ == "__main__":
 
 #     print(f"父进程的pid: {os.getpid()}")
- 
 #     a, b = Pipe(True)
  
-#     p_send = Process(target=send, args=(a,))
+#     p_send = Process(target=send, args=(a,100))
 #     p_recv = Process(target=recv, args=(b,))
 
 #     p_send.start()    
@@ -1078,6 +1081,45 @@ if __name__ == '__main__':
 #     p_send.join()
 #     p_recv.join()
 #     print("结束了")
+#     print(f'mian_a: {a.closed}')
+#     print(f'mian_b: {b.closed}')
+
+
+# from multiprocessing import Process, current_process, Pipe
+# import os, time
+ 
+# def send(a,msgs):
+#     print(f"这是send子进程的id: {os.getpid()}")
+
+#     for i in range(msgs):
+#         print ("发送 %s"%i)
+#         a.send(i)
+#     # a.close()   
+ 
+# def recv(b):
+#     print(f"这是recv子进程的id: {os.getpid()}")
+
+#     while True: 
+#         msg = b.recv() 
+#         if msg == 40:
+#             break
+#         print("Received the message: {}".format(msg))   
+
+# if __name__ == "__main__":
+
+#     print(f"父进程的pid: {os.getpid()}")
+#     a, b = Pipe(True)
+ 
+#     p_send = Process(target=send, args=(a,100))
+#     p_recv = Process(target=recv, args=(b,))
+
+#     p_send.start()    
+#     p_recv.start()
+#     p_send.join()
+#     p_recv.join()
+#     print("结束了")
+#     print(f'a: {a.closed}')
+#     print(f'b: {b.closed}')
 
 
 # from  multiprocessing import Pipe,Process
@@ -1100,39 +1142,50 @@ if __name__ == '__main__':
 #     lp.close()
 
 
-import multiprocessing
+# from multiprocessing import Process, current_process, Pipe
+# import time
 
-def consumer (left, right):
-    left.close()  # 因为右管道要发送信息，还要接收信息，这里用不到左管道
-    print(f'>>> {multiprocessing.current_process().name}:右管道发送的信息：【你好】')
-    right.send("【你好】")  # 1.给左管道发送信息
+# def consumer (left, right):
+#     left.close()  # 因为右管道要发送信息，还要接收信息，这里用不到左管道
+#     print(f'>>> {current_process().name}:右管道发送的信息：【你好】')
+#     right.send("【你好】")  # 1.给左管道发送信息
 
-    while True:
-        try:
-            print(f"\t\t右管道接收的信息：{right.recv()}")
-        except EOFError:
-            break
+#     while True:
+#         try:
+#             print(f"\t\t右管道接收的信息：{right.recv()}")
+#         except EOFError:
+#             break
+#     print(f'{current_process().name}_left.closed:{left.closed}')
+#     print(f'{current_process().name}_right.closed:{left.closed}')                
+# # #-------------------------------------------------------------------------------
+# # def main():
+# #     left, right = Pipe()
+# #     Process(target=consumer, args=(left, right)).start()
+# #     print(f"\t\t{current_process().name}:左管道接收的信息：{left.recv()}")  # 2.接收右管道的信息
 
-def main ():
-    left, right = multiprocessing.Pipe()
-    multiprocessing.Process(target=consumer, args=(left, right)).start()
-    print(f"\t\t{multiprocessing.current_process().name}:左管道接收的信息：{left.recv()}")  # 2.接收右管道的信息
-
-    for i in range(10):
-        print(f'\t>>> 左管道发送的信息：【{i}个包子】')
-        left.send(f'【{i}个包子】')
-
-if __name__ == '__main__':    main()
-
-# # if __name__ == '__main__':
-# #     left, right = multiprocessing.Pipe()
-# #     multiprocessing.Process(target=consumer, args=(left, right)).start()
-# #     print(f"\t\t{multiprocessing.current_process().name}:左管道接收的信息：{left.recv()}")  # 2.接收右管道的信息
-
-# #     for i in range(10):
+# #     for i in range(20):
+# #         if i%5 == 0:
+# #             time.sleep(1)
 # #         print(f'\t>>> 左管道发送的信息：【{i}个包子】')
 # #         left.send(f'【{i}个包子】')
-# #     left.close()
+# #     print(f'main_left.closed:{left.closed}')
+# #     print(f'main_right.closed:{left.closed}')    
+# # if __name__ == '__main__':    main()
+# # #-------------------------------------------------------------------------------
+# if __name__ == '__main__':
+#     left, right = Pipe()
+#     Process(target=consumer, args=(left, right)).start()
+#     print(f"\t\t{current_process().name}:左管道接收的信息：{left.recv()}")  # 2.接收右管道的信息
+
+#     for i in range(10):
+#         print(f'\t>>> 左管道发送的信息：【{i}个包子】')
+#         left.send(f'【{i}个包子】')
+
+#     left.send('【拜拜】')
+#     left.close()
+#     print(f'{current_process().name}_left.closed:{left.closed}')
+#     print(f'{current_process().name}_right.closed:{left.closed}')  
+
 
 
 '''----------------------------------------------------- Queue ------------------------------------------------------'''

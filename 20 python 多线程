@@ -1202,6 +1202,10 @@ if __name__ == '__main__':
 
 
 
+
+
+
+
 # from multiprocessing import current_process
 # import multiprocessing
 # import time
@@ -1213,7 +1217,7 @@ if __name__ == '__main__':
 #             print ("%s 发送 %s"%(a,i))
 #             pipe.send((pipe.fileno(),a,i))
 #             # time.sleep(0.1)
-#     # pipe.close()
+#     pipe.close()
 #     print('proc1: ',current_process().name,pipe.closed)
 
 # def proc2(pipe):
@@ -1234,13 +1238,22 @@ if __name__ == '__main__':
 #     # Pass the other end of the pipe to process 2
 #     p2   = multiprocessing.Process(target=proc2, args=(pipe[1],))
 #     # p3   = multiprocessing.Process(target=proc3, args=(pipe[1],))
+
 #     p1.start()
 #     p2.start()
+
+#     p1.join()
+#     # p2.join()
+
+#     # pipe[0].close()
 #     # p1.join()
-#     # # p2.join()
+#     # p2.join()
+
 #     print('main: ',current_process().name,pipe[0].fileno(),pipe[0].closed)
 
 # if __name__=='__main__':
+#     main()
+#     print('-------------------')
 #     main()
 
 #     # pipe = multiprocessing.Pipe()
@@ -1419,6 +1432,37 @@ if __name__ == '__main__':
 #     queue.close()  # No more object will come, close the queue
 #     for p in record2:
 #         p.join()
+
+
+import multiprocessing,time
+
+def put_worker(queue): #队列生产者
+    for item in range(50): #生产50次数据
+        time.sleep(0.01)
+        print("【%s】生产者数据，item = %s" %(multiprocessing.current_process().name,item))
+        queue.put("item = %s" % item)
+
+def get_worker(queue):#队列消费者
+    while True:
+        try:
+            print("【%s】消费数据：%s" % (multiprocessing.current_process().name,queue.get(block=True,timeout=2)))
+        except:
+            break
+
+def main():#主函数
+    queue = multiprocessing.Queue()#创建进程延迟队列
+    pool = multiprocessing.Pool(4)
+    producer_process = multiprocessing.Process(target=put_worker,name="生产者进程",args=(queue,))
+    consumer_process = multiprocessing.Process(target=get_worker,name="消费者进程",args=(queue,))
+    producer_process.start()
+    consumer_process.start()
+    producer_process.join()
+    consumer_process.join()
+
+if __name__ == '__main__':
+    main()
+    print('---------------')
+    main()
 
 
 # import os

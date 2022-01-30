@@ -1123,6 +1123,51 @@ if __name__ == '__main__':
 
 
 
+import multiprocessing
+import time
+
+n = 0
+def proc1(pipe):
+    while True:
+    # for a in range(6):
+        global n
+        n += 1
+        print('-------------------')
+        for i in range(100):
+            print ("%s 发送 %s"%(n,i))
+            pipe.send((n,i))
+            time.sleep(0.01)
+        print('===================')
+
+def proc2(pipe):
+    while True:
+        print ('proc2 接收:',pipe.recv())
+        time.sleep(0.01)
+ 
+def proc3(pipe):
+    while True:
+        print ('proc3 接收:',pipe.recv())
+        time.sleep(0.01)
+
+if __name__ == '__main__':
+    # Build a pipe
+    pipe = multiprocessing.Pipe()
+    print (pipe)
+
+    # Pass an end of the pipe to process 1
+    p1   = multiprocessing.Process(target=proc1, args=(pipe[0],))
+    # Pass the other end of the pipe to process 2
+    p2   = multiprocessing.Process(target=proc2, args=(pipe[1],))
+    p3   = multiprocessing.Process(target=proc3, args=(pipe[1],))
+
+
+    p1.start()
+    p2.start()
+    p3.start()
+    p1.join()
+    p2.join()
+    p3.join()
+
 
 
 
@@ -1374,54 +1419,6 @@ if __name__ == '__main__':
 #     queue.close()  # No more object will come, close the queue
 #     for p in record2:
 #         p.join()
-
-
-
-
-import multiprocessing
-import time
-
-n = 0
-def proc1(pipe):
-    while True:
-    # for a in range(6):
-        global n
-        n += 1
-        print('-------------------')
-        for i in range(100):
-            print ("%s 发送 %s"%(n,i))
-            pipe.send((n,i))
-            time.sleep(0.01)
-        print('===================')
-
-def proc2(pipe):
-    while True:
-        print ('proc2 接收:',pipe.recv())
-        time.sleep(0.01)
- 
-def proc3(pipe):
-    while True:
-        print ('proc3 接收:',pipe.recv())
-        time.sleep(0.01)
-
-if __name__ == '__main__':
-    # Build a pipe
-    pipe = multiprocessing.Pipe()
-    print (pipe)
-
-    # Pass an end of the pipe to process 1
-    p1   = multiprocessing.Process(target=proc1, args=(pipe[0],))
-    # Pass the other end of the pipe to process 2
-    p2   = multiprocessing.Process(target=proc2, args=(pipe[1],))
-    p3   = multiprocessing.Process(target=proc3, args=(pipe[1],))
-
-
-    p1.start()
-    p2.start()
-    p3.start()
-    p1.join()
-    p2.join()
-    p3.join()
 
 
 # import os

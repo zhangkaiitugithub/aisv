@@ -1201,19 +1201,14 @@ if __name__ == '__main__':
 #     # p2.join()
 
 
-
-
-
-
-
 # from multiprocessing import current_process
 # import multiprocessing
 # import time
 
-# def proc1(pipe):
+# def proc1(pipe,num):
 #     # while True:
 #     for a in range(2):
-#         for i in range(100):
+#         for i in range(num):
 #             print ("%s 发送 %s"%(a,i))
 #             pipe.send((pipe.fileno(),a,i))
 #             # time.sleep(0.1)
@@ -1229,12 +1224,12 @@ if __name__ == '__main__':
 #             break
 #     print('proc2: ',current_process().name,pipe.closed)
 
-# def main():
+# def main(num):
 #     pipe = multiprocessing.Pipe()
 #     # print pipe
 
 #     # Pass an end of the pipe to process 1
-#     p1   = multiprocessing.Process(target=proc1, args=(pipe[0],))
+#     p1   = multiprocessing.Process(target=proc1, args=(pipe[0],num))
 #     # Pass the other end of the pipe to process 2
 #     p2   = multiprocessing.Process(target=proc2, args=(pipe[1],))
 #     # p3   = multiprocessing.Process(target=proc3, args=(pipe[1],))
@@ -1242,8 +1237,8 @@ if __name__ == '__main__':
 #     p1.start()
 #     p2.start()
 
-#     p1.join()
-#     # p2.join()
+#     # p1.join()
+#     # ####  p2.join()
 
 #     # pipe[0].close()
 #     # p1.join()
@@ -1252,9 +1247,9 @@ if __name__ == '__main__':
 #     print('main: ',current_process().name,pipe[0].fileno(),pipe[0].closed)
 
 # if __name__=='__main__':
-#     main()
+#     main(10)
 #     print('-------------------')
-#     main()
+#     main(20)
 
 #     # pipe = multiprocessing.Pipe()
 #     # # print pipe

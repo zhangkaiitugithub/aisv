@@ -1122,6 +1122,151 @@ if __name__ == '__main__':
 #     print(f'b: {b.closed}')
 
 
+
+
+
+
+# from multiprocessing import Process,Pipe
+# import os
+ 
+# def proc1(pipe):
+#     for i in range(1200):
+#         print ("发送 %s"%(i))
+#         pipe.send(i)
+#     print('proc1 rec:',pipe.recv())
+ 
+# def proc2(pipe):
+#     while True:
+#         try:
+#             print('proc2 rec:',pipe.recv())
+#         except:print('over')
+            
+
+#     pipe.send('hello too')
+
+# if __name__=='__main__':
+#     pipe = Pipe()
+     
+#     p1 = Process(target=proc1,args=(pipe[0],))
+#     p2 = Process(target=proc2,args=(pipe[1],))
+     
+#     p1.start()
+#     p2.start()
+#     # p1.join()
+#     # p2.join()
+
+
+
+# from multiprocessing import current_process
+# import multiprocessing
+# import time
+
+# def proc1(pipe):
+#     # while True:
+#     for a in range(2):
+#         for i in range(100):
+#             print ("%s 发送 %s"%(a,i))
+#             pipe.send((pipe.fileno(),a,i))
+#             # time.sleep(0.1)
+#     # pipe.close()
+#     print('proc1: ',current_process().name,pipe.closed)
+
+# def proc2(pipe):
+#     while True:
+#         try:
+#             print ('proc2 接收:',pipe.recv())
+#             # time.sleep(1)
+#         except:
+#             break
+#     print('proc2: ',current_process().name,pipe.closed)
+
+# def main():
+#     pipe = multiprocessing.Pipe()
+#     # print pipe
+
+#     # Pass an end of the pipe to process 1
+#     p1   = multiprocessing.Process(target=proc1, args=(pipe[0],))
+#     # Pass the other end of the pipe to process 2
+#     p2   = multiprocessing.Process(target=proc2, args=(pipe[1],))
+#     # p3   = multiprocessing.Process(target=proc3, args=(pipe[1],))
+#     p1.start()
+#     p2.start()
+#     # p1.join()
+#     # # p2.join()
+#     print('main: ',current_process().name,pipe[0].fileno(),pipe[0].closed)
+
+# if __name__=='__main__':
+#     main()
+
+#     # pipe = multiprocessing.Pipe()
+#     # # print pipe
+
+#     # # Pass an end of the pipe to process 1
+#     # p1   = multiprocessing.Process(target=proc1, args=(pipe[0],))
+#     # # Pass the other end of the pipe to process 2
+#     # p2   = multiprocessing.Process(target=proc2, args=(pipe[1],))
+#     # # p3   = multiprocessing.Process(target=proc3, args=(pipe[1],))
+
+#     # p1.start()
+#     # p2.start()
+#     # print(pipe[0].fileno())
+#     # pipe[0].close()
+#     # p1.join()
+
+#     # print('main: ',current_process().name,pipe[0].closed)
+
+
+# import time, random
+# from multiprocessing import Process, Pipe, current_process
+# from multiprocessing.connection import wait
+
+# def foo(w):
+#     for i in range(10):
+#         w.send(f'foo_{i}:{current_process().name}:{w.fileno()}')
+#         # print('-------------------------')
+#         time.sleep(0.01)
+#     # w.close()
+
+# if __name__ == '__main__':
+#     readers = []
+#     writes = []
+#     for i in range(4):
+#         r, w = Pipe(duplex=False)
+#         readers.append(r)
+#         writes.append(w)
+#         p = Process(target=foo, args=(w,))
+#         p.start()
+#         # We close the writable end of the pipe now to be sure that
+#         # p is the only process which owns a handle for it.  This
+#         # ensures that when p closes its handle for the writable end,
+#         # wait() will promptly report the readable end as being ready.
+#         w.close()
+
+#     # print(readers,'--------', r)
+#     # print(writes,'---------', w)
+#     while readers:  #
+#         for r in wait(readers):
+#             try:
+#                 print(r.recv(), r.fileno())
+#             except EOFError:
+#                 readers.remove(r)
+#                 # break
+
+#     # w.send('结束了')
+#     # w.send('finished')
+#     # wait([r])
+#     # print(w.fileno(),'=====',r.fileno(),r.recv())
+#     # print(w.fileno(),'=====',r.fileno(),r.recv())
+#     w.close()
+#     print(readers,'========', r)
+#     print(writes,'========', w)
+
+#     # for w in writes:
+#     #     print(w.closed)
+
+#     # print('all is over')
+
+
 # from  multiprocessing import Pipe,Process
 # def consumer(lp,rp):
 #     lp.close()  #不写close将不会引发EOFError,消费者一直阻塞

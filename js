@@ -16,6 +16,7 @@
 	<link rel="stylesheet" type="text/css" href="style.css"/>
 
 	<script type="text/javascript" ></script>
+	window.onload=function(){ js代码 }
 	<script src="my.js"></script> -->
 </head>
 <body>

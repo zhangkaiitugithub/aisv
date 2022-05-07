@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="demo01" style="font-size:48px" onmouseover = "this.style.color = 'cyan'" onmouseout = "this.style.color = 'black'">Mouse over</div>
+    <div id="demo02" style="font-size:48px">Mouse over me</div>
+    <div id="demo03" style="font-size:48px">Mouse over me</div>
+    <div><button onclick="funclc()"  name="book1">hello 1</button></div>
+
+</body>
+
+<script>
+
+// document.getElementById("demo02").onmouseenter = function() {mouseEt()};
+// document.getElementById("demo02").onmouseleave = function() {mouseLv()};
+// function mouseEt() {
+//     alert(this)
+//     document.getElementById("demo02").style.color = "red";
+// }
+// function mouseLv() {
+//     document.getElementById("demo02").style.color = "black";
+// }
+
+// mouseEt()已经是个函数，但仍要加上function() { } 才能调用mouseEt()。
+// 或者将mouseEt() 内容: style.color = "red";
+// 移到{ }中也可达正常调用效果。
+
+// document.getElementById("demo03").onmouseenter = function() {this.style.color = "green"};
+// document.getElementById("demo03").onmouseleave = function() {this.style.color = "black"};
+
+// function funclc() {
+//     console.log(this);
+//     console.log(this.innerHTML);
+//     }
+
+
+</script>
+</html>

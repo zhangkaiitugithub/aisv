@@ -1,0 +1,96 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <!-- <title>first html</title> -->
+    <!-- <h1>------------this is first html-----------</h1> -->
+    <!-- <style type="text/css"></style> -->
+    <!-- <link rel="stylesheet" type="text/css" href="style.css"/> -->
+
+    <!-- <script src="my.js"></script> -->
+    <!-- <script type="text/javascript" ></script> -->
+    <!-- window.onload=function(){ js代码 } -->
+</head>
+<body>
+
+    <!-- <h1 style="font-size:200px">&#9760;</h1> -->
+    <div style="margin:50px;font-size:40px;color:orange;">inline style</div>
+    
+    <input type="button" value="唐伯虎" onclick="alert('秋香姐')" />
+    <a href="javascript: alert('请点击');">点我一下</a>
+
+
+
+    <div id="demo01" style="font-size:48px" onmouseover = "this.style.color = 'cyan'" onmouseout = "this.style.color = 'black'">Mousover</div>
+    <div id="demo02" style="font-size:48px">Mouse over me</div>
+    <div id="demo03" style="font-size:48px">Mouse over me</div>
+    <div><button onclick="funclc()"  name="book1">hello 1</button></div>
+
+
+
+</body>
+
+<script type="text/javascript">
+
+    // console.log("\u2620")
+        
+    var spam = [0, 1, 2, 3, 4, 5];
+    var cheese = spam;
+    cheese[1] = "hello";
+    alert('spam:'+spam+'||||cheese:'+cheese);
+
+        
+    // var age = prompt('how old are you?',50);
+    // alert(`you are ${age} years old`);
+
+    // let isBoss = confirm("Are you the boss?");
+    // alert( isBoss );
+
+    // let user = {  name: "John",  age: 30};
+    // user.sayHi = function() {    alert('Hello!'+user.name);  };
+    // user.sayHi();
+
+    // function sayHi() {   alert("Hello!");    };
+    // user.sayHi = sayHi;
+    // user.sayHi();
+
+    // let user = { sayHi: function() { alert("Hello"); }   };
+    // user.sayHi();
+
+    // let user = { sayHi() {   alert("Hello"); }   };
+    // user.sayHi();
+
+    // var fruits = '<p style="color:red;font-size:30px;">生当作人杰，死亦为鬼雄</p>';
+
+    // document.write(fruits + "<br>");
+
+
+
+
+// document.getElementById("demo02").onmouseenter = function() {mouseEt()};
+// document.getElementById("demo02").onmouseleave = function() {mouseLv()};
+// function mouseEt() {
+//     alert(this)
+//     document.getElementById("demo02").style.color = "red";
+// }
+// function mouseLv() {
+//     document.getElementById("demo02").style.color = "black";
+// }
+
+// mouseEt()已经是个函数，但仍要加上function() { } 才能调用mouseEt()。
+// 或者将mouseEt() 内容: style.color = "red";
+// 移到{ }中也可达正常调用效果。
+
+// document.getElementById("demo03").onmouseenter = function() {this.style.color = "green"};
+// document.getElementById("demo03").onmouseleave = function() {this.style.color = "black"};
+
+// function funclc() {
+//     console.log(this);
+//     console.log(this.innerHTML);
+//     }
+
+
+</script>
+</html>

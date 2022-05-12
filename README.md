@@ -5,271 +5,415 @@ mode: Rule
 log-level: info
 external-controller: :9090
 proxies:
-  - {name: "@nfeng6|英国02", server: jj02.nfeng6.pp.ua, port: 39028, type: vmess, uuid: 025f4054-7985-38c3-8f62-6e50f098ad3b, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
-  - {name: "@nfeng6|英国02 2", server: jj02.nfeng6.pp.ua, port: 39028, type: vmess, uuid: 2321d75d-005d-368c-920f-3c7965bad066, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
-  - {name: "@nfeng6|英国01", server: jj02.nfeng6.pp.ua, port: 39027, type: vmess, uuid: 025f4054-7985-38c3-8f62-6e50f098ad3b, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
-  - {name: "@nfeng6|英国01 2", server: jj02.nfeng6.pp.ua, port: 39027, type: vmess, uuid: 2321d75d-005d-368c-920f-3c7965bad066, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
-  - {name: "@nfeng6|印度02", server: jj02.nfeng6.pp.ua, port: 39026, type: vmess, uuid: 025f4054-7985-38c3-8f62-6e50f098ad3b, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
-  - {name: "@nfeng6|印度02 2", server: jj02.nfeng6.pp.ua, port: 39026, type: vmess, uuid: 2321d75d-005d-368c-920f-3c7965bad066, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
-  - {name: "@nfeng6|印度01", server: jj02.nfeng6.pp.ua, port: 39025, type: vmess, uuid: 025f4054-7985-38c3-8f62-6e50f098ad3b, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
-  - {name: "@nfeng6|印度01 2", server: jj02.nfeng6.pp.ua, port: 39025, type: vmess, uuid: 2321d75d-005d-368c-920f-3c7965bad066, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
-  - {name: "@nfeng6|新加坡04", server: jj02.nfeng6.pp.ua, port: 39043, type: vmess, uuid: 025f4054-7985-38c3-8f62-6e50f098ad3b, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
-  - {name: "@nfeng6|新加坡04 2", server: jj02.nfeng6.pp.ua, port: 39043, type: vmess, uuid: 2321d75d-005d-368c-920f-3c7965bad066, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
-  - {name: "@nfeng6|新加坡03", server: jj02.nfeng6.pp.ua, port: 39042, type: vmess, uuid: 025f4054-7985-38c3-8f62-6e50f098ad3b, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
-  - {name: "@nfeng6|新加坡03 2", server: jj02.nfeng6.pp.ua, port: 39042, type: vmess, uuid: 2321d75d-005d-368c-920f-3c7965bad066, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
-  - {name: "@nfeng6|新加坡02", server: jj02.nfeng6.pp.ua, port: 39014, type: vmess, uuid: 025f4054-7985-38c3-8f62-6e50f098ad3b, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
-  - {name: "@nfeng6|新加坡02 2", server: jj02.nfeng6.pp.ua, port: 39014, type: vmess, uuid: 2321d75d-005d-368c-920f-3c7965bad066, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
-  - {name: "@nfeng6|新加坡01", server: jj02.nfeng6.pp.ua, port: 39013, type: vmess, uuid: 025f4054-7985-38c3-8f62-6e50f098ad3b, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
-  - {name: "@nfeng6|新加坡01 2", server: jj02.nfeng6.pp.ua, port: 39013, type: vmess, uuid: 2321d75d-005d-368c-920f-3c7965bad066, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
-  - {name: "@nfeng6|香港06", server: jj02.nfeng6.pp.ua, port: 39039, type: vmess, uuid: 025f4054-7985-38c3-8f62-6e50f098ad3b, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
-  - {name: "@nfeng6|香港06 2", server: jj02.nfeng6.pp.ua, port: 39039, type: vmess, uuid: 2321d75d-005d-368c-920f-3c7965bad066, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
-  - {name: "@nfeng6|香港05", server: jj02.nfeng6.pp.ua, port: 39038, type: vmess, uuid: 025f4054-7985-38c3-8f62-6e50f098ad3b, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
-  - {name: "@nfeng6|香港05 2", server: jj02.nfeng6.pp.ua, port: 39038, type: vmess, uuid: 2321d75d-005d-368c-920f-3c7965bad066, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
-  - {name: "@nfeng6|香港04", server: jj02.nfeng6.pp.ua, port: 39012, type: vmess, uuid: 025f4054-7985-38c3-8f62-6e50f098ad3b, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
-  - {name: "@nfeng6|香港04 2", server: jj02.nfeng6.pp.ua, port: 39012, type: vmess, uuid: 2321d75d-005d-368c-920f-3c7965bad066, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
-  - {name: "@nfeng6|香港03", server: jj02.nfeng6.pp.ua, port: 39011, type: vmess, uuid: 025f4054-7985-38c3-8f62-6e50f098ad3b, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
-  - {name: "@nfeng6|香港03 2", server: jj02.nfeng6.pp.ua, port: 39011, type: vmess, uuid: 2321d75d-005d-368c-920f-3c7965bad066, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
-  - {name: "@nfeng6|香港02", server: jj02.nfeng6.pp.ua, port: 39010, type: vmess, uuid: 025f4054-7985-38c3-8f62-6e50f098ad3b, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
-  - {name: "@nfeng6|香港02 2", server: jj02.nfeng6.pp.ua, port: 39010, type: vmess, uuid: 2321d75d-005d-368c-920f-3c7965bad066, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
-  - {name: "@nfeng6|香港01 2", server: jj02.nfeng6.pp.ua, port: 39009, type: vmess, uuid: 025f4054-7985-38c3-8f62-6e50f098ad3b, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
-  - {name: "@nfeng6|香港01 2 2", server: jj02.nfeng6.pp.ua, port: 39009, type: vmess, uuid: 2321d75d-005d-368c-920f-3c7965bad066, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
-  - {name: "@nfeng6|台湾05 2", server: jj01.nfeng6.pp.ua, port: 39052, type: vmess, uuid: 025f4054-7985-38c3-8f62-6e50f098ad3b, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
-  - {name: "@nfeng6|台湾05 2 2", server: jj01.nfeng6.pp.ua, port: 39052, type: vmess, uuid: 2321d75d-005d-368c-920f-3c7965bad066, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
-  - {name: "@nfeng6|台湾05", server: jj01.nfeng6.pp.ua, port: 39065, type: vmess, uuid: 025f4054-7985-38c3-8f62-6e50f098ad3b, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
-  - {name: "@nfeng6|台湾05 3", server: jj01.nfeng6.pp.ua, port: 39065, type: vmess, uuid: 2321d75d-005d-368c-920f-3c7965bad066, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
-  - {name: "@nfeng6|台湾04", server: jj01.nfeng6.pp.ua, port: 39051, type: vmess, uuid: 025f4054-7985-38c3-8f62-6e50f098ad3b, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
-  - {name: "@nfeng6|台湾04 2", server: jj01.nfeng6.pp.ua, port: 39051, type: vmess, uuid: 2321d75d-005d-368c-920f-3c7965bad066, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
-  - {name: "@nfeng6|台湾03", server: jj01.nfeng6.pp.ua, port: 39050, type: vmess, uuid: 025f4054-7985-38c3-8f62-6e50f098ad3b, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
-  - {name: "@nfeng6|台湾03 2", server: jj01.nfeng6.pp.ua, port: 39050, type: vmess, uuid: 2321d75d-005d-368c-920f-3c7965bad066, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
-  - {name: "@nfeng6|台湾02", server: jj01.nfeng6.pp.ua, port: 39053, type: vmess, uuid: 025f4054-7985-38c3-8f62-6e50f098ad3b, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
-  - {name: "@nfeng6|台湾02 2", server: jj01.nfeng6.pp.ua, port: 39053, type: vmess, uuid: 2321d75d-005d-368c-920f-3c7965bad066, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
-  - {name: "@nfeng6|台湾01 2", server: jj01.nfeng6.pp.ua, port: 39049, type: vmess, uuid: 025f4054-7985-38c3-8f62-6e50f098ad3b, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
-  - {name: "@nfeng6|台湾01 2 2", server: jj01.nfeng6.pp.ua, port: 39049, type: vmess, uuid: 2321d75d-005d-368c-920f-3c7965bad066, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
-  - {name: "@nfeng6|台湾01", server: jj01.nfeng6.pp.ua, port: 39044, type: vmess, uuid: 025f4054-7985-38c3-8f62-6e50f098ad3b, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
-  - {name: "@nfeng6|台湾01 3", server: jj01.nfeng6.pp.ua, port: 39044, type: vmess, uuid: 2321d75d-005d-368c-920f-3c7965bad066, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
-  - {name: "@nfeng6|日本04", server: jj02.nfeng6.pp.ua, port: 39035, type: vmess, uuid: 025f4054-7985-38c3-8f62-6e50f098ad3b, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
-  - {name: "@nfeng6|日本04 2", server: jj02.nfeng6.pp.ua, port: 39035, type: vmess, uuid: 2321d75d-005d-368c-920f-3c7965bad066, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
-  - {name: "@nfeng6|日本03", server: jj02.nfeng6.pp.ua, port: 39034, type: vmess, uuid: 025f4054-7985-38c3-8f62-6e50f098ad3b, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
-  - {name: "@nfeng6|日本03 2", server: jj02.nfeng6.pp.ua, port: 39034, type: vmess, uuid: 2321d75d-005d-368c-920f-3c7965bad066, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
-  - {name: "@nfeng6|日本02", server: jj02.nfeng6.pp.ua, port: 39006, type: vmess, uuid: 025f4054-7985-38c3-8f62-6e50f098ad3b, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
-  - {name: "@nfeng6|日本02 2", server: jj02.nfeng6.pp.ua, port: 39006, type: vmess, uuid: 2321d75d-005d-368c-920f-3c7965bad066, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
-  - {name: "@nfeng6|日本01", server: jj02.nfeng6.pp.ua, port: 39005, type: vmess, uuid: 025f4054-7985-38c3-8f62-6e50f098ad3b, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
-  - {name: "@nfeng6|日本01 2", server: jj02.nfeng6.pp.ua, port: 39005, type: vmess, uuid: 2321d75d-005d-368c-920f-3c7965bad066, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
-  - {name: "@nfeng6|美国04", server: jj02.nfeng6.pp.ua, port: 39030, type: vmess, uuid: 025f4054-7985-38c3-8f62-6e50f098ad3b, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
-  - {name: "@nfeng6|美国04 2", server: jj02.nfeng6.pp.ua, port: 39030, type: vmess, uuid: 2321d75d-005d-368c-920f-3c7965bad066, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
-  - {name: "@nfeng6|美国03", server: jj02.nfeng6.pp.ua, port: 39029, type: vmess, uuid: 025f4054-7985-38c3-8f62-6e50f098ad3b, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
-  - {name: "@nfeng6|美国03 2", server: jj02.nfeng6.pp.ua, port: 39029, type: vmess, uuid: 2321d75d-005d-368c-920f-3c7965bad066, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
-  - {name: "@nfeng6|美国02", server: jj02.nfeng6.pp.ua, port: 39020, type: vmess, uuid: 025f4054-7985-38c3-8f62-6e50f098ad3b, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
-  - {name: "@nfeng6|美国02 2", server: jj02.nfeng6.pp.ua, port: 39020, type: vmess, uuid: 2321d75d-005d-368c-920f-3c7965bad066, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
-  - {name: "@nfeng6|美国01", server: jj02.nfeng6.pp.ua, port: 39019, type: vmess, uuid: 025f4054-7985-38c3-8f62-6e50f098ad3b, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
-  - {name: "@nfeng6|美国01 2", server: jj02.nfeng6.pp.ua, port: 39019, type: vmess, uuid: 2321d75d-005d-368c-920f-3c7965bad066, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
-  - {name: "@nfeng6|德国02", server: jj02.nfeng6.pp.ua, port: 39018, type: vmess, uuid: 025f4054-7985-38c3-8f62-6e50f098ad3b, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
-  - {name: "@nfeng6|德国02 2", server: jj02.nfeng6.pp.ua, port: 39018, type: vmess, uuid: 2321d75d-005d-368c-920f-3c7965bad066, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
-  - {name: "@nfeng6|德国01", server: jj02.nfeng6.pp.ua, port: 39017, type: vmess, uuid: 025f4054-7985-38c3-8f62-6e50f098ad3b, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
-  - {name: "@nfeng6|德国01 2", server: jj02.nfeng6.pp.ua, port: 39017, type: vmess, uuid: 2321d75d-005d-368c-920f-3c7965bad066, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
+  - {name: CH_9000 @WangCai_1, server: 185.126.116.119, port: 9000, type: ss, cipher: aes-256-cfb, password: a3GFYt36Sm82Vys9, udp: true}
+  - {name: CH_9000 @WangCai_1 2, server: 185.126.116.123, port: 9000, type: ss, cipher: aes-256-cfb, password: a3GFYt36Sm82Vys9, udp: true}
+  - {name: CH_9001 @WangCai_1, server: 185.126.116.119, port: 9001, type: ss, cipher: aes-256-cfb, password: UkXRsXvR6buDMG2Y, udp: true}
+  - {name: CH_9001 @WangCai_1 2, server: 185.126.116.123, port: 9001, type: ss, cipher: aes-256-cfb, password: UkXRsXvR6buDMG2Y, udp: true}
+  - {name: CH_9003 @WangCai_1, server: 185.126.116.119, port: 9003, type: ss, cipher: aes-256-cfb, password: JdmRK9gMEqFgs8nP, udp: true}
+  - {name: CH_9003 @WangCai_1 2, server: 185.126.116.123, port: 9003, type: ss, cipher: aes-256-cfb, password: JdmRK9gMEqFgs8nP, udp: true}
+  - {name: CH_9005 @WangCai_1, server: 185.126.116.119, port: 9005, type: ss, cipher: aes-256-cfb, password: ZET59LF6DvCC8KVt, udp: true}
+  - {name: CH_9005 @WangCai_1 2, server: 185.126.116.123, port: 9005, type: ss, cipher: aes-256-cfb, password: ZET59LF6DvCC8KVt, udp: true}
+  - {name: CH_9006 @WangCai_1, server: 185.126.116.119, port: 9006, type: ss, cipher: aes-256-cfb, password: FAdUvMJUq5vDgKEq, udp: true}
+  - {name: CH_9006 @WangCai_1 2, server: 185.126.116.123, port: 9006, type: ss, cipher: aes-256-cfb, password: FAdUvMJUq5vDgKEq, udp: true}
+  - {name: CH_9007 @WangCai_1, server: 185.126.116.119, port: 9007, type: ss, cipher: aes-256-cfb, password: kSPmvwdFzGMMW5pY, udp: true}
+  - {name: CH_9007 @WangCai_1 2, server: 185.126.116.123, port: 9007, type: ss, cipher: aes-256-cfb, password: kSPmvwdFzGMMW5pY, udp: true}
+  - {name: CH_9008 @WangCai_1, server: 185.126.116.119, port: 9008, type: ss, cipher: aes-256-cfb, password: y9VURyNzJWNRYEGQ, udp: true}
+  - {name: CH_9008 @WangCai_1 2, server: 185.126.116.123, port: 9008, type: ss, cipher: aes-256-cfb, password: y9VURyNzJWNRYEGQ, udp: true}
+  - {name: CH_9010 @WangCai_1, server: 185.126.116.119, port: 9010, type: ss, cipher: aes-256-cfb, password: f63gg8EruDnUrmz4, udp: true}
+  - {name: CH_9010 @WangCai_1 2, server: 185.126.116.123, port: 9010, type: ss, cipher: aes-256-cfb, password: f63gg8EruDnUrmz4, udp: true}
+  - {name: CH_9011 @WangCai_1, server: 185.126.116.119, port: 9011, type: ss, cipher: aes-256-cfb, password: M3t2ZEQcMGRWBjRa, udp: true}
+  - {name: CH_9011 @WangCai_1 2, server: 185.126.116.123, port: 9011, type: ss, cipher: aes-256-cfb, password: M3t2ZEQcMGRWBjRa, udp: true}
+  - {name: CH_9014 @WangCai_1, server: 185.126.116.119, port: 9014, type: ss, cipher: aes-256-cfb, password: KnJGad3FqTvjqbaX, udp: true}
+  - {name: CH_9014 @WangCai_1 2, server: 185.126.116.123, port: 9014, type: ss, cipher: aes-256-cfb, password: KnJGad3FqTvjqbaX, udp: true}
+  - {name: CH_9015 @WangCai_1, server: 185.126.116.119, port: 9015, type: ss, cipher: aes-256-cfb, password: ZpNDDKRu9MagNvaf, udp: true}
+  - {name: CH_9015 @WangCai_1 2, server: 185.126.116.123, port: 9015, type: ss, cipher: aes-256-cfb, password: ZpNDDKRu9MagNvaf, udp: true}
+  - {name: CH_9018 @WangCai_1, server: 185.126.116.119, port: 9018, type: ss, cipher: aes-256-cfb, password: fG2artUmHfNT2cX7, udp: true}
+  - {name: CH_9018 @WangCai_1 2, server: 185.126.116.123, port: 9018, type: ss, cipher: aes-256-cfb, password: fG2artUmHfNT2cX7, udp: true}
+  - {name: CH_9019 @WangCai_1, server: 185.126.116.119, port: 9019, type: ss, cipher: aes-256-cfb, password: GA9KzeEgvfxNrgmM, udp: true}
+  - {name: CH_9019 @WangCai_1 2, server: 185.126.116.123, port: 9019, type: ss, cipher: aes-256-cfb, password: GA9KzeEgvfxNrgmM, udp: true}
+  - {name: CH_9020 @WangCai_1, server: 185.126.116.119, port: 9020, type: ss, cipher: aes-256-cfb, password: BNmAXXxAHYpTRdzu, udp: true}
+  - {name: CH_9020 @WangCai_1 2, server: 185.126.116.123, port: 9020, type: ss, cipher: aes-256-cfb, password: BNmAXXxAHYpTRdzu, udp: true}
+  - {name: CH_9024 @WangCai_1, server: 185.126.116.119, port: 9024, type: ss, cipher: aes-256-cfb, password: BejrQvtu9sqUeNuZ, udp: true}
+  - {name: CH_9024 @WangCai_1 2, server: 185.126.116.123, port: 9024, type: ss, cipher: aes-256-cfb, password: BejrQvtu9sqUeNuZ, udp: true}
+  - {name: CH_9025 @WangCai_1, server: 185.126.116.119, port: 9025, type: ss, cipher: aes-256-cfb, password: XPtzA9sCug3SPR4c, udp: true}
+  - {name: CH_9025 @WangCai_1 2, server: 185.126.116.123, port: 9025, type: ss, cipher: aes-256-cfb, password: XPtzA9sCug3SPR4c, udp: true}
+  - {name: CH_9026 @WangCai_1, server: 185.126.116.119, port: 9026, type: ss, cipher: aes-256-cfb, password: QWDDvVE9npNurQfA, udp: true}
+  - {name: CH_9026 @WangCai_1 2, server: 185.126.116.123, port: 9026, type: ss, cipher: aes-256-cfb, password: QWDDvVE9npNurQfA, udp: true}
+  - {name: CH_9027 @WangCai_1, server: 185.126.116.119, port: 9027, type: ss, cipher: aes-256-cfb, password: EXN3S3eQpjE7EJu8, udp: true}
+  - {name: CH_9027 @WangCai_1 2, server: 185.126.116.123, port: 9027, type: ss, cipher: aes-256-cfb, password: EXN3S3eQpjE7EJu8, udp: true}
+  - {name: CH_9030 @WangCai_1, server: 185.126.116.119, port: 9030, type: ss, cipher: aes-256-cfb, password: GeregetR8cvQHzYr, udp: true}
+  - {name: CH_9030 @WangCai_1 2, server: 185.126.116.123, port: 9030, type: ss, cipher: aes-256-cfb, password: GeregetR8cvQHzYr, udp: true}
+  - {name: CH_9031 @WangCai_1, server: 185.126.116.119, port: 9031, type: ss, cipher: aes-256-cfb, password: BwcAUZk8hUFAkDGN, udp: true}
+  - {name: CH_9031 @WangCai_1 2, server: 185.126.116.123, port: 9031, type: ss, cipher: aes-256-cfb, password: BwcAUZk8hUFAkDGN, udp: true}
+  - {name: CH_9032 @WangCai_1, server: 185.126.116.119, port: 9032, type: ss, cipher: aes-256-cfb, password: UWZQeLRWnkqgkseq, udp: true}
+  - {name: CH_9032 @WangCai_1 2, server: 185.126.116.123, port: 9032, type: ss, cipher: aes-256-cfb, password: UWZQeLRWnkqgkseq, udp: true}
+  - {name: CH_9033 @WangCai_1, server: 185.126.116.119, port: 9033, type: ss, cipher: aes-256-cfb, password: UTJA57ypk2XKQpnm, udp: true}
+  - {name: CH_9033 @WangCai_1 2, server: 185.126.116.123, port: 9033, type: ss, cipher: aes-256-cfb, password: UTJA57ypk2XKQpnm, udp: true}
+  - {name: CH_9037 @WangCai_1, server: 185.126.116.119, port: 9037, type: ss, cipher: aes-256-cfb, password: TN2YqghxeFDKZfLU, udp: true}
+  - {name: CH_9037 @WangCai_1 2, server: 185.126.116.123, port: 9037, type: ss, cipher: aes-256-cfb, password: TN2YqghxeFDKZfLU, udp: true}
+  - {name: CH_9038 @WangCai_1, server: 185.126.116.119, port: 9038, type: ss, cipher: aes-256-cfb, password: gYCYXfkUQEs2TaJQ, udp: true}
+  - {name: CH_9038 @WangCai_1 2, server: 185.126.116.123, port: 9038, type: ss, cipher: aes-256-cfb, password: gYCYXfkUQEs2TaJQ, udp: true}
+  - {name: CH_9040 @WangCai_1, server: 185.126.116.119, port: 9040, type: ss, cipher: aes-256-cfb, password: p9z5BVADH2YFs3MN, udp: true}
+  - {name: CH_9040 @WangCai_1 2, server: 185.126.116.123, port: 9040, type: ss, cipher: aes-256-cfb, password: p9z5BVADH2YFs3MN, udp: true}
+  - {name: CH_9041 @WangCai_1, server: 185.126.116.119, port: 9041, type: ss, cipher: aes-256-cfb, password: U6qnYRhfyDmn8sgn, udp: true}
+  - {name: CH_9041 @WangCai_1 2, server: 185.126.116.123, port: 9041, type: ss, cipher: aes-256-cfb, password: U6qnYRhfyDmn8sgn, udp: true}
+  - {name: CH_9042 @WangCai_1, server: 185.126.116.119, port: 9042, type: ss, cipher: aes-256-cfb, password: S7KwUu7yBy58S3Ga, udp: true}
+  - {name: CH_9042 @WangCai_1 2, server: 185.126.116.123, port: 9042, type: ss, cipher: aes-256-cfb, password: S7KwUu7yBy58S3Ga, udp: true}
+  - {name: CH_9043 @WangCai_1, server: 185.126.116.119, port: 9043, type: ss, cipher: aes-256-cfb, password: HSZuyJQcWe8dxNdF, udp: true}
+  - {name: CH_9043 @WangCai_1 2, server: 185.126.116.123, port: 9043, type: ss, cipher: aes-256-cfb, password: HSZuyJQcWe8dxNdF, udp: true}
+  - {name: CH_9045 @WangCai_1, server: 185.126.116.119, port: 9045, type: ss, cipher: aes-256-cfb, password: Lp27rqyJq72bZsqX, udp: true}
+  - {name: CH_9045 @WangCai_1 2, server: 185.126.116.123, port: 9045, type: ss, cipher: aes-256-cfb, password: Lp27rqyJq72bZsqX, udp: true}
+  - {name: CH_9046 @WangCai_1, server: 185.126.116.119, port: 9046, type: ss, cipher: aes-256-cfb, password: NvS8N4Vf8qAGPSCL, udp: true}
+  - {name: CH_9046 @WangCai_1 2, server: 185.126.116.123, port: 9046, type: ss, cipher: aes-256-cfb, password: NvS8N4Vf8qAGPSCL, udp: true}
+  - {name: CH_9050 @WangCai_1, server: 185.126.116.119, port: 9050, type: ss, cipher: aes-256-cfb, password: FG5ddLsMPbV5CutE, udp: true}
+  - {name: CH_9050 @WangCai_1 2, server: 185.126.116.123, port: 9050, type: ss, cipher: aes-256-cfb, password: FG5ddLsMPbV5CutE, udp: true}
+  - {name: CH_9053 @WangCai_1, server: 185.126.116.119, port: 9053, type: ss, cipher: aes-256-cfb, password: SBM7R883jBmnqe6C, udp: true}
+  - {name: CH_9053 @WangCai_1 2, server: 185.126.116.123, port: 9053, type: ss, cipher: aes-256-cfb, password: SBM7R883jBmnqe6C, udp: true}
+  - {name: CH_9056 @WangCai_1, server: 185.126.116.119, port: 9056, type: ss, cipher: aes-256-cfb, password: rNBfNuuANFCAk7KB, udp: true}
+  - {name: CH_9056 @WangCai_1 2, server: 185.126.116.123, port: 9056, type: ss, cipher: aes-256-cfb, password: rNBfNuuANFCAk7KB, udp: true}
+  - {name: CH_9057 @WangCai_1, server: 185.126.116.119, port: 9057, type: ss, cipher: aes-256-cfb, password: wjTugX3ZtHMB9c3Z, udp: true}
+  - {name: CH_9057 @WangCai_1 2, server: 185.126.116.123, port: 9057, type: ss, cipher: aes-256-cfb, password: wjTugX3ZtHMB9c3Z, udp: true}
+  - {name: CH_9058 @WangCai_1, server: 185.126.116.119, port: 9058, type: ss, cipher: aes-256-cfb, password: dML2sfhbVwvtfNPe, udp: true}
+  - {name: CH_9058 @WangCai_1 2, server: 185.126.116.123, port: 9058, type: ss, cipher: aes-256-cfb, password: dML2sfhbVwvtfNPe, udp: true}
+  - {name: CH_9059 @WangCai_1, server: 185.126.116.119, port: 9059, type: ss, cipher: aes-256-cfb, password: 9XwYyZsK8SNzQDtY, udp: true}
+  - {name: CH_9059 @WangCai_1 2, server: 185.126.116.123, port: 9059, type: ss, cipher: aes-256-cfb, password: 9XwYyZsK8SNzQDtY, udp: true}
+  - {name: CH_9060 @WangCai_1, server: 185.126.116.119, port: 9060, type: ss, cipher: aes-256-cfb, password: ueLXVkvh4hckhErQ, udp: true}
+  - {name: CH_9060 @WangCai_1 2, server: 185.126.116.123, port: 9060, type: ss, cipher: aes-256-cfb, password: ueLXVkvh4hckhErQ, udp: true}
+  - {name: CH_9061 @WangCai_1, server: 185.126.116.119, port: 9061, type: ss, cipher: aes-256-cfb, password: 4R3hUfZ2FHhDmNcP, udp: true}
+  - {name: CH_9061 @WangCai_1 2, server: 185.126.116.123, port: 9061, type: ss, cipher: aes-256-cfb, password: 4R3hUfZ2FHhDmNcP, udp: true}
+  - {name: CH_9064 @WangCai_1, server: 185.126.116.119, port: 9064, type: ss, cipher: aes-256-cfb, password: cp8pRSUAyLhTfVWH, udp: true}
+  - {name: CH_9064 @WangCai_1 2, server: 185.126.116.123, port: 9064, type: ss, cipher: aes-256-cfb, password: cp8pRSUAyLhTfVWH, udp: true}
+  - {name: CH_9070 @WangCai_1, server: 185.126.116.119, port: 9070, type: ss, cipher: aes-256-cfb, password: bf7v334KKDV3YDhH, udp: true}
+  - {name: CH_9070 @WangCai_1 2, server: 185.126.116.123, port: 9070, type: ss, cipher: aes-256-cfb, password: bf7v334KKDV3YDhH, udp: true}
+  - {name: CH_9073 @WangCai_1, server: 185.126.116.119, port: 9073, type: ss, cipher: aes-256-cfb, password: daFYagqDdBdA6VTX, udp: true}
+  - {name: CH_9073 @WangCai_1 2, server: 185.126.116.123, port: 9073, type: ss, cipher: aes-256-cfb, password: daFYagqDdBdA6VTX, udp: true}
+  - {name: CH_9079 @WangCai_1, server: 185.126.116.119, port: 9079, type: ss, cipher: aes-256-cfb, password: TPqX8edgbAURcAMb, udp: true}
+  - {name: CH_9079 @WangCai_1 2, server: 185.126.116.123, port: 9079, type: ss, cipher: aes-256-cfb, password: TPqX8edgbAURcAMb, udp: true}
+  - {name: CH_9080 @WangCai_1, server: 185.126.116.119, port: 9080, type: ss, cipher: aes-256-cfb, password: VP8ZPxQpJtZRCjfZ, udp: true}
+  - {name: CH_9080 @WangCai_1 2, server: 185.126.116.123, port: 9080, type: ss, cipher: aes-256-cfb, password: VP8ZPxQpJtZRCjfZ, udp: true}
+  - {name: CH_9084 @WangCai_1, server: 185.126.116.119, port: 9084, type: ss, cipher: aes-256-cfb, password: c3NtHJ5ujV2tGDfj, udp: true}
+  - {name: CH_9084 @WangCai_1 2, server: 185.126.116.123, port: 9084, type: ss, cipher: aes-256-cfb, password: c3NtHJ5ujV2tGDfj, udp: true}
+  - {name: CH_9088 @WangCai_1, server: 185.126.116.119, port: 9088, type: ss, cipher: aes-256-cfb, password: f8npKgNzdkss2ytn, udp: true}
+  - {name: CH_9088 @WangCai_1 2, server: 185.126.116.123, port: 9088, type: ss, cipher: aes-256-cfb, password: f8npKgNzdkss2ytn, udp: true}
+  - {name: CH_9093 @WangCai_1, server: 185.126.116.119, port: 9093, type: ss, cipher: aes-256-cfb, password: wfLC2y7rzZyCmuyt, udp: true}
+  - {name: CH_9093 @WangCai_1 2, server: 185.126.116.123, port: 9093, type: ss, cipher: aes-256-cfb, password: wfLC2y7rzZyCmuyt, udp: true}
+  - {name: CH_9094 @WangCai_1, server: 185.126.116.119, port: 9094, type: ss, cipher: aes-256-cfb, password: rpgbNnU9rDDU4aWZ, udp: true}
+  - {name: CH_9094 @WangCai_1 2, server: 185.126.116.123, port: 9094, type: ss, cipher: aes-256-cfb, password: rpgbNnU9rDDU4aWZ, udp: true}
+  - {name: CH_9097 @WangCai_1, server: 185.126.116.119, port: 9097, type: ss, cipher: aes-256-cfb, password: Sn5B7jTqr76aCJT8, udp: true}
+  - {name: CH_9097 @WangCai_1 2, server: 185.126.116.123, port: 9097, type: ss, cipher: aes-256-cfb, password: Sn5B7jTqr76aCJT8, udp: true}
+  - {name: CH_9098 @WangCai_1, server: 185.126.116.119, port: 9098, type: ss, cipher: aes-256-cfb, password: aLpQtfEZe445QyHk, udp: true}
+  - {name: CH_9098 @WangCai_1 2, server: 185.126.116.123, port: 9098, type: ss, cipher: aes-256-cfb, password: aLpQtfEZe445QyHk, udp: true}
 proxy-groups:
   - name: 🔰 节点选择
     type: select
     proxies:
       - ♻️ 自动选择
       - 🎯 全球直连
-      - "@nfeng6|英国02"
-      - "@nfeng6|英国02 2"
-      - "@nfeng6|英国01"
-      - "@nfeng6|英国01 2"
-      - "@nfeng6|印度02"
-      - "@nfeng6|印度02 2"
-      - "@nfeng6|印度01"
-      - "@nfeng6|印度01 2"
-      - "@nfeng6|新加坡04"
-      - "@nfeng6|新加坡04 2"
-      - "@nfeng6|新加坡03"
-      - "@nfeng6|新加坡03 2"
-      - "@nfeng6|新加坡02"
-      - "@nfeng6|新加坡02 2"
-      - "@nfeng6|新加坡01"
-      - "@nfeng6|新加坡01 2"
-      - "@nfeng6|香港06"
-      - "@nfeng6|香港06 2"
-      - "@nfeng6|香港05"
-      - "@nfeng6|香港05 2"
-      - "@nfeng6|香港04"
-      - "@nfeng6|香港04 2"
-      - "@nfeng6|香港03"
-      - "@nfeng6|香港03 2"
-      - "@nfeng6|香港02"
-      - "@nfeng6|香港02 2"
-      - "@nfeng6|香港01 2"
-      - "@nfeng6|香港01 2 2"
-      - "@nfeng6|台湾05 2"
-      - "@nfeng6|台湾05 2 2"
-      - "@nfeng6|台湾05"
-      - "@nfeng6|台湾05 3"
-      - "@nfeng6|台湾04"
-      - "@nfeng6|台湾04 2"
-      - "@nfeng6|台湾03"
-      - "@nfeng6|台湾03 2"
-      - "@nfeng6|台湾02"
-      - "@nfeng6|台湾02 2"
-      - "@nfeng6|台湾01 2"
-      - "@nfeng6|台湾01 2 2"
-      - "@nfeng6|台湾01"
-      - "@nfeng6|台湾01 3"
-      - "@nfeng6|日本04"
-      - "@nfeng6|日本04 2"
-      - "@nfeng6|日本03"
-      - "@nfeng6|日本03 2"
-      - "@nfeng6|日本02"
-      - "@nfeng6|日本02 2"
-      - "@nfeng6|日本01"
-      - "@nfeng6|日本01 2"
-      - "@nfeng6|美国04"
-      - "@nfeng6|美国04 2"
-      - "@nfeng6|美国03"
-      - "@nfeng6|美国03 2"
-      - "@nfeng6|美国02"
-      - "@nfeng6|美国02 2"
-      - "@nfeng6|美国01"
-      - "@nfeng6|美国01 2"
-      - "@nfeng6|德国02"
-      - "@nfeng6|德国02 2"
-      - "@nfeng6|德国01"
-      - "@nfeng6|德国01 2"
+      - CH_9000 @WangCai_1
+      - CH_9000 @WangCai_1 2
+      - CH_9001 @WangCai_1
+      - CH_9001 @WangCai_1 2
+      - CH_9003 @WangCai_1
+      - CH_9003 @WangCai_1 2
+      - CH_9005 @WangCai_1
+      - CH_9005 @WangCai_1 2
+      - CH_9006 @WangCai_1
+      - CH_9006 @WangCai_1 2
+      - CH_9007 @WangCai_1
+      - CH_9007 @WangCai_1 2
+      - CH_9008 @WangCai_1
+      - CH_9008 @WangCai_1 2
+      - CH_9010 @WangCai_1
+      - CH_9010 @WangCai_1 2
+      - CH_9011 @WangCai_1
+      - CH_9011 @WangCai_1 2
+      - CH_9014 @WangCai_1
+      - CH_9014 @WangCai_1 2
+      - CH_9015 @WangCai_1
+      - CH_9015 @WangCai_1 2
+      - CH_9018 @WangCai_1
+      - CH_9018 @WangCai_1 2
+      - CH_9019 @WangCai_1
+      - CH_9019 @WangCai_1 2
+      - CH_9020 @WangCai_1
+      - CH_9020 @WangCai_1 2
+      - CH_9024 @WangCai_1
+      - CH_9024 @WangCai_1 2
+      - CH_9025 @WangCai_1
+      - CH_9025 @WangCai_1 2
+      - CH_9026 @WangCai_1
+      - CH_9026 @WangCai_1 2
+      - CH_9027 @WangCai_1
+      - CH_9027 @WangCai_1 2
+      - CH_9030 @WangCai_1
+      - CH_9030 @WangCai_1 2
+      - CH_9031 @WangCai_1
+      - CH_9031 @WangCai_1 2
+      - CH_9032 @WangCai_1
+      - CH_9032 @WangCai_1 2
+      - CH_9033 @WangCai_1
+      - CH_9033 @WangCai_1 2
+      - CH_9037 @WangCai_1
+      - CH_9037 @WangCai_1 2
+      - CH_9038 @WangCai_1
+      - CH_9038 @WangCai_1 2
+      - CH_9040 @WangCai_1
+      - CH_9040 @WangCai_1 2
+      - CH_9041 @WangCai_1
+      - CH_9041 @WangCai_1 2
+      - CH_9042 @WangCai_1
+      - CH_9042 @WangCai_1 2
+      - CH_9043 @WangCai_1
+      - CH_9043 @WangCai_1 2
+      - CH_9045 @WangCai_1
+      - CH_9045 @WangCai_1 2
+      - CH_9046 @WangCai_1
+      - CH_9046 @WangCai_1 2
+      - CH_9050 @WangCai_1
+      - CH_9050 @WangCai_1 2
+      - CH_9053 @WangCai_1
+      - CH_9053 @WangCai_1 2
+      - CH_9056 @WangCai_1
+      - CH_9056 @WangCai_1 2
+      - CH_9057 @WangCai_1
+      - CH_9057 @WangCai_1 2
+      - CH_9058 @WangCai_1
+      - CH_9058 @WangCai_1 2
+      - CH_9059 @WangCai_1
+      - CH_9059 @WangCai_1 2
+      - CH_9060 @WangCai_1
+      - CH_9060 @WangCai_1 2
+      - CH_9061 @WangCai_1
+      - CH_9061 @WangCai_1 2
+      - CH_9064 @WangCai_1
+      - CH_9064 @WangCai_1 2
+      - CH_9070 @WangCai_1
+      - CH_9070 @WangCai_1 2
+      - CH_9073 @WangCai_1
+      - CH_9073 @WangCai_1 2
+      - CH_9079 @WangCai_1
+      - CH_9079 @WangCai_1 2
+      - CH_9080 @WangCai_1
+      - CH_9080 @WangCai_1 2
+      - CH_9084 @WangCai_1
+      - CH_9084 @WangCai_1 2
+      - CH_9088 @WangCai_1
+      - CH_9088 @WangCai_1 2
+      - CH_9093 @WangCai_1
+      - CH_9093 @WangCai_1 2
+      - CH_9094 @WangCai_1
+      - CH_9094 @WangCai_1 2
+      - CH_9097 @WangCai_1
+      - CH_9097 @WangCai_1 2
+      - CH_9098 @WangCai_1
+      - CH_9098 @WangCai_1 2
   - name: ♻️ 自动选择
     type: url-test
     url: http://www.gstatic.com/generate_204
     interval: 300
     proxies:
-      - "@nfeng6|英国02"
-      - "@nfeng6|英国02 2"
-      - "@nfeng6|英国01"
-      - "@nfeng6|英国01 2"
-      - "@nfeng6|印度02"
-      - "@nfeng6|印度02 2"
-      - "@nfeng6|印度01"
-      - "@nfeng6|印度01 2"
-      - "@nfeng6|新加坡04"
-      - "@nfeng6|新加坡04 2"
-      - "@nfeng6|新加坡03"
-      - "@nfeng6|新加坡03 2"
-      - "@nfeng6|新加坡02"
-      - "@nfeng6|新加坡02 2"
-      - "@nfeng6|新加坡01"
-      - "@nfeng6|新加坡01 2"
-      - "@nfeng6|香港06"
-      - "@nfeng6|香港06 2"
-      - "@nfeng6|香港05"
-      - "@nfeng6|香港05 2"
-      - "@nfeng6|香港04"
-      - "@nfeng6|香港04 2"
-      - "@nfeng6|香港03"
-      - "@nfeng6|香港03 2"
-      - "@nfeng6|香港02"
-      - "@nfeng6|香港02 2"
-      - "@nfeng6|香港01 2"
-      - "@nfeng6|香港01 2 2"
-      - "@nfeng6|台湾05 2"
-      - "@nfeng6|台湾05 2 2"
-      - "@nfeng6|台湾05"
-      - "@nfeng6|台湾05 3"
-      - "@nfeng6|台湾04"
-      - "@nfeng6|台湾04 2"
-      - "@nfeng6|台湾03"
-      - "@nfeng6|台湾03 2"
-      - "@nfeng6|台湾02"
-      - "@nfeng6|台湾02 2"
-      - "@nfeng6|台湾01 2"
-      - "@nfeng6|台湾01 2 2"
-      - "@nfeng6|台湾01"
-      - "@nfeng6|台湾01 3"
-      - "@nfeng6|日本04"
-      - "@nfeng6|日本04 2"
-      - "@nfeng6|日本03"
-      - "@nfeng6|日本03 2"
-      - "@nfeng6|日本02"
-      - "@nfeng6|日本02 2"
-      - "@nfeng6|日本01"
-      - "@nfeng6|日本01 2"
-      - "@nfeng6|美国04"
-      - "@nfeng6|美国04 2"
-      - "@nfeng6|美国03"
-      - "@nfeng6|美国03 2"
-      - "@nfeng6|美国02"
-      - "@nfeng6|美国02 2"
-      - "@nfeng6|美国01"
-      - "@nfeng6|美国01 2"
-      - "@nfeng6|德国02"
-      - "@nfeng6|德国02 2"
-      - "@nfeng6|德国01"
-      - "@nfeng6|德国01 2"
+      - CH_9000 @WangCai_1
+      - CH_9000 @WangCai_1 2
+      - CH_9001 @WangCai_1
+      - CH_9001 @WangCai_1 2
+      - CH_9003 @WangCai_1
+      - CH_9003 @WangCai_1 2
+      - CH_9005 @WangCai_1
+      - CH_9005 @WangCai_1 2
+      - CH_9006 @WangCai_1
+      - CH_9006 @WangCai_1 2
+      - CH_9007 @WangCai_1
+      - CH_9007 @WangCai_1 2
+      - CH_9008 @WangCai_1
+      - CH_9008 @WangCai_1 2
+      - CH_9010 @WangCai_1
+      - CH_9010 @WangCai_1 2
+      - CH_9011 @WangCai_1
+      - CH_9011 @WangCai_1 2
+      - CH_9014 @WangCai_1
+      - CH_9014 @WangCai_1 2
+      - CH_9015 @WangCai_1
+      - CH_9015 @WangCai_1 2
+      - CH_9018 @WangCai_1
+      - CH_9018 @WangCai_1 2
+      - CH_9019 @WangCai_1
+      - CH_9019 @WangCai_1 2
+      - CH_9020 @WangCai_1
+      - CH_9020 @WangCai_1 2
+      - CH_9024 @WangCai_1
+      - CH_9024 @WangCai_1 2
+      - CH_9025 @WangCai_1
+      - CH_9025 @WangCai_1 2
+      - CH_9026 @WangCai_1
+      - CH_9026 @WangCai_1 2
+      - CH_9027 @WangCai_1
+      - CH_9027 @WangCai_1 2
+      - CH_9030 @WangCai_1
+      - CH_9030 @WangCai_1 2
+      - CH_9031 @WangCai_1
+      - CH_9031 @WangCai_1 2
+      - CH_9032 @WangCai_1
+      - CH_9032 @WangCai_1 2
+      - CH_9033 @WangCai_1
+      - CH_9033 @WangCai_1 2
+      - CH_9037 @WangCai_1
+      - CH_9037 @WangCai_1 2
+      - CH_9038 @WangCai_1
+      - CH_9038 @WangCai_1 2
+      - CH_9040 @WangCai_1
+      - CH_9040 @WangCai_1 2
+      - CH_9041 @WangCai_1
+      - CH_9041 @WangCai_1 2
+      - CH_9042 @WangCai_1
+      - CH_9042 @WangCai_1 2
+      - CH_9043 @WangCai_1
+      - CH_9043 @WangCai_1 2
+      - CH_9045 @WangCai_1
+      - CH_9045 @WangCai_1 2
+      - CH_9046 @WangCai_1
+      - CH_9046 @WangCai_1 2
+      - CH_9050 @WangCai_1
+      - CH_9050 @WangCai_1 2
+      - CH_9053 @WangCai_1
+      - CH_9053 @WangCai_1 2
+      - CH_9056 @WangCai_1
+      - CH_9056 @WangCai_1 2
+      - CH_9057 @WangCai_1
+      - CH_9057 @WangCai_1 2
+      - CH_9058 @WangCai_1
+      - CH_9058 @WangCai_1 2
+      - CH_9059 @WangCai_1
+      - CH_9059 @WangCai_1 2
+      - CH_9060 @WangCai_1
+      - CH_9060 @WangCai_1 2
+      - CH_9061 @WangCai_1
+      - CH_9061 @WangCai_1 2
+      - CH_9064 @WangCai_1
+      - CH_9064 @WangCai_1 2
+      - CH_9070 @WangCai_1
+      - CH_9070 @WangCai_1 2
+      - CH_9073 @WangCai_1
+      - CH_9073 @WangCai_1 2
+      - CH_9079 @WangCai_1
+      - CH_9079 @WangCai_1 2
+      - CH_9080 @WangCai_1
+      - CH_9080 @WangCai_1 2
+      - CH_9084 @WangCai_1
+      - CH_9084 @WangCai_1 2
+      - CH_9088 @WangCai_1
+      - CH_9088 @WangCai_1 2
+      - CH_9093 @WangCai_1
+      - CH_9093 @WangCai_1 2
+      - CH_9094 @WangCai_1
+      - CH_9094 @WangCai_1 2
+      - CH_9097 @WangCai_1
+      - CH_9097 @WangCai_1 2
+      - CH_9098 @WangCai_1
+      - CH_9098 @WangCai_1 2
   - name: 🎥 NETFLIX
     type: select
     proxies:
       - 🔰 节点选择
       - ♻️ 自动选择
       - 🎯 全球直连
-      - "@nfeng6|英国02"
-      - "@nfeng6|英国02 2"
-      - "@nfeng6|英国01"
-      - "@nfeng6|英国01 2"
-      - "@nfeng6|印度02"
-      - "@nfeng6|印度02 2"
-      - "@nfeng6|印度01"
-      - "@nfeng6|印度01 2"
-      - "@nfeng6|新加坡04"
-      - "@nfeng6|新加坡04 2"
-      - "@nfeng6|新加坡03"
-      - "@nfeng6|新加坡03 2"
-      - "@nfeng6|新加坡02"
-      - "@nfeng6|新加坡02 2"
-      - "@nfeng6|新加坡01"
-      - "@nfeng6|新加坡01 2"
-      - "@nfeng6|香港06"
-      - "@nfeng6|香港06 2"
-      - "@nfeng6|香港05"
-      - "@nfeng6|香港05 2"
-      - "@nfeng6|香港04"
-      - "@nfeng6|香港04 2"
-      - "@nfeng6|香港03"
-      - "@nfeng6|香港03 2"
-      - "@nfeng6|香港02"
-      - "@nfeng6|香港02 2"
-      - "@nfeng6|香港01 2"
-      - "@nfeng6|香港01 2 2"
-      - "@nfeng6|台湾05 2"
-      - "@nfeng6|台湾05 2 2"
-      - "@nfeng6|台湾05"
-      - "@nfeng6|台湾05 3"
-      - "@nfeng6|台湾04"
-      - "@nfeng6|台湾04 2"
-      - "@nfeng6|台湾03"
-      - "@nfeng6|台湾03 2"
-      - "@nfeng6|台湾02"
-      - "@nfeng6|台湾02 2"
-      - "@nfeng6|台湾01 2"
-      - "@nfeng6|台湾01 2 2"
-      - "@nfeng6|台湾01"
-      - "@nfeng6|台湾01 3"
-      - "@nfeng6|日本04"
-      - "@nfeng6|日本04 2"
-      - "@nfeng6|日本03"
-      - "@nfeng6|日本03 2"
-      - "@nfeng6|日本02"
-      - "@nfeng6|日本02 2"
-      - "@nfeng6|日本01"
-      - "@nfeng6|日本01 2"
-      - "@nfeng6|美国04"
-      - "@nfeng6|美国04 2"
-      - "@nfeng6|美国03"
-      - "@nfeng6|美国03 2"
-      - "@nfeng6|美国02"
-      - "@nfeng6|美国02 2"
-      - "@nfeng6|美国01"
-      - "@nfeng6|美国01 2"
-      - "@nfeng6|德国02"
-      - "@nfeng6|德国02 2"
-      - "@nfeng6|德国01"
-      - "@nfeng6|德国01 2"
+      - CH_9000 @WangCai_1
+      - CH_9000 @WangCai_1 2
+      - CH_9001 @WangCai_1
+      - CH_9001 @WangCai_1 2
+      - CH_9003 @WangCai_1
+      - CH_9003 @WangCai_1 2
+      - CH_9005 @WangCai_1
+      - CH_9005 @WangCai_1 2
+      - CH_9006 @WangCai_1
+      - CH_9006 @WangCai_1 2
+      - CH_9007 @WangCai_1
+      - CH_9007 @WangCai_1 2
+      - CH_9008 @WangCai_1
+      - CH_9008 @WangCai_1 2
+      - CH_9010 @WangCai_1
+      - CH_9010 @WangCai_1 2
+      - CH_9011 @WangCai_1
+      - CH_9011 @WangCai_1 2
+      - CH_9014 @WangCai_1
+      - CH_9014 @WangCai_1 2
+      - CH_9015 @WangCai_1
+      - CH_9015 @WangCai_1 2
+      - CH_9018 @WangCai_1
+      - CH_9018 @WangCai_1 2
+      - CH_9019 @WangCai_1
+      - CH_9019 @WangCai_1 2
+      - CH_9020 @WangCai_1
+      - CH_9020 @WangCai_1 2
+      - CH_9024 @WangCai_1
+      - CH_9024 @WangCai_1 2
+      - CH_9025 @WangCai_1
+      - CH_9025 @WangCai_1 2
+      - CH_9026 @WangCai_1
+      - CH_9026 @WangCai_1 2
+      - CH_9027 @WangCai_1
+      - CH_9027 @WangCai_1 2
+      - CH_9030 @WangCai_1
+      - CH_9030 @WangCai_1 2
+      - CH_9031 @WangCai_1
+      - CH_9031 @WangCai_1 2
+      - CH_9032 @WangCai_1
+      - CH_9032 @WangCai_1 2
+      - CH_9033 @WangCai_1
+      - CH_9033 @WangCai_1 2
+      - CH_9037 @WangCai_1
+      - CH_9037 @WangCai_1 2
+      - CH_9038 @WangCai_1
+      - CH_9038 @WangCai_1 2
+      - CH_9040 @WangCai_1
+      - CH_9040 @WangCai_1 2
+      - CH_9041 @WangCai_1
+      - CH_9041 @WangCai_1 2
+      - CH_9042 @WangCai_1
+      - CH_9042 @WangCai_1 2
+      - CH_9043 @WangCai_1
+      - CH_9043 @WangCai_1 2
+      - CH_9045 @WangCai_1
+      - CH_9045 @WangCai_1 2
+      - CH_9046 @WangCai_1
+      - CH_9046 @WangCai_1 2
+      - CH_9050 @WangCai_1
+      - CH_9050 @WangCai_1 2
+      - CH_9053 @WangCai_1
+      - CH_9053 @WangCai_1 2
+      - CH_9056 @WangCai_1
+      - CH_9056 @WangCai_1 2
+      - CH_9057 @WangCai_1
+      - CH_9057 @WangCai_1 2
+      - CH_9058 @WangCai_1
+      - CH_9058 @WangCai_1 2
+      - CH_9059 @WangCai_1
+      - CH_9059 @WangCai_1 2
+      - CH_9060 @WangCai_1
+      - CH_9060 @WangCai_1 2
+      - CH_9061 @WangCai_1
+      - CH_9061 @WangCai_1 2
+      - CH_9064 @WangCai_1
+      - CH_9064 @WangCai_1 2
+      - CH_9070 @WangCai_1
+      - CH_9070 @WangCai_1 2
+      - CH_9073 @WangCai_1
+      - CH_9073 @WangCai_1 2
+      - CH_9079 @WangCai_1
+      - CH_9079 @WangCai_1 2
+      - CH_9080 @WangCai_1
+      - CH_9080 @WangCai_1 2
+      - CH_9084 @WangCai_1
+      - CH_9084 @WangCai_1 2
+      - CH_9088 @WangCai_1
+      - CH_9088 @WangCai_1 2
+      - CH_9093 @WangCai_1
+      - CH_9093 @WangCai_1 2
+      - CH_9094 @WangCai_1
+      - CH_9094 @WangCai_1 2
+      - CH_9097 @WangCai_1
+      - CH_9097 @WangCai_1 2
+      - CH_9098 @WangCai_1
+      - CH_9098 @WangCai_1 2
   - name: ⛔️ 广告拦截
     type: select
     proxies:
@@ -288,301 +432,419 @@ proxy-groups:
       - 🔰 节点选择
       - ♻️ 自动选择
       - 🎯 全球直连
-      - "@nfeng6|英国02"
-      - "@nfeng6|英国02 2"
-      - "@nfeng6|英国01"
-      - "@nfeng6|英国01 2"
-      - "@nfeng6|印度02"
-      - "@nfeng6|印度02 2"
-      - "@nfeng6|印度01"
-      - "@nfeng6|印度01 2"
-      - "@nfeng6|新加坡04"
-      - "@nfeng6|新加坡04 2"
-      - "@nfeng6|新加坡03"
-      - "@nfeng6|新加坡03 2"
-      - "@nfeng6|新加坡02"
-      - "@nfeng6|新加坡02 2"
-      - "@nfeng6|新加坡01"
-      - "@nfeng6|新加坡01 2"
-      - "@nfeng6|香港06"
-      - "@nfeng6|香港06 2"
-      - "@nfeng6|香港05"
-      - "@nfeng6|香港05 2"
-      - "@nfeng6|香港04"
-      - "@nfeng6|香港04 2"
-      - "@nfeng6|香港03"
-      - "@nfeng6|香港03 2"
-      - "@nfeng6|香港02"
-      - "@nfeng6|香港02 2"
-      - "@nfeng6|香港01 2"
-      - "@nfeng6|香港01 2 2"
-      - "@nfeng6|台湾05 2"
-      - "@nfeng6|台湾05 2 2"
-      - "@nfeng6|台湾05"
-      - "@nfeng6|台湾05 3"
-      - "@nfeng6|台湾04"
-      - "@nfeng6|台湾04 2"
-      - "@nfeng6|台湾03"
-      - "@nfeng6|台湾03 2"
-      - "@nfeng6|台湾02"
-      - "@nfeng6|台湾02 2"
-      - "@nfeng6|台湾01 2"
-      - "@nfeng6|台湾01 2 2"
-      - "@nfeng6|台湾01"
-      - "@nfeng6|台湾01 3"
-      - "@nfeng6|日本04"
-      - "@nfeng6|日本04 2"
-      - "@nfeng6|日本03"
-      - "@nfeng6|日本03 2"
-      - "@nfeng6|日本02"
-      - "@nfeng6|日本02 2"
-      - "@nfeng6|日本01"
-      - "@nfeng6|日本01 2"
-      - "@nfeng6|美国04"
-      - "@nfeng6|美国04 2"
-      - "@nfeng6|美国03"
-      - "@nfeng6|美国03 2"
-      - "@nfeng6|美国02"
-      - "@nfeng6|美国02 2"
-      - "@nfeng6|美国01"
-      - "@nfeng6|美国01 2"
-      - "@nfeng6|德国02"
-      - "@nfeng6|德国02 2"
-      - "@nfeng6|德国01"
-      - "@nfeng6|德国01 2"
+      - CH_9000 @WangCai_1
+      - CH_9000 @WangCai_1 2
+      - CH_9001 @WangCai_1
+      - CH_9001 @WangCai_1 2
+      - CH_9003 @WangCai_1
+      - CH_9003 @WangCai_1 2
+      - CH_9005 @WangCai_1
+      - CH_9005 @WangCai_1 2
+      - CH_9006 @WangCai_1
+      - CH_9006 @WangCai_1 2
+      - CH_9007 @WangCai_1
+      - CH_9007 @WangCai_1 2
+      - CH_9008 @WangCai_1
+      - CH_9008 @WangCai_1 2
+      - CH_9010 @WangCai_1
+      - CH_9010 @WangCai_1 2
+      - CH_9011 @WangCai_1
+      - CH_9011 @WangCai_1 2
+      - CH_9014 @WangCai_1
+      - CH_9014 @WangCai_1 2
+      - CH_9015 @WangCai_1
+      - CH_9015 @WangCai_1 2
+      - CH_9018 @WangCai_1
+      - CH_9018 @WangCai_1 2
+      - CH_9019 @WangCai_1
+      - CH_9019 @WangCai_1 2
+      - CH_9020 @WangCai_1
+      - CH_9020 @WangCai_1 2
+      - CH_9024 @WangCai_1
+      - CH_9024 @WangCai_1 2
+      - CH_9025 @WangCai_1
+      - CH_9025 @WangCai_1 2
+      - CH_9026 @WangCai_1
+      - CH_9026 @WangCai_1 2
+      - CH_9027 @WangCai_1
+      - CH_9027 @WangCai_1 2
+      - CH_9030 @WangCai_1
+      - CH_9030 @WangCai_1 2
+      - CH_9031 @WangCai_1
+      - CH_9031 @WangCai_1 2
+      - CH_9032 @WangCai_1
+      - CH_9032 @WangCai_1 2
+      - CH_9033 @WangCai_1
+      - CH_9033 @WangCai_1 2
+      - CH_9037 @WangCai_1
+      - CH_9037 @WangCai_1 2
+      - CH_9038 @WangCai_1
+      - CH_9038 @WangCai_1 2
+      - CH_9040 @WangCai_1
+      - CH_9040 @WangCai_1 2
+      - CH_9041 @WangCai_1
+      - CH_9041 @WangCai_1 2
+      - CH_9042 @WangCai_1
+      - CH_9042 @WangCai_1 2
+      - CH_9043 @WangCai_1
+      - CH_9043 @WangCai_1 2
+      - CH_9045 @WangCai_1
+      - CH_9045 @WangCai_1 2
+      - CH_9046 @WangCai_1
+      - CH_9046 @WangCai_1 2
+      - CH_9050 @WangCai_1
+      - CH_9050 @WangCai_1 2
+      - CH_9053 @WangCai_1
+      - CH_9053 @WangCai_1 2
+      - CH_9056 @WangCai_1
+      - CH_9056 @WangCai_1 2
+      - CH_9057 @WangCai_1
+      - CH_9057 @WangCai_1 2
+      - CH_9058 @WangCai_1
+      - CH_9058 @WangCai_1 2
+      - CH_9059 @WangCai_1
+      - CH_9059 @WangCai_1 2
+      - CH_9060 @WangCai_1
+      - CH_9060 @WangCai_1 2
+      - CH_9061 @WangCai_1
+      - CH_9061 @WangCai_1 2
+      - CH_9064 @WangCai_1
+      - CH_9064 @WangCai_1 2
+      - CH_9070 @WangCai_1
+      - CH_9070 @WangCai_1 2
+      - CH_9073 @WangCai_1
+      - CH_9073 @WangCai_1 2
+      - CH_9079 @WangCai_1
+      - CH_9079 @WangCai_1 2
+      - CH_9080 @WangCai_1
+      - CH_9080 @WangCai_1 2
+      - CH_9084 @WangCai_1
+      - CH_9084 @WangCai_1 2
+      - CH_9088 @WangCai_1
+      - CH_9088 @WangCai_1 2
+      - CH_9093 @WangCai_1
+      - CH_9093 @WangCai_1 2
+      - CH_9094 @WangCai_1
+      - CH_9094 @WangCai_1 2
+      - CH_9097 @WangCai_1
+      - CH_9097 @WangCai_1 2
+      - CH_9098 @WangCai_1
+      - CH_9098 @WangCai_1 2
   - name: 🌏 国内媒体
     type: select
     proxies:
       - 🎯 全球直连
-      - "@nfeng6|香港06"
-      - "@nfeng6|香港06 2"
-      - "@nfeng6|香港05"
-      - "@nfeng6|香港05 2"
-      - "@nfeng6|香港04"
-      - "@nfeng6|香港04 2"
-      - "@nfeng6|香港03"
-      - "@nfeng6|香港03 2"
-      - "@nfeng6|香港02"
-      - "@nfeng6|香港02 2"
-      - "@nfeng6|香港01 2"
-      - "@nfeng6|香港01 2 2"
-      - "@nfeng6|台湾05 2"
-      - "@nfeng6|台湾05 2 2"
-      - "@nfeng6|台湾05"
-      - "@nfeng6|台湾05 3"
-      - "@nfeng6|台湾04"
-      - "@nfeng6|台湾04 2"
-      - "@nfeng6|台湾03"
-      - "@nfeng6|台湾03 2"
-      - "@nfeng6|台湾02"
-      - "@nfeng6|台湾02 2"
-      - "@nfeng6|台湾01 2"
-      - "@nfeng6|台湾01 2 2"
-      - "@nfeng6|台湾01"
-      - "@nfeng6|台湾01 3"
       - 🔰 节点选择
   - name: Ⓜ️ 微软服务
     type: select
     proxies:
       - 🎯 全球直连
       - 🔰 节点选择
-      - "@nfeng6|英国02"
-      - "@nfeng6|英国02 2"
-      - "@nfeng6|英国01"
-      - "@nfeng6|英国01 2"
-      - "@nfeng6|印度02"
-      - "@nfeng6|印度02 2"
-      - "@nfeng6|印度01"
-      - "@nfeng6|印度01 2"
-      - "@nfeng6|新加坡04"
-      - "@nfeng6|新加坡04 2"
-      - "@nfeng6|新加坡03"
-      - "@nfeng6|新加坡03 2"
-      - "@nfeng6|新加坡02"
-      - "@nfeng6|新加坡02 2"
-      - "@nfeng6|新加坡01"
-      - "@nfeng6|新加坡01 2"
-      - "@nfeng6|香港06"
-      - "@nfeng6|香港06 2"
-      - "@nfeng6|香港05"
-      - "@nfeng6|香港05 2"
-      - "@nfeng6|香港04"
-      - "@nfeng6|香港04 2"
-      - "@nfeng6|香港03"
-      - "@nfeng6|香港03 2"
-      - "@nfeng6|香港02"
-      - "@nfeng6|香港02 2"
-      - "@nfeng6|香港01 2"
-      - "@nfeng6|香港01 2 2"
-      - "@nfeng6|台湾05 2"
-      - "@nfeng6|台湾05 2 2"
-      - "@nfeng6|台湾05"
-      - "@nfeng6|台湾05 3"
-      - "@nfeng6|台湾04"
-      - "@nfeng6|台湾04 2"
-      - "@nfeng6|台湾03"
-      - "@nfeng6|台湾03 2"
-      - "@nfeng6|台湾02"
-      - "@nfeng6|台湾02 2"
-      - "@nfeng6|台湾01 2"
-      - "@nfeng6|台湾01 2 2"
-      - "@nfeng6|台湾01"
-      - "@nfeng6|台湾01 3"
-      - "@nfeng6|日本04"
-      - "@nfeng6|日本04 2"
-      - "@nfeng6|日本03"
-      - "@nfeng6|日本03 2"
-      - "@nfeng6|日本02"
-      - "@nfeng6|日本02 2"
-      - "@nfeng6|日本01"
-      - "@nfeng6|日本01 2"
-      - "@nfeng6|美国04"
-      - "@nfeng6|美国04 2"
-      - "@nfeng6|美国03"
-      - "@nfeng6|美国03 2"
-      - "@nfeng6|美国02"
-      - "@nfeng6|美国02 2"
-      - "@nfeng6|美国01"
-      - "@nfeng6|美国01 2"
-      - "@nfeng6|德国02"
-      - "@nfeng6|德国02 2"
-      - "@nfeng6|德国01"
-      - "@nfeng6|德国01 2"
+      - CH_9000 @WangCai_1
+      - CH_9000 @WangCai_1 2
+      - CH_9001 @WangCai_1
+      - CH_9001 @WangCai_1 2
+      - CH_9003 @WangCai_1
+      - CH_9003 @WangCai_1 2
+      - CH_9005 @WangCai_1
+      - CH_9005 @WangCai_1 2
+      - CH_9006 @WangCai_1
+      - CH_9006 @WangCai_1 2
+      - CH_9007 @WangCai_1
+      - CH_9007 @WangCai_1 2
+      - CH_9008 @WangCai_1
+      - CH_9008 @WangCai_1 2
+      - CH_9010 @WangCai_1
+      - CH_9010 @WangCai_1 2
+      - CH_9011 @WangCai_1
+      - CH_9011 @WangCai_1 2
+      - CH_9014 @WangCai_1
+      - CH_9014 @WangCai_1 2
+      - CH_9015 @WangCai_1
+      - CH_9015 @WangCai_1 2
+      - CH_9018 @WangCai_1
+      - CH_9018 @WangCai_1 2
+      - CH_9019 @WangCai_1
+      - CH_9019 @WangCai_1 2
+      - CH_9020 @WangCai_1
+      - CH_9020 @WangCai_1 2
+      - CH_9024 @WangCai_1
+      - CH_9024 @WangCai_1 2
+      - CH_9025 @WangCai_1
+      - CH_9025 @WangCai_1 2
+      - CH_9026 @WangCai_1
+      - CH_9026 @WangCai_1 2
+      - CH_9027 @WangCai_1
+      - CH_9027 @WangCai_1 2
+      - CH_9030 @WangCai_1
+      - CH_9030 @WangCai_1 2
+      - CH_9031 @WangCai_1
+      - CH_9031 @WangCai_1 2
+      - CH_9032 @WangCai_1
+      - CH_9032 @WangCai_1 2
+      - CH_9033 @WangCai_1
+      - CH_9033 @WangCai_1 2
+      - CH_9037 @WangCai_1
+      - CH_9037 @WangCai_1 2
+      - CH_9038 @WangCai_1
+      - CH_9038 @WangCai_1 2
+      - CH_9040 @WangCai_1
+      - CH_9040 @WangCai_1 2
+      - CH_9041 @WangCai_1
+      - CH_9041 @WangCai_1 2
+      - CH_9042 @WangCai_1
+      - CH_9042 @WangCai_1 2
+      - CH_9043 @WangCai_1
+      - CH_9043 @WangCai_1 2
+      - CH_9045 @WangCai_1
+      - CH_9045 @WangCai_1 2
+      - CH_9046 @WangCai_1
+      - CH_9046 @WangCai_1 2
+      - CH_9050 @WangCai_1
+      - CH_9050 @WangCai_1 2
+      - CH_9053 @WangCai_1
+      - CH_9053 @WangCai_1 2
+      - CH_9056 @WangCai_1
+      - CH_9056 @WangCai_1 2
+      - CH_9057 @WangCai_1
+      - CH_9057 @WangCai_1 2
+      - CH_9058 @WangCai_1
+      - CH_9058 @WangCai_1 2
+      - CH_9059 @WangCai_1
+      - CH_9059 @WangCai_1 2
+      - CH_9060 @WangCai_1
+      - CH_9060 @WangCai_1 2
+      - CH_9061 @WangCai_1
+      - CH_9061 @WangCai_1 2
+      - CH_9064 @WangCai_1
+      - CH_9064 @WangCai_1 2
+      - CH_9070 @WangCai_1
+      - CH_9070 @WangCai_1 2
+      - CH_9073 @WangCai_1
+      - CH_9073 @WangCai_1 2
+      - CH_9079 @WangCai_1
+      - CH_9079 @WangCai_1 2
+      - CH_9080 @WangCai_1
+      - CH_9080 @WangCai_1 2
+      - CH_9084 @WangCai_1
+      - CH_9084 @WangCai_1 2
+      - CH_9088 @WangCai_1
+      - CH_9088 @WangCai_1 2
+      - CH_9093 @WangCai_1
+      - CH_9093 @WangCai_1 2
+      - CH_9094 @WangCai_1
+      - CH_9094 @WangCai_1 2
+      - CH_9097 @WangCai_1
+      - CH_9097 @WangCai_1 2
+      - CH_9098 @WangCai_1
+      - CH_9098 @WangCai_1 2
   - name: 📲 电报信息
     type: select
     proxies:
       - 🔰 节点选择
       - 🎯 全球直连
-      - "@nfeng6|英国02"
-      - "@nfeng6|英国02 2"
-      - "@nfeng6|英国01"
-      - "@nfeng6|英国01 2"
-      - "@nfeng6|印度02"
-      - "@nfeng6|印度02 2"
-      - "@nfeng6|印度01"
-      - "@nfeng6|印度01 2"
-      - "@nfeng6|新加坡04"
-      - "@nfeng6|新加坡04 2"
-      - "@nfeng6|新加坡03"
-      - "@nfeng6|新加坡03 2"
-      - "@nfeng6|新加坡02"
-      - "@nfeng6|新加坡02 2"
-      - "@nfeng6|新加坡01"
-      - "@nfeng6|新加坡01 2"
-      - "@nfeng6|香港06"
-      - "@nfeng6|香港06 2"
-      - "@nfeng6|香港05"
-      - "@nfeng6|香港05 2"
-      - "@nfeng6|香港04"
-      - "@nfeng6|香港04 2"
-      - "@nfeng6|香港03"
-      - "@nfeng6|香港03 2"
-      - "@nfeng6|香港02"
-      - "@nfeng6|香港02 2"
-      - "@nfeng6|香港01 2"
-      - "@nfeng6|香港01 2 2"
-      - "@nfeng6|台湾05 2"
-      - "@nfeng6|台湾05 2 2"
-      - "@nfeng6|台湾05"
-      - "@nfeng6|台湾05 3"
-      - "@nfeng6|台湾04"
-      - "@nfeng6|台湾04 2"
-      - "@nfeng6|台湾03"
-      - "@nfeng6|台湾03 2"
-      - "@nfeng6|台湾02"
-      - "@nfeng6|台湾02 2"
-      - "@nfeng6|台湾01 2"
-      - "@nfeng6|台湾01 2 2"
-      - "@nfeng6|台湾01"
-      - "@nfeng6|台湾01 3"
-      - "@nfeng6|日本04"
-      - "@nfeng6|日本04 2"
-      - "@nfeng6|日本03"
-      - "@nfeng6|日本03 2"
-      - "@nfeng6|日本02"
-      - "@nfeng6|日本02 2"
-      - "@nfeng6|日本01"
-      - "@nfeng6|日本01 2"
-      - "@nfeng6|美国04"
-      - "@nfeng6|美国04 2"
-      - "@nfeng6|美国03"
-      - "@nfeng6|美国03 2"
-      - "@nfeng6|美国02"
-      - "@nfeng6|美国02 2"
-      - "@nfeng6|美国01"
-      - "@nfeng6|美国01 2"
-      - "@nfeng6|德国02"
-      - "@nfeng6|德国02 2"
-      - "@nfeng6|德国01"
-      - "@nfeng6|德国01 2"
+      - CH_9000 @WangCai_1
+      - CH_9000 @WangCai_1 2
+      - CH_9001 @WangCai_1
+      - CH_9001 @WangCai_1 2
+      - CH_9003 @WangCai_1
+      - CH_9003 @WangCai_1 2
+      - CH_9005 @WangCai_1
+      - CH_9005 @WangCai_1 2
+      - CH_9006 @WangCai_1
+      - CH_9006 @WangCai_1 2
+      - CH_9007 @WangCai_1
+      - CH_9007 @WangCai_1 2
+      - CH_9008 @WangCai_1
+      - CH_9008 @WangCai_1 2
+      - CH_9010 @WangCai_1
+      - CH_9010 @WangCai_1 2
+      - CH_9011 @WangCai_1
+      - CH_9011 @WangCai_1 2
+      - CH_9014 @WangCai_1
+      - CH_9014 @WangCai_1 2
+      - CH_9015 @WangCai_1
+      - CH_9015 @WangCai_1 2
+      - CH_9018 @WangCai_1
+      - CH_9018 @WangCai_1 2
+      - CH_9019 @WangCai_1
+      - CH_9019 @WangCai_1 2
+      - CH_9020 @WangCai_1
+      - CH_9020 @WangCai_1 2
+      - CH_9024 @WangCai_1
+      - CH_9024 @WangCai_1 2
+      - CH_9025 @WangCai_1
+      - CH_9025 @WangCai_1 2
+      - CH_9026 @WangCai_1
+      - CH_9026 @WangCai_1 2
+      - CH_9027 @WangCai_1
+      - CH_9027 @WangCai_1 2
+      - CH_9030 @WangCai_1
+      - CH_9030 @WangCai_1 2
+      - CH_9031 @WangCai_1
+      - CH_9031 @WangCai_1 2
+      - CH_9032 @WangCai_1
+      - CH_9032 @WangCai_1 2
+      - CH_9033 @WangCai_1
+      - CH_9033 @WangCai_1 2
+      - CH_9037 @WangCai_1
+      - CH_9037 @WangCai_1 2
+      - CH_9038 @WangCai_1
+      - CH_9038 @WangCai_1 2
+      - CH_9040 @WangCai_1
+      - CH_9040 @WangCai_1 2
+      - CH_9041 @WangCai_1
+      - CH_9041 @WangCai_1 2
+      - CH_9042 @WangCai_1
+      - CH_9042 @WangCai_1 2
+      - CH_9043 @WangCai_1
+      - CH_9043 @WangCai_1 2
+      - CH_9045 @WangCai_1
+      - CH_9045 @WangCai_1 2
+      - CH_9046 @WangCai_1
+      - CH_9046 @WangCai_1 2
+      - CH_9050 @WangCai_1
+      - CH_9050 @WangCai_1 2
+      - CH_9053 @WangCai_1
+      - CH_9053 @WangCai_1 2
+      - CH_9056 @WangCai_1
+      - CH_9056 @WangCai_1 2
+      - CH_9057 @WangCai_1
+      - CH_9057 @WangCai_1 2
+      - CH_9058 @WangCai_1
+      - CH_9058 @WangCai_1 2
+      - CH_9059 @WangCai_1
+      - CH_9059 @WangCai_1 2
+      - CH_9060 @WangCai_1
+      - CH_9060 @WangCai_1 2
+      - CH_9061 @WangCai_1
+      - CH_9061 @WangCai_1 2
+      - CH_9064 @WangCai_1
+      - CH_9064 @WangCai_1 2
+      - CH_9070 @WangCai_1
+      - CH_9070 @WangCai_1 2
+      - CH_9073 @WangCai_1
+      - CH_9073 @WangCai_1 2
+      - CH_9079 @WangCai_1
+      - CH_9079 @WangCai_1 2
+      - CH_9080 @WangCai_1
+      - CH_9080 @WangCai_1 2
+      - CH_9084 @WangCai_1
+      - CH_9084 @WangCai_1 2
+      - CH_9088 @WangCai_1
+      - CH_9088 @WangCai_1 2
+      - CH_9093 @WangCai_1
+      - CH_9093 @WangCai_1 2
+      - CH_9094 @WangCai_1
+      - CH_9094 @WangCai_1 2
+      - CH_9097 @WangCai_1
+      - CH_9097 @WangCai_1 2
+      - CH_9098 @WangCai_1
+      - CH_9098 @WangCai_1 2
   - name: 🍎 苹果服务
     type: select
     proxies:
       - 🔰 节点选择
       - 🎯 全球直连
       - ♻️ 自动选择
-      - "@nfeng6|英国02"
-      - "@nfeng6|英国02 2"
-      - "@nfeng6|英国01"
-      - "@nfeng6|英国01 2"
-      - "@nfeng6|印度02"
-      - "@nfeng6|印度02 2"
-      - "@nfeng6|印度01"
-      - "@nfeng6|印度01 2"
-      - "@nfeng6|新加坡04"
-      - "@nfeng6|新加坡04 2"
-      - "@nfeng6|新加坡03"
-      - "@nfeng6|新加坡03 2"
-      - "@nfeng6|新加坡02"
-      - "@nfeng6|新加坡02 2"
-      - "@nfeng6|新加坡01"
-      - "@nfeng6|新加坡01 2"
-      - "@nfeng6|香港06"
-      - "@nfeng6|香港06 2"
-      - "@nfeng6|香港05"
-      - "@nfeng6|香港05 2"
-      - "@nfeng6|香港04"
-      - "@nfeng6|香港04 2"
-      - "@nfeng6|香港03"
-      - "@nfeng6|香港03 2"
-      - "@nfeng6|香港02"
-      - "@nfeng6|香港02 2"
-      - "@nfeng6|香港01 2"
-      - "@nfeng6|香港01 2 2"
-      - "@nfeng6|台湾05 2"
-      - "@nfeng6|台湾05 2 2"
-      - "@nfeng6|台湾05"
-      - "@nfeng6|台湾05 3"
-      - "@nfeng6|台湾04"
-      - "@nfeng6|台湾04 2"
-      - "@nfeng6|台湾03"
-      - "@nfeng6|台湾03 2"
-      - "@nfeng6|台湾02"
-      - "@nfeng6|台湾02 2"
-      - "@nfeng6|台湾01 2"
-      - "@nfeng6|台湾01 2 2"
-      - "@nfeng6|台湾01"
-      - "@nfeng6|台湾01 3"
-      - "@nfeng6|日本04"
-      - "@nfeng6|日本04 2"
-      - "@nfeng6|日本03"
-      - "@nfeng6|日本03 2"
-      - "@nfeng6|日本02"
-      - "@nfeng6|日本02 2"
-      - "@nfeng6|日本01"
-      - "@nfeng6|日本01 2"
-      - "@nfeng6|美国04"
-      - "@nfeng6|美国04 2"
-      - "@nfeng6|美国03"
-      - "@nfeng6|美国03 2"
-      - "@nfeng6|美国02"
-      - "@nfeng6|美国02 2"
-      - "@nfeng6|美国01"
-      - "@nfeng6|美国01 2"
-      - "@nfeng6|德国02"
-      - "@nfeng6|德国02 2"
-      - "@nfeng6|德国01"
-      - "@nfeng6|德国01 2"
+      - CH_9000 @WangCai_1
+      - CH_9000 @WangCai_1 2
+      - CH_9001 @WangCai_1
+      - CH_9001 @WangCai_1 2
+      - CH_9003 @WangCai_1
+      - CH_9003 @WangCai_1 2
+      - CH_9005 @WangCai_1
+      - CH_9005 @WangCai_1 2
+      - CH_9006 @WangCai_1
+      - CH_9006 @WangCai_1 2
+      - CH_9007 @WangCai_1
+      - CH_9007 @WangCai_1 2
+      - CH_9008 @WangCai_1
+      - CH_9008 @WangCai_1 2
+      - CH_9010 @WangCai_1
+      - CH_9010 @WangCai_1 2
+      - CH_9011 @WangCai_1
+      - CH_9011 @WangCai_1 2
+      - CH_9014 @WangCai_1
+      - CH_9014 @WangCai_1 2
+      - CH_9015 @WangCai_1
+      - CH_9015 @WangCai_1 2
+      - CH_9018 @WangCai_1
+      - CH_9018 @WangCai_1 2
+      - CH_9019 @WangCai_1
+      - CH_9019 @WangCai_1 2
+      - CH_9020 @WangCai_1
+      - CH_9020 @WangCai_1 2
+      - CH_9024 @WangCai_1
+      - CH_9024 @WangCai_1 2
+      - CH_9025 @WangCai_1
+      - CH_9025 @WangCai_1 2
+      - CH_9026 @WangCai_1
+      - CH_9026 @WangCai_1 2
+      - CH_9027 @WangCai_1
+      - CH_9027 @WangCai_1 2
+      - CH_9030 @WangCai_1
+      - CH_9030 @WangCai_1 2
+      - CH_9031 @WangCai_1
+      - CH_9031 @WangCai_1 2
+      - CH_9032 @WangCai_1
+      - CH_9032 @WangCai_1 2
+      - CH_9033 @WangCai_1
+      - CH_9033 @WangCai_1 2
+      - CH_9037 @WangCai_1
+      - CH_9037 @WangCai_1 2
+      - CH_9038 @WangCai_1
+      - CH_9038 @WangCai_1 2
+      - CH_9040 @WangCai_1
+      - CH_9040 @WangCai_1 2
+      - CH_9041 @WangCai_1
+      - CH_9041 @WangCai_1 2
+      - CH_9042 @WangCai_1
+      - CH_9042 @WangCai_1 2
+      - CH_9043 @WangCai_1
+      - CH_9043 @WangCai_1 2
+      - CH_9045 @WangCai_1
+      - CH_9045 @WangCai_1 2
+      - CH_9046 @WangCai_1
+      - CH_9046 @WangCai_1 2
+      - CH_9050 @WangCai_1
+      - CH_9050 @WangCai_1 2
+      - CH_9053 @WangCai_1
+      - CH_9053 @WangCai_1 2
+      - CH_9056 @WangCai_1
+      - CH_9056 @WangCai_1 2
+      - CH_9057 @WangCai_1
+      - CH_9057 @WangCai_1 2
+      - CH_9058 @WangCai_1
+      - CH_9058 @WangCai_1 2
+      - CH_9059 @WangCai_1
+      - CH_9059 @WangCai_1 2
+      - CH_9060 @WangCai_1
+      - CH_9060 @WangCai_1 2
+      - CH_9061 @WangCai_1
+      - CH_9061 @WangCai_1 2
+      - CH_9064 @WangCai_1
+      - CH_9064 @WangCai_1 2
+      - CH_9070 @WangCai_1
+      - CH_9070 @WangCai_1 2
+      - CH_9073 @WangCai_1
+      - CH_9073 @WangCai_1 2
+      - CH_9079 @WangCai_1
+      - CH_9079 @WangCai_1 2
+      - CH_9080 @WangCai_1
+      - CH_9080 @WangCai_1 2
+      - CH_9084 @WangCai_1
+      - CH_9084 @WangCai_1 2
+      - CH_9088 @WangCai_1
+      - CH_9088 @WangCai_1 2
+      - CH_9093 @WangCai_1
+      - CH_9093 @WangCai_1 2
+      - CH_9094 @WangCai_1
+      - CH_9094 @WangCai_1 2
+      - CH_9097 @WangCai_1
+      - CH_9097 @WangCai_1 2
+      - CH_9098 @WangCai_1
+      - CH_9098 @WangCai_1 2
   - name: 🎯 全球直连
     type: select
     proxies:
@@ -598,68 +860,104 @@ proxy-groups:
       - 🔰 节点选择
       - 🎯 全球直连
       - ♻️ 自动选择
-      - "@nfeng6|英国02"
-      - "@nfeng6|英国02 2"
-      - "@nfeng6|英国01"
-      - "@nfeng6|英国01 2"
-      - "@nfeng6|印度02"
-      - "@nfeng6|印度02 2"
-      - "@nfeng6|印度01"
-      - "@nfeng6|印度01 2"
-      - "@nfeng6|新加坡04"
-      - "@nfeng6|新加坡04 2"
-      - "@nfeng6|新加坡03"
-      - "@nfeng6|新加坡03 2"
-      - "@nfeng6|新加坡02"
-      - "@nfeng6|新加坡02 2"
-      - "@nfeng6|新加坡01"
-      - "@nfeng6|新加坡01 2"
-      - "@nfeng6|香港06"
-      - "@nfeng6|香港06 2"
-      - "@nfeng6|香港05"
-      - "@nfeng6|香港05 2"
-      - "@nfeng6|香港04"
-      - "@nfeng6|香港04 2"
-      - "@nfeng6|香港03"
-      - "@nfeng6|香港03 2"
-      - "@nfeng6|香港02"
-      - "@nfeng6|香港02 2"
-      - "@nfeng6|香港01 2"
-      - "@nfeng6|香港01 2 2"
-      - "@nfeng6|台湾05 2"
-      - "@nfeng6|台湾05 2 2"
-      - "@nfeng6|台湾05"
-      - "@nfeng6|台湾05 3"
-      - "@nfeng6|台湾04"
-      - "@nfeng6|台湾04 2"
-      - "@nfeng6|台湾03"
-      - "@nfeng6|台湾03 2"
-      - "@nfeng6|台湾02"
-      - "@nfeng6|台湾02 2"
-      - "@nfeng6|台湾01 2"
-      - "@nfeng6|台湾01 2 2"
-      - "@nfeng6|台湾01"
-      - "@nfeng6|台湾01 3"
-      - "@nfeng6|日本04"
-      - "@nfeng6|日本04 2"
-      - "@nfeng6|日本03"
-      - "@nfeng6|日本03 2"
-      - "@nfeng6|日本02"
-      - "@nfeng6|日本02 2"
-      - "@nfeng6|日本01"
-      - "@nfeng6|日本01 2"
-      - "@nfeng6|美国04"
-      - "@nfeng6|美国04 2"
-      - "@nfeng6|美国03"
-      - "@nfeng6|美国03 2"
-      - "@nfeng6|美国02"
-      - "@nfeng6|美国02 2"
-      - "@nfeng6|美国01"
-      - "@nfeng6|美国01 2"
-      - "@nfeng6|德国02"
-      - "@nfeng6|德国02 2"
-      - "@nfeng6|德国01"
-      - "@nfeng6|德国01 2"
+      - CH_9000 @WangCai_1
+      - CH_9000 @WangCai_1 2
+      - CH_9001 @WangCai_1
+      - CH_9001 @WangCai_1 2
+      - CH_9003 @WangCai_1
+      - CH_9003 @WangCai_1 2
+      - CH_9005 @WangCai_1
+      - CH_9005 @WangCai_1 2
+      - CH_9006 @WangCai_1
+      - CH_9006 @WangCai_1 2
+      - CH_9007 @WangCai_1
+      - CH_9007 @WangCai_1 2
+      - CH_9008 @WangCai_1
+      - CH_9008 @WangCai_1 2
+      - CH_9010 @WangCai_1
+      - CH_9010 @WangCai_1 2
+      - CH_9011 @WangCai_1
+      - CH_9011 @WangCai_1 2
+      - CH_9014 @WangCai_1
+      - CH_9014 @WangCai_1 2
+      - CH_9015 @WangCai_1
+      - CH_9015 @WangCai_1 2
+      - CH_9018 @WangCai_1
+      - CH_9018 @WangCai_1 2
+      - CH_9019 @WangCai_1
+      - CH_9019 @WangCai_1 2
+      - CH_9020 @WangCai_1
+      - CH_9020 @WangCai_1 2
+      - CH_9024 @WangCai_1
+      - CH_9024 @WangCai_1 2
+      - CH_9025 @WangCai_1
+      - CH_9025 @WangCai_1 2
+      - CH_9026 @WangCai_1
+      - CH_9026 @WangCai_1 2
+      - CH_9027 @WangCai_1
+      - CH_9027 @WangCai_1 2
+      - CH_9030 @WangCai_1
+      - CH_9030 @WangCai_1 2
+      - CH_9031 @WangCai_1
+      - CH_9031 @WangCai_1 2
+      - CH_9032 @WangCai_1
+      - CH_9032 @WangCai_1 2
+      - CH_9033 @WangCai_1
+      - CH_9033 @WangCai_1 2
+      - CH_9037 @WangCai_1
+      - CH_9037 @WangCai_1 2
+      - CH_9038 @WangCai_1
+      - CH_9038 @WangCai_1 2
+      - CH_9040 @WangCai_1
+      - CH_9040 @WangCai_1 2
+      - CH_9041 @WangCai_1
+      - CH_9041 @WangCai_1 2
+      - CH_9042 @WangCai_1
+      - CH_9042 @WangCai_1 2
+      - CH_9043 @WangCai_1
+      - CH_9043 @WangCai_1 2
+      - CH_9045 @WangCai_1
+      - CH_9045 @WangCai_1 2
+      - CH_9046 @WangCai_1
+      - CH_9046 @WangCai_1 2
+      - CH_9050 @WangCai_1
+      - CH_9050 @WangCai_1 2
+      - CH_9053 @WangCai_1
+      - CH_9053 @WangCai_1 2
+      - CH_9056 @WangCai_1
+      - CH_9056 @WangCai_1 2
+      - CH_9057 @WangCai_1
+      - CH_9057 @WangCai_1 2
+      - CH_9058 @WangCai_1
+      - CH_9058 @WangCai_1 2
+      - CH_9059 @WangCai_1
+      - CH_9059 @WangCai_1 2
+      - CH_9060 @WangCai_1
+      - CH_9060 @WangCai_1 2
+      - CH_9061 @WangCai_1
+      - CH_9061 @WangCai_1 2
+      - CH_9064 @WangCai_1
+      - CH_9064 @WangCai_1 2
+      - CH_9070 @WangCai_1
+      - CH_9070 @WangCai_1 2
+      - CH_9073 @WangCai_1
+      - CH_9073 @WangCai_1 2
+      - CH_9079 @WangCai_1
+      - CH_9079 @WangCai_1 2
+      - CH_9080 @WangCai_1
+      - CH_9080 @WangCai_1 2
+      - CH_9084 @WangCai_1
+      - CH_9084 @WangCai_1 2
+      - CH_9088 @WangCai_1
+      - CH_9088 @WangCai_1 2
+      - CH_9093 @WangCai_1
+      - CH_9093 @WangCai_1 2
+      - CH_9094 @WangCai_1
+      - CH_9094 @WangCai_1 2
+      - CH_9097 @WangCai_1
+      - CH_9097 @WangCai_1 2
+      - CH_9098 @WangCai_1
+      - CH_9098 @WangCai_1 2
 rules:
  - DOMAIN-SUFFIX,local,🎯 全球直连
  - IP-CIDR,192.168.0.0/16,🎯 全球直连,no-resolve

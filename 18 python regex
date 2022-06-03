@@ -1,3 +1,5 @@
+
+
 import re
 
 # # re.match 尝试从字符串的起始位置匹配一个模式，如果不是起始位置匹配成功的话，match()就返回none。
@@ -47,8 +49,26 @@ import re
 # num = re.sub(r'\D', "", phone)
 # print ("电话号码 : ", num)
 
+# s = 'Make the World a *Better Place*'
+# pattern = r'\*(.*?)\*'
+# replacement = r'<b>\1<\\b>'
+# html = re.sub(pattern, replacement, s)
 
-# # 将匹配的数字乘于 2
+# print(html)
+
+
+# # 使用函数，其中函数的参数调用的都是re.Match object，
+
+
+# def square(match):
+#     num = int(match.group())
+#     return str(num*num)
+
+# l = ['A1','A2','A3']
+# pattern = r'\d+'
+# new_l = [re.sub(pattern, square, s) for s in l]
+
+# print(new_l)
 
 # s = 'A23G4HFD567'
 
@@ -58,6 +78,77 @@ import re
 
 # print(re.sub('(?P<value>\d+)', double, s))
 
+############################################# 解释：############################################
+# 首先要查找到，才替换
+# 所以第一步就是查找：
+
+# sub查找到了，则对应返回的值是一个 match对象（包括search方法查找到了都是返回一个match对象，这是python规定的）
+# 接着，double这个函数的参数接受到了这个对象
+# 然后，可以通过调用组名来获取匹配到的内容【group组是可以命名的】
+ 
+# =============================================================================================
+# 前方高能请耐心看完
+ 
+# (?P<name>...)  named group 带命名的组
+# (?P<value>\d+)通过这样的一组方式可以将匹配到的组（也就是匹配到的内容【groups（）】）命名为value【这里的例子是命名为value】
+# 后面的‘\d+’则是正则表达式要匹配的内容，而前面的‘?P<name>’则是对这个组名的声明
+ 
+# 1. (?P=name)
+# ##就是通过 (?P=name)的方式来引用【这个方法用在正则表达式里】
+# url = '<a>www.baidu.com<a>baidu'
+# uu = re.search(r'<a>www.(?P<value>.+?).com<a>(?P=value)',url)
+# print(uu)
+ 
+# 2. mateched.group(name)
+# ##可以通过之前给group命的名，来获得匹配到的值
+# url = '<a>www.baidu.com<a>baidu'
+# b = re.search(r'<a>www.(?P<value>.+?).com<a>(?P=value)',url)
+# print(b.group('value'))
+
+# 3. matched.group(N) == matched.group(name)
+#     # 此处，通过group的index，即group(1),group(2),...
+#     # 也可以获得和之前通过名字name获得的group的值
+#     # 通过名字或者索引号，两种方式都可以获得所需要的值，
+#     # 但是通过名字，更加准确，不会出现，当group太多而index容易混淆的问题
+ 
+# 4. \g<name> in re.sub()
+# 在re.sub()中，通过\g<name>的方式，引用前面已经命名为name的group的值
+# url = '<a>www.baidu.com<a>baidu'
+# c = re.sub(r'<a>www.(?P<value>.+?).com<a>(?P=value)','\g<value>',url)
+# print(c)
+
+# astr1 = 'AAbb aabb'
+# astr2 = 'aabb aabb'
+# astr3 = 'aabb ccbb'
+ 
+# for s in astr1,astr2,astr3:
+#     result = re.match(r'(?i)(?P<pattern>[\w]+) (?P=pattern)',s)
+#     if result != None:
+#         print('{} match result is {}'.format(s,result.group()))
+#     else:
+#         print('{} match Nothing'.format(s))
+# astr = 'aabb aacc aadd'
+
+# result = re.sub(r'(?i)aa(?P<pattern>[\w]+)',r'bb\g<pattern>',astr)
+# print('{} has been substituted to {}'.format(astr,result)
+
+# '''
+# (?i) (?s) (?m) (?is) (?im) 是什么意思？
+# 	称为内联匹配模式，通常用内联匹配模式代替使用枚举值RegexOptions指定的全局匹配模式，写起来更简洁。
+# 	(?i) 表示所在位置右侧的表达式开启忽略大小写模式
+# 	(?s) 表示所在位置右侧的表达式开启单行模式。
+# 	更改句点字符 (.) 的含义，以使它与每个字符（而不是除 \n 之外的所有字符）匹配。
+# 	注意：(?s)通常在匹配有换行的文本时使用
+# 	(?m) 表示所在位置右侧的表示式开启指定多行模式。
+# 	更改 ^ 和 $ 的含义，以使它们分别与任何行的开头和结尾匹配，
+# 	而不只是与整个字符串的开头和结尾匹配。
+# 	注意：(?m)只有在正则表达式中涉及到多行的“^”和“$”的匹配时，才使用Multiline模式。
+# 	上面的匹配模式可以组合使用，比如(?is),(?im)。
+# 	另外，还可以用(?i:exp)或者(?i)exp(?-i)来指定匹配的有效范围。
+
+# 	(?)单个问号是不捕捉模式 写法如：(?:) 只是用它来做分组，方法是在左括号的后边加上:?，
+#     "(?:\\w+\\s(\\w+))"
+# '''
 
 # re.compile 函数用于编译正则表达式，生成一个正则表达式（ Pattern ）对象
 
@@ -101,6 +192,7 @@ import re
 # # re.finditer在字符串中找到正则表达式所匹配的所有子串，并把它们作为一个迭代器返回
 
 
-it = re.finditer(r"\d+","12a32bc43jf3") 
-for match in it: 
-    print (match.group() )
+# it = re.finditer(r"\d+","12a32bc43jf3") 
+# for match in it: 
+#     print (match.group() )
+

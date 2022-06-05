@@ -241,8 +241,14 @@ print(re.sub(re.compile(r"[\b]", re.S), "|", "That \bdang' var\bmint's cost me $
 # 注意点：在 Python 中两个反向界定的表达式(反向界定'?<=exp'和反向否定界定'?<!exp')中，exp 只允许使用定长文本，因此不能加*号，例如: (?<!href\s*=\s*)  # 非法的，因为exp只能用定长文本
 
 # 利用断言查找不含某字符的匹配
-print(re.findall(r'^(?:(?<!/).)*(.*?):','abc/def?ghi:jkl<mno>pqr|st'))
+
+print(re.findall(r'^(?:(?<!abc/).)*(.*?):','abc/def?ghi:jkl<mno>pqr|st'))
 print(re.findall(r'^(?:(?<!/).)*?:','abc/def?ghi:jkl<mno>pqr|st'))
+
+print(re.findall(r'^(?!.*mno)','abc/def?ghi:jkl<mno>pqr|st'))
+
+print(re.findall(r'[^/]*?:','abc/def?ghi:jkl<mno>pqr|st'))
+print(re.findall(r'^[^/]*?:','abc/def?ghi:jkl<mno>pqr|st'))
 
 
 

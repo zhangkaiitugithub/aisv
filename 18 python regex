@@ -196,6 +196,10 @@ import re
 # for match in it: 
 #     print (match.group() )
 
+
+# [\b] 匹配转义字符\b本身，匹配退格键 \u0008 
+print(re.sub(re.compile(r"[\b]", re.S), "|", "That \bdang' var\bmint's cost me $199.95!"))
+
 # \b：表示字母数字与非字母数字的边界，     非字母数字与字母数字的边界。
 # \B：表示字母数字与字母数字的边界，非字母数字与非字母数字的边界。
 

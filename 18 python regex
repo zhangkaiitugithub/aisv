@@ -281,7 +281,7 @@ print(re.sub(re.compile(r"[\b]", re.S), "|", "That \bdang' var\bmint's cost me $
 # 前向肯定断言的语法：(?<=pattern) 前向肯定断言表示你希望匹配的字符串前面是pattern匹配的内容时，才匹配。
 # 后向肯定断言的语法：(?=pattern) 后向肯定断言表示你希望匹配的字符串的后面是pattern匹配的内容时，才匹配
 # 如果在一次匹配过程中，需要同时用到前向肯定断言和后向肯定断言时，那你必须将前向肯定断言表达式写在要匹配的正则表达式的前面，而后向肯定断言表 达式写在你要匹配的字符串的后面
-# 前后断言本身相当于是两个字符之间的位置而不是字符，与\b的边界相似
+# 前后断言本身相当于是两个字符之间的位置而不是字符，与\b的边界相似。匹配的是一个位置
 
 # print(re.findall(r'(?=abc)',"fishc@abcch"))
 # print(re.findall(r'(?=abc)abc',"fishc@abcch"))
@@ -296,13 +296,44 @@ print(re.sub(re.compile(r"[\b]", re.S), "|", "That \bdang' var\bmint's cost me $
 
 # 利用断言查找不含某字符的匹配
 
-print(re.findall(r'^(?:(?<!abc/).)*(.*?):','abc/def?ghi:jkl<mno>pqr|st'))
-print(re.findall(r'^(?:(?<!/).)*?:','abc/def?ghi:jkl<mno>pqr|st'))
+# print(re.findall(r'(?<!abc)','abc/def?ghi:jkl<mno>pqr|st'))
+# print(re.findall(r'^(?<!mno)','abc/def?ghi:jkl<mno>pqr|st'))
+# print(re.findall(r'^(?<!abc).','abc/def?ghi:jkl<mno>pqr|st'))
+# print(re.findall(r'^(?<!mno)','abc/def?ghi:jkl<mno>pqr|st'))
+# print(re.findall(r'^(?<!abc).*?:','abc/def?ghi:jkl<mno>pqr|st'))
+# print(re.findall(r'^(?<!mno).*:','abc/def?ghi:jkl<mno>pqr|st'))
+
+print(re.findall(r'^((?<!abc).)','abc/def?ghi:jkl<mno>pqr|st'))
+print(re.findall(r'^((?<!abc).)*','abc/def?ghi:jkl<mno>pqr|st'))
+print(re.findall(r'^((?<!abc).)*?:','abc/def?ghi:jkl<mno>pqr|st'))
+print(re.findall(r'^((?<!abc).)*:','abc/def?ghi:jkl<mno>pqr|st'))
+
+# print(re.findall(r'^((?<!mno).)','abc/def?ghi:jkl<mno>pqr|st'))
+# print(re.findall(r'^((?<!mno).)*','abc/def?ghi:jkl<mno>pqr|st'))
+# print(re.findall(r'^((?<!mno).)*?:','abc/def?ghi:jkl<mno>pqr|st'))
+# print(re.findall(r'^((?<!mno).)*:','abc/def?ghi:jkl<mno>pqr|st'))
+
+
+# print(re.findall(r'.(?!mno)','abc/def?ghi:jkl<mno>pqr|st'))
+# print(re.findall(r'^.*(?!mno)','abc/def?ghi:jkl<mno>pqr|st'))
+# print(re.findall(r'^.*?(?!mno)','abc/def?ghi:jkl<mno>pqr|st'))
+
+# print(re.findall(r'^.*(.(?!mno))','abc/def?ghi:jkl<mno>pqr|st'))
+# print((re.match(r'^.*(.(?!mno))','abc/def?ghi:jkl<mno>pqr|st').group(0)))
+# print((re.match(r'^.*(.(?!mno))','abc/def?ghi:jkl<mno>pqr|st').group(1)))
+# print(re.findall(r'^.*?(.(?!mno))','abc/def?ghi:jkl<mno>pqr|st'))
+# print((re.match(r'^.*?(.(?!mno))','abc/def?ghi:jkl<mno>pqr|st').group(0)))
+# print((re.match(r'^.*?(.(?!mno))','abc/def?ghi:jkl<mno>pqr|st').group(1)))
+
 
 print(re.findall(r'^(?!.*mno)','abc/def?ghi:jkl<mno>pqr|st'))
+print(re.findall(r'^(?!.*mno).*$','abc/def?ghi:jkl<mno>pqr|st'))
 
-print(re.findall(r'[^/]*?:','abc/def?ghi:jkl<mno>pqr|st'))
-print(re.findall(r'^[^/]*?:','abc/def?ghi:jkl<mno>pqr|st'))
+
+
+# print(re.findall(r'[^/]*?:','abc/def?ghi:jkl<mno>pqr|st'))
+# print(re.findall(r'^[^/]*?:','abc/def?ghi:jkl<mno>pqr|st'))
+
 
 
 

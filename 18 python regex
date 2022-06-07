@@ -296,17 +296,20 @@ print(re.sub(re.compile(r"[\b]", re.S), "|", "That \bdang' var\bmint's cost me $
 
 # 利用断言查找不含某字符的匹配
 
+
 # print(re.findall(r'(?<!abc)','abc/def?ghi:jkl<mno>pqr|st'))
 # print(re.findall(r'^(?<!mno)','abc/def?ghi:jkl<mno>pqr|st'))
 # print(re.findall(r'^(?<!abc).','abc/def?ghi:jkl<mno>pqr|st'))
-# print(re.findall(r'^(?<!mno)','abc/def?ghi:jkl<mno>pqr|st'))
+# print(re.findall(r'^(?<!mno).','abc/def?ghi:jkl<mno>pqr|st'))
 # print(re.findall(r'^(?<!abc).*?:','abc/def?ghi:jkl<mno>pqr|st'))
 # print(re.findall(r'^(?<!mno).*:','abc/def?ghi:jkl<mno>pqr|st'))
 
-print(re.findall(r'^((?<!abc).)','abc/def?ghi:jkl<mno>pqr|st'))
-print(re.findall(r'^((?<!abc).)*','abc/def?ghi:jkl<mno>pqr|st'))
-print(re.findall(r'^((?<!abc).)*?:','abc/def?ghi:jkl<mno>pqr|st'))
-print(re.findall(r'^((?<!abc).)*:','abc/def?ghi:jkl<mno>pqr|st'))
+# print(re.findall(r'^((?<!abc).)','abc/def?ghi:jkl<mno>pqr|st'))
+# print(re.findall(r'^((?<!abc).)*','abc/def?ghi:jkl<mno>pqr|st'))
+# print(re.findall(r'^(?:(?<!abc).)','abc/def?ghi:jkl<mno>pqr|st'))
+# print(re.findall(r'^(?:(?<!abc).)*','abc/def?ghi:jkl<mno>pqr|st'))
+# print(re.findall(r'^((?<!abc).)*?:','abc/def?ghi:jkl<mno>pqr|st'))
+# print(re.findall(r'^((?<!abc).)*:','abc/def?ghi:jkl<mno>pqr|st'))
 
 # print(re.findall(r'^((?<!mno).)','abc/def?ghi:jkl<mno>pqr|st'))
 # print(re.findall(r'^((?<!mno).)*','abc/def?ghi:jkl<mno>pqr|st'))
@@ -326,15 +329,22 @@ print(re.findall(r'^((?<!abc).)*:','abc/def?ghi:jkl<mno>pqr|st'))
 # print((re.match(r'^.*?(.(?!mno))','abc/def?ghi:jkl<mno>pqr|st').group(1)))
 
 
-print(re.findall(r'^(?!.*mno)','abc/def?ghi:jkl<mno>pqr|st'))
-print(re.findall(r'^(?!.*mno).*$','abc/def?ghi:jkl<mno>pqr|st'))
+# print(re.findall(r'^(?!.*mno)','abc/def?ghi:jkl<mno>pqr|st'))
+# print(re.findall(r'^(?!.*mno).*$','abc/def?ghi:jkl<mno>pqr|st'))
 
+# print(re.findall(r'^(?!www).*?','www.baidu.com'))
+# print(re.findall(r'^.*?(?<!com)$','www.baidu.com'))
+
+print(re.findall(r'^(?!.*baidu)','www.baidu.com'))
+print(re.findall(r'^(?!baidu)*$','www.baidu.com'))
+
+print(re.findall(r'^((?<!baidu).)*','www.baidu.com'))
+print(re.findall(r'^(?:(?<!baidu).)*','www.baidu.com'))
+print(re.findall(r'^((?<!baidu).)*$','www.baidu.com'))
+print(re.findall(r'^(?:(?<!baidu).)*$','www.baidu.com'))
 
 
 # print(re.findall(r'[^/]*?:','abc/def?ghi:jkl<mno>pqr|st'))
 # print(re.findall(r'^[^/]*?:','abc/def?ghi:jkl<mno>pqr|st'))
-
-
-
 
 

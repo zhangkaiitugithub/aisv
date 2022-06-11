@@ -349,3 +349,16 @@ print(re.findall(r'^(?:(?<!baidu).)*$','www.baidu.com'))
 # print(re.findall(r'^[^/]*?:','abc/def?ghi:jkl<mno>pqr|st'))
 
 
+
+# 表达式换行
+# patternd = r'''(?x)((?:ss://|ssr://|vmess://|trojan://|vless://).*?)\s?
+#                     (?=ss://|ssr://|vmess://|trojan://|vless://|$  )
+#             '''
+
+# patternd = (r'((?:ss://|ssr://|vmess://|trojan://|vless://).*?) ?'
+#               '(?=ss://|ssr://|vmess://|trojan://|vless://|$)')
+
+patternd  = r'((?:ss://|ssr://|vmess://|trojan://|vless://).*?) ?'
+patternd +=  r'(?=ss://|ssr://|vmess://|trojan://|vless://|$)'
+
+print(re.findall(patternd,'ssr://asasdfdasdf ss://fgh vmess://woertppwoy vless://zz,xvn'))

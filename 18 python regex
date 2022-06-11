@@ -187,7 +187,7 @@ import re
 # print('{} has been substituted to {}'.format(astr,result)
 
 # '''
-# (?i) (?s) (?m) (?is) (?im) 是什么意思？
+# (?i) (?s) (?m) (?is) (?im) (?x)是什么意思？
 # 	称为内联匹配模式，通常用内联匹配模式代替使用枚举值RegexOptions指定的全局匹配模式，写起来更简洁。
 # 	(?i) 表示所在位置右侧的表达式开启忽略大小写模式
 # 	(?s) 表示所在位置右侧的表达式开启单行模式。
@@ -203,6 +203,23 @@ import re
 # 	(?)单个问号是不捕捉模式 写法如：(?:) 只是用它来做分组，方法是在左括号的后边加上:?，
 #     "(?:\\w+\\s(\\w+))"
 # '''
+
+# 表达式换行
+# patternd = r'''(?x)((?:ss://|ssr://|vmess://|trojan://|vless://).*?)\s?
+#                     (?=ss://|ssr://|vmess://|trojan://|vless://|$  )
+#             '''
+
+# patternd = (r'((?:ss://|ssr://|vmess://|trojan://|vless://).*?) ?'
+#               '(?=ss://|ssr://|vmess://|trojan://|vless://|$)')
+
+patternd  = r'((?:ss://|ssr://|vmess://|trojan://|vless://).*?) ?'
+patternd +=  r'(?=ss://|ssr://|vmess://|trojan://|vless://|$)'
+
+print(re.findall(patternd,'ssr://asasdfdasdf ss://fgh vmess://woertppwoy vless://zz,xvn'))
+
+
+
+
 
 # re.compile 函数用于编译正则表达式，生成一个正则表达式（ Pattern ）对象
 
@@ -356,15 +373,4 @@ print(re.findall(r'^(?:(?<!baidu).)*$','www.baidu.com'))
 
 
 
-# 表达式换行
-# patternd = r'''(?x)((?:ss://|ssr://|vmess://|trojan://|vless://).*?)\s?
-#                     (?=ss://|ssr://|vmess://|trojan://|vless://|$  )
-#             '''
 
-# patternd = (r'((?:ss://|ssr://|vmess://|trojan://|vless://).*?) ?'
-#               '(?=ss://|ssr://|vmess://|trojan://|vless://|$)')
-
-patternd  = r'((?:ss://|ssr://|vmess://|trojan://|vless://).*?) ?'
-patternd +=  r'(?=ss://|ssr://|vmess://|trojan://|vless://|$)'
-
-print(re.findall(patternd,'ssr://asasdfdasdf ss://fgh vmess://woertppwoy vless://zz,xvn'))

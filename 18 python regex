@@ -257,6 +257,9 @@ print(re.sub(re.compile(r"[\b]", re.S), "|", "That \bdang' var\bmint's cost me $
 # \b：表示字母数字与非字母数字的边界，     非字母数字与字母数字的边界。
 # \B：表示字母数字与字母数字的边界，非字母数字与非字母数字的边界。
 
+print(re.findall(r'\b.+?\b','aaaa123张bbbb456/000000'))
+print(re.findall(r'\B.+?\B','aaaa123张bbbb456/000000'))
+
 # 分组0对应整个正则表达式
 # 实际上组号分配过程是要从左向右扫描两遍的：第一遍只给未命名组分配，第二遍只给命名组分配－－因此所有命名组的组号都大于未命名的组号
 # 你可以使用(?:exp)这样的语法来剥夺一个分组对组号分配的参与权
@@ -272,6 +275,9 @@ print(re.sub(re.compile(r"[\b]", re.S), "|", "That \bdang' var\bmint's cost me $
 # print(re.split('\\b123=\\B','==123!! abc123,123,123==abc,123'))
 # print(re.search(r"\b(\w+)\b\s+\1\b","hello go go hello"))
 
+
+print(re.split(r'/','aaaa123张bbbb456/000000'))
+print(re.split(r'(/)','aaaa123张bbbb456/000000'))
 
 # print(re.findall(r"\b\w+(?=ing\b)","I'm singing while you're dancinger"))
 # print(re.findall(r"(?<=\bre)\w+\b","reading a acree`s book"))

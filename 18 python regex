@@ -202,11 +202,16 @@ import re
 
 # 	(?)单个问号是不捕捉模式 写法如：(?:) 只是用它来做分组，方法是在左括号的后边加上:?，
 #     "(?:\\w+\\s(\\w+))"
+
+# 	(?x)松散模式，可以分行和添加注释，空白符会被忽略，
+# 	除非在一个字符结合里或者由反斜杠转义或者在 *?,(?: or (?P<...> 分组之内。
+# 	当一个行内有 # 不在字符集和转义序列，那么它之后的所有字符都是注释
 # '''
 
+
 # 表达式换行
-# patternd = r'''(?x)((?:ss://|ssr://|vmess://|trojan://|vless://).*?)\s?
-#                     (?=ss://|ssr://|vmess://|trojan://|vless://|$  )
+# patternd = r'''(?x)((?:ss://|ssr://|vmess://|trojan://|vless://).*?)\s?      #xxxxxxxxxxxxxxxxxx
+#                     (?=ss://|ssr://|vmess://|trojan://|vless://|$  )         #xxxxxxxxxxxxxxxxxx
 #             '''
 
 # patternd = (r'((?:ss://|ssr://|vmess://|trojan://|vless://).*?) ?'

@@ -243,3 +243,21 @@ print(v[1:4].tobytes())
 # print(repr(test))
 
 
+
+#################################################################################
+#汉字与\uxxxx编码转换
+import json
+
+print(json.dumps('大中华'))
+print(json.loads(json.dumps('大中华')))
+
+# print('广州'.encode('unicode-escape'))
+
+# print('新增会员'.encode('ascii', 'backslashreplace').decode())
+
+
+# print(b"\u65b0\u589e\u4f1a\u5458".decode('unicode_escape'))
+
+# print('\\u65b0\\u589e\\u4f1a\\u5458:'.encode('utf-8').decode('unicode_escape'))
+
+# print(u'\u5403\u9e21\u6218\u573a')    # Python3 能够识别以u开头的编码，自动将其解析为汉字

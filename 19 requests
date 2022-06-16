@@ -55,6 +55,10 @@ GET请求常用的操作：
 # print(response.url)
 # #打印请求的历史记录（以列表的形式显示）
 # print(response.history)
+# requests发请求时，接口的响应时间
+print(response.elapsed)
+print(response.elapsed.total_seconds())
+print(response.elapsed.seconds)
 
 
 # ####服务器相应内容

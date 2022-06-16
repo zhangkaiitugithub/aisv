@@ -367,7 +367,7 @@ print(response)
 # proxies = {"socks5":"http://127.0.0.1:7891","socks5":"https://127.0.0.1:7891"} 
 # url = 'https://raw.githubusercontent.com/zhangkaiitugithub/passcro/main/manu.yaml'
 # session = requests.Session()
-# session.trust_env = False
+# session.trust_env = False    #完全禁用代理
 # response = session.get(url=url, proxies = proxies, verify=False)
 # print(response)
 

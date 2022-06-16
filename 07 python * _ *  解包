@@ -57,10 +57,6 @@
 # name, *_, (*_, year) = ('Bob', 20, 50, (11, 20, 2000))  ## 当一些元素不用时，用_表示是更好的写法，可以让读代码的人知道这个元素是不要的
 # print(year)
 
-lst = [[1, 2, 3, 4, 5], [6, 7, 8, 9, 0], [11, 22, 33]] 
-merge_list = [j for i in lst for j in i]  # 先执行第一个for循环 
-print(merge_list) 
-
 # s = 'ABCDEFGH'
 # while s:
 #    x, s = s[0], list(s[1:])
@@ -81,5 +77,9 @@ while s:
 # H []
 
 
+
+lst = [[1, 2, 3, 4, 5], [6, 7, 8, 9, 0], [11, 22, 33]] 
+merge_list = [j for i in lst for j in i]  # 先执行第一个for循环 
+print(merge_list) 
 
 

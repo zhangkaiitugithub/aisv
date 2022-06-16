@@ -346,3 +346,29 @@ GET请求常用的操作：
 #     print(type(result), result, sep='\n')
 
 
+
+
+import requests
+
+# 环境：clash mixed port: http+socks =7890
+
+# from urllib3.contrib.socks import SOCKSProxyManager
+# proxy = SOCKSProxyManager('socks5h://localhost:7890/')
+# gg = proxy.request('GET', 'https://raw.githubusercontent.com/zhangkaiitugithub/passcro/main/manu.yaml')
+# print(gg.data)
+
+
+proxies = {'http':'socks5://127.0.0.1:7890','https':'socks5://127.0.0.1:7890'}
+url = 'https://raw.githubusercontent.com/zhangkaiitugithub/passcro/main/manu.yaml'
+response = requests.get(url=url, proxies = proxies)#, verify=Fals
+print(response)
+
+
+# proxies = {"socks5":"http://127.0.0.1:7891","socks5":"https://127.0.0.1:7891"} 
+# url = 'https://raw.githubusercontent.com/zhangkaiitugithub/passcro/main/manu.yaml'
+# session = requests.Session()
+# session.trust_env = False
+# response = session.get(url=url, proxies = proxies, verify=False)
+# print(response)
+
+

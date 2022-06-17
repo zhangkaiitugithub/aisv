@@ -375,4 +375,15 @@ print(response)
 # response = session.get(url=url, proxies = proxies, verify=False)
 # print(response)
 
+bt = requests.get('http://127.0.0.1:58066/traffic',stream=True,timeout = (5,5))
 
+# for chunk in bt.iter_content(chunk_size=50):
+# 	if chunk:
+# 		print(chunk)
+
+for chunk in bt.iter_lines(6):
+	if chunk:
+		print(chunk)
+      
+      
+      

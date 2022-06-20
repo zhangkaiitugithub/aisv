@@ -1,0 +1,79 @@
+
+# dict update() 方法的使用方法：
+
+D = {'one': 1, 'two': 2}
+ 
+D.update({'three': 3, 'four': 4})  # 传一个字典
+print(D)
+ 
+D.update(five=5, six=6)  # 传关键字
+print(D)
+ 
+D.update([('seven', 7), ('eight', 8)])  # 传一个包含一个或多个元祖的列表
+print(D)
+ 
+D.update(zip(['eleven', 'twelve'], [11, 12]))  # 传一个zip()函数
+print(D)
+ 
+D.update(one=111, two=222)  # 使用以上任意方法修改存在的键对应的值
+print(D)
+
+
+# updata方法是没有返回值的（返回值为None），不能直接赋值返回值给变量
+
+dict1 = {1: "彭鎏", 2: "彭大根"}
+dict3 = dict1.update({8: "PLUS"})
+print(dict3)
+
+dict1.update({8: "PLUS"})
+dict3 = dict1
+print(dict3)
+
+
+# import json,yaml
+
+# ttt = '''
+#     proxies:
+#       -
+#         name: v2|香港01|MPTCP|★★★
+#         type: ss
+#         server: 3urbvz0srnta639sdy2s8jimfnpgegqmf6p45gnq.k1h8.top
+#         port: 54721
+#         cipher: aes-128-gcm
+#         password: 14766e02e778
+#         udp: false
+#         plugin: obfs
+#         plugin-opts:
+#           mode: http
+#           host: uhb4t4il5budgsyzamn2wm6l7.sina.cn
+#       -
+#         name: v2|香港01|MPTCP|★★★
+#         type: ss
+#         server: 3urbvz0srnta639sdy2s8jimfnpgegqmf6p45gnq.k1h8.top
+#         port: 54721
+#         cipher: aes-128-gcm
+#         password: 14766e02e778
+#         udp: false
+#         plugin: obfs
+#         plugin-opts:
+#           mode: http
+#           host: uhb4t4il5budgsyzamn2wm6l7.sina.cn      
+#     '''
+# print(yaml.load(ttt,Loader = yaml.SafeLoader))
+
+# yyy = '''
+#     proxies:
+#       - {name: 🇦🇺 AU_55 |23.07Mb, server: 129.154.48.221, port: 37372, type: vmess, uuid: 6f4454a9-e732-46c6-c50f-73f13da31f7b, alterId: 0, cipher: auto, tls: false, skip-cert-verify: false}
+#       - {name: 🇦🇺 AU_56 |24.13Mb, server: 152.67.102.225, port: 46360, type: vmess, uuid: 61fe4d4e-8c7e-4f2e-9b9f-49f38991be7d, alterId: 0, cipher: auto, tls: false, skip-cert-verify: false}
+#     '''
+# print(yaml.load(ttt,Loader = yaml.SafeLoader))
+
+# json_data = {'name': '一条大河',
+#        'age': 1956,
+#        'job': ['Singer','Dancer']}
+ 
+# print(yaml.dump(json_data, default_flow_style=False).encode('utf-8').decode('unicode_escape').replace('"',''))
+# print(yaml.dump(json_data, default_flow_style=True).encode('utf-8').decode('unicode_escape').replace('"',''))
+
+
+

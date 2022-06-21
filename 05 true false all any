@@ -33,3 +33,12 @@ li = set(dic.keys())-set(['b','d','a','c','f','g'])
 kk = list(co)+list(li)
 
 k2 = {k:dic[k] for k in kk}
+
+
+# tls = int('' or 0)
+# tls = int('0' or 0)
+# tls = int('1'  or 0)
+# tls = int(None  or 0)
+# tls = int(not 'none' or 0)
+
+# print(tls == True)

@@ -1,4 +1,15 @@
 
+
+
+dic = {'a': 1, 'b': 2, 'c': 3, 'd': 4, 'm': 8}
+
+co = set(dic.keys())&set(['b','d','a','c','f','g'])
+li = set(dic.keys())-set(['b','d','a','c','f','g'])
+kk = list(co)+list(li)
+
+k2 = {k:dic[k] for k in kk}
+
+
 # dict update() 方法的使用方法：
 
 D = {'one': 1, 'two': 2}

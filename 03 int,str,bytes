@@ -243,6 +243,16 @@ print(v[1:4].tobytes())
 # print(repr(test))
 
 
+#################################################################################
+
+# tls = int('' or 0)
+# tls = int('0' or 0)
+# tls = int('1'  or 0)
+tls = int(None  or 0)
+# tls = int(not 'none' or not 'None' or True or 0)
+
+print(tls == True)
+
 
 #################################################################################
 #汉字与\uxxxx编码转换

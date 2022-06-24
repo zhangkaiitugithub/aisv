@@ -272,7 +272,13 @@ print(json.loads(json.dumps('大中华')))
 
 # print(u'\u5403\u9e21\u6218\u573a')    # Python3 能够识别以u开头的编码，自动将其解析为汉字
 
-print('\xe4\xbd\xa0\xe5\xa5\xbd'.encode('raw_unicode_escape'))
-print('\xe4\xbd\xa0\xe5\xa5\xbd'.encode('unicode-escape'))
-print('\xe4\xbd\xa0\xe5\xa5\xbd'.encode('raw_unicode_escape').decode())
-print('\xe4\xbd\xa0\xe5\xa5\xbd'.encode('unicode-escape').decode())
+# print(u'\xe4\xbd\xa0\xe5\xa5\xbd'.encode('raw_unicode_escape'))
+# print(u'\xe4\xbd\xa0\xe5\xa5\xbd'.encode('raw_unicode_escape').decode('utf8'))
+
+# print('\xe4\xbd\xa0\xe5\xa5\xbd'.encode('raw_unicode_escape'))
+# print('\xe4\xbd\xa0\xe5\xa5\xbd'.encode('unicode-escape'))
+# print('\xe4\xbd\xa0\xe5\xa5\xbd'.encode('raw_unicode_escape').decode())
+# print('\xe4\xbd\xa0\xe5\xa5\xbd'.encode('unicode-escape').decode())
+
+# print('新增会员'.encode('ascii', 'backslashreplace').decode('unicode-escape'))
+# print('\u65b0\u589e\u4f1a\u5458:'.encode('utf-8').decode('unicode_escape'))

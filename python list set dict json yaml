@@ -109,6 +109,6 @@ print(line + '\n')
 print(yaml.safe_load(line))
 print(yaml.dump(yaml.safe_load(line),sort_keys = False))
 
-
+line = re.sub(r': ([?!%@^*][^:]*?|(?:[^:]*?[\[\]?%,])+[^:]*?|%(?:[^ ]*?[\[\]?%,])+[^ ]*?)(,|}|$)', r': "\1"\2', bb)
 
 

@@ -94,13 +94,14 @@ import json,yaml,re
 # bb = '{name: 台湾 C 跨境隧道优化, server: tw3.xn--6p1awey07c.xyz, port: 43443, type: trojan, password: 0e4be520-5039-4df3-975a-1939ea8b52ce, skip-cert-verify: true}'
 # bb = '{name: GLaDOS-Portalgun08, server: c68b799.v9.gladns.com, port: 3331, type: vmess, uuid: 57e0cb4d-eae5-48ec-8091-149dc2b309e0, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, network: ws, ws-opts: {path: /t, headers: {Host: tls.apple.com}}, udp: true}'
 # bb = '{name: %GLaDOS-Portalgun-08, server: c68b799.v9.gladns.com, port: 3331, type: vmess, uuid: 57e0cb4d-eae5-48ec-8091-149dc2b309e0, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, network: ws, ws-path: /t, ws-headers: {Host: %7B%22Edge%22:%22c68b799.fm.huawei.com:50307%22,%22Host%22:%22tls.apple.com%22%7D}, udp: true}'
-# bb = '{name: ^GLaDOS-Portalgun-08, server: *c68b799.v9.gladns.com, port: @3331, type: !vmess, uuid: !57e0cb4d-eae5-48ec-8091-149dc2b309e0, alterId: ?0, cipher: [auto], tls: tr,ue, skip-cert-verify: true, network: ws, ws-path: /t, ws-headers: {Host: {Edge:"c68b799.fm.huawei.com:50307",Host:tls.apple.com}}, udp: true}'
+# bb = '{name: ^GLaDOS-Portalgun-08, server: *c68b799.v9.gladns.com, port: @3331, type: !vmess, uuid: !57e0cb4d-eae5-48ec-8091-149dc2b309e0, alterId: ?0, cipher: [auto], tls: tr,ue, skip-cert-verify: true, network: ws, ws-path: /t, ws-headers: {Host: {Edge:c68b799.fm.huawei.com:50307,Host:tls.apple.com}}, udp: true}'
 bb = '{name: ^GLaDOS-Portalgun-08, server: *c68b799.v9.gladns.com, port: @3331, type: !vmess, uuid: !57e0cb4d-eae5-48ec-8091-149dc2b309e0, alterId: ?0, cipher: [auto], tls: tr,ue, skip-cert-verify: true, network: ws, ws-path: /t, ws-headers: {Host: {"Edge":"c68b799.fm.huawei.com:50307","Host":"tls.apple.com"}}, udp: true}'
 
 
 # print(re.findall(r'(\b\w.*?: .*?)(?:, |}$)', bb))
 # print(re.findall(r': (?<= |,|{)([?!%@^*][^:]*?|[^:]*?[\[\]?,][^:]*?), ',bb))
 line = re.sub(r': (?<= |,|{)([?!%@^*][^:]*?|[^:]*?[\[\]?%,][^:]*?)(, |}|$)', r': "\1"\2', bb)
+line = re.sub(r': ([?!%@^*][^:]*?|[^:]*?[\[\]?%,][^:]*?)(, |}|$)', r': "\1"\2', bb)
 line = re.sub(r': (%[^{\s]+?:[^{\s]+?)(}|$)', r': "\1"\2', line)
 # line = re.sub(r':([^{%\s]*?)(,|}|$)', r':"\1"\2', line)
 

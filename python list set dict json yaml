@@ -88,27 +88,22 @@ print(dict3)
 
 
 
-import json,yaml,re
+import re,yaml
 
-# bb = '{name: GLaDOS-Portalgun08, server: c68b799.v9.gladns.com, port: 3331, type: vmess, uuid: 57e0cb4d-eae5-48ec-8091-149dc2b309e0, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, network: ws, ws-opts: {path: /t, headers: {Host: tls.apple.com}}, udp: true}'
-# bb = '{name: ^GLaDOS-Portalgun-08, server: *c68b799.v9.gladns.com, port: @3331, type: !vmess, uuid: !57e0cb4d-eae5-48ec-8091-149dc2b309e0, alterId: ?0, cipher: [auto], tls: tr,ue, skip-cert-verify: true, network: ws, ws-path: /t, ws-headers: {Host: {Edge:c68b799.fm.huawei.com:50307,Host:tls.apple.com}}, udp: true}'
-# bb = '{name: ^GLaDOS-Portalgun-08, server: *c68b799.v9.gladns.com, port: @3331, type: !vmess, uuid: !57e0cb4d-eae5-48ec-8091-149dc2b309e0, alterId: ?0, cipher: [auto], tls: tr,ue, skip-cert-verify: true, network: ws, ws-path: /t, ws-headers: {Host: {"Edge":"c68b799.fm.huawei.com:50307","Host":"tls.apple.com"}}, udp: true}'
-bb = '{name: %GLaDOS-Portalgun-08, server: c68b799.v9.gladns.com, port: 3331, type: vmess, uuid: 57e0cb4d-eae5-48ec-8091-149dc2b309e0, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, network: ws, ws-path: /t, ws-headers: {Host: %7B%22Edge%22:%22c68b799.fm.huawei.com:50307%22,%22Host%22:%22tls.apple.com%22%7D}, udp: true}'
-# bb = '{name: GLaDO,  S-Porta, lgu,n-08, server: *c68b799.v9.gladns.com, port: @3331, type: !vmess, uuid: !57e0cb4d-eae5-48ec-8091-149dc2b309e0, alterId: ?0, cipher: [auto], tls: tr,ue, skip-cert-verify: %tr ue, network: ws, ws-path: /t, ws-headers: {Host: {Host: %7B%22Edge%22:%22c68b799.fm.huawei.com:50307%22,%22Host%22:%22tls.apple.com%22%7D}}, udp: true}'
+# bb = '{name: b[  ]ei, k[]u, i003, server: @AZQT001.xiba1.xyz, port: *20741, type: tro[000]jan, password: 965425cb-5d9e-306a-94bf-9961dd0ecf17, ws-path: /t, ws-headers: {Host: %7B%22Edge%22:%22c68b799.fm.huawei.com:50307%22,%22Host%22:%22tls.apple.com%22%7D}}'
+# bb = '{name: ^GLaDO,S-Porta,lgu,n-08, server: *c68b799.v9.gladns.com, port: @3331, type: !vmess, uuid: !57e0cb4d-eae5-48ec-8091-149dc2b309e0, alterId: ?0, cipher: [auto], tls: tr,ue, skip-cert-verify: true, network: ws, ws-path: /t, ws-headers: {Host: {Edge:c68b799.fm.huawei.com:50307,Host:tls.apple.com}}, udp: true}'
+# bb = '{name: !香港-tg:频, 道:@bpjzx2-1, server: *c68b799.v9.gladns.com, port: @3331, type: !vmess, uuid: !57e0cb4d-eae5-48ec-8091-149dc2b309e0, alterId: ?0, cipher: [auto], tls: tr,ue, skip-cert-verify: %tr ue, network: ws, ws-path: /t, ws-headers: {Host: {Host: %7B%22Edge%22:%22c68b799.fm.huawei.com:50307%22,%22Host%22:%22tls.apple.com%22%7D}}, udp: true}'
+bb = 'name: !香港-tg:频, 道:@bpjzx2-1'
+    
+# # line = re.sub(r'name: *([^:]*?[\[\]?,][^:]*?)(, *\b\w*?:)',r'name: "\1"\2',bb)
+# # line = re.sub(r': ([?!%@^*](?:.(?!: )+?[%,])\S*?|(?:[^:]*?[\[\]?%,])+[^:]*?)(,|}|$)', r': "\1"\2', bb)
+# line = re.sub(r': ([?!%@^*][^:]*?|(?:[^:]*?[\[\]?%,])+[^:]*?|%(?:[^ ]*?[\[\]?%,])+[^ ]*?)(,|}|$)', r': "\1"\2', bb)
+# line = re.sub(r': ([!@*](?:.(?!: ))*?|[!@*]?(?:(?:.(?!: ))*?[\[\]?%,])+(?:.(?!: ))*?)(, |}|$)', r': "\1"\2', bb)
+line = re.sub(r': ([!@*]?(?:(?:[^{](?!: ))*?[\[\]?%,])+(?:.(?!: ))*?|[!@*](?:.(?!: ))*?)(,|}|$)', r': "\1"\2', bb)
 
-
-# print(re.findall(r'(\b\w.*?: .*?)(?:, |}$)', bb))
-# print(re.findall(r': (?<= |,|{)([?!%@^*][^:]*?|[^:]*?[\[\]?,][^:]*?), ',bb))
-# line = re.sub(r': (?<= |,|{)([?!%@^*][^:]*?|[^:]*?[\[\]?%,][^:]*?)(, |}|$)', r': "\1"\2', bb)
-
-# line = re.sub(r': ([?!%@^*][^:]*?|[^:]*?[\[\]?%,][^:]*?)(, |}|$)', r': "\1"\2', bb)
-# line = re.sub(r': (%[^{\s]+?:[^{\s]+?)(}|$)', r': "\1"\2', line)
-# line = re.sub(r':([^{%\s]*?)(,|}|$)', r':"\1"\2', line)
-
-line = re.sub(r': ([?!%@^*][^:]*?|(?:[^:]*?[\[\]?%,])+[^:]*?|%(?:[^ ]*?[\[\]?%,])+[^ ]*?)(,|}|$)', r': "\1"\2', bb)
-
-print(line + '\n')
+print(line)
 print(yaml.safe_load(line))
-# print(yaml.dump(yaml.safe_load(line),sort_keys = False))
+# print(yaml.dump(line,width = 750))
+
 
 

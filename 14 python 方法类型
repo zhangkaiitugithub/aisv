@@ -72,6 +72,12 @@ st = Student()
 print(st.imon('aaa','bbb'))
 print(st.idat('ccc'))
 
+print(st.imon('SS','ZZ'))
+print(st.idat('qq')[1])
+
+print(Student.imon(111,222))
+print(Student.idat(333,444))
+
 ##---------------------------------------------类方法--------------------------------------------
 
 # class Student(object):

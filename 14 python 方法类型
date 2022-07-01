@@ -51,22 +51,26 @@
 
 class Student(object):
 
-    def year(self):
+    def iyar(self):
         return self.aver_age(self.month, self.day)
-        
+
     @staticmethod
-    def iage(x, y):
+    def imon(x, y):
         return x + y
 
-    def month(a,b):
+    def idat(a,b):
         return a,b
 
 
-print(Student().year is Student().year)
-print(Student().iage is Student().iage)
-print(Student().iage is Student.iage)
-print(Student().month is Student().month)
-print(Student().month is Student.month)
+print(Student().iyar is Student().iyar)
+print(Student().imon is Student().imon)
+print(Student().imon is Student.imon)
+print(Student().idat is Student().idat)
+print(Student().idat is Student.idat)
+
+st = Student()
+print(st.imon('aaa','bbb'))
+print(st.idat('ccc'))
 
 ##-------------------------------------类方法----------------------------------------------------
 

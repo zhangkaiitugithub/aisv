@@ -138,3 +138,33 @@ print(Student.idat(333,444))
 ##----------------------------------------------------------------------------------------------
 
 
+
+class ParentClass:
+
+    @classmethod
+    def clsfun(cls):
+        print(cls.__name__+':classmethod' )
+    @staticmethod
+    def stcfun():
+        print('ParentClass:staticmethod' )
+
+class SonClass(ParentClass):
+    pass
+    # @classmethod
+    # def clsfun(cls):
+    #     print('SonClass:classmethod')
+    # @staticmethod
+    # def stcfun():
+    #     print('SonClass:staticmethod')
+
+ParentClass.clsfun()
+ParentClass.stcfun()
+p = ParentClass()
+p.clsfun()
+p.stcfun()
+print('------------------------')
+SonClass.clsfun()
+SonClass.stcfun()
+s = SonClass()
+s.clsfun()
+s.stcfun()

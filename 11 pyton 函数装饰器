@@ -411,3 +411,76 @@ class AA(object):
 a = AA('88')
 print(a.x, a._AA__bb, a._AA__c(), a.x)
 
+
+
+
+# class StaticMethod: 
+#     def __init__(self, func):
+#         self.func = func 
+ 
+#     def __get__(self, instance, owner):
+#         return self.func 
+ 
+#     def __call__(self, *args, **kwargs):
+#         return self.func(*args, **kwargs) 
+ 
+ 
+# class ClassMethod: 
+#     def __init__(self, func): 
+#         self.func = func 
+ 
+#     def __get__(self, instance, owner): 
+#         return self.func.__get__(owner, type(owner)) 
+ 
+# class A: 
+#     def normal(self, *args, **kwargs): 
+#         print(f"normal({self=}, {args=}, {kwargs=})") 
+ 
+#     @staticmethod 
+#     def f1(*args, **kwargs): 
+#         print(f"f1({args=}, {kwargs=})") 
+ 
+#     @StaticMethod 
+#     def f2(*args, **kwargs): 
+#         print(f"f2({args=}, {kwargs=})") 
+ 
+#     @classmethod 
+#     def g1(cls, *args, **kwargs): 
+#         print(f"g1({cls=}, {args=}, {kwargs=})") 
+ 
+#     @ClassMethod 
+#     def g2(cls, *args, **kwargs): 
+#         print(f"g2({cls=}, {args=}, {kwargs=})") 
+ 
+ 
+ 
+# A.f1() 
+# A.f2() 
+
+# A().f1() 
+# A().f2() 
+
+# A.g1() 
+# A.g2() 
+
+# A().g1() 
+# A().g2() 
+
+# print(f'{A.f1=}') 
+# print(f'{A.f2=}') 
+
+# print(f'{A().f1=}') 
+# print(f'{A().f2=}') 
+
+# print(f'{type(A.f1)=}') 
+# print(f'{type(A.f2)=}') 
+
+# print(f'{A.g1=}') 
+# print(f'{A.g2=}') 
+
+# print(f'{A().g1=}') 
+# print(f'{A().g2=}') 
+
+# print(f'{type(A.g1)=}') 
+# print(f'{type(A.g2)=}') 
+

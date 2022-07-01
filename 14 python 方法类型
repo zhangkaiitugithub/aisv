@@ -58,7 +58,7 @@ class Student(object):
     def imon(x, y):
         return x + y
 
-    def idat(a,b):
+    def idat(a, b):
         return a,b
 
 

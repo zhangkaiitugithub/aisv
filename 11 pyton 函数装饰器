@@ -1,5 +1,17 @@
 # 情况1：对没有参数没有返回值的函数装饰
 
+def set_function(fun):
+
+    print('---权限验证---')
+    return fun
+# =================================== #
+
+@set_function
+def test1():
+    print('---test1---')
+
+test1()
+
 # # ============= 闭包环境 ============ #
 # def set_function(fun):
 #     def call_function():

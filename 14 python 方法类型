@@ -49,17 +49,24 @@
 
 ##--------------------------------------------静态方法--------------------------------------------
 
-# class Student(object):
-#     @staticmethod
-#     def aver_age(x, y):
-#         return x + y
+class Student(object):
 
-#     def year(self):
-#         return self.aver_age(self.month, self.day)
+    def year(self):
+        return self.aver_age(self.month, self.day)
+        
+    @staticmethod
+    def iage(x, y):
+        return x + y
 
-# print(Student().year is Student().year)
-# print(Student().aver_age is Student().aver_age)
-# print(Student().aver_age is Student.aver_age)
+    def month(a,b):
+        return a,b
+
+
+print(Student().year is Student().year)
+print(Student().iage is Student().iage)
+print(Student().iage is Student.iage)
+print(Student().month is Student().month)
+print(Student().month is Student.month)
 
 ##-------------------------------------类方法----------------------------------------------------
 

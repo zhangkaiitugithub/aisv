@@ -11,7 +11,10 @@ print(all([0]))
 print(all([None]))
 
 # print((not None) == (not False))
-# print( None == 0,False == 0,'' == 0,[] == 0,{} == 0,() == 0,'' == [] )
+print( None == 0,False == 0,'' == 0,[] == 0,{} == 0,() == 0,'' == [], () == [])
+print( None == False,False == 0,'' == False,[] == False,{} == False,() == False,False == [], () == [])
+print( None == None,False == None,'' == None,[] == None,{} == None,() == None,None == [], () == [])
+
 # print(not None,not 0,not '',not [])
 # 而对于`if x is not None`和`if not x is None`写法，很明显前者更清晰，而后者有可能使读者误解为`if (not x) is None`，因此推荐前者，同时这也是谷歌推荐的风格
 # 结论：`if x is not None`是最好的写法，清晰，不会出现错误，以后坚持使用这种写法；

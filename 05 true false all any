@@ -1,6 +1,7 @@
 
 ################################################################################
-# 在python中 None,  False, 空字符串"", 0, 空列表[], 空字典{}, 空元组()都相当于False ，即：not None == not False == not '' == not 0 == not [] == not {} == not ()
+# 在python中 None,  False, 空字符串"", 0, 空列表[], 空字典{}, 空元组()都相当于False ，即：
+print((not None) == (not False) == (not '') == (not 0) == (not []) == (not {}) == (not ()))
 # 但none并不is其他！！
 
 print('' == None)

@@ -1,8 +1,6 @@
 
 ##################################lambda,filter,map,zip##################################
 
-print(all(()),all([]))
-print(any([]),any([]))
 
 # print((lambda x, *args, para, **kwargs : [args, para, kwargs])(1, 2, 3, para="number", name="Jack", sex="male"))
 

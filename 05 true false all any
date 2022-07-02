@@ -35,3 +35,26 @@ print(any([]),any([]))
 # tls = int(not 'none' or 0)
 
 # print(tls == True)
+
+
+
+print(all(()),all([]))
+print(any([]),any([]))
+
+# 如果iterable的所有元素不为空、0、False，all(iterable)返回True，否则返回False；
+# 注意：空元组、空列表返回值为True，这里要特别注意。
+
+
+print(all([]))
+print(all([[], [1], [2]]))
+
+print(all(''))
+print(all(['', 'a', 'b']))
+
+print(all([' ']))
+print(all([' ', 1, 1]))
+
+print(all([0]))
+print(all([0, 1, 2, 3]))
+
+print(all([False]))

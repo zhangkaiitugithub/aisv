@@ -71,6 +71,14 @@
 
 
 
+def print_doc(self): print("haha")
+class Foo: __slots__ = ("name", "age")  # slots 可以限制实例的成员属性。无法限制给类添加方法。且不会被子类继承
+
+obj1 = Foo()
+Foo.show = print_doc
+obj1.show()
+
+
 
 '''--------------------------------------------------------------------------------'''
 

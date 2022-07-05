@@ -64,6 +64,12 @@ print(any([]),any([]))
 # 注意：空元组、空列表返回值为True，这里要特别注意。
 
 
+print(all(''))
+print (all([]))
+print (all(['']))
+print(all([' ']))
+
+
 print(all([]))
 print(all([[], [1], [2]]))
 

@@ -39,6 +39,12 @@ print(any([]),any([]))
 # print((1 or 5) and 4)
 
 
+print (True  and '') or 'v'
+print('------------------')
+print (False and '') or 'v'
+print('------------------')
+print (True  and '' or 'v')
+print (False and '' or 'v')
 
 
 # tls = int('' or 0)

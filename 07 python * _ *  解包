@@ -85,6 +85,11 @@ print(merge_list)
 
 
 
+print(dict(a=1))
+print(dict([('a', 1), ('b', 2), ('c', 3)], d=4,e=5))
+print(dict({'a': 1, 'b': 2, 'c': 3}, **{'d':4,'e':5}))
+print(dict(zip(['x', 'y', 'z'], [1, 2, 3]), d=4))
+
 x = {'a': 1, 'b': 2}
 y = {'b': 3, 'c': 4}
 print({**x, **y})

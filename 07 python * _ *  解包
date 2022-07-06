@@ -85,22 +85,27 @@ print(merge_list)
 
 
 
-print(dict(a=1,b=2))
-print(dict([('cer', 1.5), ('broi', 1.2), ('lete', 2.1)]))
-print(dict([['BMW', 8.5], ['BENS', 8.3], ['AUDI', 7.9]]))
+# print(dict(a=1,b=2))
+# print(dict([('cer', 1.5), ('broi', 1.2), ('lete', 2.1)]))
+# print(dict([['BMW', 8.5], ['BENS', 8.3], ['AUDI', 7.9]]))
+# print(dict(**{'x': 1}, **{'y': 3}, k=2))  #不能有重复key
+# print(dict({'x': 1}, **{'x': 3}, k=2))
+# print({**{'x': 1}, **{'x': 3}, 'k': 5})
+
 
 # print(dict([('a', 1), ('b', 2), ('c', 3)], d=4,e=5))
 # print(dict({'a': 1, 'b': 2, 'c': 3}, **{'d':4,'e':5}))
 # print(dict(zip(['x', 'y', 'z'], [1, 2, 3]), d=4))
 
-x = {'a': 1, 'b': 2}
-y = {'b': 3, 'c': 4}
-print({**x, **y})
-print(dict(x, **y))
-print(dict(x.items() &  y.items()))
-print(dict(x.items() |  y.items()))
-print(dict(x.items() and y.items()))
-print(dict(x.items() or y.items()))
+
+# x = {'a': 1, 'b': 2}
+# y = {'b': 3, 'c': 4}
+# print({**x, **y})
+# print(dict(x, **y))
+# print(dict(x.items() &  y.items()))
+# print(dict(x.items() |  y.items()))
+# print(dict(x.items() and y.items()))
+# print(dict(x.items() or y.items()))
 
 # # Be careful with this though.  It only performs a shallow copy.  If you have embedded dictionaries and need a copy, make sure and do a deep copy.
 # x = {'a' : 1, 'b' : 2, 'c' : {'num' : 3, 'ex_word' : 'cat'}}

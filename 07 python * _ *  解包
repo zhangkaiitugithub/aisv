@@ -83,3 +83,39 @@ merge_list = [j for i in lst for j in i]  # 先执行第一个for循环
 print(merge_list) 
 
 
+
+
+x = {'a': 1, 'b': 2}
+y = {'b': 3, 'c': 4}
+print({**x, **y})
+print(dict(x, **y))
+print(dict(x.items() &  y.items()))
+print(dict(x.items() |  y.items()))
+print(dict(x.items() and y.items()))
+print(dict(x.items() or y.items()))
+
+# # Be careful with this though.  It only performs a shallow copy.  If you have embedded dictionaries and need a copy, make sure and do a deep copy.
+# x = {'a' : 1, 'b' : 2, 'c' : {'num' : 3, 'ex_word' : 'cat'}}
+# y = {'d' : 3, 'e' : 4, 'f' : 5}
+# z = {**x, **y}
+# print(z)
+
+# # if we change the example word in `x` for 'c', it changes in `z` and vice versa.
+# x['c']['ex_word'] = 'car'
+# print(z)
+# z['c']['ex_word'] = 'cow'
+# print(x)
+
+
+# from collections import OrderedDict
+
+# a = {"a": 1, "b": 2}
+# b = {"b": 2, "a": 1}
+# c = OrderedDict({"a": 1, "b": 2})
+# d = OrderedDict({"b": 2, "a": 1})
+
+# print(a == b)  # True
+# print(c == d)  # False
+# print(a == c)  # True
+# print(a == d)  # True
+

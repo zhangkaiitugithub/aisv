@@ -439,6 +439,72 @@ from collections.abc import Iterable,Iterator
 # print(p)
 
 
+
+
+
+
+
+# def average():
+
+#     total  = 0
+#     number = 0
+#     average = None
+#     while True:
+#         print('==================================')        
+#         term=yield
+#         print('----------------------------------')
+#         print('average: ', average, 'term: ', term)
+
+# process=average()
+# next(process)           # 预激协程
+# process.send(5)         # 输出5
+# process.send(10)        # 输出7.5
+
+
+# def average():
+
+#     total  = 0
+#     number = 0
+#     average = None
+#     while True:
+#         print('==================================')        
+#         term=yield average
+#         print('----------------------------------')
+#         print('average: ', average, 'term: ', term)
+
+# process=average()
+# next(process)           # 预激协程
+# process.send(5)         # 输出5
+# process.send(10)        # 输出7.5
+
+
+# def average():
+
+#     total  = 0
+#     number = 0
+#     average = None
+#     while True:
+#         print('==================================')        
+#         term=yield average
+#         print('----------------------------------')
+#         print('average: ', average, 'term: ', term)
+#         total  += term
+#         number += 1
+#         average = total/number
+#         print('average: ', average, 'term: ', term)
+
+# process=average()
+# next(process)           # 预激协程
+# process.send(5)         # 输出5
+# process.send(10)        # 输出7.5
+
+# # 小结：协程执行首先需要预激，使之准备好然后让步控制权。具体地说，协程在yield关键字所在的位置暂停执行。
+# # 在term=yield average这个赋值语句中，右边的代码会在赋值之前执行。 
+# # 在暂停结束后，从先前阻塞的那行代码开始，将yield 表达式的值赋给左边的变量。
+
+
+
+
 # ---------------------------------------------------------------------------------------------------------------------------------
 
 

@@ -570,11 +570,25 @@ for i in generator2():
 # main(g)
 
 
+
 def g(x):
     yield from range(x, 0, -1)
     yield from range(x)
     yield from ('aaa','bbb')
 print(list(g(5)))
+
+def test01(it):
+    yield it
+
+def test02(it):
+    yield from it
+
+if __name__ == "__main__":
+    for value in test01(range(5)):
+        print(value)
+    for value in test02(range(5)):
+        print(value)
+        
 
 
 # 使用next（g）一次一次迭代，则会显式触发异常，但要获取return的返回值，我需要如下操作：

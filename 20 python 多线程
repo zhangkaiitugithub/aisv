@@ -1929,3 +1929,126 @@ if __name__ == '__main__':
 # 输出：最终res还是按照1-20的顺序进行输出，chunksize=2时输出相同，此时res:2需要等第2次5个task处理时才会输出
 
 
+#-------------------------------------------------------------------
+#-------------------------------------------------------------------
+
+
+# from multiprocessing import Process
+# import os, time
+
+# def run_proc(name):
+#     time.sleep(2)
+#     print('Run child process %s (%s)...' % (name, os.getpid()))
+# def hello_world():
+#     time.sleep(6)
+#     print('hello world!')
+#     print('Run child process (%s)...' % (os.getpid()))
+# if __name__ == '__main__':
+#     print ('Parent process %s.' % os.getpid())
+#     p1 = Process(target=run_proc, args=('test',))
+#     p2 = Process(target=hello_world)
+#     print ('Process will start.')
+#     p1.start()
+#     p2.start()
+#     p1.join()
+#     print('Process end.')
+
+
+# from multiprocessing import Process, Manager
+# import os
+
+# def f(d, l):
+#     d[os.getpid()] = os.getpid()   	# 获取进程号
+#     l.append(os.getpid())
+#     print(l)
+
+# if __name__ == '__main__':
+#     with Manager() as manager:
+#         d = manager.dict()   		# 生成一个字典，可以在多个进程间共享和传递
+#         l = manager.list(range(5))  # 生成一个列表，可以在多个进程间共享和传递
+#         p_list = []
+#         for i in range(10):
+#             p = Process(target=f, args=(d, l))
+#             p.start()
+#             p_list.append(p)
+#         for res in p_list:
+#             res.join()
+#         print(f'{"-"*60}')
+#         print(d)
+#         print(l)
+
+
+# import subprocess
+
+# print((subprocess.run("python --version", stdout=subprocess.PIPE).stdout))
+# print(subprocess.run("python -V"))
+
+# 用法和参数与run()方法基本类同，但是它的返回值是一个Popen对象，而不是CompletedProcess对象
+# Popen对象的stdin、stdout和stderr是三个文件句柄，可以像文件那样进行读写操作
+
+# ret = subprocess.Popen("dir", shell=True)
+# ret
+
+# ret = subprocess.Popen("dir", shell=True,stdout=subprocess.PIPE)
+# print(ret.stdout.read().decode('gbk'))
+
+# s = subprocess.Popen("python", stdout=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)
+# s.stdin.write(b"import os\n")
+# s.stdin.write(b"print(os.environ)")
+# s.stdin.close()
+
+# out = s.stdout.read().decode("GBK")
+# s.stdout.close()
+# print(out)
+
+
+# clash = subprocess.Popen(['C:/Users/Administrator/Downloads/Compressed/clashcheck-main/clash-windowsamd64.exe', '-f', 'C:/Users/Administrator/Downloads/Compressed/clashcheck-main/temp/myworking.yaml'])
+# print(clash)
+# clash.terminate()
+
+# print(subprocess.run("C:/Users/Administrator/Downloads/Compressed/clashcheck-main/clash-windowsamd64.exe -help"))
+# subprocess.Popen("C:/Users/Administrator/Downloads/Compressed/clashcheck-main/clash-windowsamd64.exe -help")#, shell=True
+
+
+
+
+# import threading
+# import time
+
+# semaphore = threading.Semaphore(2)
+
+# def worker(id):
+#     # print('thread {id} acquire semaphore'.format(id=id))
+#     semaphore.acquire()
+#     print('thread {id} get semaphore do something'.format(id=id))
+#     time.sleep(2)
+#     print(f'{"-"*50}')
+#     semaphore.release()
+#     print('thread {id} release semaphore'.format(id=id))
+
+# for i in range(10):
+#     t = threading.Thread(target=worker, args=(i, ))
+#     t.start()
+
+
+# import threading, time, sys
+
+# def run(n):
+#     semaphore.acquire()
+#     time.sleep(1)
+#     sys.stdout.write(f"run the thread: {n}\n") #为解决print方法的线程不安全性（主要是输出换行的问题），此处使用sys.stdout.write方法替代
+#     # time.sleep(1)
+#     semaphore.release()
+
+# if __name__ == '__main__':
+#     num = 0
+#     semaphore = threading.BoundedSemaphore(5)  # 最多允许5个线程同时运行
+#     for i in range(20):
+#         t = threading.Thread(target=run, args=(i,))
+#         t.start()
+#     while threading.active_count() != 1:  #等于1时，表示只剩主线程
+#         pass
+#     else:
+#         print('----all threads done---')
+#         print(num)
+

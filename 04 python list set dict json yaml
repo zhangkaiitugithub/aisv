@@ -107,6 +107,30 @@ print(yaml.safe_load(line))
 # print(yaml.dump(line,width = 750))
 
 
+
+
+'''------------------------------------------------------------------------------------------------------------------------------------'''
+
+# document = """
+# ---
+# block sequence:
+#   - BlockEntryToken
+# block mapping:
+#   ? KeyToken
+#   : ValueToken
+# flow sequence: [FlowEntryToken, FlowEntryToken]
+# flow mapping: {KeyToken: ValueToken}
+# anchors and tags:
+#    - &A !!int '5'
+#    - *A
+# ...
+# """
+# # scan()
+# import yaml
+# for token in yaml.scan(document):
+#     print(token)
+
+
 '''------------------------------------------------------------------------------------------'''
 
 
@@ -286,27 +310,6 @@ yamltostr = yaml.dump(data,sys.stdout)
 # dmp = myyml.dump(my_dic, default_flow_style=False, allow_unicode=True, Dumper=myyml.RoundTripDumper, indent=2, block_seq_indent=2)    
 # print(dmp)
 
-
-'''------------------------------------------------------------------------------------------------------------------------------------'''
-
-# document = """
-# ---
-# block sequence:
-#   - BlockEntryToken
-# block mapping:
-#   ? KeyToken
-#   : ValueToken
-# flow sequence: [FlowEntryToken, FlowEntryToken]
-# flow mapping: {KeyToken: ValueToken}
-# anchors and tags:
-#    - &A !!int '5'
-#    - *A
-# ...
-# """
-# # scan()
-# import yaml
-# for token in yaml.scan(document):
-#     print(token)
 
 
 

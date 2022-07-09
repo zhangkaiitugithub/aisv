@@ -508,6 +508,18 @@ from collections.abc import Iterable,Iterator
 # ---------------------------------------------------------------------------------------------------------------------------------
 
 
+def generator2():
+    yield 'a'
+    yield 'b'
+    yield 'c'
+    yield from [11,22,33,44]  # yield from iterable本质上等于 for item in iterable: yield item的缩写版
+    yield from (12,23,34)
+    yield from range(3)
+ 
+for i in generator2():
+    print(i,end=', ')
+    
+
 #利用yield from语句向生成器（协程）传送数据
 #传统的生产者-消费者模型是一个线程写消息，一个线程取消息，通过锁机制控制队列和等待，但一不小心就可能死锁。
 #如果改用协程，生产者生产消息后，直接通过yield跳转到消费者开始执行，待消费者执行完毕后，换回生产者继续生产，效率极高：

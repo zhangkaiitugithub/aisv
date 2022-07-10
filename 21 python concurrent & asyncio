@@ -845,7 +845,7 @@ asyncio.run(main())
 
 # async def main():
 #     print(f"started at {time.strftime('%X')}")
-#     result = await asyncio.gather(say_after(1, 'hello'), say_after(2, 'world'))
+#     result = await asyncio.gather(say_after(10, 'hello'), say_after(2, 'world'))
 #     print(f"finished at {time.strftime('%X')}")
 #     print("result: ", result)
 

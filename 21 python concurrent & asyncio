@@ -1545,6 +1545,7 @@ async def func():  -->  coroutine  ---------------------------------------------
 #     print('生产者 开始')
 
 #     for i in range(num_worker * 3):
+#         await asyncio.sleep(3)
 #         await q.put(i)
 #         print('生产者 增加数据 {} 到队列中'.format(i))
 

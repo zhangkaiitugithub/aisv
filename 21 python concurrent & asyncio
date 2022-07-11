@@ -1488,40 +1488,45 @@ async def func():  -->  coroutine  ---------------------------------------------
 
 
 # 21、asyncio.Condition(),对事件状态单独通知执行
-# import asyncio
+import asyncio
 
-# async def consumer(condition_obj, i):
-#     async with condition_obj:
-#         print('消费者 {} 等待中'.format(i))
-#         await condition_obj.wait()
-#         print('消费者 {} 触发'.format(i))
-#     print('消费者 {} 消费结束'.format(i))
+async def consumer(condition_obj, i):
+    async with condition_obj:
+        print('消费者 {} 等待中'.format(i))
+        await condition_obj.wait()
+        print('消费者 {} 触发'.format(i))
+    print('消费者 {} 消费结束'.format(i))
 
-# async def manipulate_condition(condition_obj):
-#     print('开始操作condition')
-#     await asyncio.sleep(1)
-#     for i in range(3):
-#         async with condition_obj:
-#             print('通知消费者 {}'.format(i))
-#             condition_obj.notify(i)
-#         await asyncio.sleep(2)
+async def manipulate_condition(condition_obj):
+    print('开始操作condition')
+    # await asyncio.sleep(1)
+    for i in range(3):
+        async with condition_obj:
+            print('通知消费者 {}'.format(i))
+            condition_obj.notify(i)
+        await asyncio.sleep(2)
 
-#     async with condition_obj:
-#         print('通知其它所有的消费者')
-#         condition_obj.notify_all()
-#     print('操作condition结束')
+    async with condition_obj:
+        print('通知其它所有的消费者')
+        condition_obj.notify_all()
+    print('操作condition结束')
+async def pq():
+    print('==================================')
 
-# async def main(loop):
-#     condition_obj = asyncio.Condition()  # 创建一个操作状态的对象
-#     consumers = [consumer(condition_obj, i) for i in range(5)]  # 运5个消费者函数
-#     loop.create_task(manipulate_condition(condition_obj))  # 创建一个操作状态的任务
-#     await asyncio.wait(consumers)  # 等待consumers所有的函数执行完成
+async def main(loop):
+    condition_obj = asyncio.Condition()  # 创建一个操作状态的对象
+    consumers = [consumer(condition_obj, i) for i in range(5)]  # 运5个消费者函数
+    loop.create_task(manipulate_condition(condition_obj))  # 创建一个操作状态的任务
+    loop.create_task(pq())
+    asyncio.create_task(pq())
+    asyncio.ensure_future(pq())
+    await asyncio.wait(consumers)  # 等待consumers所有的函数执行完成
 
-# event_loop = asyncio.get_event_loop()
-# try:
-#     event_loop.run_until_complete(main(event_loop))
-# finally:
-#     event_loop.close()
+event_loop = asyncio.get_event_loop()
+try:
+    event_loop.run_until_complete(main(event_loop))
+finally:
+    event_loop.close()
 
 
 # 22、协程队列Queue,生产者与消费者的示例

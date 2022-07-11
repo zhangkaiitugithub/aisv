@@ -29,6 +29,68 @@ D[x] = D[x] + 1
 
 
 
+# from multiprocessing import Pool
+# import time
+ 
+# def mycallback(x):
+#     list1.append(x)
+
+# def sayHi(num):
+#     return num
+ 
+# if __name__ == '__main__':
+ 
+#     pool = Pool(4)
+#     list1 = []
+#     for i in range(8):
+#         pool.apply_async(sayHi, (i,), callback=mycallback)
+#     for i in 'fhkftyh':
+#         pool.apply_async(sayHi, (i,), callback=list1.extend)
+#     pool.close()
+#     pool.join()
+ 
+#     print(list1)
+
+
+# import multiprocessing  
+ 
+# def  func(num):
+#     num.value=10.78  #子进程改变数值的值，主进程跟着改变  
+ 
+# if  __name__=="__main__":
+#     num=multiprocessing.Value("d",100000) # d表示数值,主进程与子进程共享这个value。（主进程与子进程都是用的同一个value）
+#     print(num.value)
+ 
+#     p=multiprocessing.Process(target=func,args=(num,))
+#     p.start()
+#     p.join()  
+ 
+#     print(num.value)
+
+
+# import multiprocessing  
+ 
+# def func(mydict,mylist):
+#     mydict["index1"]="aaaaaa"   #子进程改变dict,主进程跟着改变
+#     mydict["index2"]="bbbbbb"
+#     mylist.append(11)        #子进程改变List,主进程跟着改变
+#     mylist.append(22)
+#     mylist.append(33)  
+ 
+# if __name__=="__main__":
+#     with multiprocessing.Manager() as MG:   #重命名
+#         mydict=multiprocessing.Manager().dict()   #主进程与子进程共享这个字典
+#         mylist=multiprocessing.Manager().list(range(5))   #主进程与子进程共享这个List  
+ 
+#         p=multiprocessing.Process(target=func,args=(mydict,mylist))
+#         p.start()
+#         p.join()  
+ 
+#         print(mylist)
+#         print(mydict)  
+
+
+
 '''--------------------------------------------------------------------------------------------------------------------------'''
 
 

@@ -1722,7 +1722,25 @@ finally:
 #     log.debug('closing event loop')
 #     event_loop.close()
 
+# 同步与异步sleep的差异
+import asyncio, time
 
+async def do_some_work(i,n):
+    print(f'任务{i}等待: {n}秒')
+    time.sleep(n) #休眠一段时间
+    await asyncio.sleep(15)
+    print(f'aio_sleep任务{i}: 10秒')
+    return '任务{i}在{n}秒后返回结束运行'
 
+start_time = time.time() #开始时间
+tasks = [asyncio.ensure_future(do_some_work(1, 2)),
+        asyncio.ensure_future(do_some_work(2, 1)),
+        asyncio.ensure_future(do_some_work(3, 3))]
+loop = asyncio.get_event_loop()
+loop.run_until_complete(asyncio.wait(tasks))
+
+for task in tasks:
+    print('任务执行结果: ', task.result())
+print('运行时间: ', time.time() - start_time)
 
 

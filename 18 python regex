@@ -383,6 +383,7 @@ import re, yaml
 # bb = '{name: ^GLaDO,S-Porta,lgu,n-08, server: *c68b799.v9.gladns.com, port: @3331, type: !vmess, uuid: !57e0cb4d-eae5-48ec-8091-149dc2b309e0, alterId: ?0, cipher: [auto], tls: tr,ue, skip-cert-verify: true, network: ws, ws-path: /t, ws-headers: {Host: {Edge:c68b799.fm.huawei.com:50307,Host:tls.apple.com}}, udp: true}'
 bb = '{name: !香港-tg:频, 道:@bpjzx2-1, server: *c68b799.v9.gladns.com, port: @3331, type: !vmess, uuid: !57e0cb4d-eae5-48ec-8091-149dc2b309e0, alterId: ?0, cipher: [auto], tls: tr,ue, skip-cert-verify: %tr ue, network: ws, ws-path: /t, ws-headers: {Host: {Host: %7B%22Edge%22:%22c68b799.fm.huawei.com:50307%22,%22Host%22:%22tls.apple.com%22%7D}}, udp: true}'
 bb = '{name: [LV1·解锁] 狮城04 | 中转 001, server: pp1.zhengzhongfeizhu.xyz, port: 43960, type: vmess, uuid: 2f606ee8-3cfa-30b2-a191-f88efe912f5c, alterId: 1, cipher: auto, tls: false, skip-cert-verify: false, network: ws, ws-opts: {path: /j20-sp4, headers: {Host: %7B%22Host%22:%22pp1.zhengzhongfeizhu.xyz%22%7D}}, udp: true}'
+line = '{name: 日本04{优化2|V2ray}, server: jp2.awslcn.cc, port: 25220, type: vmess, uuid: bbf318d9-a579-4e7a-868d-f46654f04c99, alterId: 0, cipher: auto, tls: false, skip-cert-verify: False, network: ws, ws-opts: {path: /, headers: {Host: jp2.awslcn.cc}}, udp: true}'
 
 # # line = re.sub(r'name: *([^:]*?[\[\]?,][^:]*?)(, *\b\w*?:)',r'name: "\1"\2',bb)
 # # line = re.sub(r': ([?!%@^*](?:.(?!: )+?[%,])\S*?|(?:[^:]*?[\[\]?%,])+[^:]*?)(,|}|$)', r': "\1"\2', bb)
@@ -390,6 +391,8 @@ bb = '{name: [LV1·解锁] 狮城04 | 中转 001, server: pp1.zhengzhongfeizhu.x
 # line = re.sub(r': ([!@*](?:.(?!: ))*?|[!@*]?(?:(?:.(?!: ))*?[\[\]?%,])+(?:.(?!: ))*?)(, |}|$)', r': "\1"\2', bb)
 # line = re.sub(r': ([!@*]?(?:(?:[^{](?!: ))*?[\[\]?%,])+(?:.(?!: ))*?|[!@*](?:.(?!: ))*?)(,|}|$)', r': "\1"\2', bb)
 line = re.sub(r': ([!@*]?(?:(?:[^{](?!: ))*?(?:[\[\]?%,]|\d[eExX]\d))+(?:.(?!: ))*?|[!@*](?:.(?!: ))*?)(,|}|$)', r': "\1"\2', bb)
+line = re.sub(r': ([!@*]?(?:(?:[^{-](?!: ))*?(?:[\[\]?%,]|\d[eExX]\d))+(?:.(?!: ))*?|[!@*](?:.(?!: ))*?)(,|}|$)', r': "\1"\2', line)
+
 
 print(line)
 print(yaml.safe_load(line))

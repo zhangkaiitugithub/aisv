@@ -57,10 +57,23 @@ print([[row[i] for row in [[1, 2, 3], [4, 5, 6], [7, 8, 9]]] for i in range(3)])
 #     for name in i 
 #     if name.count('e') >= 2
 # ]
- 
+
+
+# 显示阿拉伯数字+罗马数字 表盘
+list = ['XII' if i == 0 else 'III' if i == 3 else 'VI' if i == 6 else 'IX' if i == 9 else i for i in range(0, 12)]
+print(list)
+# ['XII', 1, 2, 'III', 4, 5, 'VI', 7, 8, 'IX', 10, 11]
+
+# i in [1, 5], j in [0, 4], 当i+j是偶数时，两者相加，否则i-j
+list = [i + j if (i + j) % 2 else i - j for i in range(1, 6) for j in range(5)]
+print(list)
+# [1, 0, 3, -2, 5, 2, 3, 0, 5, -2, 3, 2, 5, 0, 7, 4, 5, 2, 7, 0, 5, 4, 7, 2, 9]
+
+
+
+
+
 # 如果把列表推导式的 [] 替换为 ()，则变为生成器（generator ）表达式。
-
-
 
 #-------------------------------------------------------------------------------------------------
 # 迭代器：

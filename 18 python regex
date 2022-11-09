@@ -400,10 +400,12 @@ line = re.sub(r': ([!@*]?(?:(?:.(?!: |}}|}$))*?(?:[\{\}\[\]?%,]|\d[eExX]\d.{0:}[
 # line =   re.sub(r': ([!@*]?(?:(?:.(?!: |}}|}$))*?(?:[\{\}\[\]?%,]|\d[eExX]\d.{0:}[^-]))+(?:.(?!: ))*?|[!@*](?:.(?!: ))*?)(,|}|$)', r': "\1"\2', line)
 # dd = dict([(i[0],i[1]) if "}}" not in i[1] else (i[0],yaml.safe_load(i[1])) for i in re.findall(r'([\w-]+?): ({[^}]*?{.*?|.*?)(?=, [\w\d-]+?: |}$)',line)])
 
-
 print(line)
 print(yaml.safe_load(line))
 # print(yaml.dump(line,width = 750))
 
+line = re.sub(r'name: ({[^}]*?{.*?|.*?)(?=, [\w\d-]+?: |}$)',r'name: "\1"',line)
+line = re.sub(r'(?<!name): ((?:(?:[^{](?!: ))*?(?:[\[\]?%,]|\d[eExX]\d.{0:}[^-]))+(?:.(?!: ))*?|[!@*](?:.(?!: ))*?)(,|}|$)', r': "\1"\2', line)
+print(line)
 
 

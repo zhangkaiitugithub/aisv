@@ -79,7 +79,10 @@ print(list)
 # [1, 0, 3, -2, 5, 2, 3, 0, 5, -2, 3, 2, 5, 0, 7, 4, 5, 2, 7, 0, 5, 4, 7, 2, 9]
 
 
-
+ls = [('x',['open1','open1','open1']),('y',['open1','open1','open0']),('z',['open0','open0','open1'])]
+def find(con):
+    return [j for i in con for j in i if j.isdigit()]
+print([w for w,con in ls if find(con)==['1','1','1']])
 
 
 # 如果把列表推导式的 [] 替换为 ()，则变为生成器（generator ）表达式。

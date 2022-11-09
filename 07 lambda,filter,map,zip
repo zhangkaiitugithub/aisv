@@ -16,6 +16,15 @@
 # print(next(y))
 # print(next(y))
 
+
+square_func = lambda x: x**2
+function_product = lambda F, m: lambda x: F(x)*m
+print(function_product(square_func, 3)(2))
+
+f = function_product(square_func, 3)
+print(f(2))
+
+
 # print((lambda x: x > 10)(2))
 # print((lambda x: x + 1)(2))
 ####(lambda x: x + 1)(2) = lambda 2: 2 + 1

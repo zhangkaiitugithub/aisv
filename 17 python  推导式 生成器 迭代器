@@ -17,6 +17,15 @@
 
 # print([i for i in'bc123' if i != '2' if i!='3'])  
 
+
+双重列表推导式
+双重列表推导式，大循环在前，小循环在后。
+
+a = [[1, 2], [3, 4]]
+b = [j for i in a for j in i]
+print(b)
+
+
 # print([(x,y) for x in range(5) if x%2==0 for y in 'abcd' if y!='a']) 
 # print([x**y+z for x in range(2) for y in range(3) for z in range(4)])
 

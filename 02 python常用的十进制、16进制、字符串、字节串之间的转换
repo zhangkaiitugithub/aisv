@@ -175,4 +175,9 @@ print(format(6583,'c')) #转换unicode成字符
 # format(0.00003141566) #和g相同
 
 
+s = 'hello tttt'
 
+print(f's is {s:3s}')
+print(f's is {s:.4s}')
+print(f's is {s:8.3}')
+print(f's is {s:8.4s}')

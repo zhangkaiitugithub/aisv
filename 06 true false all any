@@ -91,6 +91,6 @@ print(all([c.isdigit() or c == '-' for c in cc['a']]))
 print(all(c.isdigit() or c == '-' for c in cc['a']))
 print(all(c in "0123456789-" for c in '556-321'))
 
-
+print(list((c in "0123456789-" for c in '556-321')))
 
 

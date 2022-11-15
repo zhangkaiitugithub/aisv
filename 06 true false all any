@@ -83,3 +83,14 @@ print(all([0]))
 print(all([0, 1, 2, 3]))
 
 print(all([False]))
+
+
+dd='{a: 2022-2-12, b: thing}'
+cc = yaml.safe_load(dd)
+print(all([c.isdigit() or c == '-' for c in cc['a']]))
+print(all(c.isdigit() or c == '-' for c in cc['a']))
+print(all(c in "0123456789-" for c in '556-321'))
+
+
+
+

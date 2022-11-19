@@ -1,0 +1,174 @@
+
+
+
+
+'''
+import subprocess, time
+
+t_beginning = time.time()
+OUTTIME = 2
+proc = subprocess.Popen(['clash-windowsamd64.exe',  '-f',  'temptpt.yaml'], stdout=subprocess.PIPE)
+while proc.poll() is None:
+    seconds_passed = time.time() - t_beginning 
+    if seconds_passed > OUTTIME:
+        print('before subprocess ending')
+        proc.terminate()
+        print('after subprocess ending')
+        break
+for i in proc.stdout.readlines():
+    print(i)
+
+
+import sys
+from subprocess import PIPE, Popen
+from threading  import Thread
+from queue import Queue, Empty
+
+
+ON_POSIX = 'posix' in sys.builtin_module_names
+
+def enqueue_output(out, queue):
+    # for line in iter(out.readline, b''):
+    #     queue.put(line)
+    while True:
+        queue.put(next(out))
+    out.close()
+
+p = Popen(['clash-windowsamd64.exe',  '-f',  'temptpt.yaml'], stdout=PIPE, close_fds=ON_POSIX)  #, bufsize=1
+q = Queue()
+t = Thread(target=enqueue_output, args=(p.stdout, q))
+t.daemon = True # thread dies with the program
+t.start()
+
+# ... do other things here
+print('do something here')
+# read line without blocking
+try:
+    for i in range(5):
+        # line = q.get_nowait()
+        line = q.get(timeout=2)
+        print(line)
+
+except Empty:
+    print('no output yet')
+else:
+    print('else thing')
+    print(line)
+    # got line
+    # ... do something with line
+    # time.sleep(4)
+
+p.terminate()
+
+'''
+
+# import subprocess, os, sys
+# from queue import Queue, Empty
+
+# script_process = subprocess.Popen(['clash-windowsamd64.exe',  '-f',  'temptpt.yaml'], stdout=subprocess.PIPE)   #, preexec_fn=os.setsid
+# while script_process.poll() is None:
+#    for output in iter(lambda: script_process.stdout.readline(), b''):
+#        # sys.stdout.writelines(output)
+#        print(output)
+
+
+# q = Queue()
+# while True:
+#     try:    
+#         q.put(next(script_process.stdout))
+#         for i in range(5):
+#             # line = q.get_nowait()
+#             line = q.get(timeout=2)
+#             print(line)
+#     except Empty:
+#         print('pipe is empty')
+        
+#         break
+#     except:
+#         print('script_process stoped, come to StopIteration')
+#         break
+# print('do something here')
+# script_process.terminate()
+
+
+
+'''
+# import asyncio
+# import locale
+# import sys
+# from asyncio.subprocess import PIPE
+# from contextlib import closing
+
+# async def readline_and_kill(*args):
+#     # start child process
+#     process = await asyncio.create_subprocess_exec(*args, stdout=PIPE)
+
+#     # read line (sequence of bytes ending with b'\n') asynchronously
+#     async for line in process.stdout:
+#         print("got line:", line.decode(locale.getpreferredencoding(False)))
+#         break
+#     print('do some thing here once')          
+#     process.kill()
+#     print('do some thing here twice')
+#     return await process.wait() # wait for the child process to exit
+  
+
+# if sys.platform == "win32":
+#     loop = asyncio.ProactorEventLoop()
+#     asyncio.set_event_loop(loop)
+# else:
+#     loop = asyncio.get_event_loop()
+
+# with closing(loop):
+#     sys.exit(loop.run_until_complete(readline_and_kill(
+#         'clash-windowsamd64.exe', '-f',  'temptpt.yaml')))
+'''
+
+
+
+
+
+'''
+# import io, time
+# from subprocess import PIPE, Popen
+
+# p = Popen(['clash-windowsamd64.exe',  '-f',  'temptpt.yaml'], stdout=PIPE)
+
+# SLEEP_DELAY = 0.001
+
+# # Create an io.BufferedReader on the file descriptor for stdout
+# with io.open(p.stdout.fileno(), 'rb', closefd=False) as buffer:
+#   while p.poll() == None:
+#       time.sleep(SLEEP_DELAY)
+#       while b'\n' in buffer.peek(1000):
+#           line = buffer.readline()
+#           # do stuff with the line
+#           print(line)
+#           print('do some thing here'.center(100, '-'))
+#   # Handle any remaining output after the process has ended
+#   while buffer.peek():
+#     line = buffer.readline()
+#     # do stuff with the line
+#     print('do some thing here'.center(100, '='))
+
+# print('ending'.center(100,'/'))
+
+
+
+# from subprocess import Popen, PIPE, STDOUT
+# import io
+
+# def __main__():
+#     try:
+#         p = Popen( ['clash-windowsamd64.exe',  '-f',  'temptpt.yaml'], stdin=PIPE, stdout=PIPE, stderr=STDOUT )
+        
+#     except: print("Popen failed"); quit()
+#     sout = io.open(p.stdout.fileno(), 'rb', closefd=False)
+#     while True:
+#         buf = sout.read1(1024)
+#         if len(buf) == 0: break
+#         print (buf,)
+
+# if __name__ == '__main__':
+#     __main__().
+'''

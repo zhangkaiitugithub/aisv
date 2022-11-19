@@ -172,3 +172,34 @@ p.terminate()
 # if __name__ == '__main__':
 #     __main__().
 '''
+
+
+from subprocess import Popen, PIPE, STDOUT
+import io
+
+def __main__():
+    try:
+        p = Popen( ['clash-windowsamd64.exe',  '-f',  'temptpt.yaml'], stdin=PIPE, stdout=PIPE, stderr=STDOUT )
+        
+    except: print("Popen failed"); quit()
+
+    # a = p.stdout.fileno()    
+    # for i in range(a):
+    #     print(next(p.stdout))
+    while p.stdout.fileno():
+        print(next(p.stdout))
+
+
+if __name__ == '__main__':
+    __main__()
+
+
+
+
+
+
+
+
+
+
+

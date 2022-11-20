@@ -29,6 +29,8 @@ D[x] = D[x] + 1
 
 
 
+几乎所有的操作系统都支持同时运行多个任务，每个任务通常是一个程序，每一个运行中的程序就是一个进程，即进程是应用程序的执行实例
+
 # from multiprocessing import Pool
 # import time
  

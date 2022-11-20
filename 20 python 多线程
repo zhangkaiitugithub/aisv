@@ -90,6 +90,34 @@ D[x] = D[x] + 1
 #         print(mydict)  
 
 
+# 每个进程都拥有自己的内存空间，因此不同进程间内存是不共享的，要想实现两个进程间的数据交换，有几种方法
+from multiprocessing import Process, Pipe, Queue, Manager
+
+if __name__ == '__main__':
+
+    # q = Queue()
+    # q.put( 'hello')
+    # q.put( 'world')    
+    # print(q.get())
+    # print(q.get())
+
+    # parent_conn, child_conn = Pipe()
+    # parent_conn.send("11111")#发送
+    # print(child_conn.recv())#接收
+    # child_conn.send("2222")#发送
+    # print(parent_conn.recv())#接收
+
+    # manager = Manager()
+    # dic = manager.dict()            #通过manager生成一个字典
+    # lis = manager.list(range(5))    #通过manager生成一个列表
+    # dic['a'] = 'a'
+    # dic['b'] = 'b'
+    # dic['c'] = 'c'
+    # lis.append(dic)
+    # lis.append(dic['a'])
+    # print(lis)
+
+
 
 '''--------------------------------------------------------------------------------------------------------------------------'''
 

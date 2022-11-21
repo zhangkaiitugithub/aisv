@@ -1004,6 +1004,54 @@ if __name__ == '__main__':
 #     main()
 
 
+# 事件用于线程之间的通信，一个线程发出一个信号，其他一个或者多个线程等待，调用Event对象的wait()方法，线程则会阻塞等待，调用set()方法，线程会被唤醒
+
+# import threading, time
+ 
+# class Boy(threading.Thread):
+#     def __init__(self, cond, name):
+#         super(Boy, self).__init__()
+#         self.cond = cond
+#         self.name = name
+ 
+#     def run(self):
+#         print(self.name + ": 嫁给我吧！？")
+#         self.cond.set()  # 唤醒一个挂起的线程，让hanmeimei表态
+#         time.sleep(0.5)
+#         self.cond.wait()
+#         print(self.name + ": 我单下跪，送上戒指！")
+#         self.cond.set()
+#         time.sleep(0.5)
+#         self.cond.wait()
+#         self.cond.clear()
+#         print(self.name + ": Li太太，你的选择太明智了。")
+ 
+# class Girl(threading.Thread):
+#     def __init__(self, cond, name):
+#         super(Girl, self).__init__()
+#         self.cond = cond
+#         self.name = name
+ 
+#     def run(self):
+#         self.cond.wait()  # 等待Lilei求婚
+#         self.cond.clear()
+#         print(self.name + ": 没有情调，不够浪漫，不答应")
+#         self.cond.set()
+#         time.sleep(0.5)
+#         self.cond.wait()
+#         print(self.name + ": 好吧，答应你了")
+#         self.cond.set()
+ 
+# if __name__ == '__main__':
+#     cond = threading.Event()
+#     boy = Boy(cond, "LiLei")
+#     girl = Girl(cond, "HanMeiMei")
+#     boy.start()
+#     girl.start()
+
+
+
+
 '''-------------------------------------------------- Semaphore ----------------------------------------------------'''
 
 # import time, threading

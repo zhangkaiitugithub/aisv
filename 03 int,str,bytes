@@ -282,3 +282,16 @@ print(json.loads(json.dumps('大中华')))
 
 # print('新增会员'.encode('ascii', 'backslashreplace').decode('unicode-escape'))
 # print('\u65b0\u589e\u4f1a\u5458:'.encode('utf-8').decode('unicode_escape'))
+
+
+
+#################################################################################
+当有类似%d、%f、%s等格式转换符时，如果需要在后面添加百分号，就需要在格式转换符后加双百分号%%。
+
+print('%%')
+# 输出结果为%%
+print('%d%%' % 100)
+# 输出结果为100%
+
+
+
